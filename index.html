@@ -25,13 +25,12 @@
   </head>
 
   <body>
-
-  <!-- N A V B A R -->
- <nav class="navbar navbar-expand-lg custom-navbar fixed-top">
+<!-- N A V B A R -->
+<nav class="navbar navbar-expand-lg custom-navbar fixed-top">
   <!-- Message discret en haut avec largeur limitée -->
   <div style="background-color: #f7f9fc; color: #8c8e91; font-size: 0.8rem; padding: 5px 15px; text-align: center; position: absolute; top: 0; left: 0; right: 0; margin: 0 auto; max-width: 600px; border-radius: 10px; ">
-  Service d'accompagnement indépendant de l'administration
-</div>
+    Service d'accompagnement indépendant de l'administration
+  </div>
 
   <a href="index.html" class="navbar-brand">
     <img src="images/logo3.png" alt="Company Logo" class="nav-logo img-fluid">
@@ -44,8 +43,15 @@
       <li class="nav-item">
         <a class="nav-link" href="liste-des-mairies.html">LISTE DES MAIRIES</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#marketing">INFORMATIONS</a>
+      <!-- Menu déroulant pour INFORMATIONS -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownInfo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          INFORMATIONS
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownInfo">
+          <a class="dropdown-item" href="index.html#cni-documents">Pièces nécessaires</a>
+          <a class="dropdown-item" href="index.html#faq">Questions fréquentes</a>
+        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#testimonials">CONTACTS</a>
@@ -57,10 +63,8 @@
     </div>
   </div>
 </nav>
+<!-- E N D  N A V B A R -->
 
-
-
-  <!-- E N D  N A V B A R -->
   
   <!-- H E R O -->
   <section id="hero">
@@ -115,16 +119,16 @@
     <div class="row justify-content-center">
       <div class="col-md-5">
         <div class="subscription-box text-center">
-          <span style="font-size: 2rem; font-weight: bold; color: #333;">39 € <span style="font-size: 1rem; color: #666; font-weight: normal;">TTC</span></span>
-          <h2 style="color: #0444ec;">Pour Majeur</h2>
+          <span style="font-size: 2rem; font-weight: bold; color: #333;">39€<span style="font-size: 1rem; color: #666; font-weight: normal;">TTC</span></span>
+          <h2 style="color: #0444ec;">Pour un Majeur</h2>
           <p>Traitement Sous 48h</p>
           <a href="#" class="btn btn-regular">Pré-Demande</a>
         </div>
       </div>
       <div class="col-md-5">
         <div class="subscription-box text-center">
-          <span style="font-size: 2rem; font-weight: bold; color: #333;">29 € <span style="font-size: 1rem; color: #666; font-weight: normal;">TTC</span></span>
-          <h2 style="color: #0444ec;">Pour Mineur</h2>
+          <span style="font-size: 2rem; font-weight: bold; color: #333;">29€<span style="font-size: 1rem; color: #666; font-weight: normal;">TTC</span></span>
+          <h2 style="color: #0444ec;">Pour un Mineur</h2>
           <p>Traitement Sous 48h</p>
           <a href="#" class="btn btn-regular">Pré-Demande</a>
         </div>
@@ -214,7 +218,7 @@
 <!-- E N D  I N F O R M A T I O N S - C N I -->
 
   <!-- D E M A N D E - D O C U M E N T S -->
-<section id="cni-documents" class="styled-section">
+<section id="cni-documents" class="styled-section" >
   <div class="container">
     <div class="title-block text-center">
       <h2>Documents Requis pour la Carte Nationale d'Identité</h2>
