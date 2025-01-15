@@ -1,0 +1,1098 @@
+/*///////////////////////////////////////////////////////////////////////////////////
+
+	Theme Name: Seo Company
+	Description: The Seo Company v1.0
+	Author: Diego Velázquez Rabasa - Templune
+	Author Personal Website: http://templune.com
+	Author Behance Profile: https://www.behance.net/diegovr7
+	Author Dribbble Profile: https://dribbble.com/diegovr7
+	Author Envato Profile: https://themeforest.net/user/diegovr7
+	Version: 1.0
+
+	External Resources:
+	Bootstrap 4
+	Google Fonts 
+	Ionic Icons
+
+	*This Html Theme is royalty free for use in personal and commercial projects with 
+	a couple of restrictions.
+
+	Publications
+	You are welcome to republish this Html Theme on condition that you link back to
+	https://www.behance.net/gallery/67279127/The-Seo-Company-Free-PSD-Template 
+	and you should not provide the assets for direct download from your website.
+
+	Prohibitions
+	You do not have rights to redistribute, resell, lease, license, sub-license or offer
+	this resource to any third party «as is». If you want to use this resource as a part
+	of a product intended to be sold via any marketplace, please contact the author 
+	templune@gmail.com of the freebie to get an extended license.
+
+/////////////////////////////////////////////////////////////////////////////////*/
+
+/* /////////////////////////////
+
+	1. Basic Styles
+	2. Navbar
+	3. Buttons
+	4. Hero
+	5. Marketing
+	6. Testimonials
+	7. Pricing
+	8. Call to Action
+	9. Footer
+	10. Media Queries
+
+   //////////////////////////*/
+
+
+body {
+	font-family: 'Roboto', sans-serif;
+	color: #3a3f52;
+}
+
+h2 {
+	font-size: 44px;
+	font-weight: 700;
+}
+
+h3 {
+	font-size: 24px;
+	font-weight: 500;
+	margin-bottom: 25px;
+}
+
+h5 {
+	font-size: 16px;
+}
+
+p {
+	font-size: 14px;
+	font-weight: 400;
+	letter-spacing: .05em;
+	color: #53627C;
+}
+
+ul {
+	list-style-type: none;
+	padding-left: 0px;
+}
+
+b {
+	font-weight: 700;
+}
+
+section {
+	padding: 100px 0px;
+}
+
+.title-block {
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.title-block p {
+	font-size: 20px;
+	font-weight: 300;
+	color: #8da2b5;
+	margin-bottom: 0px;
+}
+
+.divider {
+	padding: 2rem 0 0;
+    margin: 2rem 0 0;
+    border-top: 1px solid #3c3f45;
+}
+
+.divider-light {
+	padding: 2rem 0 0;
+    margin: 2rem 0 0;
+	border-top: 1px solid #edf1f2
+}
+
+/* ==============================================
+   Navbar 
+===============================================*/
+
+.custom-navbar {
+  background-color: #ffffff!important;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .09);
+  padding: 0 20px; /* Ajout des espaces latéraux */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Ajustez la hauteur de la navbar en fonction du logo */
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo {
+  max-height: 150px; /* Ajustez la hauteur maximale du logo */
+}
+
+.navbar-toggler {
+  font-size: 38px;
+  background-color: transparent;
+  border: none;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+}
+
+.navbar-toggler-icon {
+  color: #53627C;
+}
+
+.navbar-collapse {
+  background-color: #ffffff;
+}
+
+.navbar-nav {
+  margin-left: auto;
+  margin-right: auto; /* Centrer les éléments de navigation */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item {
+  margin-left: 20px;
+}
+
+.nav-link {
+  font-size: 18px;
+  font-weight: 600;
+  color: #53627C;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #0444ec !important; /* Changement de couleur au survol */
+}
+
+/* Cible le bouton spécifique dans la navbar */
+.navbar .nav-item .btn-demo-small {
+  background-color: #0444ec !important; /* Couleur de fond du bouton */
+  color: #ffffff !important; /* Couleur du texte en blanc */
+  font-size: 18px !important; /* Augmente la taille du texte */
+  padding: 15px 30px !important; /* Augmente la taille du bouton */
+  border-radius: 5px !important; /* Arrondir les coins */
+  font-weight: bold !important; /* Texte en gras */
+  text-transform: uppercase !important; /* Texte en majuscules */
+  transition: background-color 0.3s ease, transform 0.3s ease !important; /* Animation au survol */
+}
+
+/* Effet de survol pour le bouton */
+.navbar .nav-item .btn-demo-small:hover {
+  background-color: #061d94 !important; /* Couleur plus foncée lors du survol */
+  transform: scale(1.1) !important; /* Effet de zoom */
+}
+
+
+/* Responsive Design */
+@media (max-width: 1068px) {
+  .navbar-brand {
+    margin: 0 auto;
+  }
+  .nav-logo {
+    max-height: 60px; /* Réduction du logo sur mobile */
+  }
+  .navbar-collapse {
+    text-align: center;
+  }
+  .navbar-nav {
+    width: 100%;
+    justify-content: center;
+  }
+  .nav-item {
+    margin: 10px 0;
+  }
+}
+
+.custom-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  transition: top 0.3s ease-in-out;
+}
+
+
+
+
+/* ==============================================
+   3. Buttons
+===============================================*/
+
+.btn {
+	font-size: 14px;
+	font-weight: 400;
+	border-radius: 3px!important;
+	box-shadow: 0 2px 3px 0 rgba(0,0,0,.05), 0 1px 2px 0 rgba(0,0,0,.08);
+}
+
+.btn:hover {
+	text-decoration: none;
+}
+
+.btn-regular {
+	background-color: #0095f7;
+	color: #ffffff;
+	padding: 10px 25px;
+	letter-spacing: .1em;
+	margin-top: 25px;
+	display: inline-block;
+}
+
+.btn-regular:hover {
+	background-color: #0191f0;
+	color: #ffffff;
+}
+
+.btn-demo {
+	color: #ffffff;
+	background-color: #6772e5;
+	letter-spacing: .1em;
+	padding: 15px 48px;
+	display: inline-block;
+	width: 100%;
+	margin-top: 20px;
+}
+
+.btn-demo:hover {
+	color: #ffffff;
+	background-color: #636ee1;
+}
+
+.btn-demo-small {
+	font-size: 12px;
+	background-color: #6772e5;
+	padding: 1px 4px;
+}
+
+.btn-demo-small:hover {
+	background-color: #636ee1;
+}
+
+.btn-demo-small a {
+	color: #ffffff!important;
+}
+
+.btn-buy {
+	color: #ffffff;
+	background-color: #0095f7;
+	letter-spacing: .1em;
+	padding: 15px 48px;
+	display: inline-block;
+	width: 100%;
+	margin-top: 20px;
+}
+
+.btn-buy:hover {
+	background-color: #0191f0;
+	color: #ffffff;
+}
+
+.btn-demo-small {
+  background-color: #0444ec !important; /* Couleur de fond du bouton */
+  color: #ffffff !important; /* Couleur du texte en blanc */
+  font-size: 18px !important; /* Augmente la taille du texte */
+  padding: 15px 30px !important; /* Augmente la taille du bouton */
+  border-radius: 5px !important; /* Arrondir les coins */
+  font-weight: bold !important; /* Texte en gras */
+  text-transform: uppercase !important; /* Texte en majuscules */
+  transition: background-color 0.3s ease, transform 0.3s ease !important; 
+}
+
+.btn-demo-small:hover {
+  background-color: #ffffff; /* Couleur au survol */
+  color: #ffffff !important; /* Maintient le texte en blanc */
+  transform: scale(1.1) !important; /* Agrandit légèrement le bouton */
+}
+
+
+
+/* ==============================================
+   4. Hero
+===============================================*/
+
+#hero {
+    background-color: #f6f8f9;
+    padding: 50px 0;
+    height: 50vh; /* Prend toute la hauteur de l'écran */
+}
+
+#hero .col-lg-5, #hero .col-md-5, #hero .col-sm-5, #hero .col-xs-5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero img {
+    width: 100%; /* L'image occupe toute la largeur du conteneur */
+    max-width: 500px; /* Vous pouvez limiter la taille maximale si nécessaire */
+    height: auto; /* Garder le ratio d'aspect de l'image */
+    object-fit: contain; /* Assure que l'image ne soit pas déformée */
+}
+
+#hero .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    padding-left: 20px;
+}
+
+#hero h1 {
+    font-size: 40px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 20px;
+    font-weight: 300;
+    color: #8da2b5;
+    margin-bottom: 20px;
+}
+
+#hero .btn {
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+
+/* ==============================================
+   5. Marketing
+===============================================*/
+
+#marketing p {
+	font-size: 20px;
+    font-weight: 300;
+    color: #8da2b5;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+#marketing span {
+	font-weight: 400;
+	color: #0095f7;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+}
+
+.content-box {
+	padding: 60px 20px;
+}
+
+#marketing {
+  padding: 50px 0; /* Espace autour de la section */
+  background-color: #f9f9f9; /* Couleur de fond douce */
+}
+
+.subscription-box {
+  background-color: #ffffff; /* Fond blanc pour chaque carré */
+  border: 1px solid #ddd; /* Bordure grise claire */
+  border-radius: 10px; /* Coins arrondis */
+  padding: 30px; /* Espace intérieur */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.subscription-box:hover {
+  transform: scale(1.05); /* Zoom léger au survol */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+}
+
+.subscription-box span {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  color: #0444ec; /* Couleur bleue pour le texte */
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.subscription-box h2 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 15px;
+}
+
+.subscription-box p {
+  font-size: 16px;
+  color: #777777;
+  margin-bottom: 20px;
+}
+
+.subscription-box .btn {
+  background-color: #0444ec;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.subscription-box .btn:hover {
+  background-color: #022e99;
+  color: #ffffff;
+}
+
+
+/* ==============================================
+   6. crestimonials
+===============================================*/
+#crestimonials {
+  background: linear-gradient(to bottom, #f7f9fc, #ffffff);
+  padding: 60px 20px;
+}
+
+#crestimonials .title-block {
+  margin-bottom: 30px;
+}
+
+#crestimonials .title-block h2 {
+  font-size: 34px;
+  font-weight: 700;
+  color: #0444ec;
+}
+
+#crestimonials .title-block p {
+  font-size: 18px;
+  color: #6c757d;
+}
+
+.benefits-box {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.benefits-box h3 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #0444ec; 
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefits-list li {
+  font-size: 16px;
+  color: #555555;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.benefits-list li i {
+  font-size: 20px;
+  color: #0444ec;
+  margin-right: 10px;
+}
+
+.btn-primary {
+  background-color: #0444ec;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #022c99;
+  transform: scale(1.05);
+}
+
+#crestimonials .benefits-box h3.text-primary {
+  font-size: 28px;
+  font-weight: 600;
+  color: #0444ec !important;
+}
+
+
+/* ==============================================
+   6. Testimonials
+===============================================*/
+
+#testimonials {
+  background-color: #f6f8f9; /* Couleur de fond */
+  height: 50vh; /* Hauteur de 50% de la fenêtre visible */
+  display: flex;
+  align-items: center; /* Centrer verticalement */
+  text-align: center;
+  padding: 20px 0;
+}
+
+#testimonials .title-block h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#testimonials h6 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#testimonials p {
+  font-size: 16px;
+  color: #555555;
+  line-height: 1.6;
+}
+
+/* Pour s'assurer que les colonnes sont bien centrées */
+.row.h-100 {
+  height: 100%;
+}
+
+.testimonial-box i {
+	color: #ffffff;
+}
+
+.testimonial-box small {
+	color: #8da2b5;
+	display: inline-block;
+}
+
+.testimonial-box span {
+	font-size: 14px;
+	color: #ffffff;
+}
+
+.rating {
+	background-color: #0095f7;
+	padding: 2px 12px;
+	border-radius: 50px;
+}
+
+.profile-picture {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.review-one {
+  background-image: url('images/profile-picture-one.jpg');
+}
+
+.personal-info {
+	padding: 5px 0 20px 0;
+	border-bottom: 1px solid #edf1f2;
+}
+
+/* Ajout d'une image de profil spécifique au troisième avis */
+.profile-picture.review-two {
+  background-image: url('images/profile-picture-one.jpg'); /* Remplacez par l'URL de la nouvelle image */
+}
+
+/* ==============================================
+   7. cni-information
+===============================================*/
+
+#cni-information {
+  background-color: #f8f9fb;
+  padding: 60px 20px;
+}
+
+#cni-information .title-block h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0444ec;
+  margin-bottom: 10px;
+}
+
+#cni-information .title-block p {
+  font-size: 18px;
+  color: #6c757d;
+}
+
+.info-box {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.info-box h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 15px;
+}
+
+.info-box p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555555;
+}
+
+.info-box ul,
+.info-box ol {
+  padding-left: 20px;
+  margin-top: 15px;
+}
+
+.info-box ul li,
+.info-box ol li {
+  font-size: 16px;
+  color: #555555;
+  margin-bottom: 10px;
+}
+
+.info-box ul li i,
+.info-box ol li i {
+  font-size: 20px;
+  color: #0444ec;
+  margin-right: 10px;
+}
+
+.btn-primary {
+  background-color: #0444ec;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #022c99;
+}
+
+/* ==============================================
+   C N I - Documents Section 
+=============================================== */
+
+.styled-section {
+  background: #f9f9f9;
+  padding: 50px 0;
+}
+
+.styled-section .title-block {
+  margin-bottom: 40px;
+}
+
+.styled-section h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.styled-section p {
+  font-size: 16px;
+  color: #7f8c8d;
+}
+
+.styled-section .styled-column {
+  padding: 20px;
+}
+
+.styled-section h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0444ec;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.styled-section ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.styled-section ul li {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #34495e;
+}
+
+.styled-section a.btn-link {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  color: #0444ec;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.styled-section a.btn-link:hover {
+  color: #2980b9;
+}
+
+.styled-section i {
+  font-size: 22px;
+  color: #0444ec;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .styled-section h2 {
+    font-size: 24px;
+  }
+  .styled-section h3 {
+    font-size: 18px;
+  }
+}
+
+/* ==============================================
+    FAQ Section Styling 
+=============================================== */
+
+
+.styled-section {
+  background: #f9f9f9;
+  padding: 50px 20px;
+}
+
+.title-block {
+  margin-bottom: 30px;
+}
+
+.title-block h2 {
+  color: #0444ec;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.title-block p {
+  color: #7f8c8d;
+  font-size: 16px;
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+}
+
+.faq-question {
+  background: #0444ec;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 15px 20px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+  background: #032d9f;
+}
+
+.faq-answer {
+  display: none;
+  background: #fff;
+  color: #34495e;
+  padding: 15px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+
+/* ==============================================
+   8. Call to Action
+===============================================*/
+
+#call-to-action {
+	background-image: url('images/call-to-action.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+}
+
+#call-to-action h2 {
+	color: #ffffff;
+}
+
+#call-to-action p {
+	font-size: 20px;
+	font-weight: 300;
+	color: #ffffff;
+	opacity: .8;
+	margin-bottom: 40px;
+}
+
+#call-to-action .title-block {
+	margin-bottom: 0px;
+}
+
+#call-to-action .btn-regular {
+	background-color: #ffffff!important;
+	color: #0095f7!important;
+	padding: 15px 45px;
+}
+
+#call-to-action .title-block {
+	margin-bottom: 0px;
+}
+
+/* ==============================================
+   9. Footer
+===============================================*/
+
+footer {
+	background-color: #292c31;
+    padding: 60px 0;
+    color: #62656a;
+}
+
+footer h5 {
+	color: #aeb3bd;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	margin-bottom: 20px;
+}
+
+footer p {
+	font-size: 12px;
+	font-weight: 300;
+	color: #62656a;
+	text-align: justify;
+	padding: 0px;
+}
+
+footer li {
+	font-size: 14px;
+	font-weight: 300;
+	letter-spacing: .05em;
+	line-height: 1.5;
+	margin-bottom: 10px;
+}
+
+footer a {
+	color: #62656a;
+}
+
+footer a:hover {
+	color: #0095f7;
+	text-decoration: none;
+}
+
+footer i {
+	font-size: 25px;
+	color: #62656a;
+	margin-right: 10px;
+}
+
+footer i:hover {
+	color: #0095f7;
+}
+
+footer small {
+	color: #62656a;
+	float: right;
+}
+
+.external-links {
+	color: #0095f7;
+}
+
+/* ==============================================
+   9. Media Queries
+===============================================*/
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+	h2 {
+		font-size: 34px!important;
+		margin-bottom: 20px;
+		line-height: 1.6;
+	}
+	.title-block h2, p {
+		text-align: left;
+		padding: 0px 20px;
+	}
+
+	#call-to-action h2, p {
+		text-align: left!important;
+		padding: 0 20px;
+	}
+
+	#call-to-action {
+		background-image: none;
+		background-color: #0095f7;
+	}
+
+	footer {
+		padding: 60px 25px;
+	}
+	footer h5 {
+		font-size: 18px;
+		margin-top: 30px;
+	}
+	footer li {
+		font-size: 16px;
+		margin-bottom: 15px;
+	}
+	footer p {
+		font-size: 16px;
+	}
+	footer i {
+		font-size: 30px;
+		margin-right: 20px;
+	}
+	footer small {
+		float: left;
+		margin-top: 20px;
+	}
+}
+
+@media (max-width: 768px) { 
+	#hero h1 {
+		font-size: 34px!important;
+		margin-bottom: 20px;
+	}
+	#hero p {
+		font-size: 20px!important;
+	}
+}
+
+@media (max-width: 991px) { 
+	.nav-right {
+		float: left;
+	}
+	.nav-custom-link {
+		border-bottom: 1px solid #EEE;
+	}
+	.navbar-nav{
+		width: 100%;
+	}
+	.navbar-nav .nav-link {
+		padding: 20px 0;
+		text-align: left;
+	}
+
+	.btn-demo-small {
+		background-color: #ffffff;
+		border: 0px;
+		padding: 0px;
+		box-shadow: none;
+
+	}
+	.btn-demo-small:hover {
+		background-color: #ffffff;
+		border: 0px;
+		padding: 0px;
+		box-shadow: none;
+
+	}
+	.btn-demo-small a {
+		color: #53627C!important;
+	}
+	.nav-custom-link {
+		font-size: 13px;
+	}
+
+	.icon-mobile {
+		font-size: 18px;
+		float: right;
+	}
+
+	.navbar-collapse {
+		border-bottom: 1px solid #efefef;
+	}
+
+	.nav-logo-mobile {
+		margin: auto;
+		padding-right: 50px;
+	}
+
+	.nav-logo-desktop {
+		display: none;
+	}
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+	.icon-mobile {
+		display: none;
+	}
+	.nav-logo-mobile {
+		display: none;
+	}
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+	.hero-content {
+		margin-top: 100px;
+	}
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+	.pricing-box h3 {
+		font-size: 17px;
+	}
+	.pricing-box p {
+		font-size: 14px;
+	}
+	.pricing-box li {
+		font-size: 12px;
+	}
+	.btn-buy {
+		font-size: 12px;
+		padding: 15px 20px;
+	}
+	.btn-demo {
+		font-size: 12px;
+		padding: 15px 20px;
+	}
+	.profile-picture {
+		width: 50px;
+		height: 50px;
+	}
+	.testimonial-box h6 {
+		font-size: 14px;
+		margin-left: 10px;
+	}
+	.testimonial-box span {
+		font-size: 12px;
+	}
+	.testimonial-box small {
+		font-size: 12px;
+		margin-top: 4px;
+		margin-left: 10px;
+	}
+}
+
