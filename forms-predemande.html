@@ -5,6 +5,84 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+                <style>
+            body {
+              font-family: Arial, sans-serif;
+              background-color: #f9f9f9;
+              padding: 20px;
+            }
+
+            #form-section {
+              max-width: 800px;
+              margin: 0 auto;
+              padding: 20px;
+              background: white;
+              border-radius: 8px;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .step {
+              display: none;
+            }
+
+            .step.active {
+              display: block;
+            }
+
+            .progress-bar {
+              background-color: #e0e0e0;
+              height: 8px;
+              border-radius: 4px;
+              overflow: hidden;
+              margin-bottom: 20px;
+            }
+
+            .progress-bar-inner {
+              background-color: #0444ec;
+              height: 100%;
+              width: 0%;
+              transition: width 0.3s ease-in-out;
+            }
+
+            .buttons {
+              display: flex;
+              justify-content: space-between;
+            }
+
+            .btn {
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              font-size: 1rem;
+              transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .btn-primary {
+              background-color: #0444ec;
+              color: white;
+            }
+
+            .btn-primary:hover {
+              background-color: #022b9c;
+              transform: translateY(-2px);
+              box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            }
+
+            .btn-secondary {
+              background-color: #f1f1f1;
+              color: #333;
+            }
+
+            .btn-secondary:hover {
+              background-color: #ddd;
+              color: #000;
+              transform: translateY(-2px);
+              box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            }
+  </style>
+
+
      <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
     <!-- Bootstrap CSS -->
@@ -67,64 +145,65 @@
 
 <section id="banner">
   <div class="container text-center">
-    <div class="icon">
-      <i class="bi bi-card-heading"></i>
+    <div >
+      :
     </div>
-    <h1 class="mt-3">Liste des mairies délivrant des cartes d'identité par département</h1>
+    <h1 class="mt-3">Pré-demande en ligne de CNI (carte nationale d'identité française)</h1>
   </div>
 </section>
 
 
 
+        <!--------------------------------- Form ----------------------------->
 
 
-  <!-- T A B -->
-<section id="departments">
-  <div class="container">
-    <div class="departments-table">
-      <!-- Exemple de départements -->
-      <div class="department" data-department="Paris">
-        <h3>Paris (75) <span class="toggle-icon">↓</span></h3>
-        <ul class="mairies-list" style="display: none;">
-          <!-- Les mairies seront ajoutées ici par JavaScript -->
-        </ul>
-      </div>
-      <div class="department" data-department="Bouches-du-Rhône">
-        <h3>Bouches-du-Rhône (13) <span class="toggle-icon">↓</span></h3>
-        <ul class="mairies-list" style="display: none;">
-          <!-- Les mairies seront ajoutées ici par JavaScript -->
-        </ul>
-      </div>
-      <div class="department" data-department="Nord">
-        <h3>Nord (59) <span class="toggle-icon">↓</span></h3>
-        <ul class="mairies-list" style="display: none;">
-          <!-- Les mairies seront ajoutées ici par JavaScript -->
-        </ul>
-      </div>
-      <div class="department" data-department="Rhône">
-        <h3>Rhône (69) <span class="toggle-icon">↓</span></h3>
-        <ul class="mairies-list" style="display: none;">
-          <!-- Les mairies seront ajoutées ici par JavaScript -->
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+             <section id="form-section">
+                <!-- Barre de progression -->
+                <div class="progress-bar">
+                  <div class="progress-bar-inner" id="progress-bar"></div>
+                </div>
+
+                <!-- Étape 1 -->
+                <div class="step active" id="step-1">
+                  <h2>Étape 1 sur 3</h2>
+                  <label>La demande concerne un : <span style="color: red;">(Nécessaire)</span></label><br>
+                  <input type="radio" id="majeur" name="type" value="majeur">
+                  <label for="majeur">Majeur</label><br>
+                  <input type="radio" id="mineur" name="type" value="mineur">
+                  <label for="mineur">Mineur</label>
+                </div>
+
+                <!-- Étape 2 -->
+                <div class="step" id="step-2">
+                  <h2>Étape 2 sur 3</h2>
+                  <label>Raison de la demande <span style="color: red;">(Nécessaire)</span></label><br>
+                  <select style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                    <option value="premiere">Première demande</option>
+                    <option value="renouvellement">Renouvellement</option>
+                  </select>
+                </div>
+
+                <!-- Étape 3 -->
+                <div class="step" id="step-3">
+                  <h2>Étape 3 sur 3</h2>
+                  <label>Dans quel département effectuez-vous votre demande ? <span style="color: red;">(Nécessaire)</span></label><br>
+                  <select style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                    <option value="01">1 Ain</option>
+                    <option value="02">2 Aisne</option>
+                  </select>
+                </div>
+
+                <!-- Boutons -->
+                <div class="buttons">
+                  <button class="btn btn-secondary" id="prev-btn" onclick="prevStep()">Précédent</button>
+                  <button class="btn btn-primary" id="next-btn" onclick="nextStep()">Suivant</button>
+                </div>
+              </section>
+              
 
 
 
-
-  <!-- E N D  T A B -->
-
-
-
-
-
-
-
-
-
-
+        <!------------------------------------ Form ------------------------------->
 
 
 
@@ -188,30 +267,6 @@
   
 
 
-        <script>
-  // Sélectionner toutes les questions
-  const faqQuestions = document.querySelectorAll('.faq-question');
-
-  // Ajouter un événement de clic à chaque question
-  faqQuestions.forEach(question => {
-    question.addEventListener('click', () => {
-      // Trouver la réponse associée
-      const answer = question.nextElementSibling;
-
-      // Basculer l'affichage (visible/invisible)
-      if (answer.style.display === 'block') {
-        answer.style.display = 'none';
-      } else {
-        // Fermer toutes les autres réponses
-        document.querySelectorAll('.faq-answer').forEach(item => {
-          item.style.display = 'none';
-        });
-        // Afficher la réponse sélectionnée
-        answer.style.display = 'block';
-      }
-    });
-  });
-</script>
 
 
 <script>
@@ -244,43 +299,48 @@
 
 
 
+
 <script>
-  // Exemple de données des mairies
-const mairies = {
-  Paris: ["Mairie du 1er arrondissement", "Mairie du 2e arrondissement", "Mairie du 3e arrondissement"],
-  "Bouches-du-Rhône": ["Mairie de Marseille", "Mairie d'Aix-en-Provence", "Mairie d'Arles"],
-  Nord: ["Mairie de Lille", "Mairie de Roubaix", "Mairie de Tourcoing"],
-  Rhône: ["Mairie de Lyon", "Mairie de Villeurbanne", "Mairie de Vénissieux"],
-};
+    let currentStep = 1;
+    const totalSteps = 3;
 
-// Sélection des départements
-const departments = document.querySelectorAll(".department");
-
-// Ajout des événements de clic
-departments.forEach((department) => {
-  department.addEventListener("click", () => {
-    const departmentName = department.getAttribute("data-department");
-    const mairiesInDepartment = mairies[departmentName] || [];
-    const mairiesList = department.querySelector(".mairies-list");
-
-    // Si la liste est déjà visible, on la cache
-    if (mairiesList.style.display === "block") {
-      mairiesList.style.display = "none";
-    } else {
-      // Sinon, on l'affiche et on ajoute les mairies
-      mairiesList.innerHTML = "";  // Réinitialiser la liste avant de l'afficher
-      mairiesInDepartment.forEach((mairie) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = mairie;
-        mairiesList.appendChild(listItem);
+    function showStep(step) {
+      // Masquer toutes les étapes
+      document.querySelectorAll('.step').forEach((stepElement) => {
+        stepElement.classList.remove('active');
       });
-      mairiesList.style.display = "block";  // Afficher la liste
+
+      // Afficher l'étape actuelle
+      document.getElementById(`step-${step}`).classList.add('active');
+
+      // Mettre à jour la barre de progression
+      const progress = (step / totalSteps) * 100;
+      document.getElementById('progress-bar').style.width = `${progress}%`;
+
+      // Gérer l'état des boutons
+      document.getElementById('prev-btn').style.display = step === 1 ? 'none' : 'inline-block';
+      document.getElementById('next-btn').textContent = step === totalSteps ? 'Soumettre' : 'Suivant';
     }
-  });
-});
 
-</script>
+    function nextStep() {
+      if (currentStep < totalSteps) {
+        currentStep++;
+        showStep(currentStep);
+      } else {
+        alert('Formulaire soumis !');
+      }
+    }
 
+    function prevStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    }
+
+    // Initialisation
+    showStep(currentStep);
+  </script>
 
 
 
