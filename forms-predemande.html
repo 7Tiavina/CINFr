@@ -450,11 +450,74 @@
 <!------------------------------------------------- Étape 5 ------------------------------------------------------------------------------>
 
 
+<div class="form-part" id="step-5" style="display: none;">
+    <h4>Adresse du demandeur concerné par le titre : <span style="color: red;">(Nécessaire)</span></h4>
+    
+    <label for="adresse-du-demandeur">Adresse du demandeur concerné par le titre</label>
+    <input type="text" id="adresse-du-demandeur" name="adresse-du-demandeur" required>
+    
+    <label for="adresse-ville">Adresse postale : Ville</label>
+    <input type="text" id="adresse-ville" name="adresse-ville" required>
+    
+    <label for="adresse-zip">ZIP / Code postal</label>
+    <input type="text" id="adresse-zip" name="adresse-zip" required>
+    
+    <label for="adresse-complement">Complément d'adresse (étage, escalier, appartement, immeuble, bâtiment, résidence, lieu-dit, boîte postale)</label>
+    <input type="text" id="adresse-complement" name="adresse-complement">
+    
+    <h4>Informations de contact : <span style="color: red;">(Nécessaire)</span></h4>
+    
+    <label for="telephone">Téléphone portable de contact (Format : 0601020304)</label>
+    <input type="tel" id="telephone" name="telephone" pattern="^0[1-9][0-9]{8}$" required>
+    
+    <label for="email">E-mail</label>
+    <input type="email" id="email" name="email" required>
+    
+    <h4>Validation : <span style="color: red;">(Nécessaire)</span></h4>
+    
+    <div class="checkbox-options">
+        <div>
+            <input type="radio" id="confirmation-info" name="validation-info" value="confirmation-info" required>
+            <label for="confirmation-info">Je confirme que les informations transmises sont correctes</label>
+        </div>
+        <div>
+            <input type="radio" id="politique-confidentialite" name="validation-politique" value="politique-confidentialite" required>
+            <label for="politique-confidentialite">Je valide la politique de confidentialité du site</label>
+        </div>
+        <div>
+            <input type="radio" id="conditions-generales" name="validation-conditions" value="conditions-generales" required>
+            <label for="conditions-generales">Je valide les conditions générales de vente du site</label>
+        </div>
+    </div>
+</div>
+
 
 
 <!------------------------------------------------- Étape 6 ------------------------------------------------------------------------------>
 
 
+<div class="form-part" id="step-6" style="display: none;">
+    <h4>Frais de traitement de la pré-demande de CNI</h4>
+    <p>Prix: <strong>39,00 €</strong></p>
+    
+    <h4>Paiement par Carte Bancaire : <span style="color: red;">(Nécessaire)</span></h4>
+    
+    <label for="carte-bancaire">Carte bancaire</label>
+    <input type="text" id="carte-bancaire" name="carte-bancaire" placeholder="Numéro de carte" required>
+    
+    <label for="expiration">Date d'expiration</label>
+    <input type="month" id="expiration" name="expiration" required>
+    
+    <label for="cvv">CVV</label>
+    <input type="text" id="cvv" name="cvv" placeholder="Code de sécurité" pattern="^[0-9]{3}$" required>
+    
+    <h4>Connexion Link et Formulaire d'entrée de carte bancaire pour procéder au paiement :</h4>
+    <p>Veuillez entrer les informations de votre carte bancaire pour compléter votre paiement.</p>
+    
+    <div class="buttons">
+        <button class="btn btn-primary" id="pay-btn" onclick="processPayment()">Payer</button>
+    </div>
+</div>
 
 
 
