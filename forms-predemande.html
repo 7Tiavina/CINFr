@@ -5,81 +5,83 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-                <style>
-            body {
-              font-family: Arial, sans-serif;
-              background-color: #f9f9f9;
-              padding: 20px;
-            }
+              
+            <style>
+          body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
 
-            #form-section {
-              max-width: 800px;
-              margin: 0 auto;
-              padding: 20px;
-              background: white;
-              border-radius: 8px;
-              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
+#form-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-            .step {
-              display: none;
-            }
+.form-part {
+  display: none;
+}
 
-            .step.active {
-              display: block;
-            }
+.form-part.active {
+  display: block;
+}
 
-            .progress-bar {
-              background-color: #e0e0e0;
-              height: 8px;
-              border-radius: 4px;
-              overflow: hidden;
-              margin-bottom: 20px;
-            }
+.progress-bar {
+  background-color: #e0e0e0;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
 
-            .progress-bar-inner {
-              background-color: #0444ec;
-              height: 100%;
-              width: 0%;
-              transition: width 0.3s ease-in-out;
-            }
+.progress-bar-inner {
+  background-color: #0444ec;
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease-in-out;
+}
 
-            .buttons {
-              display: flex;
-              justify-content: space-between;
-            }
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
 
-            .btn {
-              padding: 10px 20px;
-              border: none;
-              border-radius: 5px;
-              cursor: pointer;
-              font-size: 1rem;
-              transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            }
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-            .btn-primary {
-              background-color: #0444ec;
-              color: white;
-            }
+.btn-primary {
+  background-color: #0444ec;
+  color: white;
+}
 
-            .btn-primary:hover {
-              background-color: #022b9c;
-              transform: translateY(-2px);
-              box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            }
+.btn-primary:hover {
+  background-color: #022b9c;
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
 
-            .btn-secondary {
-              background-color: #f1f1f1;
-              color: #333;
-            }
+.btn-secondary {
+  background-color: #f1f1f1;
+  color: #333;
+}
 
-            .btn-secondary:hover {
-              background-color: #ddd;
-              color: #000;
-              transform: translateY(-2px);
-              box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            }
+.btn-secondary:hover {
+  background-color: #ddd;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
   </style>
 
 
@@ -140,70 +142,19 @@
     </div>
   </div>
 </nav>
-<!-- E N D  N A V B A R -->
+
+
 
 
 <section id="banner">
   <div class="container text-center">
-    <div >
+    <div>
       :
     </div>
     <h1 class="mt-3">Pré-demande en ligne de CNI (carte nationale d'identité française)</h1>
   </div>
 </section>
-
-
-
-        <!--------------------------------- Form ----------------------------->
-
-
-             <section id="form-section">
-                <!-- Barre de progression -->
-                <div class="progress-bar">
-                  <div class="progress-bar-inner" id="progress-bar"></div>
-                </div>
-
-                <!-- Étape 1 -->
-                <div class="step active" id="step-1">
-                  <h2>Étape 1 sur 3</h2>
-                  <label>La demande concerne un : <span style="color: red;">(Nécessaire)</span></label><br>
-                  <input type="radio" id="majeur" name="type" value="majeur">
-                  <label for="majeur">Majeur</label><br>
-                  <input type="radio" id="mineur" name="type" value="mineur">
-                  <label for="mineur">Mineur</label>
-                </div>
-
-                <!-- Étape 2 -->
-                <div class="step" id="step-2">
-                  <h2>Étape 2 sur 3</h2>
-                  <label>Raison de la demande <span style="color: red;">(Nécessaire)</span></label><br>
-                  <select style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                    <option value="premiere">Première demande</option>
-                    <option value="renouvellement">Renouvellement</option>
-                  </select>
-                </div>
-
-                <!-- Étape 3 -->
-                <div class="step" id="step-3">
-                  <h2>Étape 3 sur 3</h2>
-                  <label>Dans quel département effectuez-vous votre demande ? <span style="color: red;">(Nécessaire)</span></label><br>
-                  <select style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                    <option value="01">1 Ain</option>
-                    <option value="02">2 Aisne</option>
-                  </select>
-                </div>
-
-                <!-- Boutons -->
-                <div class="buttons">
-                  <button class="btn btn-secondary" id="prev-btn" onclick="prevStep()">Précédent</button>
-                  <button class="btn btn-primary" id="next-btn" onclick="nextStep()">Suivant</button>
-                </div>
-              </section>
-              
-
-
-
-        <!------------------------------------ Form ------------------------------->
+<!-- E N D  N A V B A R -->
 
 
 
@@ -212,6 +163,310 @@
 
 
 
+
+
+
+
+
+
+
+<section id="form-section">
+  <!-- Barre de progression -->
+  <div class="progress-bar">
+    <div class="progress-bar-inner" id="progress-bar"></div>
+  </div>
+
+ <!------------------------------------------------- Étape 1 ------------------------------------------------------------------------------>
+  <div class="form-part" id="step-1">
+    <div class="form-group">
+      <h4>La demande concerne un : <span style="color: red;">(Nécessaire)</span></h4>
+      <div class="radio-options">
+        <div>
+          <input type="radio" id="majeur" name="type" value="majeur" required>
+          <label for="majeur">Majeur</label>
+        </div>
+        <div>
+          <input type="radio" id="mineur" name="type" value="mineur" required>
+          <label for="mineur">Mineur</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <h4>Raison de la demande <span style="color: red;">(Nécessaire)</span></h4>
+      <select style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required>
+        <option value="">Sélectionnez une raison</option>
+        <option value="premiere">Première demande</option>
+        <option value="renouvellement">Renouvellement</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <h4>Dans quel département effectuez-vous votre demande ? <span style="color: red;">(Nécessaire)</span></h4>
+      <select style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required>
+        <option value="">Sélectionnez un département</option>
+        <option value="01">1 Ain</option>
+        <option value="02">2 Aisne</option>
+      </select>
+    </div>
+  </div>
+
+  <!------------------------------------------------- Étape 2 ------------------------------------------------------------------------------>
+  <div class="form-part" id="step-2" style="display: none;">
+    <div class="form-group">
+        <h4>Sexe : <span style="color: red;">(Nécessaire)</span></h4>
+        <div class="radio-options">
+            <div>
+                <input type="radio" id="homme" name="sexe" value="homme">
+                <label for="homme">Homme</label>
+            </div>
+            <div>
+                <input type="radio" id="femme" name="sexe" value="femme">
+                <label for="femme">Femme</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h4>Nom de naissance <span style="color: red;">(Nécessaire)</span></h4>
+        <input type="text" placeholder="Nom de naissance" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required>
+    </div>
+
+    <div class="form-group">
+        <h4>Deuxième nom</h4>
+        <input type="text" placeholder="Deuxième nom" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+    </div>
+
+    <div class="form-group">
+        <h4>Prénoms</h4>
+        <input type="text" placeholder="1er prénom (Nécessaire)" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required>
+        <input type="text" placeholder="2ème prénom" style="width: 100%; margin-top: 8px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+        <input type="text" placeholder="3ème prénom" style="width: 100%; margin-top: 8px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+    </div>
+
+    <div class="form-group">
+        <h4>Taille <span style="color: red;">(Nécessaire)</span></h4>
+        <select style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+            <option value="">Sélectionnez votre taille</option>
+            <option value="1.00">1.00 m</option>
+            <option value="1.01">1.01 m</option>
+            <option value="1.02">1.02 m</option>
+            <!-- Continuer jusqu'à 3 m -->
+            <option value="3.00">3.00 m</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <h4>Couleur des yeux <span style="color: red;">(Nécessaire)</span></h4>
+        <select style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+            <option value="">Sélectionnez la couleur</option>
+            <option value="noir">Noir</option>
+            <option value="marron">Marron</option>
+            <option value="bleu">Bleu</option>
+            <option value="vert">Vert</option>
+            <option value="gris">Gris</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <h4>Date de naissance <span style="color: red;">(Nécessaire)</span></h4>
+        <input type="date" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required>
+    </div>
+
+    <div class="form-group">
+        <h4>Pays de naissance <span style="color: red;">(Nécessaire)</span></h4>
+        <select style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+            <option value="">Sélectionnez le pays</option>
+            <option value="france">France</option>
+            <option value="autre">Autre</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <h4>Département ou Collectivité d'outre-mer de naissance <span style="color: red;">(Nécessaire)</span></h4>
+        <select style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+            <option value="">Sélectionnez le département</option>
+            <option value="01">01 Ain</option>
+            <option value="971">971 Guadeloupe</option>
+            <!-- Ajouter plus d'options si nécessaire -->
+        </select>
+    </div>
+
+    <div class="form-group">
+        <h4>Commune de naissance <span style="color: red;">(Nécessaire)</span></h4>
+        <input type="text" placeholder="Commune de naissance" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required>
+    </div>
+</div>
+
+
+<!------------------------------------------------- Étape 3 ------------------------------------------------------------------------------>
+
+
+<div class="form-part" id="step-3" style="display: none;">    <h1>Père</h1>
+    <div class="form-group">
+        <h4>Père inconnu <span style="color: red;">(Nécessaire)</span></h4>
+        <div class="radio-options">
+            <div>
+                <input type="radio" id="pere-inconnu-oui" name="pere-inconnu" value="oui">
+                <label for="pere-inconnu-oui">Oui</label>
+            </div>
+            <div>
+                <input type="radio" id="pere-inconnu-non" name="pere-inconnu" value="non">
+                <label for="pere-inconnu-non">Non</label>
+            </div>
+        </div>
+    </div>
+
+    <div id="pere-details" style="display: none;">
+        <div class="form-group">
+            <h4>Nom de naissance du père <span style="color: red;">(Nécessaire)</span></h4>
+            <input type="text" placeholder="Nom de naissance du père" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required>
+        </div>
+
+        <div class="form-group">
+            <h4>Prénoms du père</h4>
+            <input type="text" placeholder="1er prénom du père (Nécessaire)" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required>
+            <input type="text" placeholder="2ème prénom du père" style="width: 100%; margin-top: 8px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+        </div>
+
+        <div class="form-group">
+            <h4>Date de naissance du père</h4>
+            <input type="date" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+        </div>
+
+        <div class="form-group">
+            <h4>Ville de naissance du père</h4>
+            <input type="text" placeholder="Ville de naissance du père" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+        </div>
+
+        <div class="form-group">
+            <h4>Nationalité du père</h4>
+            <input type="text" placeholder="Nationalité du père" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+        </div>
+    </div>
+
+    <h1>Mère</h1>
+    <div class="form-group">
+        <h4>Mère inconnue <span style="color: red;">(Nécessaire)</span></h4>
+        <div class="radio-options">
+            <div>
+                <input type="radio" id="mere-inconnue-oui" name="mere-inconnue" value="oui">
+                <label for="mere-inconnue-oui">Oui</label>
+            </div>
+            <div>
+                <input type="radio" id="mere-inconnue-non" name="mere-inconnue" value="non">
+                <label for="mere-inconnue-non">Non</label>
+            </div>
+        </div>
+    </div>
+
+    <div id="mere-details" style="display: none;">
+        <div class="form-group">
+            <h4>Nom de naissance de la mère <span style="color: red;">(Nécessaire)</span></h4>
+            <input type="text" placeholder="Nom de naissance de la mère" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required>
+        </div>
+
+        <div class="form-group">
+            <h4>Prénoms de la mère</h4>
+            <input type="text" placeholder="1er prénom de la mère (Nécessaire)" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required>
+            <input type="text" placeholder="2ème prénom de la mère" style="width: 100%; margin-top: 8px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+        </div>
+
+        <div class="form-group">
+            <h4>Date de naissance de la mère</h4>
+            <input type="date" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+        </div>
+
+        <div class="form-group">
+            <h4>Ville de naissance de la mère</h4>
+            <input type="text" placeholder="Ville de naissance de la mère" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+        </div>
+
+        <div class="form-group">
+            <h4>Nationalité de la mère</h4>
+            <input type="text" placeholder="Nationalité de la mère" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+        </div>
+    </div>
+</div>
+
+
+
+
+<!------------------------------------------------- Étape 4 ------------------------------------------------------------------------------>
+
+<div class="form-part" id="step-4" style="display: none;">
+    <h4>Vous êtes Français(e) car : <span style="color: red;">(Nécessaire)</span></h4>
+    <div class="checkbox-options">
+        <div>
+            <input type="checkbox" id="france-naissance-parent-france" name="nationalite" value="naissance-parent-france">
+            <label for="france-naissance-parent-france">Vous êtes né(e) en France et l'un au moins de vos parents est né en France</label>
+        </div>
+        <div>
+            <input type="checkbox" id="france-naissance-parent-ancien" name="nationalite" value="naissance-parent-ancien">
+            <label for="france-naissance-parent-ancien">Vous êtes né(e) en France et l'un au moins de vos parents est né dans un ancien département ou territoire français</label>
+        </div>
+        <div>
+            <input type="checkbox" id="france-naissance-parent-francais" name="nationalite" value="naissance-parent-francais">
+            <label for="france-naissance-parent-francais">Vous êtes né(e) en France et l'un au moins de vos parents est français</label>
+        </div>
+        <div>
+            <input type="checkbox" id="etranger-parent-francais" name="nationalite" value="etranger-parent-francais">
+            <label for="etranger-parent-francais">Vous n'êtes pas né(e) en France et l'un au moins de vos parents est français</label>
+        </div>
+        <div>
+            <input type="checkbox" id="parent-devient-francais" name="nationalite" value="parent-devient-francais">
+            <label for="parent-devient-francais">Votre mère ou votre père est devenu(e) français(e) avant votre majorité</label>
+        </div>
+        <div>
+            <input type="checkbox" id="nationalite-par-mariage" name="nationalite" value="nationalite-par-mariage">
+            <label for="nationalite-par-mariage">Vous êtes de nationalité française par mariage</label>
+        </div>
+        <div>
+            <input type="checkbox" id="france-naissance-parent-etranger" name="nationalite" value="naissance-parent-etranger">
+            <label for="france-naissance-parent-etranger">Vous êtes né(e) en France et vos parents ne sont pas français</label>
+        </div>
+        <div>
+            <input type="checkbox" id="naturalise-francais" name="nationalite" value="naturalise-francais">
+            <label for="naturalise-francais">Vous êtes naturalisé(e) français(e)</label>
+        </div>
+        <div>
+            <input type="checkbox" id="reintegre-francais" name="nationalite" value="reintegre-francais">
+            <label for="reintegre-francais">Vous avez été réintégré(e) dans la nationalité française</label>
+        </div>
+        <div>
+            <input type="checkbox" id="declaration-non-mariage" name="nationalite" value="declaration-non-mariage">
+            <label for="declaration-non-mariage">Vous êtes français(e) par déclaration (autrement que par mariage)</label>
+        </div>
+        <div>
+            <input type="checkbox" id="autre-motif" name="nationalite" value="autre-motif">
+            <label for="autre-motif">Autre motif</label>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!------------------------------------------------- Étape 5 ------------------------------------------------------------------------------>
+
+
+
+
+<!------------------------------------------------- Étape 6 ------------------------------------------------------------------------------>
+
+
+
+
+
+<!------------------------------------------------- Boutons ------------------------------------------------------------------------------>
+
+
+
+  <div class="buttons">
+    <button class="btn btn-secondary" id="prev-btn" onclick="prevStep()" style="display:none;">Précédent</button>
+    <button class="btn btn-primary" id="next-btn" onclick="nextStep()">Suivant</button>
+  </div>
+</section>
 
 
 
@@ -301,48 +556,107 @@
 
 
 <script>
-    let currentStep = 1;
-    const totalSteps = 3;
+let currentStep = 1;
 
-    function showStep(step) {
-      // Masquer toutes les étapes
-      document.querySelectorAll('.step').forEach((stepElement) => {
-        stepElement.classList.remove('active');
-      });
+function showFormPart(step) {
+  const steps = document.querySelectorAll('.form-part');
+  const totalSteps = steps.length;
 
-      // Afficher l'étape actuelle
-      document.getElementById(`step-${step}`).classList.add('active');
-
-      // Mettre à jour la barre de progression
-      const progress = (step / totalSteps) * 100;
-      document.getElementById('progress-bar').style.width = `${progress}%`;
-
-      // Gérer l'état des boutons
-      document.getElementById('prev-btn').style.display = step === 1 ? 'none' : 'inline-block';
-      document.getElementById('next-btn').textContent = step === totalSteps ? 'Soumettre' : 'Suivant';
+  steps.forEach((part, index) => {
+    if (index + 1 === step) {
+      part.style.display = 'block';
+    } else {
+      part.style.display = 'none';
     }
+  });
 
-    function nextStep() {
-      if (currentStep < totalSteps) {
-        currentStep++;
-        showStep(currentStep);
+  // Mettre à jour la barre de progression
+  const progressBar = document.getElementById('progress-bar');
+  progressBar.style.width = `${(step / totalSteps) * 100}%`;
+
+  // Mettre à jour les boutons
+  document.getElementById('prev-btn').style.display = step === 1 ? 'none' : 'inline-block';
+  document.getElementById('next-btn').textContent = step === totalSteps ? 'Terminer' : 'Suivant';
+
+  currentStep = step;
+}
+
+function validateCurrentStep() {
+  const currentFormPart = document.querySelector(`#step-${currentStep}`);
+  const requiredFields = currentFormPart.querySelectorAll('[required], [type=radio][required]');
+  let isValid = true;
+
+  requiredFields.forEach(field => {
+    if (field.type === 'radio') {
+      const name = field.name;
+      const isChecked = document.querySelector(`input[name="${name}"]:checked`);
+      if (!isChecked) {
+        isValid = false;
+        field.closest('.form-group').style.border = '1px solid red';
       } else {
-        alert('Formulaire soumis !');
+        field.closest('.form-group').style.border = 'none';
+      }
+    } else {
+      if (!field.value.trim()) {
+        isValid = false;
+        field.style.border = '1px solid red';
+      } else {
+        field.style.border = '1px solid #ddd';
       }
     }
+  });
 
-    function prevStep() {
-      if (currentStep > 1) {
-        currentStep--;
-        showStep(currentStep);
-      }
+  return isValid;
+}
+
+function nextStep() {
+  const totalSteps = document.querySelectorAll('.form-part').length;
+
+  if (validateCurrentStep()) {
+    if (currentStep < totalSteps) {
+      showFormPart(currentStep + 1);
+    } else {
+      alert('Formulaire complété avec succès !');
     }
+  } else {
+    alert('Veuillez remplir tous les champs obligatoires avant de continuer.');
+  }
+}
 
-    // Initialisation
-    showStep(currentStep);
-  </script>
+function prevStep() {
+  if (currentStep > 1) {
+    showFormPart(currentStep - 1);
+  }
+}
+
+// Initialisation au chargement
+window.onload = function () {
+  showFormPart(currentStep);
+};
 
 
+</script>
+
+
+<script>
+  document.getElementById('pere-inconnu-non').addEventListener('change', function () {
+    document.getElementById('pere-details').style.display = this.checked ? 'block' : 'none';
+});
+
+document.getElementById('pere-inconnu-oui').addEventListener('change', function () {
+    document.getElementById('pere-details').style.display = this.checked ? 'none' : 'block';
+});
+
+document.getElementById('mere-inconnue-non').addEventListener('change', function () {
+    document.getElementById('mere-details').style.display = this.checked ? 'block' : 'none';
+});
+
+document.getElementById('mere-inconnue-oui').addEventListener('change', function () {
+    document.getElementById('mere-details').style.display = this.checked ? 'none' : 'block';
+});
+
+
+</script>
 
   </body>
 </html>
