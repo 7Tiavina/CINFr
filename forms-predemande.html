@@ -82,6 +82,34 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Centrage et nouveau style pour le bouton acheter */
+.buttons {
+    text-align: center;
+}
+
+#pay-btn {
+    background-color: #007bff; /* Bleu professionnel */
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#pay-btn:hover {
+    background-color: #0056b3; /* Bleu plus foncé pour le hover */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+#pay-btn:active {
+    background-color: #004494; /* Bleu encore plus foncé pour l'effet de clic */
+    transform: scale(0.98); /* Réduction légère pour un effet de clic */
+}
+
+
   </style>
 
 
@@ -495,7 +523,6 @@
 
 <!------------------------------------------------- Étape 6 ------------------------------------------------------------------------------>
 
-
 <div class="form-part" id="step-6" style="display: none;">
     <h4>Frais de traitement de la pré-demande de CNI</h4>
     <p>Prix: <strong>39,00 €</strong></p>
@@ -514,7 +541,7 @@
     <h4>Connexion Link et Formulaire d'entrée de carte bancaire pour procéder au paiement :</h4>
     <p>Veuillez entrer les informations de votre carte bancaire pour compléter votre paiement.</p>
     
-    <div class="buttons">
+    <div class="buttons" style="text-align: center; margin-top: 20px;">
         <button class="btn btn-primary" id="pay-btn" onclick="processPayment()">Payer</button>
     </div>
 </div>
@@ -626,16 +653,14 @@ function showFormPart(step) {
   const totalSteps = steps.length;
 
   steps.forEach((part, index) => {
-    if (index + 1 === step) {
-      part.style.display = 'block';
-    } else {
-      part.style.display = 'none';
-    }
+    part.style.display = index + 1 === step ? 'block' : 'none';
   });
 
-  // Mettre à jour la barre de progression
+  // Mettre à jour la barre de progression si elle existe
   const progressBar = document.getElementById('progress-bar');
-  progressBar.style.width = `${(step / totalSteps) * 100}%`;
+  if (progressBar) {
+    progressBar.style.width = `${(step / totalSteps) * 100}%`;
+  }
 
   // Mettre à jour les boutons
   document.getElementById('prev-btn').style.display = step === 1 ? 'none' : 'inline-block';
@@ -646,7 +671,9 @@ function showFormPart(step) {
 
 function validateCurrentStep() {
   const currentFormPart = document.querySelector(`#step-${currentStep}`);
-  const requiredFields = currentFormPart.querySelectorAll('[required], [type=radio][required]');
+  if (!currentFormPart) return false; // Vérifie si l'étape existe
+  
+  const requiredFields = currentFormPart.querySelectorAll('[required]');
   let isValid = true;
 
   requiredFields.forEach(field => {
@@ -655,9 +682,9 @@ function validateCurrentStep() {
       const isChecked = document.querySelector(`input[name="${name}"]:checked`);
       if (!isChecked) {
         isValid = false;
-        field.closest('.form-group').style.border = '1px solid red';
+        field.closest('.form-group')?.classList.add('error');
       } else {
-        field.closest('.form-group').style.border = 'none';
+        field.closest('.form-group')?.classList.remove('error');
       }
     } else {
       if (!field.value.trim()) {
@@ -692,10 +719,16 @@ function prevStep() {
   }
 }
 
+// Exemple de fonction pour le paiement
+function processPayment() {
+  alert('Paiement en cours...');
+}
+
 // Initialisation au chargement
 window.onload = function () {
   showFormPart(currentStep);
 };
+
 
 
 </script>
