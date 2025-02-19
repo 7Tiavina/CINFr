@@ -37,7 +37,7 @@
             <div class="col-md-7 content-box hero-content">
                 <span>Accompagnement</span>
                 <h1>Pré-demande de carte d'identité en ligne</h1>
-                <a href="forms-predemande.html" class="nav-link btn btn-demo-small">Pré-demande de carte d'identité</a>
+                <a href="{{ route('predemande') }}" class="nav-link btn btn-demo-small">Pré-demande de carte d'identité</a>
             </div>
         </div>
     </div>
@@ -65,7 +65,7 @@
             <li><i class="icon ion-md-checkmark-circle-outline demo"></i> Interface intuitive et simple d'utilisation</li>
             <li><i class="icon ion-md-checkmark-circle-outline demo"></i> Économie de temps et d'effort</li>
           </ul>
-          <a href="forms-predemande.html" class="btn btn-primary mt-4">Contactez-nous dès maintenant</a>
+          <a href="{{ route('predemande') }}" class="btn btn-primary mt-4">Contactez-nous dès maintenant</a>
         </div>
       </div>
     </div>
@@ -84,7 +84,7 @@
           <h2 style="color: #0444ec;">Pour un Majeur</h2>
           <p>Traitement Sous 48h</p>
           <img src="images/Parents-rafiki.png" alt="Logo CINFr" style="max-width: 100%; height: auto; margin-bottom: 10px;">
-          <a href="forms-predemande.html" class="btn btn-regular">Pré-Demande</a>
+          <a href="{{ route('predemande') }}" class="btn btn-regular">Pré-Demande</a>
         </div>
       </div>
       <div class="col-md-5">
@@ -93,7 +93,7 @@
           <h2 style="color: #0444ec;">Pour un Mineur</h2>
           <p>Traitement Sous 48h</p>
           <img src="images/Recess-rafiki.png" alt="Logo CINFr" style="max-width: 100%; height: auto; margin-bottom: 10px;">
-          <a href="forms-predemande.html" class="btn btn-regular">Pré-Demande</a>
+          <a href="{{ route('predemande') }}" class="btn btn-regular">Pré-Demande</a>
         </div>
       </div>
     </div>
@@ -265,33 +265,7 @@
 
 
   <!--  F O O T E R  -->
-  <footer style="background-color: #0444ec; color: white; padding: 20px 40px; font-family: Arial, sans-serif;">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-      <!-- Logo Section -->
-      <div style="flex: 1; min-width: 200px; text-align: center;">
-        <img src="images/logoreverse.png" alt="Logo CINFr" style="max-width: 150px; margin-bottom: 10px;">
-        <p style="font-size: 14px;">Copyright © 2025 CINFr</p>
-      </div>
-
-      <!-- Links Section -->
-      <div style="flex: 1; min-width: 200px;">
-        <ul style="list-style: none; padding: 0; margin: 0; text-align: center;">
-          <li style="margin-bottom: 10px;"><a href="#" style="color: white; text-decoration: none;">Contact</a></li>
-          <li style="margin-bottom: 10px;"><a href="#" style="color: white; text-decoration: none;">Mentions légales & CGV</a></li>
-          <li style="margin-bottom: 10px;"><a href="#" style="color: white; text-decoration: none;">Politique de confidentialité</a></li>
-          <li style="margin-bottom: 10px;"><a href="#" style="color: white; text-decoration: none;">Politique de remboursement</a></li>
-          <li><a href="#" style="color: white; text-decoration: none;">Politique de cookies</a></li>
-        </ul>
-      </div>
-
-      <!-- Information Section -->
-      <div style="flex: 2; min-width: 300px; padding: 10px;">
-        <p style="font-size: 14px; line-height: 1.5; text-align: justify;">
-          Le site et les services sont fournis à titre privé uniquement et ne correspondent en aucune manière possible à une mission de service public qui lui aurait été déléguée par une quelconque administration publique ou collectivité territoriale. Possibilité d'effectuer vos démarches sans frais sur <a href="https://service-public.fr" style="color: white; text-decoration: underline;">service-public.fr</a>.
-        </p>
-      </div>
-    </div>
-  </footer>
+  @include('layouts.footer')
 
   <!--  E N D  F O O T E R  -->
     

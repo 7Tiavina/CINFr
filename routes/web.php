@@ -7,9 +7,9 @@ Route::get('/', function () {
 })->name('index');
 
 Route::get('/liste-des-mairies', function () {
-    return view('mairies');
+    return view('liste-des-mairies');
 })->name('mairies');
 
-Route::get('/pre-demande', function () {
-    return view('predemande');
+Route::get('/predemande', function () {
+    return view('forms-predemande');
 })->name('predemande');
