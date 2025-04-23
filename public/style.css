@@ -117,11 +117,51 @@ section {
    Navbar 
 ===============================================*/
 
+/* Dropdown animation */
+.animated-dropdown {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: block !important;
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+}
+
+.nav-item.dropdown.show .animated-dropdown {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Flèche personnalisée */
+.dropdown-arrow {
+  display: inline-block;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.nav-item.dropdown.show .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+
+
+
 /* SVG underline animation */
 .nav-link.svg-underline {
   position: relative;
   padding-bottom: 8px;
+  display: inline-block;
+  background: linear-gradient(to right, #0444ec 50%, #53627C 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.5s ease;
 }
+
 .nav-link .underline {
   position: absolute;
   bottom: 0;
@@ -137,9 +177,15 @@ section {
   stroke-dashoffset: 120;
   transition: stroke-dashoffset 0.5s ease;
 }
+
+.nav-link.svg-underline:hover {
+  background-position: left bottom;
+}
+
 .nav-link.svg-underline:hover .underline path {
   stroke-dashoffset: 0;
 }
+
 
 /* SVG underline animation */
 

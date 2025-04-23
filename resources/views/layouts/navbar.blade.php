@@ -23,17 +23,21 @@
         </a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle svg-underline" href="#" id="navbarDropdownInfo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          INFORMATIONS
-          <svg class="underline" viewBox="0 0 120 4" preserveAspectRatio="none">
-            <path d="M0,2 L120,2"/>
-          </svg>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownInfo">
-          <a class="dropdown-item" href="{{ route('index') }}#cni-documents">Pièces nécessaires</a>
-          <a class="dropdown-item" href="{{ route('index') }}#faq">Questions fréquentes</a>
-        </div>
-      </li>
+  <a class="nav-link svg-underline" href="#" id="navbarDropdownInfo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    INFORMATIONS
+    <svg class="underline" viewBox="0 0 120 4" preserveAspectRatio="none">
+      <path d="M0,2 L120,2"/>
+    </svg>
+    <span class="dropdown-arrow">&#9662;</span>
+  </a>
+  <div class="dropdown-menu animated-dropdown" aria-labelledby="navbarDropdownInfo">
+    <a class="dropdown-item" href="{{ route('index') }}#cni-documents">Pièces nécessaires</a>
+    <a class="dropdown-item" href="{{ route('index') }}#faq">Questions fréquentes</a>
+  </div>
+</li>
+
+
+
       <li class="nav-item">
         <a class="nav-link svg-underline" href="#testimonials">
           CONTACTS
