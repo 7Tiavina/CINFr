@@ -23,18 +23,19 @@
         </a>
       </li>
       <li class="nav-item dropdown">
-  <a class="nav-link svg-underline" href="#" id="navbarDropdownInfo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    INFORMATIONS
-    <svg class="underline" viewBox="0 0 120 4" preserveAspectRatio="none">
-      <path d="M0,2 L120,2"/>
-    </svg>
-    <span class="dropdown-arrow">&#9662;</span>
-  </a>
-  <div class="dropdown-menu animated-dropdown" aria-labelledby="navbarDropdownInfo">
-    <a class="dropdown-item" href="{{ route('index') }}#cni-documents">Pièces nécessaires</a>
-    <a class="dropdown-item" href="{{ route('index') }}#faq">Questions fréquentes</a>
-  </div>
-</li>
+        <a class="nav-link svg-underline d-flex align-items-center" href="#" id="navbarDropdownInfo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          INFORMATIONS
+          <svg class="underline" viewBox="0 0 120 4" preserveAspectRatio="none">
+            <path d="M0,2 L120,2"/>
+          </svg>
+          <span class="dropdown-arrow">&#9662;</span>
+        </a>
+        <div class="dropdown-menu animated-dropdown" aria-labelledby="navbarDropdownInfo">
+          <a class="dropdown-item" href="{{ route('index') }}#cni-documents">Pièces nécessaires</a>
+          <a class="dropdown-item" href="{{ route('index') }}#faq">Questions fréquentes</a>
+        </div>
+      </li>
+
 
 
 
@@ -48,8 +49,15 @@
       </li>
     </ul>
     <div class="ml-auto">
-      <a class="nav-link btn btn-demo-small" href="{{ route('predemande') }}">Pré-Demande en Ligne</a>
-    </div>
+  <a class="nav-link btn btn-wave" href="{{ route('predemande') }}">
+    <span style="--i:0">P</span><span style="--i:1">r</span><span style="--i:2">é</span><span style="--i:3">-</span>
+    <span style="--i:4">D</span><span style="--i:5">e</span><span style="--i:6">m</span><span style="--i:7">a</span><span style="--i:8">n</span><span style="--i:9">d</span><span style="--i:10">e</span>
+    <span style="--i:11">&nbsp;</span>
+    <span style="--i:12">e</span><span style="--i:13">n</span><span style="--i:14">&nbsp;</span>
+    <span style="--i:15">L</span><span style="--i:16">i</span><span style="--i:17">g</span><span style="--i:18">n</span><span style="--i:19">e</span>
+  </a>
+</div>
+
   </div>
 </nav>
 
