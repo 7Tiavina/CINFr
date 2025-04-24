@@ -431,12 +431,41 @@ section {
 /* ==============================================
    4. Hero
 ===============================================*/
+#lottie-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
 
 #hero {
     background-color: #f6f8f9;
-    padding: 50px 0;
-    height: 50vh; /* Prend toute la hauteur de l'écran */
+    padding: 80px 0; /* Augmenté */
+    height: 100vh; /* Pleine hauteur de l'écran */
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
 }
+
+#hero .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#hero .row {
+    width: 100%;
+    align-items: center;
+}
+
+
+
 
 #hero .col-lg-5, #hero .col-md-5, #hero .col-sm-5, #hero .col-xs-5 {
     display: flex;
@@ -476,6 +505,41 @@ section {
 #hero .btn {
     font-size: 16px;
     padding: 10px 20px;
+}
+
+#hero .col-xs-5 {
+    display: flex;
+    justify-content: flex-start; /* <-- important */
+    align-items: center;
+    padding-left: 0; /* retire le padding si nécessaire */
+}
+#hero .container, 
+#hero .row {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.hero-text {
+    font-size: 24px;
+    font-weight: 400;
+    color: #2c3e50;
+    line-height: 1.5;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.hero-text .highlight {
+    color: #0444ec;
+    font-weight: 600;
+}
+
+#hero .hero-content {
+    align-items: flex-end; /* pousse le contenu à droite */
+    text-align: right;
 }
 
 

@@ -29,24 +29,29 @@
   
   <!-- H E R O -->
   <section id="hero">
+    <div id="lottie-bg"></div>
+
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                 <img src="images/cinhand.png" class="img-fluid" alt="Demo image">
             </div>
-            <div class="col-md-7 content-box hero-content">
-                <span>Accompagnement</span>
-                
-                
+            
 
-<a href="{{ route('predemande') }}" class="btnfos btnfos-1">
-      <svg>
-        <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
-      </svg>
-     Pré-demande CNI
-    </a> 
+            <div class="col-md-7 content-box hero-content text-right">
+              <h1 class="hero-text">
+                  Faites vos démarches administratives <br>
+                  <strong>simplement avec <span class="highlight">CINFr</span></strong>
+              </h1>
 
-            </div>
+              <a href="{{ route('predemande') }}" class="btnfos btnfos-1">
+                  <svg>
+                      <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
+                  </svg>
+                  Pré-demande CNI
+              </a>
+          </div>
+
         </div>
     </div>
 </section>
@@ -298,7 +303,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  
+    <script src="https://unpkg.com/lottie-web/build/player/lottie.min.js"></script>
+
 
 
         <script>
@@ -355,6 +361,15 @@
   });
 </script>
 
+<script>
+    lottie.loadAnimation({
+        container: document.getElementById('lottie-bg'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/lotties/Animation - 1745500946574.json'
+    });
+</script>
 
 
   </body>
