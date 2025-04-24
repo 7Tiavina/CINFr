@@ -532,6 +532,15 @@ section {
     margin-bottom: 20px;
 }
 
+
+.strong-word {
+    color: #e41d58;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+
+
 .hero-text .highlight {
     color: #0444ec;
     font-weight: 600;
@@ -541,6 +550,7 @@ section {
     align-items: flex-end; /* pousse le contenu à droite */
     text-align: right;
 }
+
 
 
 /* ==============================================

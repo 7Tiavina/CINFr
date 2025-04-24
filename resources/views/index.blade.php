@@ -38,19 +38,24 @@
             </div>
             
 
-            <div class="col-md-7 content-box hero-content text-right">
-              <h1 class="hero-text">
-                  Faites vos démarches administratives <br>
-                  <strong>simplement avec <span class="highlight">CINFr</span></strong>
-              </h1>
+            <div class="col-md-7 content-box hero-content">
+                <div class="hero-text-wrapper">
+                    <h1 class="hero-text">
+                        Faites vos<br>
+                        <span class="strong-word">démarches</span><br>
+                        administratives<br>
+                        <span class="strong-word">simplement</span><br>
+                        avec <span class="highlight">CINFr</span>
+                    </h1>
+                    <a href="{{ route('predemande') }}" class="btnfos btnfos-1">
+                        <svg>
+                            <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
+                        </svg>
+                        Pré-demande CNI
+                    </a>
+                </div>
+            </div>
 
-              <a href="{{ route('predemande') }}" class="btnfos btnfos-1">
-                  <svg>
-                      <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
-                  </svg>
-                  Pré-demande CNI
-              </a>
-          </div>
 
         </div>
     </div>
@@ -367,7 +372,7 @@
         renderer: 'svg',
         loop: true,
         autoplay: true,
-        path: '/lotties/Animation - 1745500946574.json'
+        path: '/lotties/Animation - 1745500384634.json'
     });
 </script>
 
