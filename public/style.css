@@ -272,6 +272,11 @@ section {
   transition: top 0.3s ease-in-out;
 }
 
+/* ==============================================
+   3. Buttons
+===============================================*/
+
+
 /* btn-5 */
 
 .btn-wave {
@@ -300,18 +305,15 @@ section {
   transition-delay: calc(var(--i) * var(--delay-mult));
 }
 
-/* inversion couleurs au survol */
 .btn-wave:hover {
   background-color: #0444ec;
   color: #fff;
 }
 
-/* texte en blanc au survol */
 .btn-wave:hover span {
   color: #fff;
 }
 
-/* animation "vague" */
 .btn-wave:hover span:nth-child(odd) {
   transform: translateY(-8px);
 }
@@ -325,90 +327,104 @@ section {
 }
 
 
-/* ==============================================
-   3. Buttons
-===============================================*/
-
-
-
-.btn:hover {
-	text-decoration: none;
+/* Boutons restes */
+.btnfos {
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 45px;
+  margin: 0 auto 2em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5em; 
+  width: auto;
+  min-height: 45px;
+  height: 45px; 
+  white-space: nowrap; 
+  position: relative;
+  text-transform: uppercase;
+  vertical-align: middle;
+  text-decoration: none;
 }
 
-.btn-regular {
-	background-color: #0095f7;
-	color: #ffffff;
-	padding: 10px 25px;
-	letter-spacing: .1em;
-	margin-top: 25px;
-	display: inline-block;
+.btnfos:hover {
+  text-decoration: none;
 }
 
-.btn-regular:hover {
-	background-color: #0191f0;
-	color: #ffffff;
+@media (min-width: 400px) {
+  .btnfos {
+    display: inline-block;
+    margin-right: 2.5em;
+  }
+  .btnfos:nth-of-type(even) {
+    margin-right: 0;
+  }
 }
 
-.btn-demo {
-	color: #ffffff;
-	background-color: #6772e5;
-	letter-spacing: .1em;
-	padding: 15px 48px;
-	display: inline-block;
-	width: 100%;
-	margin-top: 20px;
+@media (min-width: 600px) {
+  .btnfos:nth-of-type(even) {
+    margin-right: 2.5em;
+  }
+  .btnfos:nth-of-type(5) {
+    margin-right: 0;
+  }
 }
 
-.btn-demo:hover {
-	color: #ffffff;
-	background-color: #636ee1;
+.btnfos-1 {
+  background: #0444ec;
+  font-weight: 100;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  color: white;
+  text-align: center;
+  transition: all 0.4s ease;
 }
 
-.btn-demo-small {
-	font-size: 12px;
-	background-color: #6772e5;
-	padding: 1px 4px;
+.btnfos-1 svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.btn-demo-small:hover {
-	background-color: #636ee1;
+.btnfos-1 rect {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 4;
+  stroke-dasharray: 0 400;
+  stroke-dashoffset: 0;
+  transition: stroke 0s, stroke-dasharray 1.2s ease-in-out;
+  rx: 25;
+  ry: 25;
 }
 
-.btn-demo-small a {
-	color: #ffffff!important;
+.btnfos-1:hover {
+  background: rgba(4, 68, 236, 0.1);
+  color: #0444ec;
+  font-weight: 900;
+  letter-spacing: 1px;
+  box-shadow: 0 3px 12px rgba(4, 68, 236, 0.15);
 }
 
-.btn-buy {
-	color: #ffffff;
-	background-color: #0095f7;
-	letter-spacing: .1em;
-	padding: 15px 48px;
-	display: inline-block;
-	width: 100%;
-	margin-top: 20px;
+.btnfos-1:hover rect {
+  stroke: #0444ec;
+  stroke-dasharray: 400 0;
+  stroke-width: 4;
 }
 
-.btn-buy:hover {
-	background-color: #0191f0;
-	color: #ffffff;
+.btnfos-1 svg.active rect {
+  stroke: #0444ec;
+  stroke-dasharray: 400 0;
+  stroke-width: 4;
 }
 
-.btn-demo-small {
-  background-color: #0444ec !important; /* Couleur de fond du bouton */
-  color: #ffffff !important; /* Couleur du texte en blanc */
-  font-size: 18px !important; /* Augmente la taille du texte */
-  padding: 15px 30px !important; /* Augmente la taille du bouton */
-  border-radius: 5px !important; /* Arrondir les coins */
-  font-weight: bold !important; /* Texte en gras */
-  text-transform: uppercase !important; /* Texte en majuscules */
-  transition: background-color 0.3s ease, transform 0.3s ease !important; 
-}
-
-.btn-demo-small:hover {
-  background-color: #ffffff; /* Couleur au survol */
-  color: #ffffff !important; /* Maintient le texte en blanc */
-  transform: scale(1.1) !important; /* Agrandit légèrement le bouton */
-}
 
 
 

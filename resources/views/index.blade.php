@@ -36,8 +36,16 @@
             </div>
             <div class="col-md-7 content-box hero-content">
                 <span>Accompagnement</span>
-                <h1>Pré-demande de carte d'identité en ligne</h1>
-                <a href="{{ route('predemande') }}" class="nav-link btn btn-demo-small">Pré-demande de carte d'identité</a>
+                
+                
+
+<a href="{{ route('predemande') }}" class="btnfos btnfos-1">
+      <svg>
+        <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
+      </svg>
+     Pré-demande CNI
+    </a> 
+
             </div>
         </div>
     </div>
@@ -64,8 +72,13 @@
             <li><i class="icon ion-md-checkmark-circle-outline demo"></i> Assistance personnalisée</li>
             <li><i class="icon ion-md-checkmark-circle-outline demo"></i> Interface intuitive et simple d'utilisation</li>
             <li><i class="icon ion-md-checkmark-circle-outline demo"></i> Économie de temps et d'effort</li>
-          </ul>
-          <a href="{{ route('predemande') }}" class="btn btn-primary mt-4">Contactez-nous dès maintenant</a>
+          </ul>        
+          <a href="{{ route('predemande') }}" class="btnfos btnfos-1">
+      <svg>
+        <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
+      </svg>
+    Contactez nous
+    </a>
         </div>
       </div>
     </div>
