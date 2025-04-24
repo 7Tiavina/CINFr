@@ -97,7 +97,12 @@
           <h2 style="color: #0444ec;">Pour un Majeur</h2>
           <p>Traitement Sous 48h</p>
           <img src="images/Parents-rafiki.png" alt="Logo CINFr" style="max-width: 100%; height: auto; margin-bottom: 10px;">
-          <a href="{{ route('predemande') }}" class="btn btn-regular">Pré-Demande</a>
+          <a href="{{ route('predemande') }}" class="btnfos btnfos-1">
+            <svg>
+              <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
+            </svg>
+          Pré-Demande
+          </a>
         </div>
       </div>
       <div class="col-md-5">
@@ -106,7 +111,12 @@
           <h2 style="color: #0444ec;">Pour un Mineur</h2>
           <p>Traitement Sous 48h</p>
           <img src="images/Recess-rafiki.png" alt="Logo CINFr" style="max-width: 100%; height: auto; margin-bottom: 10px;">
-          <a href="{{ route('predemande') }}" class="btn btn-regular">Pré-Demande</a>
+          <a href="{{ route('predemande') }}" class="btnfos btnfos-1">
+            <svg>
+              <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
+            </svg>
+          Pré-Demande
+          </a>
         </div>
       </div>
     </div>

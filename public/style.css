@@ -331,11 +331,9 @@ section {
 .btnfos {
   color: #fff;
   cursor: pointer;
-  display: block;
   font-size: 16px;
   font-weight: 400;
   line-height: 45px;
-  margin: 0 auto 2em;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -348,6 +346,8 @@ section {
   text-transform: uppercase;
   vertical-align: middle;
   text-decoration: none;
+  display: inline-block;
+  margin: 0 auto;
 }
 
 .btnfos:hover {
