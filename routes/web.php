@@ -13,3 +13,7 @@ Route::get('/liste-des-mairies', function () {
 Route::get('/predemande', function () {
     return view('forms-predemande');
 })->name('predemande');
+
+Route::get('/contact', function () {
+    return view('forms-contact');
+})->name('contact');

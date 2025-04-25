@@ -40,7 +40,7 @@
 
 
       <li class="nav-item">
-        <a class="nav-link svg-underline" href="#testimonials">
+        <a class="nav-link svg-underline" href="{{ route('contact') }}">
           CONTACTS
           <svg class="underline" viewBox="0 0 120 4" preserveAspectRatio="none">
             <path d="M0,2 L120,2"/>
