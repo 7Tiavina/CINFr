@@ -67,8 +67,8 @@
 <section id="crestimonials">
   <div class="container">
     <div class="title-block text-center">
-      <h2>Pourquoi choisir notre service ?</h2>
-      <p>Découvrez ce qui fait de nous le choix numéro un pour vos démarches administratives rapides et simplifiées.</p>
+      <h2>À quoi sert la Carte d'Identité Nationale(CNI) ?</h2>
+      <p>En France, la carte d'identité est un document officiel qui atteste de l'identité d'une personne. Elle permet également aux citoyens français de voyager sans passeport au sein de l'Union européenne et de l'espace Schengen, avec une durée de validité de 15 ans pour les adultes et de 10 ans pour les mineurs.</p>
     </div>
     <div class="row align-items-center mt-5">
       <div class="col-md-6">
@@ -291,9 +291,11 @@
 </section>
 
 <!-- Section contenant une grande image centrée avec une hauteur réduite -->
-<section id="grande-image" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 70vh;">
-  <img src="images/pexels-victorfreitas-1381415.jpg" alt="Description de l'image" style="max-width: 90%; height: auto; display: block;">
+<section id="grande-image" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 95vh; overflow: hidden;">
+  <img src="images/pexels-victorfreitas-1381415.jpg" alt="Description de l'image" style="max-width: 140%; height: auto; object-fit: contain; display: block;">
 </section>
+
+
 
 
 
