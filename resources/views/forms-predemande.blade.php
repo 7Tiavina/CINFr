@@ -6,111 +6,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
               
-            <style>
-          body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  padding: 20px;
-}
+        <style>
+            
+            body {
+              font-family: Arial, sans-serif;
+              background-color: #f8f9fa;
+              padding: 0px;
+            }
 
-#form-section {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+            #form-section {
+              max-width: 800px;
+              margin: 0 auto;
+              padding: 20px;
+              background: #fff;
+              border-radius: 8px;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
 
-.form-part {
-  display: none;
-}
+            #form-background {
+              background: #f8f9fa;
+              max-width: 100%;
+              margin: 0 auto;
+              padding: 20px;
+              border-radius: 8px;
+            }
 
-.form-part.active {
-  display: block;
-}
+            #scrollTopBtn{
+                position: fixed;
+              bottom: 30px;
+              right: 30px;
+              z-index: 9999;
+              background-color: #0444ec;
+              color: white;
+              border: none;
+              border-radius: 50%;
+              width: 60px;
+              height: 60px;
+              font-size: 24px;
+              cursor: pointer;
+              display: none;
+              box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
 
-.progress-bar {
-  background-color: #e0e0e0;
-  height: 8px;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
+            .form-part {
+              display: none;
+            }
 
-.progress-bar-inner {
-  background-color: #0444ec;
-  height: 100%;
-  width: 0%;
-  transition: width 0.3s ease-in-out;
-}
+            .form-part.active {
+              display: block;
+            }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-}
+            .progress-bar {
+              background-color: #e0e0e0;
+              height: 8px;
+              border-radius: 4px;
+              overflow: hidden;
+              margin-bottom: 20px;
+            }
 
-.btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
+            .progress-bar-inner {
+              background-color: #0444ec;
+              height: 100%;
+              width: 0%;
+              transition: width 0.3s ease-in-out;
+            }
 
-.btn-primary {
-  background-color: #0444ec;
-  color: white;
-}
+            .buttons {
+              display: flex;
+              justify-content: space-between;
+            }
 
-.btn-primary:hover {
-  background-color: #022b9c;
-  transform: translateY(-2px);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-}
+            .btn {
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              font-size: 1rem;
+              transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            }
 
-.btn-secondary {
-  background-color: #f1f1f1;
-  color: #333;
-}
+            .btn-primary {
+              background-color: #0444ec;
+              color: white;
+            }
 
-.btn-secondary:hover {
-  background-color: #ddd;
-  color: #000;
-  transform: translateY(-2px);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-}
+            .btn-primary:hover {
+              background-color: #022b9c;
+              transform: translateY(-2px);
+              box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            }
 
-/* Centrage et nouveau style pour le bouton acheter */
-.buttons {
-    text-align: center;
-}
+            .btn-secondary {
+              background-color: #f1f1f1;
+              color: #333;
+            }
 
-#pay-btn {
-    background-color: #007bff; /* Bleu professionnel */
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
+            .btn-secondary:hover {
+              background-color: #ddd;
+              color: #000;
+              transform: translateY(-2px);
+              box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            }
 
-#pay-btn:hover {
-    background-color: #0056b3; /* Bleu plus foncé pour le hover */
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
-}
+            /* Centrage et nouveau style pour le bouton acheter */
+            .buttons {
+                text-align: center;
+            }
 
-#pay-btn:active {
-    background-color: #004494; /* Bleu encore plus foncé pour l'effet de clic */
-    transform: scale(0.98); /* Réduction légère pour un effet de clic */
-}
+            #pay-btn {
+                background-color: #007bff; /* Bleu professionnel */
+                color: #fff;
+                padding: 10px 20px;
+                font-size: 16px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            #pay-btn:hover {
+                background-color: #0056b3; /* Bleu plus foncé pour le hover */
+                box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            #pay-btn:active {
+                background-color: #004494; /* Bleu encore plus foncé pour l'effet de clic */
+                transform: scale(0.98); /* Réduction légère pour un effet de clic */
+            }
 
 
-  </style>
+        </style>
 
 
      <link rel="icon" href="images/favicon.png" type="image/x-icon">
@@ -161,7 +187,8 @@
 
 
 
-<section id="form-section">
+<section id="form-background">
+    <div id="form-section">
   <!-- Barre de progression -->
   <div class="progress-bar">
     <div class="progress-bar-inner" id="progress-bar"></div>
@@ -381,8 +408,6 @@
 </div>
 
 
-
-
 <!------------------------------------------------- Étape 4 ------------------------------------------------------------------------------>
 
 <div class="form-part" id="step-4" style="display: none;">
@@ -434,7 +459,6 @@
         </div>
     </div>
 </div>
-
 
 
 
@@ -533,6 +557,75 @@
 
 
 
+
+
+
+
+
+
+
+
+
+<!-- T E S T I M O N I A L S -------- 1 ----------->
+<section id="crestimonials">
+  <div class="container">
+    <div class="title-block text-center">
+      <h2 style="white-space: nowrap;">Étapes pour la demande de Carte Nationale d'Identité </h2>
+
+      <p>En France, la carte d'identité est un document officiel qui atteste de l'identité d'une personne. Elle permet également aux citoyens français de voyager sans passeport au sein de l'Union européenne et de l'espace Schengen, avec une durée de validité de 15 ans pour les adultes et de 10 ans pour les mineurs.</p>
+    </div>
+    <div class="row align-items-center mt-5">
+      <div class="col-md-6">
+        <img src="images/cinstyle.png" alt="Simplified Process" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <div class="benefits-box">
+          <h3 class="text-primary">Pré - demandes</h3>
+          <p>Nous réalisons pour vous la pré-demande de votre carte nationale d'identité française via le service en ligne officiel de l'ANTS (Agence Nationale des Titres Sécurisés).</p>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- E N D  T E S T I M O N I A L S     1   -->
+<!-- T E S T I M O N I A L S -------- 2 ----------->
+  <div class="container">
+    <div class="row align-items-center mt-5">
+      <div class="col-md-6 order-md-2">
+        <img src="images/cinstyle.png" alt="Simplified Process" class="img-fluid">
+      </div>
+      <div class="col-md-6 order-md-1">
+        <div class="benefits-box">
+          <h3 class="text-primary">Réception et Prise de Rendez-vous</h3>
+          <p>Vous recevrez sous 48 heures un récapitulatif complet de votre pré-demande. Munissez-vous de ce document pour prendre rendez-vous auprès de la mairie de votre choix afin de finaliser la procédure.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- E N D  T E S T I M O N I A L S     2   -->
+  <!-- T E S T I M O N I A L S -------- 3 ----------->
+    <div class="container">
+        <div class="row align-items-center mt-5">
+          <div class="col-md-6">
+            <img src="images/cinstyle.png" alt="Simplified Process" class="img-fluid">
+          </div>
+          <div class="col-md-6">
+            <div class="benefits-box">
+              <h3 class="text-primary">Retrait de votre Carte d'Identité</h3>
+              <p>Une fois prête, votre carte nationale d'identité sera disponible au retrait dans un délai dépendant des services de la mairie. La remise s'effectue exclusivement en personne, sur présentation de vos justificatifs.</p>
+          </div>
+          </div>
+        </div>
+        
+</section>
+<!-- E N D  T E S T I M O N I A L S     3   -->    
+        <button id="scrollTopBtn">
+          ↑
+        </button>
 
 
   <!--  F O O T E R  -->
@@ -690,6 +783,42 @@ document.getElementById('mere-inconnue-oui').addEventListener('change', function
 
 
 </script>
+
+
+
+<script>
+    //Boutons de scroll
+
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+  const footer = document.querySelector("footer");
+
+  window.addEventListener("scroll", () => {
+    const footerTop = footer.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (window.pageYOffset > 300) {
+      scrollTopBtn.style.display = "block";
+    } else {
+      scrollTopBtn.style.display = "none";
+    }
+
+    if (footerTop < windowHeight) {
+      scrollTopBtn.style.bottom = (windowHeight - footerTop + 30) + "px";
+    } else {
+      scrollTopBtn.style.bottom = "30px";
+    }
+  });
+
+  scrollTopBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+</script>
+
+
 
   </body>
 </html>
