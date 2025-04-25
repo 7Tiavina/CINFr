@@ -576,7 +576,7 @@
     </div>
     <div class="row align-items-center mt-5">
       <div class="col-md-6">
-        <img src="images/cinstyle.png" alt="Simplified Process" class="img-fluid">
+        <img src="images/Forms-amico.png" alt="Simplified Process" class="img-fluid">
       </div>
       <div class="col-md-6">
         <div class="benefits-box">
@@ -593,7 +593,7 @@
   <div class="container">
     <div class="row align-items-center mt-5">
       <div class="col-md-6 order-md-2">
-        <img src="images/cinstyle.png" alt="Simplified Process" class="img-fluid">
+        <img src="images/Reminders-pana.png" alt="Simplified Process" class="img-fluid">
       </div>
       <div class="col-md-6 order-md-1">
         <div class="benefits-box">
@@ -611,7 +611,7 @@
     <div class="container">
         <div class="row align-items-center mt-5">
           <div class="col-md-6">
-            <img src="images/cinstyle.png" alt="Simplified Process" class="img-fluid">
+            <img src="images/Done-pana.png" alt="Simplified Process" class="img-fluid">
           </div>
           <div class="col-md-6">
             <div class="benefits-box">
