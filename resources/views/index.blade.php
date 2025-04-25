@@ -67,7 +67,8 @@
 <section id="crestimonials">
   <div class="container">
     <div class="title-block text-center">
-      <h2>À quoi sert la Carte d'Identité Nationale(CNI) ?</h2>
+      <h2 style="white-space: nowrap;">À quoi sert la Carte d'Identité Nationale (CNI) ?</h2>
+
       <p>En France, la carte d'identité est un document officiel qui atteste de l'identité d'une personne. Elle permet également aux citoyens français de voyager sans passeport au sein de l'Union européenne et de l'espace Schengen, avec une durée de validité de 15 ans pour les adultes et de 10 ans pour les mineurs.</p>
     </div>
     <div class="row align-items-center mt-5">
@@ -76,12 +77,12 @@
       </div>
       <div class="col-md-6">
         <div class="benefits-box">
-          <h3 class="text-primary">Nos atouts :</h3>
+          <h3 class="text-primary">CINFr vous aides a :</h3>
           <ul class="benefits-list">
-            <li><i class="icon ion-md-checkmark-circle-outline demo"></i> Service rapide et fiable</li>
-            <li><i class="icon ion-md-checkmark-circle-outline demo"></i> Assistance personnalisée</li>
-            <li><i class="icon ion-md-checkmark-circle-outline demo"></i> Interface intuitive et simple d'utilisation</li>
-            <li><i class="icon ion-md-checkmark-circle-outline demo"></i> Économie de temps et d'effort</li>
+            <li><i class="icon ion-md-checkmark-circle-outline demo"></i> Formuler une pré-demande CNI en quelques clics</li>
+            <li><i class="icon ion-md-checkmark-circle-outline demo"></i> La vérification des informations et du traitement de votre demande</li>
+            <li><i class="icon ion-md-checkmark-circle-outline demo"></i> La prise de rendez-vous en mairie pour le dépôt de votre dossier</li>
+            <li><i class="icon ion-md-checkmark-circle-outline demo"></i>Une fois prête, votre carte d'identité pourra être retirée</li>
           </ul>        
           <a href="{{ route('predemande') }}" class="btnfos btnfos-1">
       <svg>
@@ -94,7 +95,32 @@
     </div>
   </div>
 </section>
-<!-- E N D  C R E S T I M O N I A L S -->
+<!-- T E S T I M O N I A L S -->
+<section id="testimonials">
+  <div class="container">
+    <div class="title-block">
+      <h2>Étapes pour la Pré-demande de Carte Nationale d'Identité</h2>
+    </div>
+    <div class="row h-100 align-items-center">
+      <div class="col-md-4 text-center">
+        <h6>Préparation de la Pré-demande</h6>
+        <p>Nous réalisons pour vous la pré-demande de votre carte nationale d'identité française via le service en ligne officiel de l'ANTS (Agence Nationale des Titres Sécurisés).</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <h6>Réception et Prise de Rendez-vous</h6>
+        <p>Vous recevrez sous 48 heures un récapitulatif complet de votre pré-demande. Munissez-vous de ce document pour prendre rendez-vous auprès de la mairie de votre choix afin de finaliser la procédure.</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <h6>Retrait de votre Carte d'Identité</h6>
+        <p>Une fois prête, votre carte nationale d'identité sera disponible au retrait dans un délai dépendant des services de la mairie. La remise s'effectue exclusivement en personne, sur présentation de vos justificatifs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- E N D  T E S T I M O N I A L S -->
 
 
 <!-- E N D  M A R K E T I N G --> 
@@ -138,32 +164,7 @@
 
   <!-- E N D  M A R K E T I N G -->
 
-  <!-- T E S T I M O N I A L S -->
-<section id="testimonials">
-  <div class="container">
-    <div class="title-block">
-      <h2>Étapes pour la Pré-demande de Carte Nationale d'Identité</h2>
-    </div>
-    <div class="row h-100 align-items-center">
-      <div class="col-md-4 text-center">
-        <h6>Préparation de la Pré-demande</h6>
-        <p>Nous réalisons pour vous la pré-demande de votre carte nationale d'identité française via le service en ligne officiel de l'ANTS (Agence Nationale des Titres Sécurisés).</p>
-      </div>
-      <div class="col-md-4 text-center">
-        <h6>Réception et Prise de Rendez-vous</h6>
-        <p>Vous recevrez sous 48 heures un récapitulatif complet de votre pré-demande. Munissez-vous de ce document pour prendre rendez-vous auprès de la mairie de votre choix afin de finaliser la procédure.</p>
-      </div>
-      <div class="col-md-4 text-center">
-        <h6>Retrait de votre Carte d'Identité</h6>
-        <p>Une fois prête, votre carte nationale d'identité sera disponible au retrait dans un délai dépendant des services de la mairie. La remise s'effectue exclusivement en personne, sur présentation de vos justificatifs.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-  <!-- E N D  T E S T I M O N I A L S -->
+  
 
 <!-- I N F O R M A T I O N S - C N I -->
 <section id="cni-information">
