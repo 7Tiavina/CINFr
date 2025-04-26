@@ -296,7 +296,9 @@
   <img src="images/pexels-victorfreitas-1381415.jpg" alt="Description de l'image" style="max-width: 140%; height: auto; object-fit: contain; display: block;">
 </section>
 
-
+<button id="scrollTopBtn">
+          ↑
+        </button>
 
 
 
@@ -368,6 +370,39 @@
     }
   });
 </script>
+
+<script>
+    //Boutons de scroll
+
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+  const footer = document.querySelector("footer");
+
+  window.addEventListener("scroll", () => {
+    const footerTop = footer.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (window.pageYOffset > 300) {
+      scrollTopBtn.style.display = "block";
+    } else {
+      scrollTopBtn.style.display = "none";
+    }
+
+    if (footerTop < windowHeight) {
+      scrollTopBtn.style.bottom = (windowHeight - footerTop + 30) + "px";
+    } else {
+      scrollTopBtn.style.bottom = "30px";
+    }
+  });
+
+  scrollTopBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+</script>
+
 
 <script>
     lottie.loadAnimation({

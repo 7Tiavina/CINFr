@@ -14,7 +14,7 @@
           
           <li style="margin-bottom: 10px;"><a href="{{ route('mentions') }}" style="color: white; text-decoration: none;">Mentions légales & CGV</a></li>
           
-          <li style="margin-bottom: 10px;"><a href="{{ route('mentions') }}" style="color: white; text-decoration: none;">Politique de remboursement</a>
+          <li style="margin-bottom: 10px;"><a href="{{ route('remboursement') }}" style="color: white; text-decoration: none;">Politique de remboursement</a>
           </li>
         </ul>
       </div>
