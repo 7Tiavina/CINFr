@@ -9,11 +9,13 @@
       <!-- Links Section -->
       <div style="flex: 1; min-width: 200px;">
         <ul style="list-style: none; padding: 0; margin: 0; text-align: center;">
-          <li style="margin-bottom: 10px;"><a href="{{ route('contact') }}" style="color: white; text-decoration: none;">Contact</a></li>
+          <li style="margin-bottom: 10px;"><a href="{{ route('contact') }}" style="color: white; text-decoration: none;">Contact</a>
+          </li>
+          
           <li style="margin-bottom: 10px;"><a href="{{ route('mentions') }}" style="color: white; text-decoration: none;">Mentions légales & CGV</a></li>
-          <li style="margin-bottom: 10px;"><a href="#" style="color: white; text-decoration: none;">Politique de confidentialité</a></li>
-          <li style="margin-bottom: 10px;"><a href="#" style="color: white; text-decoration: none;">Politique de remboursement</a></li>
-          <li><a href="#" style="color: white; text-decoration: none;">Politique de cookies</a></li>
+          
+          <li style="margin-bottom: 10px;"><a href="{{ route('mentions') }}" style="color: white; text-decoration: none;">Politique de remboursement</a>
+          </li>
         </ul>
       </div>
 

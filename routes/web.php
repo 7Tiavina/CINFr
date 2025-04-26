@@ -23,3 +23,7 @@ Route::get('/contact', function () {
 Route::get('/mentions', function () {
     return view('mentions-legales');
 })->name('mentions');
+
+Route::get('/remboursement', function () {
+    return view('politique-remboursement');
+})->name('remboursement');
