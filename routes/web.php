@@ -17,3 +17,9 @@ Route::get('/predemande', function () {
 Route::get('/contact', function () {
     return view('forms-contact');
 })->name('contact');
+
+
+
+Route::get('/mentions', function () {
+    return view('mentions-legales');
+})->name('mentions');
