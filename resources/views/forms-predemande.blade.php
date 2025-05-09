@@ -4,142 +4,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-              
-        <style>
-            
-            body {
-              font-family: Arial, sans-serif;
-              background-color: #f8f9fa;
-              padding: 0px;
-            }
-
-            #form-section {
-              max-width: 800px;
-              margin: 0 auto;
-              padding: 20px;
-              background: #fff;
-              border-radius: 8px;
-              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
-
-            #form-background {
-              background: #f8f9fa;
-              max-width: 100%;
-              margin: 0 auto;
-              padding: 20px;
-              border-radius: 8px;
-            }
-
-            #scrollTopBtn{
-                position: fixed;
-              bottom: 30px;
-              right: 30px;
-              z-index: 9999;
-              background-color: #0444ec;
-              color: white;
-              border: none;
-              border-radius: 50%;
-              width: 60px;
-              height: 60px;
-              font-size: 24px;
-              cursor: pointer;
-              display: none;
-              box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            }
-
-            .form-part {
-              display: none;
-            }
-
-            .form-part.active {
-              display: block;
-            }
-
-            .progress-bar {
-              background-color: #e0e0e0;
-              height: 8px;
-              border-radius: 4px;
-              overflow: hidden;
-              margin-bottom: 20px;
-            }
-
-            .progress-bar-inner {
-              background-color: #0444ec;
-              height: 100%;
-              width: 0%;
-              transition: width 0.3s ease-in-out;
-            }
-
-            .buttons {
-              display: flex;
-              justify-content: space-between;
-            }
-
-            .btn {
-              padding: 10px 20px;
-              border: none;
-              border-radius: 5px;
-              cursor: pointer;
-              font-size: 1rem;
-              transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            }
-
-            .btn-primary {
-              background-color: #0444ec;
-              color: white;
-            }
-
-            .btn-primary:hover {
-              background-color: #022b9c;
-              transform: translateY(-2px);
-              box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            }
-
-            .btn-secondary {
-              background-color: #f1f1f1;
-              color: #333;
-            }
-
-            .btn-secondary:hover {
-              background-color: #ddd;
-              color: #000;
-              transform: translateY(-2px);
-              box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            }
-
-            /* Centrage et nouveau style pour le bouton acheter */
-            .buttons {
-                text-align: center;
-            }
-
-            #pay-btn {
-                background-color: #007bff; /* Bleu professionnel */
-                color: #fff;
-                padding: 10px 20px;
-                font-size: 16px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            }
-
-            #pay-btn:hover {
-                background-color: #0056b3; /* Bleu plus foncé pour le hover */
-                box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
-            }
-
-            #pay-btn:active {
-                background-color: #004494; /* Bleu encore plus foncé pour l'effet de clic */
-                transform: scale(0.98); /* Réduction légère pour un effet de clic */
-            }
-
-
-        </style>
-
-
-     <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="forms.css" type="text/css" />
+    
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -511,27 +379,28 @@
 <!------------------------------------------------- Étape 6 ------------------------------------------------------------------------------>
 
 <div class="form-part" id="step-6" style="display: none;">
-    <h4>Frais de traitement de la pré-demande de CNI</h4>
-    <p>Prix: <strong>39,00 €</strong></p>
-    
-    <h4>Paiement par Carte Bancaire : <span style="color: red;">(Nécessaire)</span></h4>
-    
-    <label for="carte-bancaire">Carte bancaire</label>
-    <input type="text" id="carte-bancaire" name="carte-bancaire" placeholder="Numéro de carte" required>
-    
-    <label for="expiration">Date d'expiration</label>
-    <input type="month" id="expiration" name="expiration" required>
-    
-    <label for="cvv">CVV</label>
-    <input type="text" id="cvv" name="cvv" placeholder="Code de sécurité" pattern="^[0-9]{3}$" required>
-    
-    <h4>Connexion Link et Formulaire d'entrée de carte bancaire pour procéder au paiement :</h4>
-    <p>Veuillez entrer les informations de votre carte bancaire pour compléter votre paiement.</p>
-    
-    <div class="buttons" style="text-align: center; margin-top: 20px;">
-        <button class="btn btn-primary" id="pay-btn" onclick="processPayment()">Payer</button>
-    </div>
+  <h4>Frais de traitement de la pré-demande de CNI</h4>
+  <p>Prix: <strong>39,00 €</strong></p>
+
+  <h4>Paiement par Carte Bancaire : <span style="color: red;">(Nécessaire)</span></h4>
+
+  <label for="carte-bancaire">Carte bancaire</label>
+  <input type="text" id="carte-bancaire" name="carte-bancaire" placeholder="Numéro de carte" required>
+
+  <label for="expiration">Date d'expiration</label>
+  <input type="month" id="expiration" name="expiration" required>
+
+  <label for="cvv">CVV</label>
+  <input type="text" id="cvv" name="cvv" placeholder="Code de sécurité" pattern="^[0-9]{3}$" required>
+
+  <h4>Connexion Link et Formulaire d'entrée de carte bancaire pour procéder au paiement :</h4>
+  <p>Veuillez entrer les informations de votre carte bancaire pour compléter votre paiement.</p>
+
+  <div class="buttons" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+    <a href="https://buy.stripe.com/test_14kaID7MvbSJ5u8144" id="pay-btn" class="btn btn-primary" style="display: none;">Payer</a>
+  </div>
 </div>
+
 
 
 
@@ -640,183 +509,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
   
+    <!-- JavaScripts Link -->  
+    <script src="{{ asset('js/forms.js') }}"></script>
 
 
 
-
-<script>
-  let previousScrollPosition = window.pageYOffset;
-  const navbar = document.querySelector('.custom-navbar');
-  const threshold = 100; // Seuil pour activer l'affichage via le pointeur
-
-  // Gérer le défilement
-  window.addEventListener('scroll', () => {
-    const currentScrollPosition = window.pageYOffset;
-
-    if (previousScrollPosition > currentScrollPosition) {
-      // L'utilisateur défile vers le haut, afficher la navbar
-      navbar.style.top = "0";
-    } else {
-      // L'utilisateur défile vers le bas, cacher la navbar
-      navbar.style.top = "-100px"; // Ajustez selon la hauteur de la navbar
-    }
-    previousScrollPosition = currentScrollPosition;
-  });
-
-  // Gérer la position du pointeur
-  window.addEventListener('mousemove', (event) => {
-    if (event.clientY <= threshold) {
-      // Si le pointeur est proche du haut de la page, afficher la navbar
-      navbar.style.top = "0";
-    }
-  });
-</script>
-
-
-
-
-<script>
-let currentStep = 1;
-
-function showFormPart(step) {
-  const steps = document.querySelectorAll('.form-part');
-  const totalSteps = steps.length;
-
-  steps.forEach((part, index) => {
-    part.style.display = index + 1 === step ? 'block' : 'none';
-  });
-
-  // Mettre à jour la barre de progression si elle existe
-  const progressBar = document.getElementById('progress-bar');
-  if (progressBar) {
-    progressBar.style.width = `${(step / totalSteps) * 100}%`;
-  }
-
-  // Mettre à jour les boutons
-  document.getElementById('prev-btn').style.display = step === 1 ? 'none' : 'inline-block';
-  document.getElementById('next-btn').textContent = step === totalSteps ? 'Terminer' : 'Suivant';
-
-  currentStep = step;
-}
-
-function validateCurrentStep() {
-  const currentFormPart = document.querySelector(`#step-${currentStep}`);
-  if (!currentFormPart) return false; // Vérifie si l'étape existe
-  
-  const requiredFields = currentFormPart.querySelectorAll('[required]');
-  let isValid = true;
-
-  requiredFields.forEach(field => {
-    if (field.type === 'radio') {
-      const name = field.name;
-      const isChecked = document.querySelector(`input[name="${name}"]:checked`);
-      if (!isChecked) {
-        isValid = false;
-        field.closest('.form-group')?.classList.add('error');
-      } else {
-        field.closest('.form-group')?.classList.remove('error');
-      }
-    } else {
-      if (!field.value.trim()) {
-        isValid = false;
-        field.style.border = '1px solid red';
-      } else {
-        field.style.border = '1px solid #ddd';
-      }
-    }
-  });
-
-  return isValid;
-}
-
-function nextStep() {
-  const totalSteps = document.querySelectorAll('.form-part').length;
-
-  if (validateCurrentStep()) {
-    if (currentStep < totalSteps) {
-      showFormPart(currentStep + 1);
-    } else {
-      alert('Formulaire complété avec succès !');
-    }
-  } else {
-    alert('Veuillez remplir tous les champs obligatoires avant de continuer.');
-  }
-}
-
-function prevStep() {
-  if (currentStep > 1) {
-    showFormPart(currentStep - 1);
-  }
-}
-
-// Exemple de fonction pour le paiement
-function processPayment() {
-  alert('Paiement en cours...');
-}
-
-// Initialisation au chargement
-window.onload = function () {
-  showFormPart(currentStep);
-};
-
-
-
-</script>
-
-
-<script>
-  document.getElementById('pere-inconnu-non').addEventListener('change', function () {
-    document.getElementById('pere-details').style.display = this.checked ? 'block' : 'none';
-});
-
-document.getElementById('pere-inconnu-oui').addEventListener('change', function () {
-    document.getElementById('pere-details').style.display = this.checked ? 'none' : 'block';
-});
-
-document.getElementById('mere-inconnue-non').addEventListener('change', function () {
-    document.getElementById('mere-details').style.display = this.checked ? 'block' : 'none';
-});
-
-document.getElementById('mere-inconnue-oui').addEventListener('change', function () {
-    document.getElementById('mere-details').style.display = this.checked ? 'none' : 'block';
-});
-
-
-</script>
-
-
-
-<script>
-    //Boutons de scroll
-
-  const scrollTopBtn = document.getElementById("scrollTopBtn");
-  const footer = document.querySelector("footer");
-
-  window.addEventListener("scroll", () => {
-    const footerTop = footer.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
-    if (window.pageYOffset > 300) {
-      scrollTopBtn.style.display = "block";
-    } else {
-      scrollTopBtn.style.display = "none";
-    }
-
-    if (footerTop < windowHeight) {
-      scrollTopBtn.style.bottom = (windowHeight - footerTop + 30) + "px";
-    } else {
-      scrollTopBtn.style.bottom = "30px";
-    }
-  });
-
-  scrollTopBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  });
-</script>
 
 
 

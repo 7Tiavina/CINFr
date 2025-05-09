@@ -88,7 +88,7 @@
       <svg>
         <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
       </svg>
-    Contactez nous
+    Je fais ma pre-demande
     </a>
         </div>
       </div>
