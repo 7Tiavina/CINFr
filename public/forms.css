@@ -220,3 +220,9 @@ body {
 input[type="radio"]:required:invalid + label {
   color: red;
 }
+
+/* ==== Champs remplis (BLEU clair) ==== */
+input.filled,
+select.filled {
+  background-color: #e8f0fe;
+}

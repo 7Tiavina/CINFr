@@ -500,7 +500,21 @@
     <script src="{{ asset('js/forms.js') }}"></script>
 
 
+    <script type="text/javascript">
+        // pour tous les inputs et selects, on bascule la classe "filled"
+        function markFilled(el) {
+          if (el.value && el.value.trim() !== '') el.classList.add('filled');
+          else el.classList.remove('filled');
+        }
 
+        // au chargement initial
+        document.querySelectorAll('input, select').forEach(el => {
+          markFilled(el);
+          el.addEventListener('input', () => markFilled(el));
+          el.addEventListener('change', () => markFilled(el));
+        });
+
+    </script>
 
 
 
