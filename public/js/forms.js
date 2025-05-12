@@ -1,6 +1,4 @@
 	//Gestion contenu du Formulaire-----------------------------------------------------------------------------------
-
-
 let currentStep = 1;
 
 function showFormPart(step) {
@@ -16,27 +14,16 @@ function showFormPart(step) {
     progressBar.style.width = `${(step / totalSteps) * 100}%`;
   }
 
-  const prevBtn = document.getElementById('prev-btn');
-  const nextBtn = document.getElementById('next-btn');
-  
-  prevBtn.style.display = step === 1 ? 'none' : 'inline-block';
-
-  if (step === totalSteps) {
-    nextBtn.style.display = 'none'; // Cache le bouton "Suivant / Terminer"
-    document.getElementById('pay-btn').style.display = 'inline-block'; // Affiche le bouton Payer
-  } else {
-    nextBtn.style.display = 'inline-block';
-    nextBtn.textContent = 'Suivant';
-    document.getElementById('pay-btn').style.display = 'none'; // Cache le bouton Payer
-  }
+  document.getElementById('prev-btn').style.display = step === 1 ? 'none' : 'inline-block';
+  document.getElementById('next-btn').textContent = step === totalSteps ? 'Terminer' : 'Suivant';
 
   currentStep = step;
+  sessionStorage.setItem('currentStep', currentStep);
 }
-
 
 function validateCurrentStep() {
   const currentFormPart = document.querySelector(`#step-${currentStep}`);
-  if (!currentFormPart) return false; // Vérifie si l'étape existe
+  if (!currentFormPart) return false;
   
   const requiredFields = currentFormPart.querySelectorAll('[required]');
   let isValid = true;
@@ -84,38 +71,64 @@ function prevStep() {
   }
 }
 
-// Exemple de fonction pour le paiement
 function processPayment() {
   alert('Paiement en cours...');
 }
 
-// Initialisation au chargement
 window.onload = function () {
+  const savedStep = parseInt(sessionStorage.getItem('currentStep'));
+  if (!isNaN(savedStep)) {
+    currentStep = savedStep;
+  }
   showFormPart(currentStep);
+
+  document.querySelectorAll('input, select, textarea').forEach(input => {
+    const key = input.name || input.id;
+    if (!key) return;
+
+    const saved = sessionStorage.getItem(key);
+    if (saved !== null) {
+      if (input.type === 'radio' || input.type === 'checkbox') {
+        input.checked = saved === 'true';
+      } else {
+        input.value = saved;
+      }
+    }
+
+    input.addEventListener('input', () => {
+      if (input.type === 'radio' || input.type === 'checkbox') {
+        sessionStorage.setItem(key, input.checked);
+      } else {
+        sessionStorage.setItem(key, input.value);
+      }
+    });
+
+    if (input.type === 'radio') {
+      input.addEventListener('change', () => {
+        const group = document.querySelectorAll(`input[name="${input.name}"]`);
+        group.forEach(radio => {
+          sessionStorage.setItem(radio.name, radio.checked);
+        });
+      });
+    }
+  });
 };
 
-
-
-
-
-
-
-  document.getElementById('pere-inconnu-non').addEventListener('change', function () {
-    document.getElementById('pere-details').style.display = this.checked ? 'block' : 'none';
+document.getElementById('pere-inconnu-non').addEventListener('change', function () {
+  document.getElementById('pere-details').style.display = this.checked ? 'block' : 'none';
 });
 
 document.getElementById('pere-inconnu-oui').addEventListener('change', function () {
-    document.getElementById('pere-details').style.display = this.checked ? 'none' : 'block';
+  document.getElementById('pere-details').style.display = this.checked ? 'none' : 'block';
 });
 
 document.getElementById('mere-inconnue-non').addEventListener('change', function () {
-    document.getElementById('mere-details').style.display = this.checked ? 'block' : 'none';
+  document.getElementById('mere-details').style.display = this.checked ? 'block' : 'none';
 });
 
 document.getElementById('mere-inconnue-oui').addEventListener('change', function () {
-    document.getElementById('mere-details').style.display = this.checked ? 'none' : 'block';
+  document.getElementById('mere-details').style.display = this.checked ? 'none' : 'block';
 });
-
 
 
 	//Gestion du Navbar-----------------------------------------------------------------------------
