@@ -50,18 +50,36 @@ function validateCurrentStep() {
 
   return isValid;
 }
+// fonctions pour afficher et cacher l’alerte automatiquement
+function showAlert(msg) {
+  const alertBox = document.getElementById('custom-alert');
+  document.getElementById('custom-alert-msg').textContent = msg;
+  alertBox.classList.add('show');
+  // se ferme automatiquement après 3 secondes
+  setTimeout(() => {
+    alertBox.classList.remove('show');
+  }, 3000);
+}
+
+function hideAlert() {
+  document.getElementById('custom-alert').classList.remove('show');
+}
+// clic sur la croix pour fermer
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('custom-alert-close')
+    .addEventListener('click', hideAlert);
+});
 
 function nextStep() {
   const totalSteps = document.querySelectorAll('.form-part').length;
-
   if (validateCurrentStep()) {
     if (currentStep < totalSteps) {
       showFormPart(currentStep + 1);
     } else {
-      alert('Formulaire complété avec succès !');
+      showAlert('✅ Formulaire complété avec succès !');
     }
   } else {
-    alert('Veuillez remplir tous les champs obligatoires avant de continuer.');
+    showAlert('❌ Veuillez remplir tous les champs obligatoires avant de continuer.');
   }
 }
 
@@ -72,7 +90,7 @@ function prevStep() {
 }
 
 function processPayment() {
-  alert('Paiement en cours...');
+  showAlert('🔄 Paiement en cours…');
 }
 
 window.onload = function () {

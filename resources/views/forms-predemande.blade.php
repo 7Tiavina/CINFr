@@ -26,6 +26,13 @@
 
   <body>
 
+    <!-- boîte d’alerte personnalisée -->
+    <div id="custom-alert" class="custom-alert">
+      <span id="custom-alert-msg"></span>
+      <button id="custom-alert-close">&times;</button>
+    </div>
+
+
       <!-- N A V B A R -->
 @include('layouts.navbar')
 
@@ -40,8 +47,6 @@
   </div>
 </section>
 <!-- E N D  N A V B A R -->
-
-
 
 
 
