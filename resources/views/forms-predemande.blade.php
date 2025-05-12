@@ -65,7 +65,7 @@
     <!------------------------------------------------- Étape 1 ------------------------------------------------------------------------------>
     <div class="form-part" id="step-1">
       <div class="form-group">
-        <h4>La demande concerne un : <span style="color: red;">(Nécessaire)</span></h4>
+        <h4>La demande concerne un : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
         <div class="radio-options">
           <div>
             <input type="radio" id="majeur" name="type_demande" value="majeur" required>
@@ -79,7 +79,7 @@
       </div>
 
       <div class="form-group">
-        <h4>Raison de la demande <span style="color: red;">(Nécessaire)</span></h4>
+        <h4>Raison de la demande <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
         <select name="raison_demande" style="width: 100%;" required>
           <option value="">Sélectionnez une raison</option>
           <option value="premiere">Première demande</option>
@@ -88,7 +88,7 @@
       </div>
 
       <div class="form-group">
-        <h4>Dans quel département effectuez-vous votre demande ? <span style="color: red;">(Nécessaire)</span></h4>
+        <h4>Dans quel département effectuez-vous votre demande ? <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
         <select name="departement_demande" style="width: 100%;" required>
           <option value="">Sélectionnez un département</option>
           <option value="01">01 Ain</option>
@@ -100,7 +100,7 @@
     <!------------------------------------------------- Étape 2 ------------------------------------------------------------------------------>
     <div class="form-part" id="step-2" style="display: none;">
       <div class="form-group">
-        <h4>Sexe : <span style="color: red;">(Nécessaire)</span></h4>
+        <h4>Sexe : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
         <div class="radio-options">
           <div>
             <input type="radio" id="homme" name="sexe" value="homme" required>
@@ -114,7 +114,7 @@
       </div>
 
       <div class="form-group">
-        <h4>Nom de naissance <span style="color: red;">(Nécessaire)</span></h4>
+        <h4>Nom de naissance <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
         <input type="text" name="nom_naissance" placeholder="Nom de naissance" required>
       </div>
 
@@ -131,7 +131,7 @@
       </div>
 
       <div class="form-group">
-        <h4>Taille <span style="color: red;">(Nécessaire)</span></h4>
+        <h4>Taille <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
         <select name="taille" required>
           <option value="">Sélectionnez votre taille</option>
           <option value="1.00">1.00 m</option>
@@ -141,7 +141,7 @@
       </div>
 
       <div class="form-group">
-        <h4>Couleur des yeux <span style="color: red;">(Nécessaire)</span></h4>
+        <h4>Couleur des yeux <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
         <select name="couleur_yeux" required>
           <option value="">Sélectionnez la couleur</option>
           <option value="noir">Noir</option>
@@ -153,12 +153,12 @@
       </div>
 
       <div class="form-group">
-        <h4>Date de naissance <span style="color: red;">(Nécessaire)</span></h4>
+        <h4>Date de naissance <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
         <input type="date" name="date_naissance" required>
       </div>
 
       <div class="form-group">
-        <h4>Pays de naissance <span style="color: red;">(Nécessaire)</span></h4>
+        <h4>Pays de naissance <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
         <select name="pays_naissance" required>
           <option value="">Sélectionnez le pays</option>
           <option value="france">France</option>
@@ -167,7 +167,7 @@
       </div>
 
       <div class="form-group">
-        <h4>Département ou COM de naissance <span style="color: red;">(Nécessaire)</span></h4>
+        <h4>Département ou COM de naissance <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
         <select name="dept_naissance" required>
           <option value="">Sélectionnez le département</option>
           <option value="01">01 Ain</option>
@@ -176,7 +176,7 @@
       </div>
 
       <div class="form-group">
-        <h4>Commune de naissance <span style="color: red;">(Nécessaire)</span></h4>
+        <h4>Commune de naissance <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
         <input type="text" name="commune_naissance" required>
       </div>
     </div>
@@ -186,7 +186,7 @@
 <div class="form-part" id="step-3" style="display: none;">
   <h1>Père</h1>
   <div class="form-group">
-    <h4>Père inconnu <span style="color: red;">(Nécessaire)</span></h4>
+    <h4>Père inconnu <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
     <div class="radio-options">
       <div>
         <input type="radio" id="pere-inconnu-oui" name="pere_inconnu" value="oui" required>
@@ -201,7 +201,7 @@
 
   <div id="pere-details" style="display: none;">
     <div class="form-group">
-      <h4>Nom de naissance du père <span style="color: red;">(Nécessaire)</span></h4>
+      <h4>Nom de naissance du père <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
       <input type="text" id="pere_nom" name="pere_nom" placeholder="Nom de naissance du père" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
     </div>
 
@@ -229,7 +229,7 @@
 
   <h1>Mère</h1>
   <div class="form-group">
-    <h4>Mère inconnue <span style="color: red;">(Nécessaire)</span></h4>
+    <h4>Mère inconnue <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
     <div class="radio-options">
       <div>
         <input type="radio" id="mere-inconnue-oui" name="mere_inconnue" value="oui" required>
@@ -244,7 +244,7 @@
 
   <div id="mere-details" style="display: none;">
     <div class="form-group">
-      <h4>Nom de naissance de la mère <span style="color: red;">(Nécessaire)</span></h4>
+      <h4>Nom de naissance de la mère <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
       <input type="text" id="mere_nom" name="mere_nom" placeholder="Nom de naissance de la mère" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
     </div>
 
@@ -274,7 +274,7 @@
 <!------------------------------------------------- Étape 4 ------------------------------------------------------------------------------>
 
 <div class="form-part" id="step-4" style="display: none;">
-  <h4>Vous êtes Français(e) car : <span style="color: red;">(Nécessaire)</span></h4>
+  <h4>Vous êtes Français(e) car : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
   <div class="checkbox-options">
     <div>
       <input type="checkbox" id="nat_naissance_parent_france" name="nat_naissance_parent_france" value="naissance-parent-france">
@@ -308,10 +308,12 @@
       <input type="checkbox" id="nat_declaration" name="nat_declaration" value="declaration-non-mariage">
       <label for="nat_declaration">Vous êtes français(e) par déclaration</label>
     </div>
-    <div>
+    <div style="display: flex; align-items: center; gap: 10px;">
       <input type="checkbox" id="nat_autre" name="nat_autre" value="autre-motif">
       <label for="nat_autre">Autre motif</label>
+      <input type="text" id="nat_autre_texte" name="nat_autre_texte" placeholder="Précisez" style="flex: 1;">
     </div>
+
   </div>
 </div>
 
@@ -320,7 +322,7 @@
 <!------------------------------------------------- Étape 5 ------------------------------------------------------------------------------>
 
 <div class="form-part" id="step-5" style="display: none;">
-  <h4>Adresse du demandeur concerné par le titre : <span style="color: red;">(Nécessaire)</span></h4>
+  <h4>Adresse du demandeur concerné par le titre : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
   
   <label for="adresse_demandeur">Adresse du demandeur concerné par le titre</label>
   <input type="text" id="adresse_demandeur" name="adresse_demandeur" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
@@ -334,7 +336,7 @@
   <label for="adresse_complement">Complément d'adresse (étage, escalier, appartement…)</label>
   <input type="text" id="adresse_complement" name="adresse_complement" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;">
 
-  <h4>Informations de contact : <span style="color: red;">(Nécessaire)</span></h4>
+  <h4>Informations de contact : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
   
   <label for="telephone">Téléphone portable (Format : 0601020304)</label>
   <input type="tel" id="telephone" name="telephone" pattern="^0[1-9][0-9]{8}$" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
@@ -342,7 +344,7 @@
   <label for="email">E-mail</label>
   <input type="email" id="email" name="email" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
 
-  <h4>Validation : <span style="color: red;">(Nécessaire)</span></h4>
+  <h4>Validation : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
   <div class="checkbox-options">
     <div>
       <input type="radio" id="validation_info" name="validation_info" value="info_correctes" required>
@@ -357,6 +359,8 @@
       <label for="validation_conditions">Je valide les conditions générales de vente du site</label>
     </div>
   </div>
+
+
 </div>
 
 <!------------------------------------------------- Étape 6 ------------------------------------------------------------------------------>
@@ -365,7 +369,7 @@
   <h4>Frais de traitement de la pré-demande de CNI</h4>
   <p>Prix : <strong>39,00 €</strong></p>
 
-  <h4>Paiement par Carte Bancaire : <span style="color: red;">(Nécessaire)</span></h4>
+  <h4>Paiement par Carte Bancaire : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
   
   <label for="carte_bancaire">Numéro de carte</label>
   <input type="text" id="carte_bancaire" name="carte_bancaire" placeholder="0000 0000 0000 0000" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>

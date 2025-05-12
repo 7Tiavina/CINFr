@@ -1,126 +1,222 @@
+/* ==== Global & Body ==== */
 body {
-              font-family: Arial, sans-serif;
-              background-color: #f8f9fa;
-              padding: 0px;
-            }
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
 
-            #form-section {
-              max-width: 800px;
-              margin: 0 auto;
-              padding: 20px;
-              background: #fff;
-              border-radius: 8px;
-              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
+/* ==== Form Background & Container ==== */
+#form-background {
+  background: #f8f9fa;
+  padding: 20px;
+}
 
-            #form-background {
-              background: #f8f9fa;
-              max-width: 100%;
-              margin: 0 auto;
-              padding: 20px;
-              border-radius: 8px;
-            }
+#form-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-            #scrollTopBtn{
-                position: fixed;
-              bottom: 30px;
-              right: 30px;
-              z-index: 9999;
-              background-color: #0444ec;
-              color: white;
-              border: none;
-              border-radius: 50%;
-              width: 60px;
-              height: 60px;
-              font-size: 24px;
-              cursor: pointer;
-              display: none;
-              box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            }
+/* ==== Scroll to Top Button ==== */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  background-color: #0444ec;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+}
+#scrollTopBtn:hover {
+  background-color: #022b9c;
+  transform: translateY(-2px);
+}
 
-            .form-part {
-              display: none;
-            }
+/* ==== Form Parts & Progress Bar ==== */
+.form-part {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+.form-part.active {
+  display: block;
+}
 
-            .form-part.active {
-              display: block;
-            }
+.progress-bar {
+  background-color: #ececec; 
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
 
-            .progress-bar {
-              background-color: #e0e0e0;
-              height: 8px;
-              border-radius: 4px;
-              overflow: hidden;
-              margin-bottom: 20px;
-            }
+.progress-bar-inner {
+  background-color: #0444ec; 
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease-in-out;
+}
 
-            .progress-bar-inner {
-              background-color: #0444ec;
-              height: 100%;
-              width: 0%;
-              transition: width 0.3s ease-in-out;
-            }
+/* ==== Form Groups ==== */
+.form-group {
+  margin-bottom: 25px;
+}
 
-            .buttons {
-              display: flex;
-              justify-content: space-between;
-            }
+/* Labels */
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #444;
+}
+.form-group label.required::after {
+  content: " *";
+  color: red;
+}
 
-            .btn {
-              padding: 10px 20px;
-              border: none;
-              border-radius: 5px;
-              cursor: pointer;
-              font-size: 1rem;
-              transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            }
+/* Inputs & Selects */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="date"],
+.form-group input[type="month"],
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #0444ec;
+  box-shadow: 0 0 0 3px rgba(4, 68, 236, 0.2);
+  outline: none;
+}
 
-            .btn-primary {
-              background-color: #0444ec;
-              color: white;
-            }
+/* Radio & Checkbox Groups */
+.radio-options,
+.checkbox-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 10px;
+}
+.radio-options div,
+.checkbox-options div {
+  display: flex;
+  align-items: center;
+}
+.radio-options input,
+.checkbox-options input {
+  margin-right: 8px;
+}
 
-            .btn-primary:hover {
-              background-color: #022b9c;
-              transform: translateY(-2px);
-              box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            }
+/* ==== Buttons ==== */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-primary {
+  background-color: #0444ec;
+  color: white;
+}
+.btn-primary:hover {
+  background-color: #022b9c;
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+.btn-secondary {
+  background-color: #f1f1f1;
+  color: #333;
+}
+.btn-secondary:hover {
+  background-color: #ddd;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
 
-            .btn-secondary {
-              background-color: #f1f1f1;
-              color: #333;
-            }
+/* ==== Error States ==== */
+.form-group.error input,
+.form-group.error select {
+  border-color: red;
+}
+.form-group.error label {
+  color: red;
+}
 
-            .btn-secondary:hover {
-              background-color: #ddd;
-              color: #000;
-              transform: translateY(-2px);
-              box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            }
+.required-tooltip {
+  color: red;
+  margin-left: 5px;
+  cursor: help;
+  font-weight: bold;
+}
 
-            /* Centrage et nouveau style pour le bouton acheter */
-            .buttons {
-                text-align: center;
-            }
 
-            #pay-btn {
-                background-color: #007bff; /* Bleu professionnel */
-                color: #fff;
-                padding: 10px 20px;
-                font-size: 16px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            }
+/* ==== Animations ==== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-            #pay-btn:hover {
-                background-color: #0056b3; /* Bleu plus foncé pour le hover */
-                box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
-            }
+/* ==== Responsive ==== */
+@media (max-width: 600px) {
+  .radio-options,
+  .checkbox-options {
+    flex-direction: column;
+  }
+  .buttons {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
 
-            #pay-btn:active {
-                background-color: #004494; /* Bleu encore plus foncé pour l'effet de clic */
-                transform: scale(0.98); /* Réduction légère pour un effet de clic */
-            }
+
+#step-4 .form-part,
+#step-4 .checkbox-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#step-4 label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#step-4 input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+input[type="radio"]:required:invalid + label {
+  color: red;
+}
