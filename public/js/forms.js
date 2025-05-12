@@ -76,16 +76,22 @@ function processPayment() {
 }
 
 window.onload = function () {
+  // Restaure l’étape sauvegardée
   const savedStep = parseInt(sessionStorage.getItem('currentStep'));
-  if (!isNaN(savedStep)) {
-    currentStep = savedStep;
-  }
+  if (!isNaN(savedStep)) currentStep = savedStep;
   showFormPart(currentStep);
 
+  // Debug : afficher tout le sessionStorage au chargement
+  console.group('🔍 sessionStorage au chargement');
+  for (let i = 0; i < sessionStorage.length; i++) {
+    const key = sessionStorage.key(i);
+    console.log(key, sessionStorage.getItem(key));
+  }
+  console.groupEnd();
+
+  // Restaure/écoute tous les inputs, selects, textarea
   document.querySelectorAll('input, select, textarea').forEach(input => {
     const key = input.name || input.id;
-    if (!key) return;
-
     const saved = sessionStorage.getItem(key);
     if (saved !== null) {
       if (input.type === 'radio' || input.type === 'checkbox') {
@@ -95,24 +101,28 @@ window.onload = function () {
       }
     }
 
+    // À chaque saisie, on stocke et on loggue dans sessionStorage
     input.addEventListener('input', () => {
-      if (input.type === 'radio' || input.type === 'checkbox') {
-        sessionStorage.setItem(key, input.checked);
-      } else {
-        sessionStorage.setItem(key, input.value);
-      }
+      const valueToStore = (input.type === 'radio' || input.type === 'checkbox')
+        ? input.checked
+        : input.value;
+      sessionStorage.setItem(key, valueToStore);
+      console.log('🔄 sauvegarde', key, '→', valueToStore);
     });
 
+    // Pour les radios : mise à jour de tout le groupe et log
     if (input.type === 'radio') {
       input.addEventListener('change', () => {
-        const group = document.querySelectorAll(`input[name="${input.name}"]`);
-        group.forEach(radio => {
-          sessionStorage.setItem(radio.name, radio.checked);
-        });
+        document.querySelectorAll(`input[name="${input.name}"]`)
+          .forEach(radio => {
+            sessionStorage.setItem(radio.name, radio.checked);
+            console.log('🔄 sauvegarde radio', radio.name, '→', radio.checked);
+          });
       });
     }
   });
 };
+
 
 document.getElementById('pere-inconnu-non').addEventListener('change', function () {
   document.getElementById('pere-details').style.display = this.checked ? 'block' : 'none';
