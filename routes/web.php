@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StripeController;
 
 Route::get('/', function () {
     return view('index');
@@ -27,3 +28,10 @@ Route::get('/mentions', function () {
 Route::get('/remboursement', function () {
     return view('politique-remboursement');
 })->name('remboursement');
+
+
+
+Route::post('/test', [StripeController::class,'test'])->name('test');
+Route::post('/live', [StripeController::class,'live'])->name('live');
+Route::get('/success', [StripeController::class,'success'])->name('success');
+Route::get('/checkout', [StripeController::class, 'checkout'])->name('checkout');

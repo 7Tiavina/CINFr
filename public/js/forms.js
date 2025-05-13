@@ -14,12 +14,24 @@ function showFormPart(step) {
     progressBar.style.width = `${(step / totalSteps) * 100}%`;
   }
 
-  document.getElementById('prev-btn').style.display = step === 1 ? 'none' : 'inline-block';
-  document.getElementById('next-btn').textContent = step === totalSteps ? 'Terminer' : 'Suivant';
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+
+  // Cacher les boutons à l'étape 6
+  if (step === 6) {
+    prevBtn.style.display = 'none';
+    nextBtn.style.display = 'none';
+  } else {
+    prevBtn.style.display = step === 1 ? 'none' : 'inline-block';
+    nextBtn.textContent = step === totalSteps ? 'Terminer' : 'Suivant';
+    nextBtn.style.display = 'inline-block';
+  }
 
   currentStep = step;
   sessionStorage.setItem('currentStep', currentStep);
 }
+
+
 
 function validateCurrentStep() {
   const currentFormPart = document.querySelector(`#step-${currentStep}`);
@@ -72,16 +84,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function nextStep() {
   const totalSteps = document.querySelectorAll('.form-part').length;
-  if (validateCurrentStep()) {
-    if (currentStep < totalSteps) {
-      showFormPart(currentStep + 1);
-    } else {
-      showAlert('✅ Formulaire complété avec succès !');
-    }
-  } else {
+
+  if (!validateCurrentStep()) {
     showAlert('❌ Veuillez remplir tous les champs obligatoires avant de continuer.');
+    return;
+  }
+
+  if (currentStep < totalSteps) {
+    showFormPart(currentStep + 1);
+  } else {
+    // on est à l'étape 6 : soumission automatique si vous cliquez "Suivant"
+    // mais comme le bouton "Suivant" disparaît en step-6, 
+    // c'est le bouton Payer (submit) qui envoie le form.
+    document.getElementById('stripe-form').submit();
   }
 }
+
+
 
 function prevStep() {
   if (currentStep > 1) {
