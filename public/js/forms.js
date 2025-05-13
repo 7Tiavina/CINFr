@@ -58,7 +58,7 @@ function showAlert(msg) {
   // se ferme automatiquement après 3 secondes
   setTimeout(() => {
     alertBox.classList.remove('show');
-  }, 3000);
+  }, 5000);
 }
 
 function hideAlert() {
