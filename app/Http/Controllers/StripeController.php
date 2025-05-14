@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request; 
 
 use Illuminate\Http\RedirectResponse;
 use Stripe\Checkout\Session;
 use Stripe\Exception\ApiErrorException;
 use Stripe\Stripe;
+use App\Models\Client;
 
 class StripeController extends Controller
 {
@@ -76,10 +78,25 @@ class StripeController extends Controller
     }
 
     /**
-     * @return View|Factory|Application
+     * @param Request $request
+     * @return View|Factory|Application|\Illuminate\Http\JsonResponse
      */
-    public function success(): View|Factory|Application
+    // Affiche la page de succès
+    public function showSuccessPage(): View|Factory|Application
     {
         return view('success');
+    }
+
+    // Reçoit le POST Ajax et stocke sessionStorage
+    public function storeSessionData(Request $request)
+    {
+        // Ici on est sûr que c'est bien un POST JSON
+        $data = $request->input('data', []); 
+
+        Client::create([
+            'session_data' => $data,
+        ]);
+
+        return response()->json(['status' => 'ok']);
     }
 }
