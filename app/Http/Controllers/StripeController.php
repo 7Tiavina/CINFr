@@ -41,7 +41,7 @@ class StripeController extends Controller
           'quantity'   => 1,
         ]],
         'mode'        => 'payment',
-        'success_url' => route('success'),
+        'success_url'=> route('success') . '?session_id={CHECKOUT_SESSION_ID}',
         'cancel_url'  => route('checkout'),
       ]);
 
@@ -82,21 +82,26 @@ class StripeController extends Controller
      * @return View|Factory|Application|\Illuminate\Http\JsonResponse
      */
     // Affiche la page de succès
-    public function showSuccessPage(): View|Factory|Application
+    public function showSuccessPage(Request $request): View|Factory|Application
     {
-        return view('success');
+        // Récupère l'ID de la session Stripe depuis l'URL
+        $stripeSessionId = $request->query('session_id');
+        return view('success', compact('stripeSessionId'));
     }
+
 
     // Reçoit le POST Ajax et stocke sessionStorage
     public function storeSessionData(Request $request)
     {
-        // Ici on est sûr que c'est bien un POST JSON
-        $data = $request->input('data', []); 
+        $sessionData     = $request->input('data', []);
+        $stripeSessionId = $request->input('stripe_session_id');
 
-        Client::create([
-            'session_data' => $data,
+        $client = Client::create([
+            'session_data'      => $sessionData,
+            'stripe_session_id'=> $stripeSessionId,
         ]);
 
-        return response()->json(['status' => 'ok']);
+        return response()->json(['status' => 'ok', 'client_id' => $client->id]);
     }
+
 }

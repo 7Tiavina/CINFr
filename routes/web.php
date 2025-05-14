@@ -35,8 +35,7 @@ Route::post('/test', [StripeController::class,'test'])->name('test');
 Route::post('/live', [StripeController::class,'live'])->name('live');
 Route::get('/checkout', [StripeController::class, 'checkout'])->name('checkout');
 
-Route::get('/success', [StripeController::class, 'showSuccessPage'])
-     ->name('success'); 
+Route::get('/success', [StripeController::class, 'showSuccessPage'])->name('success'); 
 // Stockage des données (POST)  
 Route::post('/success', [StripeController::class,'storeSessionData'])
      ->name('success.store');
