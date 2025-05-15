@@ -29,24 +29,26 @@ class StripeController extends Controller
      */
     public function test(): RedirectResponse
     {
-      Stripe::setApiKey(config('stripe.test.sk'));
+        Stripe::setApiKey(config('stripe.test.sk'));
 
-      $session = Session::create([
-        'line_items' => [[
-          'price_data' => [
-            'currency'     => 'eur',
-            'product_data' => ['name' => 'Pré-demande de CNI'],
-            'unit_amount'  => 3900,  // 39,00 € en cents
-          ],
-          'quantity'   => 1,
-        ]],
-        'mode'        => 'payment',
-        'success_url'=> route('success') . '?session_id={CHECKOUT_SESSION_ID}',
-        'cancel_url'  => route('checkout'),
-      ]);
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'     => 'eur',
+                    'product_data' => ['name' => 'Pré-demande de CNI'],
+                    'unit_amount'  => 3900,  // 39,00 € en cents
+                ],
+                'quantity'   => 1,
+            ]],
+            'mode'        => 'payment',
+            'success_url' => route('success') . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url'  => route('checkout'),
+        ]);
 
-      return redirect()->away($session->url);
+        return redirect()->away($session->url);
     }
+
 
     /**
      * @return RedirectResponse
