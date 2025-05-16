@@ -143,48 +143,43 @@ class StripeController extends Controller
     // Affiche la page de succès
     
    public function showSuccessPage(Request $request)
-    {
-        Stripe::setApiKey(config('stripe.test.sk'));
-        $sessionId = $request->query('session_id');
-        if (!$sessionId) abort(404, 'Session ID manquante');
+{
+    Stripe::setApiKey(config('stripe.test.sk'));
+    $sessionId = $request->query('session_id');
+    if (!$sessionId) abort(404, 'Session ID manquante');
 
-        // Récupère la session (expand customer pour l'email)
-        $session = \Stripe\Checkout\Session::retrieve([
-            'id'     => $sessionId,
-            'expand' => ['payment_intent', 'customer']
+    $session = \Stripe\Checkout\Session::retrieve([
+        'id'     => $sessionId,
+        'expand' => ['payment_intent', 'customer']
+    ]);
+
+    $pi = \Stripe\PaymentIntent::retrieve($session->payment_intent->id);
+    $latestChargeId = $pi->latest_charge;
+    $charge = \Stripe\Charge::retrieve([
+        'id'     => $latestChargeId,
+        'expand' => ['payment_method_details.card'],
+    ]);
+
+    $receiptUrl = $charge->receipt_url;
+    $chargeId   = $charge->id;
+    $cardLast4  = $charge->payment_method_details->card->last4;
+    $email      = $session->customer_details->email;
+
+    //dd(compact('receiptUrl','chargeId','cardLast4','email'));
+
+    $client = Client::where('stripe_session_id', $sessionId)->first();
+    if ($client) {
+        $client->update([
+            'receipt_url' => $receiptUrl,
+            'charge_id'   => $chargeId,
+            'email'       => $email,
+            'card_last4'  => $cardLast4,
         ]);
-
-        // Récupère le PaymentIntent
-        $pi = \Stripe\PaymentIntent::retrieve($session->payment_intent->id);
-
-        // on utilise latest_charge
-        $latestChargeId = $pi->latest_charge;
-        $charge = \Stripe\Charge::retrieve([
-            'id'     => $latestChargeId,
-            'expand' => ['payment_method_details.card'],
-        ]);
-
-        // Extractions
-        $receiptUrl = $charge->receipt_url;
-        $chargeId   = $charge->id;
-        $cardLast4  = $charge->payment_method_details->card->last4;
-        $email      = $session->customer_details->email;
-
-        // Debug temporaire
-        // dd(compact('receiptUrl','chargeId','cardLast4','email'));
-
-        // Mise à jour BDD
-        $client = Client::where('stripe_session_id', $sessionId)->first();
-        if ($client) {
-            $client->update([
-                'receipt_url' => $receiptUrl,
-                'charge_id'   => $chargeId,
-                'email'       => $email,
-                'card_last4'  => $cardLast4,
-            ]);
-        }
-        return view('success', compact('receiptUrl', 'chargeId', 'email'));
     }
+    //dd($client->toArray());
+    return view('success', compact('receiptUrl', 'chargeId', 'email'));
+}
+
 
 
 

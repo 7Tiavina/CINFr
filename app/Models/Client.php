@@ -8,6 +8,7 @@ class Client extends Model
 {
    protected $fillable = [
       'session_data',
+      'email',
       'stripe_session_id',
       'receipt_url',
       'charge_id',
