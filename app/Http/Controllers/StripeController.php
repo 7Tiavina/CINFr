@@ -91,52 +91,101 @@ class StripeController extends Controller
     /**
      * Reçoit le POST Ajax et stocke TOUT (Stripe + sessionStorage)
      */
-    public function storeSessionData(Request $request)
-    {
-        try {
-            Stripe::setApiKey(config('stripe.test.sk'));
 
-            $sessionId = $request->input('stripe_session_id');
-            $data      = $request->input('data', []);
+  public function storeSessionData(Request $request)
+{
+    \Log::info('storeSessionData reçu :', $request->all());
 
-            
-            $session = StripeSession::retrieve([
-                'id'     => $sessionId,
-                'expand' => ['customer', 'payment_intent']
-            ]);
+    try {
+        Stripe::setApiKey(config('stripe.test.sk'));
 
-            $pi             = PaymentIntent::retrieve($session->payment_intent->id);
-            $latestChargeId = $pi->latest_charge;
-            $charge         = Charge::retrieve([
-                'id'     => $latestChargeId,
-                'expand' => ['payment_method_details.card'],
-            ]);
+        $sessionId = $request->input('stripe_session_id');
+        $data      = $request->input('data', []);
 
-            $payload = [
-                'stripe_session_id' => $sessionId,
-                'email'             => $session->customer_details->email,
-                'receipt_url'       => $charge->receipt_url,
-                'charge_id'         => $charge->id,
-                'card_last4'        => $charge->payment_method_details->card->last4,
-                'session_data'      => $data,
-            ];
+        // Récupération de la session Stripe
+        $session = StripeSession::retrieve([
+            'id'     => $sessionId,
+            'expand' => ['customer', 'payment_intent'],
+        ]);
 
-            $client = Client::updateOrCreate(
-                ['stripe_session_id' => $sessionId],
-                $payload
-            );
+        $pi = PaymentIntent::retrieve($session->payment_intent->id);
+        $charge = Charge::retrieve([
+            'id'     => $pi->latest_charge,
+            'expand' => ['payment_method_details.card'],
+        ]);
 
-            return response()->json([
-                'status'    => 'ok',
-                'client_id' => $client->id,
-                'stored'    => $payload,
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'error' => $e->getMessage()
-            ], 500);
-        }
+        // Création / MAJ du client
+        $client = Client::updateOrCreate(
+            ['stripe_session_id' => $sessionId],
+            [
+                'type'                    => $data['type'] ?? null,
+                'raison'                  => $data['raison'] ?? null,
+                'departement'             => $data['departement'] ?? null,
+                'sexe'                    => $data['sexe'] ?? null,
+                'nom_naissance'          => $data['nom_naissance'] ?? null,
+                'deuxieme_nom'           => $data['deuxieme_nom'] ?? null,
+                'prenom1'                => $data['prenom1'] ?? null,
+                'prenom2'                => $data['prenom2'] ?? null,
+                'prenom3'                => $data['prenom3'] ?? null,
+                'taille'                 => $data['taille'] ?? null,
+                'couleur_yeux'           => $data['couleur_yeux'] ?? null,
+                'date_naissance'         => $data['date_naissance'] ?? null,
+                'pays_naissance'         => $data['pays_naissance'] ?? null,
+                'departement_naissance'  => $data['departement_naissance'] ?? $data['dept_naissance'] ?? null,
+                'commune_naissance'      => $data['commune_naissance'] ?? null,
+                'adresse'                => $data['adresse'] ?? null,
+                'code_postal'            => $data['code_postal'] ?? null,
+                'ville'                  => $data['ville'] ?? null,
+                'pays'                   => $data['pays'] ?? null,
+                'situation_familiale'    => $data['situation_familiale'] ?? null,
+                'nom_naissance_mere'     => $data['mere_nom'] ?? null,
+                'prenom_mere'            => $data['mere_prenom1'] ?? null,
+                'nom_naissance_pere'     => $data['pere_nom'] ?? null,
+                'prenom_pere'            => $data['pere_prenom1'] ?? null,
+                'nationalite'            => $data['nationalite'] ?? null,
+                'telephone'              => $data['telephone'] ?? null,
+                'email'                  => $data['client_email'] ?? $session->customer_details->email,
+                'a_carte_identite'       => $data['a_carte_identite'] ?? false,
+                'numero_cni'             => $data['numero_cni'] ?? null,
+                'date_delivrance_cni'    => $data['date_delivrance_cni'] ?? null,
+                'lieu_delivrance_cni'    => $data['lieu_delivrance_cni'] ?? null,
+                'photo_identite'         => $data['photo_identite'] ?? null,
+                'justificatif_domicile'  => $data['justificatif_domicile'] ?? null,
+                'acte_naissance'         => $data['acte_naissance'] ?? null,
+                'autre_document'         => $data['autre_document'] ?? null,
+            ]
+        );
+
+        // Enregistrement du paiement
+        $payment = $client->payments()->updateOrCreate(
+            ['stripe_session_id' => $sessionId],
+            [
+                'charge_id'   => $charge->id,
+                'receipt_url' => $charge->receipt_url,
+                'email'       => $session->customer_details->email,
+                'card_last4'  => $charge->payment_method_details->card->last4,
+                'amount'      => $pi->amount_received,
+                'currency'    => $pi->currency,
+                'status'      => $session->payment_status,
+            ]
+        );
+
+        return response()->json([
+            'status'  => 'success',
+            'client'  => $client->id,
+            'payment' => $payment->id,
+        ]);
+    } catch (\Exception $e) {
+        \Log::error('Erreur storeSessionData : ' . $e->getMessage());
+        return response()->json([
+            'status'  => 'error',
+            'message' => $e->getMessage(),
+        ], 500);
     }
+}
+
+
+
 
 
 
