@@ -126,37 +126,40 @@ window.onload = function () {
   }
   console.groupEnd();
 
-  // Restaure/écoute tous les inputs, selects, textarea
-  document.querySelectorAll('input, select, textarea').forEach(input => {
-    const key = input.name || input.id;
+  // --- Restauration des valeurs existantes ---
+  document.querySelectorAll('input, select, textarea').forEach(el => {
+    const key = el.name || el.id;
     const saved = sessionStorage.getItem(key);
     if (saved !== null) {
-      if (input.type === 'radio' || input.type === 'checkbox') {
-        input.checked = saved === 'true';
+      if (el.type === 'radio') {
+        el.checked = (el.value === saved);
+      } else if (el.type === 'checkbox') {
+        el.checked = (saved === el.value);
       } else {
-        input.value = saved;
+        el.value = saved;
       }
     }
+  });
 
-    // À chaque saisie, on stocke et on loggue dans sessionStorage
-    input.addEventListener('input', () => {
-      const valueToStore = (input.type === 'radio' || input.type === 'checkbox')
-        ? input.checked
-        : input.value;
-      sessionStorage.setItem(key, valueToStore);
-      console.log('🔄 sauvegarde', key, '→', valueToStore);
-    });
-
-    // Pour les radios : mise à jour de tout le groupe et log
-    if (input.type === 'radio') {
-      input.addEventListener('change', () => {
-        document.querySelectorAll(`input[name="${input.name}"]`)
-          .forEach(radio => {
-            sessionStorage.setItem(radio.name, radio.checked);
-            console.log('🔄 sauvegarde radio', radio.name, '→', radio.checked);
-          });
-      });
+  // --- Nouvelle gestion unifiée du stockage de la valeur ---
+  function saveField(e) {
+    let val;
+    if (e.target.type === 'radio') {
+      if (!e.target.checked) return;        // n’enregistre que lorsqu’on coche
+      val = e.target.value;
+    } else if (e.target.type === 'checkbox') {
+      val = e.target.checked ? e.target.value : '';
+    } else {
+      val = e.target.value;
     }
+    sessionStorage.setItem(e.target.name, val);
+    console.log('🔄 sauvegarde', e.target.name, '→', val);
+  }
+
+  // Attache l’écouteur adéquat selon le type de champ
+  document.querySelectorAll('input, select, textarea').forEach(el => {
+    const evt = (el.type === 'radio' || el.type === 'checkbox') ? 'change' : 'input';
+    el.addEventListener(evt, saveField);
   });
 };
 

@@ -330,13 +330,13 @@
   <h4>Adresse du demandeur concerné par le titre : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
   
   <label for="adresse_demandeur">Adresse du demandeur concerné par le titre</label>
-  <input type="text" id="adresse_demandeur" name="adresse_demandeur" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
+  <input type="text" id="adresse_demandeur" name="adresse" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
   
   <label for="adresse_ville">Ville</label>
-  <input type="text" id="adresse_ville" name="adresse_ville" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
+  <input type="text" id="adresse_ville" name="ville" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
   
   <label for="adresse_zip">ZIP / Code postal</label>
-  <input type="text" id="adresse_zip" name="adresse_zip" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
+  <input type="text" id="adresse_zip" name="code_postal" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
   
   <label for="adresse_complement">Complément d'adresse (étage, escalier, appartement…)</label>
   <input type="text" id="adresse_complement" name="adresse_complement" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;">

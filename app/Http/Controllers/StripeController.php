@@ -93,96 +93,96 @@ class StripeController extends Controller
      */
 
   public function storeSessionData(Request $request)
-{
-    \Log::info('storeSessionData reçu :', $request->all());
+    {
+        \Log::info('storeSessionData reçu :', $request->all());
 
-    try {
-        Stripe::setApiKey(config('stripe.test.sk'));
+        try {
+            Stripe::setApiKey(config('stripe.test.sk'));
 
-        $sessionId = $request->input('stripe_session_id');
-        $data      = $request->input('data', []);
+            $sessionId = $request->input('stripe_session_id');
+            $data      = $request->input('data', []);
 
-        // Récupération de la session Stripe
-        $session = StripeSession::retrieve([
-            'id'     => $sessionId,
-            'expand' => ['customer', 'payment_intent'],
-        ]);
+            // Récupération de la session Stripe
+            $session = StripeSession::retrieve([
+                'id'     => $sessionId,
+                'expand' => ['customer', 'payment_intent'],
+            ]);
 
-        $pi = PaymentIntent::retrieve($session->payment_intent->id);
-        $charge = Charge::retrieve([
-            'id'     => $pi->latest_charge,
-            'expand' => ['payment_method_details.card'],
-        ]);
+            $pi = PaymentIntent::retrieve($session->payment_intent->id);
+            $charge = Charge::retrieve([
+                'id'     => $pi->latest_charge,
+                'expand' => ['payment_method_details.card'],
+            ]);
 
-        // Création / MAJ du client
-        $client = Client::updateOrCreate(
-            ['stripe_session_id' => $sessionId],
-            [
-                'type'                    => $data['type'] ?? null,
-                'raison'                  => $data['raison'] ?? null,
-                'departement'             => $data['departement'] ?? null,
-                'sexe'                    => $data['sexe'] ?? null,
-                'nom_naissance'          => $data['nom_naissance'] ?? null,
-                'deuxieme_nom'           => $data['deuxieme_nom'] ?? null,
-                'prenom1'                => $data['prenom1'] ?? null,
-                'prenom2'                => $data['prenom2'] ?? null,
-                'prenom3'                => $data['prenom3'] ?? null,
-                'taille'                 => $data['taille'] ?? null,
-                'couleur_yeux'           => $data['couleur_yeux'] ?? null,
-                'date_naissance'         => $data['date_naissance'] ?? null,
-                'pays_naissance'         => $data['pays_naissance'] ?? null,
-                'departement_naissance'  => $data['departement_naissance'] ?? $data['dept_naissance'] ?? null,
-                'commune_naissance'      => $data['commune_naissance'] ?? null,
-                'adresse'                => $data['adresse'] ?? null,
-                'code_postal'            => $data['code_postal'] ?? null,
-                'ville'                  => $data['ville'] ?? null,
-                'pays'                   => $data['pays'] ?? null,
-                'situation_familiale'    => $data['situation_familiale'] ?? null,
-                'nom_naissance_mere'     => $data['mere_nom'] ?? null,
-                'prenom_mere'            => $data['mere_prenom1'] ?? null,
-                'nom_naissance_pere'     => $data['pere_nom'] ?? null,
-                'prenom_pere'            => $data['pere_prenom1'] ?? null,
-                'nationalite'            => $data['nationalite'] ?? null,
-                'telephone'              => $data['telephone'] ?? null,
-                'email'                  => $data['client_email'] ?? $session->customer_details->email,
-                'a_carte_identite'       => $data['a_carte_identite'] ?? false,
-                'numero_cni'             => $data['numero_cni'] ?? null,
-                'date_delivrance_cni'    => $data['date_delivrance_cni'] ?? null,
-                'lieu_delivrance_cni'    => $data['lieu_delivrance_cni'] ?? null,
-                'photo_identite'         => $data['photo_identite'] ?? null,
-                'justificatif_domicile'  => $data['justificatif_domicile'] ?? null,
-                'acte_naissance'         => $data['acte_naissance'] ?? null,
-                'autre_document'         => $data['autre_document'] ?? null,
-            ]
-        );
+            // Création / MAJ du client
+            $client = Client::updateOrCreate(
+                ['stripe_session_id' => $sessionId],
+                [
+                    'type'                    => $data['type'] ?? null,
+                    'raison'                  => $data['raison'] ?? null,
+                    'departement'             => $data['departement'] ?? null,
+                    'sexe'                    => $data['sexe'] ?? null,
+                    'nom_naissance'          => $data['nom_naissance'] ?? null,
+                    'deuxieme_nom'           => $data['deuxieme_nom'] ?? null,
+                    'prenom1'                => $data['prenom1'] ?? null,
+                    'prenom2'                => $data['prenom2'] ?? null,
+                    'prenom3'                => $data['prenom3'] ?? null,
+                    'taille'                 => $data['taille'] ?? null,
+                    'couleur_yeux'           => $data['couleur_yeux'] ?? null,
+                    'date_naissance'         => $data['date_naissance'] ?? null,
+                    'pays_naissance'         => $data['pays_naissance'] ?? null,
+                    'departement_naissance'  => $data['departement_naissance'] ?? $data['dept_naissance'] ?? null,
+                    'commune_naissance'      => $data['commune_naissance'] ?? null,
+                    'adresse'                => $data['adresse'] ?? null,
+                    'code_postal'            => $data['code_postal'] ?? null,
+                    'ville'                  => $data['ville'] ?? null,
+                    'pays'                   => $data['pays'] ?? null,
+                    'situation_familiale'    => $data['situation_familiale'] ?? null,
+                    'nom_naissance_mere'     => $data['mere_nom'] ?? null,
+                    'prenom_mere'            => $data['mere_prenom1'] ?? null,
+                    'nom_naissance_pere'     => $data['pere_nom'] ?? null,
+                    'prenom_pere'            => $data['pere_prenom1'] ?? null,
+                    'nationalite'            => $data['nationalite'] ?? null,
+                    'telephone'              => $data['telephone'] ?? null,
+                    'email'                  => $data['client_email'] ?? $session->customer_details->email,
+                    'a_carte_identite'       => $data['a_carte_identite'] ?? false,
+                    'numero_cni'             => $data['numero_cni'] ?? null,
+                    'date_delivrance_cni'    => $data['date_delivrance_cni'] ?? null,
+                    'lieu_delivrance_cni'    => $data['lieu_delivrance_cni'] ?? null,
+                    'photo_identite'         => $data['photo_identite'] ?? null,
+                    'justificatif_domicile'  => $data['justificatif_domicile'] ?? null,
+                    'acte_naissance'         => $data['acte_naissance'] ?? null,
+                    'autre_document'         => $data['autre_document'] ?? null,
+                ]
+            );
 
-        // Enregistrement du paiement
-        $payment = $client->payments()->updateOrCreate(
-            ['stripe_session_id' => $sessionId],
-            [
-                'charge_id'   => $charge->id,
-                'receipt_url' => $charge->receipt_url,
-                'email'       => $session->customer_details->email,
-                'card_last4'  => $charge->payment_method_details->card->last4,
-                'amount'      => $pi->amount_received,
-                'currency'    => $pi->currency,
-                'status'      => $session->payment_status,
-            ]
-        );
+            // Enregistrement du paiement
+            $payment = $client->payments()->updateOrCreate(
+                ['stripe_session_id' => $sessionId],
+                [
+                    'charge_id'   => $charge->id,
+                    'receipt_url' => $charge->receipt_url,
+                    'email'       => $session->customer_details->email,
+                    'card_last4'  => $charge->payment_method_details->card->last4,
+                    'amount'      => $pi->amount_received,
+                    'currency'    => $pi->currency,
+                    'status'      => $session->payment_status,
+                ]
+            );
 
-        return response()->json([
-            'status'  => 'success',
-            'client'  => $client->id,
-            'payment' => $payment->id,
-        ]);
-    } catch (\Exception $e) {
-        \Log::error('Erreur storeSessionData : ' . $e->getMessage());
-        return response()->json([
-            'status'  => 'error',
-            'message' => $e->getMessage(),
-        ], 500);
+            return response()->json([
+                'status'  => 'success',
+                'client'  => $client->id,
+                'payment' => $payment->id,
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('Erreur storeSessionData : ' . $e->getMessage());
+            return response()->json([
+                'status'  => 'error',
+                'message' => $e->getMessage(),
+            ], 500);
+        }
     }
-}
 
 
 
@@ -192,42 +192,42 @@ class StripeController extends Controller
     // Affiche la page de succès
     
    public function showSuccessPage(Request $request)
-{
-    Stripe::setApiKey(config('stripe.test.sk'));
-    $sessionId = $request->query('session_id');
-    if (!$sessionId) abort(404, 'Session ID manquante');
+    {
+        Stripe::setApiKey(config('stripe.test.sk'));
+        $sessionId = $request->query('session_id');
+        if (!$sessionId) abort(404, 'Session ID manquante');
 
-    $session = \Stripe\Checkout\Session::retrieve([
-        'id'     => $sessionId,
-        'expand' => ['payment_intent', 'customer']
-    ]);
-
-    $pi = \Stripe\PaymentIntent::retrieve($session->payment_intent->id);
-    $latestChargeId = $pi->latest_charge;
-    $charge = \Stripe\Charge::retrieve([
-        'id'     => $latestChargeId,
-        'expand' => ['payment_method_details.card'],
-    ]);
-
-    $receiptUrl = $charge->receipt_url;
-    $chargeId   = $charge->id;
-    $cardLast4  = $charge->payment_method_details->card->last4;
-    $email      = $session->customer_details->email;
-
-    //dd(compact('receiptUrl','chargeId','cardLast4','email'));
-
-    $client = Client::where('stripe_session_id', $sessionId)->first();
-    if ($client) {
-        $client->update([
-            'receipt_url' => $receiptUrl,
-            'charge_id'   => $chargeId,
-            'email'       => $email,
-            'card_last4'  => $cardLast4,
+        $session = \Stripe\Checkout\Session::retrieve([
+            'id'     => $sessionId,
+            'expand' => ['payment_intent', 'customer']
         ]);
+
+        $pi = \Stripe\PaymentIntent::retrieve($session->payment_intent->id);
+        $latestChargeId = $pi->latest_charge;
+        $charge = \Stripe\Charge::retrieve([
+            'id'     => $latestChargeId,
+            'expand' => ['payment_method_details.card'],
+        ]);
+
+        $receiptUrl = $charge->receipt_url;
+        $chargeId   = $charge->id;
+        $cardLast4  = $charge->payment_method_details->card->last4;
+        $email      = $session->customer_details->email;
+
+        //dd(compact('receiptUrl','chargeId','cardLast4','email'));
+
+        $client = Client::where('stripe_session_id', $sessionId)->first();
+        if ($client) {
+            $client->update([
+                'receipt_url' => $receiptUrl,
+                'charge_id'   => $chargeId,
+                'email'       => $email,
+                'card_last4'  => $cardLast4,
+            ]);
+        }
+        //dd($client->toArray());
+        return view('success', compact('receiptUrl', 'chargeId', 'email'));
     }
-    //dd($client->toArray());
-    return view('success', compact('receiptUrl', 'chargeId', 'email'));
-}
 
 
 
