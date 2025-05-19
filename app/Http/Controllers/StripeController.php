@@ -92,7 +92,7 @@ class StripeController extends Controller
      * Reçoit le POST Ajax et stocke TOUT (Stripe + sessionStorage)
      */
 
-  public function storeSessionData(Request $request)
+ public function storeSessionData(Request $request)
     {
         \Log::info('storeSessionData reçu :', $request->all());
 
@@ -102,61 +102,87 @@ class StripeController extends Controller
             $sessionId = $request->input('stripe_session_id');
             $data      = $request->input('data', []);
 
-            // Récupération de la session Stripe
+            // 1) Récupération de la session Stripe
             $session = StripeSession::retrieve([
                 'id'     => $sessionId,
                 'expand' => ['customer', 'payment_intent'],
             ]);
-
-            $pi = PaymentIntent::retrieve($session->payment_intent->id);
+            $pi     = PaymentIntent::retrieve($session->payment_intent->id);
             $charge = Charge::retrieve([
                 'id'     => $pi->latest_charge,
                 'expand' => ['payment_method_details.card'],
             ]);
 
-            // Création / MAJ du client
+            // 2) Conversion oui/non → bool pour Père/Mère inconnu
+            $data['pere_inconnu']   = (isset($data['pere_inconnu'])   && $data['pere_inconnu']   === 'oui');
+            $data['mere_inconnue']  = (isset($data['mere_inconnue'])  && $data['mere_inconnue']  === 'oui');
+
+            // 3) Regrouper les cases nat_* et le texte libre
+            $reasons = [];
+            foreach ($data as $key => $val) {
+                if (str_starts_with($key, 'nat_') && $val !== '') {
+                    $reasons[] = $val;
+                }
+            }
+            // créer la chaîne finale
+            $data['motif_nationalite'] = implode(';', $reasons);
+
+            // 4) Mapping de tous les champs du client
+            $clientData = [
+                'type'                    => $data['type']                    ?? null,
+                'raison'                  => $data['raison']                  ?? null,
+                'departement'             => $data['departement']             ?? null,
+                'sexe'                    => $data['sexe']                    ?? null,
+                'nom_naissance'           => $data['nom_naissance']           ?? null,
+                'deuxieme_nom'            => $data['deuxieme_nom']            ?? null,
+                'prenom1'                 => $data['prenom1']                 ?? null,
+                'prenom2'                 => $data['prenom2']                 ?? null,
+                'prenom3'                 => $data['prenom3']                 ?? null,
+                'taille'                  => $data['taille']                  ?? null,
+                'couleur_yeux'            => $data['couleur_yeux']            ?? null,
+                'date_naissance'          => $data['date_naissance']          ?? null,
+                'pays_naissance'          => $data['pays_naissance']          ?? null,
+                'departement_naissance'   => $data['departement_naissance']   ?? ($data['dept_naissance'] ?? null),
+                'commune_naissance'       => $data['commune_naissance']       ?? null,
+                'adresse'                 => $data['adresse']                 ?? null,
+                'code_postal'             => $data['code_postal']             ?? null,
+                'adresse_complement'      => $data['adresse_complement']      ?? null,
+                'ville'                   => $data['ville']                   ?? null,
+                'pays'                    => $data['pays']                    ?? null,
+                'situation_familiale'     => $data['situation_familiale']     ?? null,
+                'nationalite'             => $data['nationalite']             ?? null,
+                'motif_nationalite'       => $data['motif_nationalite']       ?? null,
+                'pere_inconnu'            => $data['pere_inconnu'],
+                'prenom_pere'             => $data['pere_prenom1']            ?? null,
+                'nom_naissance_pere'      => $data['pere_nom']                ?? null,
+                'pere_naissance_date'     => $data['pere_naissance_date']     ?? null,
+                'pere_naissance_ville'    => $data['pere_naissance_ville']    ?? null,
+                'pere_nationalite'        => $data['pere_nationalite']        ?? null,
+                'mere_inconnue'           => $data['mere_inconnue'],
+                'prenom_mere'             => $data['mere_prenom1']            ?? null,
+                'nom_naissance_mere'      => $data['mere_nom']                ?? null,
+                'mere_naissance_date'     => $data['mere_naissance_date']     ?? null,
+                'mere_naissance_ville'    => $data['mere_naissance_ville']    ?? null,
+                'mere_nationalite'        => $data['mere_nationalite']        ?? null,
+                'telephone'               => $data['telephone']               ?? null,
+                'email'                   => $data['client_email']            ?? $session->customer_details->email,
+                'a_carte_identite'        => $data['a_carte_identite']        ?? false,
+                'numero_cni'              => $data['numero_cni']              ?? null,
+                'date_delivrance_cni'     => $data['date_delivrance_cni']     ?? null,
+                'lieu_delivrance_cni'     => $data['lieu_delivrance_cni']     ?? null,
+                'photo_identite'          => $data['photo_identite']          ?? null,
+                'justificatif_domicile'   => $data['justificatif_domicile']   ?? null,
+                'acte_naissance'          => $data['acte_naissance']          ?? null,
+                'autre_document'          => $data['autre_document']          ?? null,
+            ];
+
+            // 5) Création ou mise à jour du client
             $client = Client::updateOrCreate(
                 ['stripe_session_id' => $sessionId],
-                [
-                    'type'                    => $data['type'] ?? null,
-                    'raison'                  => $data['raison'] ?? null,
-                    'departement'             => $data['departement'] ?? null,
-                    'sexe'                    => $data['sexe'] ?? null,
-                    'nom_naissance'          => $data['nom_naissance'] ?? null,
-                    'deuxieme_nom'           => $data['deuxieme_nom'] ?? null,
-                    'prenom1'                => $data['prenom1'] ?? null,
-                    'prenom2'                => $data['prenom2'] ?? null,
-                    'prenom3'                => $data['prenom3'] ?? null,
-                    'taille'                 => $data['taille'] ?? null,
-                    'couleur_yeux'           => $data['couleur_yeux'] ?? null,
-                    'date_naissance'         => $data['date_naissance'] ?? null,
-                    'pays_naissance'         => $data['pays_naissance'] ?? null,
-                    'departement_naissance'  => $data['departement_naissance'] ?? $data['dept_naissance'] ?? null,
-                    'commune_naissance'      => $data['commune_naissance'] ?? null,
-                    'adresse'                => $data['adresse'] ?? null,
-                    'code_postal'            => $data['code_postal'] ?? null,
-                    'ville'                  => $data['ville'] ?? null,
-                    'pays'                   => $data['pays'] ?? null,
-                    'situation_familiale'    => $data['situation_familiale'] ?? null,
-                    'nom_naissance_mere'     => $data['mere_nom'] ?? null,
-                    'prenom_mere'            => $data['mere_prenom1'] ?? null,
-                    'nom_naissance_pere'     => $data['pere_nom'] ?? null,
-                    'prenom_pere'            => $data['pere_prenom1'] ?? null,
-                    'nationalite'            => $data['nationalite'] ?? null,
-                    'telephone'              => $data['telephone'] ?? null,
-                    'email'                  => $data['client_email'] ?? $session->customer_details->email,
-                    'a_carte_identite'       => $data['a_carte_identite'] ?? false,
-                    'numero_cni'             => $data['numero_cni'] ?? null,
-                    'date_delivrance_cni'    => $data['date_delivrance_cni'] ?? null,
-                    'lieu_delivrance_cni'    => $data['lieu_delivrance_cni'] ?? null,
-                    'photo_identite'         => $data['photo_identite'] ?? null,
-                    'justificatif_domicile'  => $data['justificatif_domicile'] ?? null,
-                    'acte_naissance'         => $data['acte_naissance'] ?? null,
-                    'autre_document'         => $data['autre_document'] ?? null,
-                ]
+                $clientData
             );
 
-            // Enregistrement du paiement
+            // 6) Enregistrement du paiement
             $payment = $client->payments()->updateOrCreate(
                 ['stripe_session_id' => $sessionId],
                 [

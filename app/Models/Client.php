@@ -34,7 +34,7 @@ class Client extends Model
         'prenom_pere',
         'nationalite',
         'telephone',
-        'email',                // si vous stockez aussi l'email client ici
+        'email',                
         'a_carte_identite',
         'numero_cni',
         'date_delivrance_cni',
@@ -43,6 +43,19 @@ class Client extends Model
         'justificatif_domicile',
         'acte_naissance',
         'autre_document',
+        // …
+        'pere_inconnu',
+        'mere_inconnue',
+        'adresse_complement',
+        'nationalite',
+        'pere_naissance_date',
+        'pere_naissance_ville',
+        'pere_nationalite',
+        'mere_naissance_date',
+        'mere_naissance_ville',
+        'mere_nationalite',
+        // …
+        'motif_nationalite',
     ];
 
     public function payments()

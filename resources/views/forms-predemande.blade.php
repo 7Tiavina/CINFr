@@ -73,31 +73,43 @@
         <h4>La demande concerne un : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
         <div class="radio-options">
           <div>
-            <input type="radio" id="majeur" name="type_demande" value="majeur" required>
+            <input type="radio" id="majeur" name="type" value="majeur" required>
             <label for="majeur">Majeur</label>
           </div>
           <div>
-            <input type="radio" id="mineur" name="type_demande" value="mineur" required>
+            <input type="radio" id="mineur" name="type" value="mineur" required>
             <label for="mineur">Mineur</label>
           </div>
         </div>
       </div>
 
+
+      <div class="form-group">
+        <h4>Situation Familiale<span class="required-tooltip" title="Champ nécessaire">*</span></h4>
+        <select name="situation_familiale" required>
+          <option value="">Sélectionnez une situation</option>
+          <option value="celibataire">Célibataire</option>
+          <option value="marie">Marié</option>
+          <option value="divorce">Divorcé</option>
+        </select>
+      </div>
+
+
       <div class="form-group">
         <h4>Raison de la demande <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-        <select name="raison_demande" style="width: 100%;" required>
+        <select name="raison" style="width: 100%;" required>
           <option value="">Sélectionnez une raison</option>
-          <option value="premiere">Première demande</option>
+          <option value="premiere_demande">Première demande</option>
           <option value="renouvellement">Renouvellement</option>
         </select>
       </div>
 
       <div class="form-group">
         <h4>Dans quel département effectuez-vous votre demande ? <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-        <select name="departement_demande" style="width: 100%;" required>
+        <select name="departement" style="width: 100%;" required>
           <option value="">Sélectionnez un département</option>
-          <option value="01">01 Ain</option>
-          <option value="02">02 Aisne</option>
+          <option value="01_Ain">01 Ain</option>
+          <option value="02_Aisne">02 Aisne</option>
         </select>
       </div>
     </div>
@@ -156,6 +168,12 @@
           <option value="gris">Gris</option>
         </select>
       </div>
+
+      <div class="form-group">
+        <h4>Nationalité<span class="required-tooltip" title="Champ nécessaire">*</span></h4>
+        <input type="text" name="nationalite" required>
+      </div>
+
 
       <div class="form-group">
         <h4>Date de naissance <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
