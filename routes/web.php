@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\ContactController;
 
 Route::get('/', function () {
     return view('index');
@@ -18,7 +19,7 @@ Route::get('/predemande', function () {
 Route::get('/contact', function () {
     return view('forms-contact');
 })->name('contact');
-
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 
 Route::get('/mentions', function () {
