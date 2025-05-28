@@ -7,7 +7,7 @@
     <!-- Custom Css -->
     <link rel="stylesheet" href="forms.css" type="text/css" />
     
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.webp" type="image/webp">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -470,7 +470,12 @@
     </div>
     <div class="row align-items-center mt-5">
       <div class="col-md-6">
-        <img src="images/Forms-amico.png" alt="Simplified Process" class="img-fluid">
+        <picture>
+          <source srcset="images/Forms-amico.webp" type="image/webp">
+          <img src="images/Forms-amico.webp" alt="Simplified Process" class="img-fluid">
+        </picture>
+
+
       </div>
       <div class="col-md-6">
         <div class="benefits-box">
@@ -487,7 +492,13 @@
   <div class="container">
     <div class="row align-items-center mt-5">
       <div class="col-md-6 order-md-2">
-        <img src="images/Reminders-pana.png" alt="Simplified Process" class="img-fluid">
+        <picture>
+          <source srcset="images/Reminders-pana.webp" type="image/webp">
+          <picture>
+            <source srcset="images/Reminders-pana.webp" type="image/webp">
+            <img src="images/Reminders-pana.webp" alt="Simplified Process" class="img-fluid">
+          </picture>
+
       </div>
       <div class="col-md-6 order-md-1">
         <div class="benefits-box">
@@ -505,7 +516,11 @@
     <div class="container">
         <div class="row align-items-center mt-5">
           <div class="col-md-6">
-            <img src="images/Done-pana.png" alt="Simplified Process" class="img-fluid">
+            <picture>
+              <source srcset="images/Done-pana.webp" type="image/webp">
+              <img src="images/Done-pana.webp" alt="Simplified Process" class="img-fluid">
+            </picture>
+
           </div>
           <div class="col-md-6">
             <div class="benefits-box">

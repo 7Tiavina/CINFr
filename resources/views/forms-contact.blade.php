@@ -15,7 +15,7 @@
     .form-submit button { padding: 12px 25px; background-color: #0444ec; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
   </style>
 
-  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="images/favicon.webp" type="image/webp">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css" type="text/css" />
   <link href="https://unpkg.com/ionicons@4.2.0/dist/css/ionicons.min.css" rel="stylesheet">

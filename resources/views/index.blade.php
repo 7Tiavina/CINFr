@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-     <link rel="icon" href="images/favicon.png" type="image/x-icon">
+     <link rel="icon" href="images/favicon.webp" type="image/webp">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -34,8 +34,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                <img src="images/cinhand.png" class="img-fluid" alt="Demo image">
+              <img src="images/cinhand.webp" class="img-fluid" alt="Demo image">
             </div>
+
             
 
             <div class="col-md-7 content-box hero-content">
@@ -73,8 +74,12 @@
     </div>
     <div class="row align-items-center mt-5">
       <div class="col-md-6">
-        <img src="images/cinstyle.png" alt="Simplified Process" class="img-fluid">
+        <picture>
+          <source srcset="images/cinstyle.webp" type="image/webp">
+          <img src="images/cinstyle.png" alt="Simplified Process" class="img-fluid">
+        </picture>
       </div>
+
       <div class="col-md-6">
         <div class="benefits-box">
           <h3 class="text-primary">CINFr vous aides a :</h3>
@@ -132,7 +137,11 @@
           <span style="font-size: 2rem; font-weight: bold; color: #333;">39€<span style="font-size: 1rem; color: #666; font-weight: normal;">TTC</span></span>
           <h2 style="color: #0444ec;">Pour un Majeur</h2>
           <p>Traitement Sous 48h</p>
-          <img src="images/Parents-rafiki.png" alt="Logo CINFr" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+          <picture>
+            <source srcset="images/Parents-rafiki.webp" type="image/webp">
+            <img src="images/Parents-rafiki.png" alt="Logo CINFr" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+          </picture>
+
           <a href="{{ route('predemande') }}" class="btnfos btnfos-1">
             <svg>
               <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
@@ -146,7 +155,11 @@
           <span style="font-size: 2rem; font-weight: bold; color: #333;">29€<span style="font-size: 1rem; color: #666; font-weight: normal;">TTC</span></span>
           <h2 style="color: #0444ec;">Pour un Mineur</h2>
           <p>Traitement Sous 48h</p>
-          <img src="images/Recess-rafiki.png" alt="Logo CINFr" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+          <picture>
+            <source srcset="images/Recess-rafiki.webp" type="image/webp">
+            <img src="images/Recess-rafiki.png" alt="Logo CINFr" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+          </picture>
+
           <a href="{{ route('predemande') }}" class="btnfos btnfos-1">
             <svg>
               <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
@@ -293,7 +306,7 @@
 
 <!-- Section contenant une grande image centrée avec une hauteur réduite -->
 <section id="grande-image" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 95vh; overflow: hidden;">
-  <img src="images/pexels-victorfreitas-1381415.jpg" alt="Description de l'image" style="max-width: 140%; height: auto; object-fit: contain; display: block;">
+  <img src="images/pexels-victorfreitas-1381415.webp" alt="Description de l'image" style="max-width: 140%; height: auto; object-fit: contain; display: block;">
 </section>
 
 <button id="scrollTopBtn">

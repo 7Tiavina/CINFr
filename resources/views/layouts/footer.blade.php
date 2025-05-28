@@ -2,7 +2,10 @@
     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
       <!-- Logo Section -->
       <div style="flex: 1; min-width: 200px; text-align: center;">
-        <img src="images/logoreverse.png" alt="Logo CINFr" style="max-width: 150px; margin-bottom: 10px;">
+        <picture>
+          <source srcset="images/logoreverse.webp" type="image/webp">
+          <img src="images/logoreverse.png" alt="Logo CINFr" style="max-width: 150px; margin-bottom: 10px;">
+        </picture>
         <p style="font-size: 14px;">Copyright © 2025 CINFr</p>
       </div>
 

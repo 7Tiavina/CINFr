@@ -7,8 +7,12 @@
   </div>
 
   <a href="{{ route('index') }}" class="navbar-brand">
-    <img src="{{ asset('images/logo3.png') }}" alt="Company Logo" class="nav-logo img-fluid">
+    <picture>
+      <source srcset="{{ asset('images/logo3.webp') }}" type="image/webp">
+      <img src="{{ asset('images/logo3.png') }}" alt="Company Logo" class="nav-logo img-fluid">
+    </picture>
   </a>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="icon ion-md-menu"></span>
   </button>
