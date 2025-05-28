@@ -51,6 +51,7 @@ body {
 	color: #3a3f52;
 }
 
+
 h2 {
 	font-size: 44px;
 	font-weight: 700;
@@ -460,94 +461,39 @@ section {
 }
 
 
-#hero {
-    background-color: #f6f8f9;
-    padding: 80px 0; /* Augmenté */
-    height: 100vh; /* Pleine hauteur de l'écran */
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-}
-
-#hero .container {
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
+/* === Overrides pour coller le texte à droite dans #hero === */
 #hero .row {
-    width: 100%;
-    align-items: center;
-}
-
-
-
-
-#hero .col-lg-5, #hero .col-md-5, #hero .col-sm-5, #hero .col-xs-5 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#hero img {
-    width: 100%; /* L'image occupe toute la largeur du conteneur */
-    max-width: 500px; /* Vous pouvez limiter la taille maximale si nécessaire */
-    height: auto; /* Garder le ratio d'aspect de l'image */
-    object-fit: contain; /* Assure que l'image ne soit pas déformée */
+  display: flex !important;
+  justify-content: flex-start !important; /* on gère le décalage via margin */
 }
 
 #hero .hero-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100%;
-    padding-left: 20px;
+  margin-left: auto !important;  /* pousse ce bloc à l’extrémité droite */
+  max-width: none !important;     /* supprime toute largeur forcée */
+  width: auto !important;
 }
 
-#hero h1 {
-    font-size: 40px;
-    font-weight: 300;
-    margin-bottom: 20px;
+/* Désactive tout padding qui pourrait limiter l’espace */
+#hero .container,
+#hero .row,
+#hero .col-lg-7,
+#hero .col-md-7 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+/* === HERO : forcer image à gauche et contenu à droite === */
+#hero .row { justify-content: flex-start !important; }
+#cinhand-container { order: 1 !important; }
+.hero-content       { order: 2 !important; }
+
+/* Annule toute largeur fixe */
+.hero-content {
+  width: auto !important;
+  max-width: none !important;
 }
 
-#hero p {
-    font-size: 20px;
-    font-weight: 300;
-    color: #8da2b5;
-    margin-bottom: 20px;
-}
-
-#hero .btn {
-    font-size: 16px;
-    padding: 10px 20px;
-}
-
-#hero .col-xs-5 {
-    display: flex;
-    justify-content: flex-start; /* <-- important */
-    align-items: center;
-    padding-left: 0; /* retire le padding si nécessaire */
-}
-#hero .container, 
-#hero .row {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-
-.hero-text {
-    font-size: 24px;
-    font-weight: 400;
-    color: #2c3e50;
-    line-height: 1.5;
-    text-align: right;
-    margin-bottom: 20px;
-}
+/* Aligne tout à droite dans hero-content */
+.hero-text-wrapper { width: 100%; text-align: right; }
 
 
 .strong-word {
@@ -566,6 +512,17 @@ section {
 #hero .hero-content {
     align-items: flex-end; /* pousse le contenu à droite */
     text-align: right;
+}
+
+#cinhand-container {
+  overflow: hidden;
+  max-width: 600px;
+  max-height: 400px;
+}
+
+#cinhand-container img {
+  transform: scale(1.14);
+  transform-origin: center center;
 }
 
 
@@ -655,6 +612,28 @@ section {
    6. crestimonials
 ===============================================*/
 #crestimonials {
+  margin-bottom: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+#marketing {
+  margin-bottom: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+#testimonials {
+  margin-top: 3rem !important;
+  padding-top: 3rem !important;
+}
+
+/* Assurez-vous que chaque section est bien un bloc séparé */
+section {
+  display: block;
+  position: relative;
+  clear: both;
+}
+
+#crestimonials {
   background: linear-gradient(to bottom, #f7f9fc, #ffffff);
   padding: 60px 20px;
 }
@@ -664,6 +643,9 @@ section {
 }
 
 #crestimonials .title-block h2 {
+  white-space: normal !important;
+  word-wrap: break-word;
+  hyphens: auto;
   font-size: 34px;
   font-weight: 700;
   color: #0444ec;

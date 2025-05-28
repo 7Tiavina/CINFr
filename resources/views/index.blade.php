@@ -29,38 +29,44 @@
   
   <!-- H E R O -->
   <section id="hero">
-    <div id="lottie-bg"></div>
+  <div id="lottie-bg"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Image à gauche (desktop only) -->
+      <div class="col-md-5 d-none d-md-flex" id="cinhand-container">
+        <img src="images/cinhand.webp"
+             width="600" height="400"
+             loading="lazy"
+             class="img-fluid"
+             alt="Demo image">
+      </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-              <img src="images/cinhand.webp" class="img-fluid" alt="Demo image">
-            </div>
-
-            
-
-            <div class="col-md-7 content-box hero-content">
-                <div class="hero-text-wrapper">
-                    <h1 class="hero-text">
-                        Faites vos<br>
-                        <span class="strong-word">démarches</span><br>
-                        administratives<br>
-                        <span class="strong-word">simplement</span><br>
-                        avec <span class="highlight">CINFr</span>
-                    </h1>
-                    <a href="{{ route('predemande') }}" class="btnfos btnfos-1">
-                        <svg>
-                            <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
-                        </svg>
-                        Pré-demande CNI
-                    </a>
-                </div>
-            </div>
-
-
+      <!-- Lottie + texte à droite -->
+      <div class="col-md-7 d-flex flex-column content-box hero-content">
+        <div id="lottie-container" class="mb-3">
+          <!-- Lottie ici -->
         </div>
+        <div class="hero-text-wrapper text-right">
+          <h1 class="hero-text">
+            Faites vos<br>
+            <span class="strong-word">démarches</span><br>
+            administratives<br>
+            <span class="strong-word">simplement</span><br>
+            avec <span class="highlight">CINFr</span>
+          </h1>
+          <a href="{{ route('predemande') }}" class="btnfos btnfos-1">
+            <svg><rect x="0" y="0" rx="25" ry="25"
+                       fill="none" width="100%" height="100%"/></svg>
+            Pré-demande CNI
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
+
+
+
 
   <!-- E N D  H E R O -->
 
@@ -426,6 +432,20 @@
         path: '/lotties/Animation - 1745500384634.json'
     });
 </script>
+
+<script>
+  function toggleCinhand() {
+    const cinhand = document.getElementById('cinhand-container');
+    if (window.innerWidth < 768) {
+      cinhand.style.display = 'none';
+    } else {
+      cinhand.style.display = 'block';
+    }
+  }
+
+  window.addEventListener('load', toggleCinhand);
+  window.addEventListener('resize', toggleCinhand);
+</script
 
 
   </body>
