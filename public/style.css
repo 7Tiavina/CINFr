@@ -49,6 +49,10 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	color: #3a3f52;
+	padding-top: 100px; /* Account for fixed navbar height */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 
@@ -181,13 +185,19 @@ section {
 
 
 .custom-navbar {
-  background-color: #ffffff!important;
+  background-color: #ffffff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .09);
   padding: 0 20px; /* Ajout des espaces latéraux */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100px; /* Ajustez la hauteur de la navbar en fonction du logo */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  transition: top 0.3s ease-in-out;
 }
 
 .navbar-brand {
@@ -196,7 +206,7 @@ section {
 }
 
 .nav-logo {
-  max-height: 150px; /* Ajustez la hauteur maximale du logo */
+  max-height: 80px; /* Ajustez la hauteur maximale du logo */
 }
 
 .navbar-toggler {
@@ -239,25 +249,25 @@ section {
 }
 
 .nav-link:hover {
-  color: #0444ec !important; /* Changement de couleur au survol */
+  color: #0444ec; /* Changement de couleur au survol */
 }
 
 /* Cible le bouton spécifique dans la navbar */
 .navbar .nav-item .btn-demo-small {
-  background-color: #0444ec !important; /* Couleur de fond du bouton */
-  color: #ffffff !important; /* Couleur du texte en blanc */
-  font-size: 18px !important; /* Augmente la taille du texte */
-  padding: 15px 30px !important; /* Augmente la taille du bouton */
-  border-radius: 5px !important; /* Arrondir les coins */
-  font-weight: bold !important; /* Texte en gras */
-  text-transform: uppercase !important; /* Texte en majuscules */
-  transition: background-color 0.3s ease, transform 0.3s ease !important; /* Animation au survol */
+  background-color: #0444ec; /* Couleur de fond du bouton */
+  color: #ffffff; /* Couleur du texte en blanc */
+  font-size: 18px; /* Augmente la taille du texte */
+  padding: 15px 30px; /* Augmente la taille du bouton */
+  border-radius: 5px; /* Arrondir les coins */
+  font-weight: bold; /* Texte en gras */
+  text-transform: uppercase; /* Texte en majuscules */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Animation au survol */
 }
 
 /* Effet de survol pour le bouton */
 .navbar .nav-item .btn-demo-small:hover {
-  background-color: #061d94 !important; /* Couleur plus foncée lors du survol */
-  transform: scale(1.1) !important; /* Effet de zoom */
+  background-color: #061d94; /* Couleur plus foncée lors du survol */
+  transform: scale(1.1); /* Effet de zoom */
 }
 
 
@@ -279,15 +289,6 @@ section {
   .nav-item {
     margin: 10px 0;
   }
-}
-
-.custom-navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1030;
-  transition: top 0.3s ease-in-out;
 }
 
 /* ==============================================
@@ -344,6 +345,22 @@ section {
   box-shadow: none;
 }
 
+/* General Primary Button */
+.btn-primary {
+  background-color: #0444ec;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #022c99;
+  transform: scale(1.05);
+}
 
 /* Boutons restes */
 .btnfos {
@@ -463,14 +480,14 @@ section {
 
 /* === Overrides pour coller le texte à droite dans #hero === */
 #hero .row {
-  display: flex !important;
-  justify-content: flex-start !important; /* on gère le décalage via margin */
+  display: flex;
+  justify-content: flex-start; /* on gère le décalage via margin */
 }
 
 #hero .hero-content {
-  margin-left: auto !important;  /* pousse ce bloc à l’extrémité droite */
-  max-width: none !important;     /* supprime toute largeur forcée */
-  width: auto !important;
+  margin-left: auto;  /* pousse ce bloc à l’extrémité droite */
+  max-width: none;     /* supprime toute largeur forcée */
+  width: auto;
 }
 
 /* Désactive tout padding qui pourrait limiter l’espace */
@@ -478,18 +495,18 @@ section {
 #hero .row,
 #hero .col-lg-7,
 #hero .col-md-7 {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  padding-left: 0;
+  padding-right: 0;
 }
 /* === HERO : forcer image à gauche et contenu à droite === */
-#hero .row { justify-content: flex-start !important; }
-#cinhand-container { order: 1 !important; }
-.hero-content       { order: 2 !important; }
+#hero .row { justify-content: flex-start; }
+#cinhand-container { order: 1; }
+.hero-content       { order: 2; }
 
 /* Annule toute largeur fixe */
 .hero-content {
-  width: auto !important;
-  max-width: none !important;
+  width: auto;
+  max-width: none;
 }
 
 /* Aligne tout à droite dans hero-content */
@@ -612,18 +629,18 @@ section {
    6. crestimonials
 ===============================================*/
 #crestimonials {
-  margin-bottom: 3rem !important;
-  padding-bottom: 3rem !important;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
 }
 
 #marketing {
-  margin-bottom: 3rem !important;
-  padding-bottom: 3rem !important;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
 }
 
 #testimonials {
-  margin-top: 3rem !important;
-  padding-top: 3rem !important;
+  margin-top: 3rem;
+  padding-top: 3rem;
 }
 
 /* Assurez-vous que chaque section est bien un bloc séparé */
@@ -643,7 +660,7 @@ section {
 }
 
 #crestimonials .title-block h2 {
-  white-space: normal !important;
+  white-space: normal;
   word-wrap: break-word;
   hyphens: auto;
   font-size: 34px;
@@ -689,22 +706,6 @@ section {
   margin-right: 10px;
 }
 
-.btn-primary {
-  background-color: #0444ec;
-  color: #ffffff;
-  border: none;
-  padding: 12px 20px;
-  font-size: 16px;
-  border-radius: 8px;
-  text-transform: uppercase;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-primary:hover {
-  background-color: #022c99;
-  transform: scale(1.05);
-}
-
 #crestimonials .benefits-box h3.text-primary {
   font-size: 28px;
   font-weight: 600;
@@ -718,7 +719,7 @@ section {
 
 #testimonials {
   background-color: #f6f8f9; /* Couleur de fond */
-  height: 50vh; /* Hauteur de 50% de la fenêtre visible */
+  min-height: 50vh; /* Hauteur de 50% de la fenêtre visible */
   display: flex;
   align-items: center; /* Centrer verticalement */
   text-align: center;
@@ -795,82 +796,6 @@ section {
 /* ==============================================
    7. cni-information
 ===============================================*/
-
-#cni-information {
-  background-color: #f8f9fb;
-  padding: 60px 20px;
-}
-
-#cni-information .title-block h2 {
-  font-size: 32px;
-  font-weight: 700;
-  color: #0444ec;
-  margin-bottom: 10px;
-}
-
-#cni-information .title-block p {
-  font-size: 18px;
-  color: #6c757d;
-}
-
-.info-box {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 20px 30px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-
-.info-box h3 {
-  font-size: 24px;
-  font-weight: 600;
-  color: #333333;
-  margin-bottom: 15px;
-}
-
-.info-box p {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #555555;
-}
-
-.info-box ul,
-.info-box ol {
-  padding-left: 20px;
-  margin-top: 15px;
-}
-
-.info-box ul li,
-.info-box ol li {
-  font-size: 16px;
-  color: #555555;
-  margin-bottom: 10px;
-}
-
-.info-box ul li i,
-.info-box ol li i {
-  font-size: 20px;
-  color: #0444ec;
-  margin-right: 10px;
-}
-
-.btn-primary {
-  background-color: #0444ec;
-  color: #ffffff;
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-size: 16px;
-  text-transform: uppercase;
-  transition: 0.3s ease;
-}
-
-.btn-primary:hover {
-  background-color: #022c99;
-}
-
-/* ==============================================
-   C N I - Documents Section 
-=============================================== */
 
 .styled-section {
   background: #f9f9f9;
@@ -1113,7 +1038,7 @@ footer small {
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
 	h2 {
-		font-size: 34px!important;
+		font-size: 34px;
 		margin-bottom: 20px;
 		line-height: 1.6;
 	}
@@ -1123,7 +1048,7 @@ footer small {
 	}
 
 	#call-to-action h2, p {
-		text-align: left!important;
+		text-align: left;
 		padding: 0 20px;
 	}
 
@@ -1158,11 +1083,11 @@ footer small {
 
 @media (max-width: 768px) { 
 	#hero h1 {
-		font-size: 34px!important;
+		font-size: 34px;
 		margin-bottom: 20px;
 	}
 	#hero p {
-		font-size: 20px!important;
+		font-size: 20px;
 	}
 }
 
@@ -1196,7 +1121,7 @@ footer small {
 
 	}
 	.btn-demo-small a {
-		color: #53627C!important;
+		color: #53627C;
 	}
 	.nav-custom-link {
 		font-size: 13px;
@@ -1278,7 +1203,7 @@ footer small {
 
 
 /* ==============================================
-  Banner
+   Banner
 ===============================================*/
 
 #banner {
@@ -1320,8 +1245,4 @@ footer small {
 
 #banner .icon i {
   font-size: 28px; /* Taille de l'icône */
-  color: #0444ec; /* Coul
-
-/* ==============================================
-   Departments Section
-=============================================== */
+  color: #0444ec; /* Couleur de l'icône */

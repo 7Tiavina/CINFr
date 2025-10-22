@@ -26,7 +26,7 @@
 
   <body>
 @include('layouts.navbar')
-  
+<main style="flex-grow: 1;">
   <!-- H E R O -->
   <section id="hero">
   <div id="lottie-bg"></div>
@@ -318,8 +318,7 @@
 <button id="scrollTopBtn">
           ↑
         </button>
-
-
+</main>
 
   <!--  F O O T E R  -->
   @include('layouts.footer')
