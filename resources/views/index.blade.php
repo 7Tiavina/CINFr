@@ -140,7 +140,7 @@
     <div class="row justify-content-center">
       <div class="col-md-5">
         <div class="subscription-box text-center">
-          <span style="font-size: 2rem; font-weight: bold; color: #333;">39€<span style="font-size: 1rem; color: #666; font-weight: normal;">TTC</span></span>
+          <span style="font-size: 2rem; font-weight: bold; color: #333;">{{ config('prix.majeur') }}€<span style="font-size: 1rem; color: #666; font-weight: normal;">TTC</span></span>
           <h2 style="color: #0444ec;">Pour un Majeur</h2>
           <p>Traitement Sous 48h</p>
           <picture>
@@ -158,7 +158,7 @@
       </div>
       <div class="col-md-5">
         <div class="subscription-box text-center">
-          <span style="font-size: 2rem; font-weight: bold; color: #333;">29€<span style="font-size: 1rem; color: #666; font-weight: normal;">TTC</span></span>
+          <span style="font-size: 2rem; font-weight: bold; color: #333;">{{ config('prix.mineur') }}€<span style="font-size: 1rem; color: #666; font-weight: normal;">TTC</span></span>
           <h2 style="color: #0444ec;">Pour un Mineur</h2>
           <p>Traitement Sous 48h</p>
           <picture>

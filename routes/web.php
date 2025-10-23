@@ -39,3 +39,8 @@ Route::get('/checkout', [StripeController::class, 'checkout'])->name('checkout')
 Route::get('/success', [StripeController::class, 'showSuccessPage'])->name('success'); 
 // Stockage des données (POST)  
 Route::post('/success', [StripeController::class,'storeSessionData'])->name('success.store');
+
+// Authentication Routes
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');

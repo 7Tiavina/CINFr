@@ -20,6 +20,7 @@ body {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1.1rem; /* Increased font size */
 }
 
 /* ==== Scroll to Top Button ==== */
@@ -100,6 +101,7 @@ body {
   border-radius: 6px;
   box-sizing: border-box;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1.1rem; /* Increased font size */
 }
 .form-group input:focus,
 .form-group select:focus {
@@ -326,4 +328,25 @@ select.filled {
 #recap-container p strong {
   color: #0444ec;
   margin-right: 10px;
+}
+
+.recap-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.recap-price p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.recap-price span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0444ec;
 }

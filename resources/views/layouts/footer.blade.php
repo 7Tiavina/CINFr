@@ -29,6 +29,11 @@
             Politique de remboursement
           </a>
         </li>
+        <li style="margin: 12px 0;">
+          <a href="{{ route('login') }}" style="color: white; text-decoration: none; font-size: 15px; position: relative; transition: all 0.3s;">
+            <i class="icon ion-md-lock" style="margin-right: 5px;"></i> Admin Login
+          </a>
+        </li>
       </ul>
     </div>
 

@@ -60,7 +60,7 @@
 
 
 
-<section id="form-background">
+<section id="form-background" data-prix_majeur="{{ config('prix.majeur') }}" data-prix_mineur="{{ config('prix.mineur') }}">
   <div id="form-section">
     <!-- Barre de progression -->
     <div class="progress">
@@ -394,6 +394,7 @@
   <div id="recap-container"></div>
   <form id="stripe-form" action="{{ route('test') }}" method="POST">
     @csrf
+    <input type="hidden" name="type" id="stripe-form-type">
     <div class="buttons" style="display:flex;justify-content:flex-end;margin-top:30px;">
       <button type="button" class="btn btn-secondary" onclick="prevStep()">Précédent</button>
       <button type="submit" class="btn btn-primary ml-2">Procéder a ma commande</button>

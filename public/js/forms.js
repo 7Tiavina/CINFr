@@ -1,5 +1,5 @@
+
 //Gestion contenu du Formulaire-----------------------------------------------------------------------------------
-try {
 let currentStep = 1;
 
 function showFormPart(step) {
@@ -22,7 +22,7 @@ function showFormPart(step) {
   const prevBtn = document.getElementById('prev-btn');
   const nextBtn = document.getElementById('next-btn');
 
-  // Cacher les boutons à l étape 6
+  // Cacher les boutons à l'étape 6
   if (step === 6) {
     prevBtn.style.display = 'none';
     nextBtn.style.display = 'none';
@@ -223,17 +223,17 @@ document.getElementById('mere-inconnue-oui').addEventListener('change', function
 
   let previousScrollPosition = window.pageYOffset;
   const navbar = document.querySelector('.custom-navbar');
-  const threshold = 100; // Seuil pour activer l affichage via le pointeur
+  const threshold = 100; // Seuil pour activer l'affichage via le pointeur
 
   // Gérer le défilement
   window.addEventListener('scroll', () => {
     const currentScrollPosition = window.pageYOffset;
 
     if (previousScrollPosition > currentScrollPosition) {
-      // L utilisateur défile vers le haut, afficher la navbar
+      // L'utilisateur défile vers le haut, afficher la navbar
       navbar.style.top = "0";
     } else {
-      // L utilisateur défile vers le bas, cacher la navbar
+      // L'utilisateur défile vers le bas, cacher la navbar
       navbar.style.top = "-100px"; // Ajustez selon la hauteur de la navbar
     }
     previousScrollPosition = currentScrollPosition;
@@ -319,7 +319,7 @@ function displayRecap() {
         { label: 'Adresse', name: 'adresse' },
         { label: 'Ville', name: 'ville' },
         { label: 'Code postal', name: 'code_postal' },
-        { label: 'Complément d\'adresse', name: 'adresse_complement' },
+        { label: "Complément d'adresse", name: 'adresse_complement' },
         { label: 'Téléphone', name: 'telephone' },
         { label: 'Email', name: 'email' },
     ];
@@ -331,10 +331,21 @@ function displayRecap() {
         }
     });
 
-    recapContainer.innerHTML = html;
-}
+    const formSection = document.getElementById('form-background');
+    const type = sessionStorage.getItem('type');
+    const prixMajeur = formSection.dataset.prix_majeur;
+    const prixMineur = formSection.dataset.prix_mineur;
+    const price = type === 'majeur' ? prixMajeur : prixMineur;
+    const typeText = type === 'majeur' ? 'Majeur' : 'Mineur';
 
-}
- catch (e) {
-    console.error(e);
+    html += `<hr>`;
+    html += `<div class="recap-price">`;
+    html += `  <p>Montant à régler pour une personne <strong>${typeText}</strong></p>`;
+    html += `  <span>${price} €</span>`;
+    html += `</div>`;
+
+    recapContainer.innerHTML = html;
+
+    // Set the value of the hidden input
+    document.getElementById('stripe-form-type').value = type;
 }

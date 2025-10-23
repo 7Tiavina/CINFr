@@ -30,8 +30,12 @@ class StripeController extends Controller
      * @return RedirectResponse
      * @throws ApiErrorException
      */
-    public function test(): RedirectResponse
+    public function test(Request $request): RedirectResponse
     {
+        $type = $request->input('type');
+        $price = $type === 'majeur' ? config('prix.majeur') : config('prix.mineur');
+        $priceInCents = $price * 100;
+
         Stripe::setApiKey(config('stripe.test.sk'));
 
         $session = StripeSession::create([
@@ -40,7 +44,7 @@ class StripeController extends Controller
                 'price_data' => [
                     'currency'     => 'eur',
                     'product_data' => ['name' => 'Pré-demande de CNI'],
-                    'unit_amount'  => 3900,  // 39,00 € en cents
+                    'unit_amount'  => $priceInCents,
                 ],
                 'quantity'   => 1,
             ]],
