@@ -61,7 +61,7 @@ body {
 }
 
 .progress-bar {
-  background-color: #007bff;
+  background-color: #0444ec;
   color: #fff;
   display: flex;
   align-items: center;
@@ -132,32 +132,66 @@ body {
   justify-content: space-between;
   margin-top: 30px;
 }
-.btn {
-  padding: 10px 20px;
+.buttons .btn {
+  padding: 12px 28px;
   border: none;
-  border-radius: 5px;
+  border-radius: 25px !important;
   cursor: pointer;
   font-size: 1rem;
+  font-weight: 600;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
-.btn-primary {
+
+#form-section .btn-primary {
   background-color: #0444ec;
   color: white;
 }
-.btn-primary:hover {
+
+#form-section .btn-primary:hover {
   background-color: #022b9c;
   transform: translateY(-2px);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
-.btn-secondary {
+
+#form-section .btn-secondary {
   background-color: #f1f1f1;
   color: #333;
+  border: 1px solid #ddd;
 }
-.btn-secondary:hover {
+
+#form-section .btn-secondary:hover {
   background-color: #ddd;
   color: #000;
   transform: translateY(-2px);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Loading animation */
+.btn.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.btn.loading {
+  color: transparent !important;
+  pointer-events: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ==== Error States ==== */
@@ -263,4 +297,27 @@ select.filled {
 @keyframes slideDown {
   from { opacity: 0; transform: translate(-50%, -20px); }
   to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* ==== Recap Container ==== */
+#recap-container {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+#recap-container h3 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#recap-container p {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+#recap-container p strong {
+  color: #0444ec;
+  margin-right: 10px;
 }

@@ -1,5 +1,5 @@
+//Gestion contenu du Formulaire-----------------------------------------------------------------------------------
 try {
-	//Gestion contenu du Formulaire-----------------------------------------------------------------------------------
 let currentStep = 1;
 
 function showFormPart(step) {
@@ -90,6 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function nextStep() {
+  const nextBtn = document.getElementById('next-btn');
+  nextBtn.classList.add('loading');
+
   const totalSteps = document.querySelectorAll('.form-part').length;
 
   if (currentStep === 3) {
@@ -98,6 +101,7 @@ function nextStep() {
     if (!pereInconnu && !mereInconnue) {
         if (!validateCurrentStep()) {
             showAlert('❌ Veuillez remplir tous les champs obligatoires avant de continuer.');
+            nextBtn.classList.remove('loading');
             return;
         }
     }
@@ -107,18 +111,23 @@ function nextStep() {
     const validationConditions = document.getElementById('validation_conditions').checked;
     if (!validationInfo || !validationPolitique || !validationConditions) {
         showAlert('❌ Veuillez cocher toutes les cases de validation.');
+        nextBtn.classList.remove('loading');
         return;
     }
   } else {
     if (!validateCurrentStep()) {
         showAlert('❌ Veuillez remplir tous les champs obligatoires avant de continuer.');
+        nextBtn.classList.remove('loading');
         return;
     }
   }
 
 
   if (currentStep < totalSteps) {
-    showFormPart(currentStep + 1);
+    setTimeout(() => {
+        showFormPart(currentStep + 1);
+        nextBtn.classList.remove('loading');
+    }, 500);
   } else {
     document.getElementById('stripe-form').submit();
   }
@@ -127,9 +136,14 @@ function nextStep() {
 
 
 function prevStep() {
-  if (currentStep > 1) {
-    showFormPart(currentStep - 1);
-  }
+    const prevBtn = document.getElementById('prev-btn');
+    prevBtn.classList.add('loading');
+    setTimeout(() => {
+        if (currentStep > 1) {
+            showFormPart(currentStep - 1);
+        }
+        prevBtn.classList.remove('loading');
+    }, 500);
 }
 
 function processPayment() {
@@ -310,8 +324,6 @@ function displayRecap() {
         { label: 'Email', name: 'email' },
     ];
 
-    console.log(fields);
-
     fields.forEach(field => {
         const value = sessionStorage.getItem(field.name);
         if (value) {
@@ -321,6 +333,8 @@ function displayRecap() {
 
     recapContainer.innerHTML = html;
 }
-} catch (e) {
+
+}
+ catch (e) {
     console.error(e);
 }
