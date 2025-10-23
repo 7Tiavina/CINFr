@@ -396,7 +396,7 @@
     @csrf
     <div class="buttons" style="display:flex;justify-content:flex-end;margin-top:30px;">
       <button type="button" class="btn btn-secondary" onclick="prevStep()">Précédent</button>
-      <button type="submit" class="btn btn-primary ml-2">Payer 39,00 €</button>
+      <button type="submit" class="btn btn-primary ml-2">Procéder a ma commande</button>
     </div>
   </form>
 </div>

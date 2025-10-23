@@ -108,6 +108,11 @@ body {
   outline: none;
 }
 
+.form-group select.form-control {
+  height: auto !important;
+  padding: 15px 12px !important;
+}
+
 /* Radio & Checkbox Groups */
 .radio-options,
 .checkbox-options {
@@ -132,6 +137,7 @@ body {
   justify-content: space-between;
   margin-top: 30px;
 }
+
 .buttons .btn {
   padding: 12px 28px;
   border: none;
