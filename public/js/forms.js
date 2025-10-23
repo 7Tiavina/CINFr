@@ -1,3 +1,4 @@
+try {
 	//Gestion contenu du Formulaire-----------------------------------------------------------------------------------
 let currentStep = 1;
 
@@ -10,25 +11,31 @@ function showFormPart(step) {
   });
 
   const progressBar = document.getElementById('progress-bar');
+  const progressBarText = document.getElementById('progress-bar-text');
   if (progressBar) {
-    progressBar.style.width = `${(step / totalSteps) * 100}%`;
+    const progress = (step / totalSteps) * 100;
+    progressBar.style.width = `${progress}%`;
+    progressBar.setAttribute('aria-valuenow', progress);
+    progressBarText.textContent = `${Math.round(progress)}%`;
   }
 
   const prevBtn = document.getElementById('prev-btn');
   const nextBtn = document.getElementById('next-btn');
 
-  // Cacher les boutons à l'étape 6
+  // Cacher les boutons à l étape 6
   if (step === 6) {
     prevBtn.style.display = 'none';
     nextBtn.style.display = 'none';
+    displayRecap();
   } else {
     prevBtn.style.display = step === 1 ? 'none' : 'inline-block';
-    nextBtn.textContent = step === totalSteps ? 'Terminer' : 'Suivant';
+    nextBtn.textContent = step === totalSteps -1 ? 'Voir le récapitulatif' : 'Suivant';
     nextBtn.style.display = 'inline-block';
   }
 
   currentStep = step;
   sessionStorage.setItem('currentStep', currentStep);
+  window.scrollTo(0, 0);
 }
 
 
@@ -85,17 +92,34 @@ document.addEventListener('DOMContentLoaded', () => {
 function nextStep() {
   const totalSteps = document.querySelectorAll('.form-part').length;
 
-  if (!validateCurrentStep()) {
-    showAlert('❌ Veuillez remplir tous les champs obligatoires avant de continuer.');
-    return;
+  if (currentStep === 3) {
+    const pereInconnu = document.getElementById('pere-inconnu-oui').checked;
+    const mereInconnue = document.getElementById('mere-inconnue-oui').checked;
+    if (!pereInconnu && !mereInconnue) {
+        if (!validateCurrentStep()) {
+            showAlert('❌ Veuillez remplir tous les champs obligatoires avant de continuer.');
+            return;
+        }
+    }
+  } else if (currentStep === 5) {
+    const validationInfo = document.getElementById('validation_info').checked;
+    const validationPolitique = document.getElementById('validation_politique').checked;
+    const validationConditions = document.getElementById('validation_conditions').checked;
+    if (!validationInfo || !validationPolitique || !validationConditions) {
+        showAlert('❌ Veuillez cocher toutes les cases de validation.');
+        return;
+    }
+  } else {
+    if (!validateCurrentStep()) {
+        showAlert('❌ Veuillez remplir tous les champs obligatoires avant de continuer.');
+        return;
+    }
   }
+
 
   if (currentStep < totalSteps) {
     showFormPart(currentStep + 1);
   } else {
-    // on est à l'étape 6 : soumission automatique si vous cliquez "Suivant"
-    // mais comme le bouton "Suivant" disparaît en step-6, 
-    // c'est le bouton Payer (submit) qui envoie le form.
     document.getElementById('stripe-form').submit();
   }
 }
@@ -185,17 +209,17 @@ document.getElementById('mere-inconnue-oui').addEventListener('change', function
 
   let previousScrollPosition = window.pageYOffset;
   const navbar = document.querySelector('.custom-navbar');
-  const threshold = 100; // Seuil pour activer l'affichage via le pointeur
+  const threshold = 100; // Seuil pour activer l affichage via le pointeur
 
   // Gérer le défilement
   window.addEventListener('scroll', () => {
     const currentScrollPosition = window.pageYOffset;
 
     if (previousScrollPosition > currentScrollPosition) {
-      // L'utilisateur défile vers le haut, afficher la navbar
+      // L utilisateur défile vers le haut, afficher la navbar
       navbar.style.top = "0";
     } else {
-      // L'utilisateur défile vers le bas, cacher la navbar
+      // L utilisateur défile vers le bas, cacher la navbar
       navbar.style.top = "-100px"; // Ajustez selon la hauteur de la navbar
     }
     previousScrollPosition = currentScrollPosition;
@@ -240,3 +264,63 @@ document.getElementById('mere-inconnue-oui').addEventListener('change', function
       behavior: "smooth"
     });
   });
+
+
+function displayRecap() {
+    const recapContainer = document.getElementById('recap-container');
+    let html = '<h3>Récapitulatif de vos informations</h3>';
+
+    const fields = [
+        { label: 'Type de demande', name: 'type' },
+        { label: 'Situation Familiale', name: 'situation_familiale' },
+        { label: 'Raison de la demande', name: 'raison' },
+        { label: 'Département', name: 'departement' },
+        { label: 'Sexe', name: 'sexe' },
+        { label: 'Nom de naissance', name: 'nom_naissance' },
+        { label: 'Deuxième nom', name: 'deuxieme_nom' },
+        { label: 'Prénoms', name: 'prenom1' },
+        { label: '', name: 'prenom2' },
+        { label: '', name: 'prenom3' },
+        { label: 'Taille', name: 'taille' },
+        { label: 'Couleur des yeux', name: 'couleur_yeux' },
+        { label: 'Nationalité', name: 'nationalite' },
+        { label: 'Date de naissance', name: 'date_naissance' },
+        { label: 'Pays de naissance', name: 'pays_naissance' },
+        { label: 'Département de naissance', name: 'dept_naissance' },
+        { label: 'Commune de naissance', name: 'commune_naissance' },
+        { label: 'Père inconnu', name: 'pere_inconnu' },
+        { label: 'Nom du père', name: 'pere_nom' },
+        { label: 'Prénoms du père', name: 'pere_prenom1' },
+        { label: '', name: 'pere_prenom2' },
+        { label: 'Date de naissance du père', name: 'pere_naissance_date' },
+        { label: 'Ville de naissance du père', name: 'pere_naissance_ville' },
+        { label: 'Nationalité du père', name: 'pere_nationalite' },
+        { label: 'Mère inconnue', name: 'mere_inconnue' },
+        { label: 'Nom de la mère', name: 'mere_nom' },
+        { label: 'Prénoms de la mère', name: 'mere_prenom1' },
+        { label: '', name: 'mere_prenom2' },
+        { label: 'Date de naissance de la mère', name: 'mere_naissance_date' },
+        { label: 'Ville de naissance de la mère', name: 'mere_naissance_ville' },
+        { label: 'Nationalité de la mère', name: 'mere_nationalite' },
+        { label: 'Adresse', name: 'adresse' },
+        { label: 'Ville', name: 'ville' },
+        { label: 'Code postal', name: 'code_postal' },
+        { label: 'Complément d\'adresse', name: 'adresse_complement' },
+        { label: 'Téléphone', name: 'telephone' },
+        { label: 'Email', name: 'email' },
+    ];
+
+    console.log(fields);
+
+    fields.forEach(field => {
+        const value = sessionStorage.getItem(field.name);
+        if (value) {
+            html += `<p><strong>${field.label}:</strong> ${value}</p>`;
+        }
+    });
+
+    recapContainer.innerHTML = html;
+}
+} catch (e) {
+    console.error(e);
+}

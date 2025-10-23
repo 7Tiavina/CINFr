@@ -63,8 +63,10 @@
 <section id="form-background">
   <div id="form-section">
     <!-- Barre de progression -->
-    <div class="progress-bar">
-      <div class="progress-bar-inner" id="progress-bar"></div>
+    <div class="progress">
+        <div class="progress-bar" id="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <span id="progress-bar-text">0%</span>
+        </div>
     </div>
 
     <!------------------------------------------------- Étape 1 ------------------------------------------------------------------------------>
@@ -86,7 +88,7 @@
 
       <div class="form-group">
         <h4>Situation Familiale<span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-        <select name="situation_familiale" required>
+        <select name="situation_familiale" required class="form-control">
           <option value="">Sélectionnez une situation</option>
           <option value="celibataire">Célibataire</option>
           <option value="marie">Marié</option>
@@ -97,7 +99,7 @@
 
       <div class="form-group">
         <h4>Raison de la demande <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-        <select name="raison" style="width: 100%;" required>
+        <select name="raison" style="width: 100%;" required class="form-control">
           <option value="">Sélectionnez une raison</option>
           <option value="premiere_demande">Première demande</option>
           <option value="renouvellement">Renouvellement</option>
@@ -106,7 +108,7 @@
 
       <div class="form-group">
         <h4>Dans quel département effectuez-vous votre demande ? <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-        <select name="departement" style="width: 100%;" required>
+        <select name="departement" style="width: 100%;" required class="form-control">
           <option value="">Sélectionnez un département</option>
           <option value="01_Ain">01 Ain</option>
           <option value="02_Aisne">02 Aisne</option>
@@ -119,37 +121,37 @@
       <div class="form-group">
         <h4>Sexe : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
         <div class="radio-options">
-          <div>
-            <input type="radio" id="homme" name="sexe" value="homme" required>
-            <label for="homme">Homme</label>
+          <div class="form-check">
+            <input type="radio" id="homme" name="sexe" value="homme" required class="form-check-input">
+            <label for="homme" class="form-check-label">Homme</label>
           </div>
-          <div>
-            <input type="radio" id="femme" name="sexe" value="femme" required>
-            <label for="femme">Femme</label>
+          <div class="form-check">
+            <input type="radio" id="femme" name="sexe" value="femme" required class="form-check-input">
+            <label for="femme" class="form-check-label">Femme</label>
           </div>
         </div>
       </div>
 
       <div class="form-group">
         <h4>Nom de naissance <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-        <input type="text" name="nom_naissance" placeholder="Nom de naissance" required>
+        <input type="text" name="nom_naissance" placeholder="Nom de naissance" required class="form-control">
       </div>
 
       <div class="form-group">
         <h4>Deuxième nom</h4>
-        <input type="text" name="deuxieme_nom" placeholder="Deuxième nom">
+        <input type="text" name="deuxieme_nom" placeholder="Deuxième nom" class="form-control">
       </div>
 
       <div class="form-group">
         <h4>Prénoms <span style="color: red;">(Au moins 1)</span></h4>
-        <input type="text" name="prenom1" placeholder="1er prénom" required>
-        <input type="text" name="prenom2" placeholder="2ème prénom">
-        <input type="text" name="prenom3" placeholder="3ème prénom">
+        <input type="text" name="prenom1" placeholder="1er prénom" required class="form-control">
+        <input type="text" name="prenom2" placeholder="2ème prénom" class="form-control">
+        <input type="text" name="prenom3" placeholder="3ème prénom" class="form-control">
       </div>
 
       <div class="form-group">
         <h4>Taille <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-        <select name="taille" required>
+        <select name="taille" required class="form-control">
           <option value="">Sélectionnez votre taille</option>
           <option value="1.00">1.00 m</option>
           <!-- ... -->
@@ -159,7 +161,7 @@
 
       <div class="form-group">
         <h4>Couleur des yeux <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-        <select name="couleur_yeux" required>
+        <select name="couleur_yeux" required class="form-control">
           <option value="">Sélectionnez la couleur</option>
           <option value="noir">Noir</option>
           <option value="marron">Marron</option>
@@ -171,18 +173,18 @@
 
       <div class="form-group">
         <h4>Nationalité<span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-        <input type="text" name="nationalite" required>
+        <input type="text" name="nationalite" required class="form-control">
       </div>
 
 
       <div class="form-group">
         <h4>Date de naissance <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-        <input type="date" name="date_naissance" required>
+        <input type="date" name="date_naissance" required class="form-control">
       </div>
 
       <div class="form-group">
         <h4>Pays de naissance <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-        <select name="pays_naissance" required>
+        <select name="pays_naissance" required class="form-control">
           <option value="">Sélectionnez le pays</option>
           <option value="france">France</option>
           <option value="autre">Autre</option>
@@ -191,7 +193,7 @@
 
       <div class="form-group">
         <h4>Département ou COM de naissance <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-        <select name="dept_naissance" required>
+        <select name="dept_naissance" required class="form-control">
           <option value="">Sélectionnez le département</option>
           <option value="01">01 Ain</option>
           <option value="971">971 Guadeloupe</option>
@@ -200,7 +202,7 @@
 
       <div class="form-group">
         <h4>Commune de naissance <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-        <input type="text" name="commune_naissance" required>
+        <input type="text" name="commune_naissance" required class="form-control">
       </div>
     </div>
 
@@ -211,13 +213,13 @@
   <div class="form-group">
     <h4>Père inconnu <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
     <div class="radio-options">
-      <div>
-        <input type="radio" id="pere-inconnu-oui" name="pere_inconnu" value="oui" required>
-        <label for="pere-inconnu-oui">Oui</label>
+      <div class="form-check">
+        <input type="radio" id="pere-inconnu-oui" name="pere_inconnu" value="oui" required class="form-check-input">
+        <label for="pere-inconnu-oui" class="form-check-label">Oui</label>
       </div>
-      <div>
-        <input type="radio" id="pere-inconnu-non" name="pere_inconnu" value="non" required>
-        <label for="pere-inconnu-non">Non</label>
+      <div class="form-check">
+        <input type="radio" id="pere-inconnu-non" name="pere_inconnu" value="non" required class="form-check-input">
+        <label for="pere-inconnu-non" class="form-check-label">Non</label>
       </div>
     </div>
   </div>
@@ -225,28 +227,28 @@
   <div id="pere-details" style="display: none;">
     <div class="form-group">
       <h4>Nom de naissance du père <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-      <input type="text" id="pere_nom" name="pere_nom" placeholder="Nom de naissance du père" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
+      <input type="text" id="pere_nom" name="pere_nom" placeholder="Nom de naissance du père" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required class="form-control">
     </div>
 
     <div class="form-group">
       <h4>Prénoms du père</h4>
-      <input type="text" id="pere_prenom1" name="pere_prenom1" placeholder="1er prénom du père" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
-      <input type="text" id="pere_prenom2" name="pere_prenom2" placeholder="2ème prénom du père" style="width:100%;margin-top:8px;padding:8px;border:1px solid #ddd;border-radius:4px;">
+      <input type="text" id="pere_prenom1" name="pere_prenom1" placeholder="1er prénom du père" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required class="form-control">
+      <input type="text" id="pere_prenom2" name="pere_prenom2" placeholder="2ème prénom du père" style="width:100%;margin-top:8px;padding:8px;border:1px solid #ddd;border-radius:4px;" class="form-control">
     </div>
 
     <div class="form-group">
       <h4>Date de naissance du père</h4>
-      <input type="date" id="pere_naissance_date" name="pere_naissance_date" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;">
+      <input type="date" id="pere_naissance_date" name="pere_naissance_date" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" class="form-control">
     </div>
 
     <div class="form-group">
       <h4>Ville de naissance du père</h4>
-      <input type="text" id="pere_naissance_ville" name="pere_naissance_ville" placeholder="Ville de naissance du père" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;">
+      <input type="text" id="pere_naissance_ville" name="pere_naissance_ville" placeholder="Ville de naissance du père" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" class="form-control">
     </div>
 
     <div class="form-group">
       <h4>Nationalité du père</h4>
-      <input type="text" id="pere_nationalite" name="pere_nationalite" placeholder="Nationalité du père" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;">
+      <input type="text" id="pere_nationalite" name="pere_nationalite" placeholder="Nationalité du père" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" class="form-control">
     </div>
   </div>
 
@@ -254,13 +256,13 @@
   <div class="form-group">
     <h4>Mère inconnue <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
     <div class="radio-options">
-      <div>
-        <input type="radio" id="mere-inconnue-oui" name="mere_inconnue" value="oui" required>
-        <label for="mere-inconnue-oui">Oui</label>
+      <div class="form-check">
+        <input type="radio" id="mere-inconnue-oui" name="mere_inconnue" value="oui" required class="form-check-input">
+        <label for="mere-inconnue-oui" class="form-check-label">Oui</label>
       </div>
-      <div>
-        <input type="radio" id="mere-inconnue-non" name="mere_inconnue" value="non" required>
-        <label for="mere-inconnue-non">Non</label>
+      <div class="form-check">
+        <input type="radio" id="mere-inconnue-non" name="mere_inconnue" value="non" required class="form-check-input">
+        <label for="mere-inconnue-non" class="form-check-label">Non</label>
       </div>
     </div>
   </div>
@@ -268,28 +270,28 @@
   <div id="mere-details" style="display: none;">
     <div class="form-group">
       <h4>Nom de naissance de la mère <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-      <input type="text" id="mere_nom" name="mere_nom" placeholder="Nom de naissance de la mère" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
+      <input type="text" id="mere_nom" name="mere_nom" placeholder="Nom de naissance de la mère" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required class="form-control">
     </div>
 
     <div class="form-group">
       <h4>Prénoms de la mère</h4>
-      <input type="text" id="mere_prenom1" name="mere_prenom1" placeholder="1er prénom de la mère" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
-      <input type="text" id="mere_prenom2" name="mere_prenom2" placeholder="2ème prénom de la mère" style="width:100%;margin-top:8px;padding:8px;border:1px solid #ddd;border-radius:4px;">
+      <input type="text" id="mere_prenom1" name="mere_prenom1" placeholder="1er prénom de la mère" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required class="form-control">
+      <input type="text" id="mere_prenom2" name="mere_prenom2" placeholder="2ème prénom de la mère" style="width:100%;margin-top:8px;padding:8px;border:1px solid #ddd;border-radius:4px;" class="form-control">
     </div>
 
     <div class="form-group">
       <h4>Date de naissance de la mère</h4>
-      <input type="date" id="mere_naissance_date" name="mere_naissance_date" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;">
+      <input type="date" id="mere_naissance_date" name="mere_naissance_date" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" class="form-control">
     </div>
 
     <div class="form-group">
       <h4>Ville de naissance de la mère</h4>
-      <input type="text" id="mere_naissance_ville" name="mere_naissance_ville" placeholder="Ville de naissance de la mère" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;">
+      <input type="text" id="mere_naissance_ville" name="mere_naissance_ville" placeholder="Ville de naissance de la mère" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" class="form-control">
     </div>
 
     <div class="form-group">
       <h4>Nationalité de la mère</h4>
-      <input type="text" id="mere_nationalite" name="mere_nationalite" placeholder="Nationalité de la mère" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;">
+      <input type="text" id="mere_nationalite" name="mere_nationalite" placeholder="Nationalité de la mère" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" class="form-control">
     </div>
   </div>
 </div>
@@ -299,42 +301,42 @@
 <div class="form-part" id="step-4" style="display: none;">
   <h4>Vous êtes Français(e) car : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
   <div class="checkbox-options">
-    <div>
-      <input type="checkbox" id="nat_naissance_parent_france" name="nat_naissance_parent_france" value="naissance-parent-france">
-      <label for="nat_naissance_parent_france">Vous êtes né(e) en France et l'un de vos parents est né en France</label>
+    <div class="form-check">
+      <input type="checkbox" id="nat_naissance_parent_france" name="nat_naissance_parent_france" value="naissance-parent-france" class="form-check-input">
+      <label for="nat_naissance_parent_france" class="form-check-label">Vous êtes né(e) en France et l'un de vos parents est né en France</label>
     </div>
-    <div>
-      <input type="checkbox" id="nat_naissance_parent_ancien" name="nat_naissance_parent_ancien" value="naissance-parent-ancien">
-      <label for="nat_naissance_parent_ancien">Vous êtes né(e) en France et l'un de vos parents est né dans un ancien territoire français</label>
+    <div class="form-check">
+      <input type="checkbox" id="nat_naissance_parent_ancien" name="nat_naissance_parent_ancien" value="naissance-parent-ancien" class="form-check-input">
+      <label for="nat_naissance_parent_ancien" class="form-check-label">Vous êtes né(e) en France et l'un de vos parents est né dans un ancien territoire français</label>
     </div>
-    <div>
-      <input type="checkbox" id="nat_naissance_parent_francais" name="nat_naissance_parent_francais" value="naissance-parent-francais">
-      <label for="nat_naissance_parent_francais">Vous êtes né(e) en France et l'un de vos parents est français</label>
+    <div class="form-check">
+      <input type="checkbox" id="nat_naissance_parent_francais" name="nat_naissance_parent_francais" value="naissance-parent-francais" class="form-check-input">
+      <label for="nat_naissance_parent_francais" class="form-check-label">Vous êtes né(e) en France et l'un de vos parents est français</label>
     </div>
-    <div>
-      <input type="checkbox" id="nat_etranger_parent_francais" name="nat_etranger_parent_francais" value="etranger-parent-francais">
-      <label for="nat_etranger_parent_francais">Vous n'êtes pas né(e) en France et l'un de vos parents est français</label>
+    <div class="form-check">
+      <input type="checkbox" id="nat_etranger_parent_francais" name="nat_etranger_parent_francais" value="etranger-parent-francais" class="form-check-input">
+      <label for="nat_etranger_parent_francais" class="form-check-label">Vous n'êtes pas né(e) en France et l'un de vos parents est français</label>
     </div>
-    <div>
-      <input type="checkbox" id="nat_parent_devenu_francais" name="nat_parent_devenu_francais" value="parent-devient-francais">
-      <label for="nat_parent_devenu_francais">Votre parent est devenu français avant votre majorité</label>
+    <div class="form-check">
+      <input type="checkbox" id="nat_parent_devenu_francais" name="nat_parent_devenu_francais" value="parent-devient-francais" class="form-check-input">
+      <label for="nat_parent_devenu_francais" class="form-check-label">Votre parent est devenu français avant votre majorité</label>
     </div>
-    <div>
-      <input type="checkbox" id="nat_mariage" name="nat_mariage" value="nationalite-par-mariage">
-      <label for="nat_mariage">Vous êtes français(e) par mariage</label>
+    <div class="form-check">
+      <input type="checkbox" id="nat_mariage" name="nat_mariage" value="nationalite-par-mariage" class="form-check-input">
+      <label for="nat_mariage" class="form-check-label">Vous êtes français(e) par mariage</label>
     </div>
-    <div>
-      <input type="checkbox" id="nat_reintegre" name="nat_reintegre" value="reintegre-francais">
-      <label for="nat_reintegre">Vous avez été réintégré(e) dans la nationalité française</label>
+    <div class="form-check">
+      <input type="checkbox" id="nat_reintegre" name="nat_reintegre" value="reintegre-francais" class="form-check-input">
+      <label for="nat_reintegre" class="form-check-label">Vous avez été réintégré(e) dans la nationalité française</label>
     </div>
-    <div>
-      <input type="checkbox" id="nat_declaration" name="nat_declaration" value="declaration-non-mariage">
-      <label for="nat_declaration">Vous êtes français(e) par déclaration</label>
+    <div class="form-check">
+      <input type="checkbox" id="nat_declaration" name="nat_declaration" value="declaration-non-mariage" class="form-check-input">
+      <label for="nat_declaration" class="form-check-label">Vous êtes français(e) par déclaration</label>
     </div>
-    <div style="display: flex; align-items: center; gap: 10px;">
-      <input type="checkbox" id="nat_autre" name="nat_autre" value="autre-motif">
-      <label for="nat_autre">Autre motif</label>
-      <input type="text" id="nat_autre_texte" name="nat_autre_texte" placeholder="Précisez" style="flex: 1;">
+    <div class="form-check" style="display: flex; align-items: center; gap: 10px;">
+      <input type="checkbox" id="nat_autre" name="nat_autre" value="autre-motif" class="form-check-input">
+      <label for="nat_autre" class="form-check-label">Autre motif</label>
+      <input type="text" id="nat_autre_texte" name="nat_autre_texte" placeholder="Précisez" style="flex: 1;" class="form-control">
     </div>
 
   </div>
@@ -348,38 +350,38 @@
   <h4>Adresse du demandeur concerné par le titre : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
   
   <label for="adresse_demandeur">Adresse du demandeur concerné par le titre</label>
-  <input type="text" id="adresse_demandeur" name="adresse" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
+  <input type="text" id="adresse_demandeur" name="adresse" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required class="form-control">
   
   <label for="adresse_ville">Ville</label>
-  <input type="text" id="adresse_ville" name="ville" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
+  <input type="text" id="adresse_ville" name="ville" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required class="form-control">
   
   <label for="adresse_zip">ZIP / Code postal</label>
-  <input type="text" id="adresse_zip" name="code_postal" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
+  <input type="text" id="adresse_zip" name="code_postal" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required class="form-control">
   
   <label for="adresse_complement">Complément d'adresse (étage, escalier, appartement…)</label>
-  <input type="text" id="adresse_complement" name="adresse_complement" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;">
+  <input type="text" id="adresse_complement" name="adresse_complement" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" class="form-control">
 
   <h4>Informations de contact : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
   
   <label for="telephone">Téléphone portable (Format : 0601020304)</label>
-  <input type="tel" id="telephone" name="telephone" pattern="^0[1-9][0-9]{8}$" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
+  <input type="tel" id="telephone" name="telephone" pattern="^0[1-9][0-9]{8}$" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required class="form-control">
   
   <label for="email">E-mail</label>
-  <input type="email" id="email" name="email" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required>
+  <input type="email" id="email" name="email" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required class="form-control">
 
   <h4>Validation : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
   <div class="checkbox-options">
-    <div>
-      <input type="radio" id="validation_info" name="validation_info" value="info_correctes" required>
-      <label for="validation_info">Je confirme que les informations transmises sont correctes</label>
+    <div class="form-check">
+      <input type="radio" id="validation_info" name="validation_info" value="info_correctes" required class="form-check-input">
+      <label for="validation_info" class="form-check-label">Je confirme que les informations transmises sont correctes</label>
     </div>
-    <div>
-      <input type="radio" id="validation_politique" name="validation_politique" value="politique_confidentialite" required>
-      <label for="validation_politique">Je valide la politique de confidentialité du site</label>
+    <div class="form-check">
+      <input type="radio" id="validation_politique" name="validation_politique" value="politique_confidentialite" required class="form-check-input">
+      <label for="validation_politique" class="form-check-label">Je valide la politique de confidentialité du site</label>
     </div>
-    <div>
-      <input type="radio" id="validation_conditions" name="validation_conditions" value="conditions_generales" required>
-      <label for="validation_conditions">Je valide les conditions générales de vente du site</label>
+    <div class="form-check">
+      <input type="radio" id="validation_conditions" name="validation_conditions" value="conditions_generales" required class="form-check-input">
+      <label for="validation_conditions" class="form-check-label">Je valide les conditions générales de vente du site</label>
     </div>
   </div>
 
@@ -389,33 +391,9 @@
 <!------------------------------------------------- Étape 6 ------------------------------------------------------------------------------>
 
 <div class="form-part" id="step-6" style="display: none;">
+  <div id="recap-container"></div>
   <form id="stripe-form" action="{{ route('test') }}" method="POST">
     @csrf
-
-    <h4>Frais de traitement de la pré-demande de CNI</h4>
-    <p>Prix : <strong>39,00 €</strong></p>
-
-    <h4>Paiement par Carte Bancaire : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-    <label for="carte_bancaire">Numéro de carte</label>
-    <input type="text" id="carte_bancaire" name="carte_bancaire"
-           placeholder="0000 0000 0000 0000"
-           style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;"
-           required>
-
-    <label for="expiration_date">Date d’expiration</label>
-    <input type="month" id="expiration_date" name="expiration_date"
-           style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;"
-           required>
-
-    <label for="cvv">CVV</label>
-    <input type="text" id="cvv" name="cvv"
-           placeholder="123"
-           pattern="^[0-9]{3}$"
-           style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;"
-           required>
-
-    <p>Veuillez entrer les informations de votre carte pour compléter votre paiement.</p>
-
     <div class="buttons" style="display:flex;justify-content:flex-end;margin-top:30px;">
       <button type="button" class="btn btn-secondary" onclick="prevStep()">Précédent</button>
       <button type="submit" class="btn btn-primary ml-2">Payer 39,00 €</button>
