@@ -2,16 +2,16 @@
 
 @section('content')
     <div class="container">
-        <h1>Contacts</h1>
+        <h1>{{ __('Contacts') }}</h1>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Subject</th>
-                    <th>Message</th>
-                    <th>Created At</th>
+                    <th>{{ __('ID') }}</th>
+                    <th>{{ __('Nom') }}</th>
+                    <th>{{ __('Email') }}</th>
+                    <th>{{ __('Sujet') }}</th>
+                    <th>{{ __('Message') }}</th>
+                    <th>{{ __('Créé le') }}</th>
                 </tr>
             </thead>
             <tbody>

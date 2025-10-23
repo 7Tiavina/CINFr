@@ -2,19 +2,19 @@
 
 @section('content')
     <div class="container">
-        <h1>Payments</h1>
+        <h1>{{ __('Paiements') }}</h1>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Stripe Session ID</th>
-                    <th>Charge ID</th>
-                    <th>Email</th>
-                    <th>Card Last 4</th>
-                    <th>Amount</th>
-                    <th>Currency</th>
-                    <th>Status</th>
-                    <th>Created At</th>
+                    <th>{{ __('ID') }}</th>
+                    <th>{{ __('ID Session Stripe') }}</th>
+                    <th>{{ __('ID de Charge') }}</th>
+                    <th>{{ __('Email') }}</th>
+                    <th>{{ __('4 Derniers Chiffres Carte') }}</th>
+                    <th>{{ __('Montant') }}</th>
+                    <th>{{ __('Devise') }}</th>
+                    <th>{{ __('Statut') }}</th>
+                    <th>{{ __('Créé le') }}</th>
                 </tr>
             </thead>
             <tbody>

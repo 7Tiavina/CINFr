@@ -2,19 +2,19 @@
 
 @section('content')
     <div class="container">
-        <h1>Clients</h1>
+        <h1>{{ __('Clients') }}</h1>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Type</th>
-                    <th>Raison</th>
-                    <th>Departement</th>
-                    <th>Sexe</th>
-                    <th>Nom Naissance</th>
-                    <th>Prenom1</th>
-                    <th>Email</th>
-                    <th>Created At</th>
+                    <th>{{ __('ID') }}</th>
+                    <th>{{ __('Type') }}</th>
+                    <th>{{ __('Raison') }}</th>
+                    <th>{{ __('Département') }}</th>
+                    <th>{{ __('Sexe') }}</th>
+                    <th>{{ __('Nom de Naissance') }}</th>
+                    <th>{{ __('Prénom') }}</th>
+                    <th>{{ __('Email') }}</th>
+                    <th>{{ __('Créé le') }}</th>
                 </tr>
             </thead>
             <tbody>
