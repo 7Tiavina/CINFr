@@ -46,31 +46,16 @@
 <section id="departments">
   <div class="container">
     <div class="departments-table">
-      <!-- Exemple de départements -->
-      <div class="department" data-department="Paris">
-        <h3>Paris (75) <span class="toggle-icon">↓</span></h3>
+      @foreach ($mairies as $departement => $mairies_list)
+      <div class="department" data-department="{{ $departement }}">
+        <h3>{{ $departement }} <span class="toggle-icon">↓</span></h3>
         <ul class="mairies-list" style="display: none;">
-          <!-- Les mairies seront ajoutées ici par JavaScript -->
+          @foreach ($mairies_list as $mairie)
+            <li>{{ $mairie }}</li>
+          @endforeach
         </ul>
       </div>
-      <div class="department" data-department="Bouches-du-Rhône">
-        <h3>Bouches-du-Rhône (13) <span class="toggle-icon">↓</span></h3>
-        <ul class="mairies-list" style="display: none;">
-          <!-- Les mairies seront ajoutées ici par JavaScript -->
-        </ul>
-      </div>
-      <div class="department" data-department="Nord">
-        <h3>Nord (59) <span class="toggle-icon">↓</span></h3>
-        <ul class="mairies-list" style="display: none;">
-          <!-- Les mairies seront ajoutées ici par JavaScript -->
-        </ul>
-      </div>
-      <div class="department" data-department="Rhône">
-        <h3>Rhône (69) <span class="toggle-icon">↓</span></h3>
-        <ul class="mairies-list" style="display: none;">
-          <!-- Les mairies seront ajoutées ici par JavaScript -->
-        </ul>
-      </div>
+      @endforeach
     </div>
   </div>
 </section>
@@ -182,41 +167,29 @@
 
 
 
-<script>
-  // Exemple de données des mairies
-const mairies = {
-  Paris: ["Mairie du 1er arrondissement", "Mairie du 2e arrondissement", "Mairie du 3e arrondissement"],
-  "Bouches-du-Rhône": ["Mairie de Marseille", "Mairie d'Aix-en-Provence", "Mairie d'Arles"],
-  Nord: ["Mairie de Lille", "Mairie de Roubaix", "Mairie de Tourcoing"],
-  Rhône: ["Mairie de Lyon", "Mairie de Villeurbanne", "Mairie de Vénissieux"],
-};
 
+
+
+
+
+  <script>
 // Sélection des départements
 const departments = document.querySelectorAll(".department");
 
 // Ajout des événements de clic
 departments.forEach((department) => {
   department.addEventListener("click", () => {
-    const departmentName = department.getAttribute("data-department");
-    const mairiesInDepartment = mairies[departmentName] || [];
     const mairiesList = department.querySelector(".mairies-list");
 
     // Si la liste est déjà visible, on la cache
     if (mairiesList.style.display === "block") {
       mairiesList.style.display = "none";
     } else {
-      // Sinon, on l'affiche et on ajoute les mairies
-      mairiesList.innerHTML = "";  // Réinitialiser la liste avant de l'afficher
-      mairiesInDepartment.forEach((mairie) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = mairie;
-        mairiesList.appendChild(listItem);
-      });
-      mairiesList.style.display = "block";  // Afficher la liste
+      // Sinon, on l'affiche
+      mairiesList.style.display = "block";
     }
   });
 });
-
 </script>
 
 

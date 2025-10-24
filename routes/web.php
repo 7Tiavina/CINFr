@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ContactController;
 
+use App\Http\Controllers\MairieController;
+
 Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::get('/liste-des-mairies', function () {
-    return view('liste-des-mairies');
-})->name('mairies');
+Route::get('/liste-des-mairies', [MairieController::class, 'index'])->name('mairies');
 
 Route::get('/predemande', function () {
     return view('forms-predemande');
