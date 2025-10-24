@@ -46,6 +46,14 @@
         font-weight: 700;
       }
 
+      .model-letter {
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        padding: 25px;
+        border-radius: 6px;
+        margin-top: 20px;
+      }
+
       @media (max-width: 768px) {
         section {
           padding: 30px 15px;
@@ -61,7 +69,7 @@
       }
     </style>
 
-    <title>CINFr - Remboursement & Rétractation</title>
+    <title>CINFr - Politique de remboursement & rétractation</title>
   </head>
 
   <body>
@@ -70,65 +78,132 @@
 
     <section id="banner">
       <div class="container text-center">
-        <div>Conditions Générales</div>
         <h1 class="mt-3">Politique de remboursement & Droit de rétractation</h1>
       </div>
     </section>
 
     <div class="container">
+
       <section>
-        <h2>1. Droit de rétractation</h2>
+        <h2>1. Politique de remboursement</h2>
         <p>
-          Conformément à l’article L.221-18 du Code de la consommation, vous disposez d’un délai de 14 jours à compter de la commande pour exercer votre droit de rétractation, sans motif ni pénalité.
+          Conformément à l’article L.221-28 du Code de la consommation, le droit de rétractation ne s’applique pas
+          aux prestations de services pleinement exécutées avant la fin du délai légal et dont l’exécution a débuté
+          avec l’accord préalable exprès du Client.
+        </p>
+        <p>
+          En validant sa commande sur le site <strong>CINFr</strong>, le Client reconnaît expressément que le traitement
+          de sa demande peut commencer immédiatement après le paiement, ce qui implique la renonciation à son droit
+          de rétractation une fois l’exécution entamée.
+        </p>
+        <p>
+          Toute demande d’annulation ou de remboursement ne sera donc recevable que si le dossier n’a fait l’objet
+          d’aucune intervention ou traitement administratif par nos services. Dans ce cas, la demande doit être adressée
+          par e-mail à <a href="mailto:contact@settis-llc.com">contact@settis-llc.com</a>, en précisant la
+          <strong>référence de transaction</strong> et/ou l’adresse e-mail utilisée lors de la commande.
+        </p>
+        <p>
+          Les demandes seront étudiées individuellement, sans garantie d’acceptation automatique. Aucun remboursement
+          ne pourra être effectué pour les prestations déjà entamées, partiellement exécutées ou terminées.
+        </p>
+      </section>
+
+
+
+      <section>
+        <h2>2. Modalités de remboursement</h2>
+        <p>
+          Le montant remboursé correspondra à celui de la commande, déduction faite des services dont l’exécution a déjà débuté
+          (par exemple : vérification de dossier, assistance prioritaire ou dépôt administratif effectué).
+        </p>
+        <p>
+          Le remboursement est effectué dans un délai maximum de <strong>10 jours ouvrés</strong> à compter de la validation de la demande, 
+          par virement automatique sur le compte associé à la carte bancaire utilisée lors du paiement initial.
+        </p>
+        <p>
+          En cas d’impossibilité technique, un remboursement par autre moyen (virement SEPA, crédit Stripe, etc.) pourra être proposé.
         </p>
       </section>
 
       <section>
-        <h2>2. Modalités d’exercice</h2>
+        <h2>3. Retard ou non-livraison</h2>
         <p>
-          Pour exercer ce droit, envoyez avant expiration du délai :
+          Si le dossier n’a pas pu être traité dans un délai de 10 jours ouvrés pour des raisons indépendantes de la volonté du Client, 
+          celui-ci peut demander un <strong>remboursement intégral</strong> auprès du support à l’adresse suivante : 
+          <a href="mailto:contact@settis-llc.com">contact@settis-llc.com</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2>4. Exceptions au remboursement</h2>
+        <ul>
+          <li>Les services exécutés entièrement avant la demande de rétractation ne donnent lieu à aucun remboursement.</li>
+          <li>Les achats de timbres fiscaux ou frais administratifs transférés aux autorités sont non remboursables.</li>
+          <li>Les services d’assistance personnalisée express ou prioritaire ne peuvent faire l’objet d’un remboursement une fois commencés.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>5. Exercice du droit de rétractation</h2>
+        <p>
+          Conformément à l’article L.221-18 du Code de la consommation, le Client dispose de 14 jours pour exercer son droit de rétractation.
+          Ce droit s’applique uniquement si la prestation n’a pas encore débuté ou si le Client n’a pas expressément demandé son exécution immédiate.
+        </p>
+      </section>
+
+      <section>
+        <h2>6. Procédure de demande</h2>
+        <p>
+          Toute demande de remboursement ou de rétractation doit être transmise par e-mail à :
+          <a href="mailto:contact@settis-llc.com">contact@settis-llc.com</a> 
+          avec les informations suivantes :
         </p>
         <ul>
-          <li>Le formulaire de rétractation dûment rempli, ou</li>
-          <li>Une déclaration claire exprimant votre volonté de vous rétracter</li>
+          <li>Nom et prénom du demandeur</li>
+          <li>Adresse e-mail utilisée lors de la commande</li>
+          <li>Numéro ou référence de transaction</li>
+          <li>Date de la commande</li>
         </ul>
-        <p>
-          à l’adresse du Service Client. Le cachet de La Poste fait foi.
-        </p>
       </section>
 
       <section>
-        <h2>3. Exécution anticipée et renonciation</h2>
-        <p>
-          Vous pouvez autoriser l’exécution immédiate des services, conformément à l’article L.221-28 1°, et renoncer à votre droit de rétractation pour des prestations urgentes (ex. : traitement express).
-        </p>
+        <h2>7. Modèle de lettre de rétractation</h2>
+        <div class="model-letter">
+          <p><strong>À adresser par mail à :</strong> <a href="mailto:contact@settis-llc.com">contact@settis-llc.com</a></p>
+          <p><strong>Objet :</strong> Rétractation d’une pré-demande de service CINFr</p>
+
+          <p>Madame, Monsieur,</p>
+
+          <p>
+            Le … (indiquer la date de la commande), j’ai souscrit à une prestation d’assistance administrative sur votre site <strong>www.cinfr.com</strong>.
+            Conformément à l’article L.221-18 du Code de la consommation, j’exerce par la présente mon droit de rétractation.
+          </p>
+
+          <p>
+            Je vous prie de bien vouloir procéder au remboursement de la somme de … euros versée lors de ma commande,
+            au plus tard dans un délai de 14 jours suivant la réception de la présente demande.
+          </p>
+
+          <p>
+            Référence de transaction : …<br>
+            Adresse e-mail utilisée : …<br>
+            Nom et prénom : …
+          </p>
+
+          <p>
+            Je vous prie d’agréer, Madame, Monsieur, l’expression de mes salutations distinguées.
+          </p>
+
+          <p><em>Signature</em></p>
+        </div>
       </section>
 
       <section>
-        <h2>4. Refus d’exécution immédiate</h2>
+        <h2>8. Contact & service client</h2>
         <p>
-          En l’absence d’autorisation expresse, les prestations seront différées de 14 jours, conformément au délai légal.
-        </p>
-      </section>
-
-      <section>
-        <h2>5. Cas de non-remboursement</h2>
-        <p>
-          Aucun remboursement ne sera effectué si le service a débuté avec votre accord avant la fin du délai légal.
-        </p>
-      </section>
-
-      <section>
-        <h2>6. Litiges et justificatifs</h2>
-        <p>
-          En cas de litige, les échanges électroniques conservés font foi. Une copie des conditions contractuelles est envoyée par e-mail après commande.
-        </p>
-      </section>
-
-      <section>
-        <h2>7. Demandes hors cadre légal</h2>
-        <p>
-          Toute demande en dehors du cadre légal sera examinée spécifiquement sans garantie d’acceptation.
+          Pour toute question relative à une demande de remboursement, veuillez contacter notre service client à : 
+          <a href="mailto:contact@settis-llc.com">contact@settis-llc.com</a> ou via le formulaire disponible sur 
+          <a href="https://www.cinfr.com/contact">www.cinfr.com/contact</a>.
         </p>
       </section>
     </div>
