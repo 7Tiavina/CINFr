@@ -1,55 +1,108 @@
-<!doctype html>
-<html lang="en-US">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@extends('layouts.app')
 
-     <link rel="icon" href="images/favicon.png" type="image/x-icon">
+@section('title', 'Liste des mairies - CINFr')
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+@section('styles')
+<style>
+  #banner {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: #fff;
+    padding: 3rem 1rem;
+  }
 
-    <!-- Custom Css -->
-    <link rel="stylesheet" href="style.css" type="text/css" />
+  #banner h1 {
+    font-weight: 700;
+  }
 
-    <!-- Ionic icons -->
-    <link href="https://unpkg.com/ionicons@4.2.0/dist/css/ionicons.min.css" rel="stylesheet">
+  #search-input {
+    border-radius: 50px;
+    padding: 1rem 1.5rem;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+  .departments-table {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
 
-    <title>CINFr Carte d'identité Nationale</title>
-  </head>
+  @media (min-width: 768px) {
+    .departments-table {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 
-  <body>
+  .department {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
 
-      <!-- N A V B A R -->
-@include('layouts.navbar')
-<!-- E N D  N A V B A R -->
+  .department:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  }
 
+  .department h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
 
-<section id="banner">
-  <div class="container text-center">
-    <div class="icon">
-      <i class="bi bi-card-heading"></i>
+  .toggle-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+
+  .department.open .toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  .mairies-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+    display: none;
+  }
+
+  .mairies-list li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .mairies-list li:last-child {
+    border-bottom: none;
+  }
+</style>
+@endsection
+
+@section('content')
+<section id="banner" class="text-center">
+  <div class="container">
+    <h1>Liste des mairies délivrant des cartes d'identité par département</h1>
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-12">
+        <input type="text" class="form-control" id="search-input" placeholder="🔍 Rechercher une mairie ou un département...">
+      </div>
     </div>
-    <h1 class="mt-3">Liste des mairies délivrant des cartes d'identité par département</h1>
   </div>
 </section>
 
-
-
-
-
-  <!-- T A B -->
 <section id="departments">
   <div class="container">
-    <div class="departments-table">
+    <div class="departments-table" id="departments-table">
       @foreach ($mairies as $departement => $mairies_list)
       <div class="department" data-department="{{ $departement }}">
-        <h3>{{ $departement }} <span class="toggle-icon">↓</span></h3>
-        <ul class="mairies-list" style="display: none;">
+        <h3>{{ $departement }} <span class="toggle-icon">▼</span></h3>
+        <ul class="mairies-list">
           @foreach ($mairies_list as $mairie)
             <li>{{ $mairie }}</li>
           @endforeach
@@ -59,141 +112,59 @@
     </div>
   </div>
 </section>
+@endsection
 
-
-
-
-  <!-- E N D  T A B -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!--  F O O T E R  -->
-  @include('layouts.footer')
-
-  <!--  E N D  F O O T E R  -->
-    
-
-    <!-- External JavaScripts -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  
-
-
-        <script>
-  // Sélectionner toutes les questions
-  const faqQuestions = document.querySelectorAll('.faq-question');
-
-  // Ajouter un événement de clic à chaque question
-  faqQuestions.forEach(question => {
-    question.addEventListener('click', () => {
-      // Trouver la réponse associée
-      const answer = question.nextElementSibling;
-
-      // Basculer l'affichage (visible/invisible)
-      if (answer.style.display === 'block') {
-        answer.style.display = 'none';
-      } else {
-        // Fermer toutes les autres réponses
-        document.querySelectorAll('.faq-answer').forEach(item => {
-          item.style.display = 'none';
-        });
-        // Afficher la réponse sélectionnée
-        answer.style.display = 'block';
-      }
-    });
-  });
-</script>
-
-
+@section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
 <script>
-  let previousScrollPosition = window.pageYOffset;
-  const navbar = document.querySelector('.custom-navbar');
-  const threshold = 100; // Seuil pour activer l'affichage via le pointeur
+  const mairiesData = @json($mairies);
+  const searchInput = document.getElementById('search-input');
+  const table = document.getElementById('departments-table');
 
-  // Gérer le défilement
-  window.addEventListener('scroll', () => {
-    const currentScrollPosition = window.pageYOffset;
+  const mairiesList = Object.entries(mairiesData).flatMap(([department, mairies]) =>
+    mairies.map(mairie => ({ department, mairie }))
+  );
 
-    if (previousScrollPosition > currentScrollPosition) {
-      // L'utilisateur défile vers le haut, afficher la navbar
-      navbar.style.top = "0";
-    } else {
-      // L'utilisateur défile vers le bas, cacher la navbar
-      navbar.style.top = "-100px"; // Ajustez selon la hauteur de la navbar
-    }
-    previousScrollPosition = currentScrollPosition;
+  const fuse = new Fuse(mairiesList, {
+    threshold: 0.3,
+    keys: ['mairie', 'department']
   });
 
-  // Gérer la position du pointeur
-  window.addEventListener('mousemove', (event) => {
-    if (event.clientY <= threshold) {
-      // Si le pointeur est proche du haut de la page, afficher la navbar
-      navbar.style.top = "0";
-    }
+  searchInput.addEventListener('input', e => {
+    const query = e.target.value.trim();
+    table.innerHTML = '';
+
+    const results = query.length ? fuse.search(query).map(r => r.item) : mairiesList;
+
+    const grouped = results.reduce((acc, { department, mairie }) => {
+      if (!acc[department]) acc[department] = [];
+      acc[department].push(mairie);
+      return acc;
+    }, {});
+
+    Object.entries(grouped).forEach(([dep, list]) => {
+      const deptDiv = document.createElement('div');
+      deptDiv.className = 'department';
+      deptDiv.innerHTML = `
+        <h3>${dep} <span class="toggle-icon">▼</span></h3>
+        <ul class="mairies-list">${list.map(m => `<li>${m}</li>`).join('')}</ul>
+      `;
+      table.appendChild(deptDiv);
+    });
+
+    attachDepartmentEvents();
   });
+
+  function attachDepartmentEvents() {
+    document.querySelectorAll('.department').forEach(dep => {
+      dep.onclick = () => {
+        dep.classList.toggle('open');
+        const list = dep.querySelector('.mairies-list');
+        list.style.display = list.style.display === 'block' ? 'none' : 'block';
+      };
+    });
+  }
+
+  attachDepartmentEvents();
 </script>
-
-
-
-
-
-
-
-
-  <script>
-// Sélection des départements
-const departments = document.querySelectorAll(".department");
-
-// Ajout des événements de clic
-departments.forEach((department) => {
-  department.addEventListener("click", () => {
-    const mairiesList = department.querySelector(".mairies-list");
-
-    // Si la liste est déjà visible, on la cache
-    if (mairiesList.style.display === "block") {
-      mairiesList.style.display = "none";
-    } else {
-      // Sinon, on l'affiche
-      mairiesList.style.display = "block";
-    }
-  });
-});
-</script>
-
-
-
-
-  </body>
-</html>
+@endsection

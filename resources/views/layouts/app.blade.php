@@ -22,6 +22,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <title>@yield('title', 'CINFr Carte d\'identité Nationale')</title>
+
+    @yield('styles')
   </head>
 
   <body>
