@@ -17,7 +17,7 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding: 30px 20px;
-  background: #fff;
+  background: #f0f2f5;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-size: 1.1rem; /* Increased font size */
@@ -349,4 +349,37 @@ select.filled {
   font-size: 1.5rem;
   font-weight: bold;
   color: #0444ec;
+}
+
+/* Apply light blue background to filled Select2 fields */
+.select2-container--bootstrap4 .select2-selection--single.filled {
+  background-color: #e8f0fe !important;
+}
+
+/* Custom styles for Select2 to match form-control */
+.select2-container--bootstrap4 .select2-selection--single {
+  height: auto !important; /* Override default Select2 height */
+  padding: 10px 12px !important; /* Match form-control padding */
+  border: 1px solid #ccc !important; /* Match form-control border */
+  border-radius: 6px !important; /* Match form-control border-radius */
+  font-size: 1.1rem !important; /* Match form-control font-size */
+  box-sizing: border-box !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.select2-container--bootstrap4 .select2-selection--single:focus,
+.select2-container--bootstrap4.select2-container--focus .select2-selection--single {
+  border-color: #0444ec !important;
+  box-shadow: 0 0 0 3px rgba(4, 68, 236, 0.2) !important;
+  outline: none !important;
+}
+
+.select2-container--bootstrap4 .select2-selection--single .select2-selection__rendered {
+  line-height: normal !important; /* Adjust line-height */
+  color: #333 !important; /* Ensure text color is visible */
+  padding-left: 0 !important; /* Remove default padding */
+}
+
+.select2-container--bootstrap4 .select2-selection--single .select2-selection__arrow {
+  height: auto !important; /* Adjust arrow height */
 }

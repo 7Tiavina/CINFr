@@ -14,6 +14,8 @@
 
     <!-- Custom Css -->
     <link rel="stylesheet" href="style.css" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2-bootstrap4-theme@1.0.0/dist/select2-bootstrap4.min.css" rel="stylesheet" />
 
     <!-- Ionic icons -->
     <link href="https://unpkg.com/ionicons@4.2.0/dist/css/ionicons.min.css" rel="stylesheet">
@@ -250,9 +252,207 @@
         <h4>Taille <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
         <select name="taille" required class="form-control">
           <option value="">Sélectionnez votre taille</option>
-          <option value="1.00">1.00 m</option>
-          <!-- ... -->
-          <option value="3.00">3.00 m</option>
+          <option value="50">50 cm</option>
+          <option value="51">51 cm</option>
+          <option value="52">52 cm</option>
+          <option value="53">53 cm</option>
+          <option value="54">54 cm</option>
+          <option value="55">55 cm</option>
+          <option value="56">56 cm</option>
+          <option value="57">57 cm</option>
+          <option value="58">58 cm</option>
+          <option value="59">59 cm</option>
+          <option value="60">60 cm</option>
+          <option value="61">61 cm</option>
+          <option value="62">62 cm</option>
+          <option value="63">63 cm</option>
+          <option value="64">64 cm</option>
+          <option value="65">65 cm</option>
+          <option value="66">66 cm</option>
+          <option value="67">67 cm</option>
+          <option value="68">68 cm</option>
+          <option value="69">69 cm</option>
+          <option value="70">70 cm</option>
+          <option value="71">71 cm</option>
+          <option value="72">72 cm</option>
+          <option value="73">73 cm</option>
+          <option value="74">74 cm</option>
+          <option value="75">75 cm</option>
+          <option value="76">76 cm</option>
+          <option value="77">77 cm</option>
+          <option value="78">78 cm</option>
+          <option value="79">79 cm</option>
+          <option value="80">80 cm</option>
+          <option value="81">81 cm</option>
+          <option value="82">82 cm</option>
+          <option value="83">83 cm</option>
+          <option value="84">84 cm</option>
+          <option value="85">85 cm</option>
+          <option value="86">86 cm</option>
+          <option value="87">87 cm</option>
+          <option value="88">88 cm</option>
+          <option value="89">89 cm</option>
+          <option value="90">90 cm</option>
+          <option value="91">91 cm</option>
+          <option value="92">92 cm</option>
+          <option value="93">93 cm</option>
+          <option value="94">94 cm</option>
+          <option value="95">95 cm</option>
+          <option value="96">96 cm</option>
+          <option value="97">97 cm</option>
+          <option value="98">98 cm</option>
+          <option value="99">99 cm</option>
+          <option value="100">100 cm</option>
+          <option value="101">101 cm</option>
+          <option value="102">102 cm</option>
+          <option value="103">103 cm</option>
+          <option value="104">104 cm</option>
+          <option value="105">105 cm</option>
+          <option value="106">106 cm</option>
+          <option value="107">107 cm</option>
+          <option value="108">108 cm</option>
+          <option value="109">109 cm</option>
+          <option value="110">110 cm</option>
+          <option value="111">111 cm</option>
+          <option value="112">112 cm</option>
+          <option value="113">113 cm</option>
+          <option value="114">114 cm</option>
+          <option value="115">115 cm</option>
+          <option value="116">116 cm</option>
+          <option value="117">117 cm</option>
+          <option value="118">118 cm</option>
+          <option value="119">119 cm</option>
+          <option value="120">120 cm</option>
+          <option value="121">121 cm</option>
+          <option value="122">122 cm</option>
+          <option value="123">123 cm</option>
+          <option value="124">124 cm</option>
+          <option value="125">125 cm</option>
+          <option value="126">126 cm</option>
+          <option value="127">127 cm</option>
+          <option value="128">128 cm</option>
+          <option value="129">129 cm</option>
+          <option value="130">130 cm</option>
+          <option value="131">131 cm</option>
+          <option value="132">132 cm</option>
+          <option value="133">133 cm</option>
+          <option value="134">134 cm</option>
+          <option value="135">135 cm</option>
+          <option value="136">136 cm</option>
+          <option value="137">137 cm</option>
+          <option value="138">138 cm</option>
+          <option value="139">139 cm</option>
+          <option value="140">140 cm</option>
+          <option value="141">141 cm</option>
+          <option value="142">142 cm</option>
+          <option value="143">143 cm</option>
+          <option value="144">144 cm</option>
+          <option value="145">145 cm</option>
+          <option value="146">146 cm</option>
+          <option value="147">147 cm</option>
+          <option value="148">148 cm</option>
+          <option value="149">149 cm</option>
+          <option value="150">150 cm</option>
+          <option value="151">151 cm</option>
+          <option value="152">152 cm</option>
+          <option value="153">153 cm</option>
+          <option value="154">154 cm</option>
+          <option value="155">155 cm</option>
+          <option value="156">156 cm</option>
+          <option value="157">157 cm</option>
+          <option value="158">158 cm</option>
+          <option value="159">159 cm</option>
+          <option value="160">160 cm</option>
+          <option value="161">161 cm</option>
+          <option value="162">162 cm</option>
+          <option value="163">163 cm</option>
+          <option value="164">164 cm</option>
+          <option value="165">165 cm</option>
+          <option value="166">166 cm</option>
+          <option value="167">167 cm</option>
+          <option value="168">168 cm</option>
+          <option value="169">169 cm</option>
+          <option value="170">170 cm</option>
+          <option value="171">171 cm</option>
+          <option value="172">172 cm</option>
+          <option value="173">173 cm</option>
+          <option value="174">174 cm</option>
+          <option value="175">175 cm</option>
+          <option value="176">176 cm</option>
+          <option value="177">177 cm</option>
+          <option value="178">178 cm</option>
+          <option value="179">179 cm</option>
+          <option value="180">180 cm</option>
+          <option value="181">181 cm</option>
+          <option value="182">182 cm</option>
+          <option value="183">183 cm</option>
+          <option value="184">184 cm</option>
+          <option value="185">185 cm</option>
+          <option value="186">186 cm</option>
+          <option value="187">187 cm</option>
+          <option value="188">188 cm</option>
+          <option value="189">189 cm</option>
+          <option value="190">190 cm</option>
+          <option value="191">191 cm</option>
+          <option value="192">192 cm</option>
+          <option value="193">193 cm</option>
+          <option value="194">194 cm</option>
+          <option value="195">195 cm</option>
+          <option value="196">196 cm</option>
+          <option value="197">197 cm</option>
+          <option value="198">198 cm</option>
+          <option value="199">199 cm</option>
+          <option value="200">200 cm</option>
+          <option value="201">201 cm</option>
+          <option value="202">202 cm</option>
+          <option value="203">203 cm</option>
+          <option value="204">204 cm</option>
+          <option value="205">205 cm</option>
+          <option value="206">206 cm</option>
+          <option value="207">207 cm</option>
+          <option value="208">208 cm</option>
+          <option value="209">209 cm</option>
+          <option value="210">210 cm</option>
+          <option value="211">211 cm</option>
+          <option value="212">212 cm</option>
+          <option value="213">213 cm</option>
+          <option value="214">214 cm</option>
+          <option value="215">215 cm</option>
+          <option value="216">216 cm</option>
+          <option value="217">217 cm</option>
+          <option value="218">218 cm</option>
+          <option value="219">219 cm</option>
+          <option value="220">220 cm</option>
+          <option value="221">221 cm</option>
+          <option value="222">222 cm</option>
+          <option value="223">223 cm</option>
+          <option value="224">224 cm</option>
+          <option value="225">225 cm</option>
+          <option value="226">226 cm</option>
+          <option value="227">227 cm</option>
+          <option value="228">228 cm</option>
+          <option value="229">229 cm</option>
+          <option value="230">230 cm</option>
+          <option value="231">231 cm</option>
+          <option value="232">232 cm</option>
+          <option value="233">233 cm</option>
+          <option value="234">234 cm</option>
+          <option value="235">235 cm</option>
+          <option value="236">236 cm</option>
+          <option value="237">237 cm</option>
+          <option value="238">238 cm</option>
+          <option value="239">239 cm</option>
+          <option value="240">240 cm</option>
+          <option value="241">241 cm</option>
+          <option value="242">242 cm</option>
+          <option value="243">243 cm</option>
+          <option value="244">244 cm</option>
+          <option value="245">245 cm</option>
+          <option value="246">246 cm</option>
+          <option value="247">247 cm</option>
+          <option value="248">248 cm</option>
+          <option value="249">249 cm</option>
+          <option value="250">250 cm</option>
         </select>
       </div>
 
@@ -260,13 +460,20 @@
         <h4>Couleur des yeux <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
         <select name="couleur_yeux" required class="form-control">
           <option value="">Sélectionnez la couleur</option>
-          <option value="noir">Noir</option>
+          <option value="albinos">Albinos</option>
+          <option value="bleu_gris">Bleu-gris</option>
+          <option value="bleu_vert">Bleu-vert</option>
+          <option value="bleue">Bleue</option>
+          <option value="grise">Grise</option>
           <option value="marron">Marron</option>
-          <option value="bleu">Bleu</option>
-          <option value="vert">Vert</option>
-          <option value="gris">Gris</option>
+          <option value="marron_vert">Marron-vert</option>
+          <option value="noir">Noir</option>
+          <option value="noisette">Noisette</option>
+          <option value="vairon">Vairon</option>
+          <option value="verte">Verte</option>
         </select>
       </div>
+
 
       <div class="form-group">
         <h4>Nationalité<span class="required-tooltip" title="Champ nécessaire">*</span></h4>
@@ -283,8 +490,201 @@
         <h4>Pays de naissance <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
         <select name="pays_naissance" required class="form-control">
           <option value="">Sélectionnez le pays</option>
-          <option value="france">France</option>
-          <option value="autre">Autre</option>
+          <option value="AF">Afghanistan</option>
+          <option value="AL">Albania</option>
+          <option value="DZ">Algeria</option>
+          <option value="AD">Andorra</option>
+          <option value="AO">Angola</option>
+          <option value="AG">Antigua and Barbuda</option>
+          <option value="AR">Argentina</option>
+          <option value="AM">Armenia</option>
+          <option value="AU">Australia</option>
+          <option value="AT">Austria</option>
+          <option value="AZ">Azerbaijan</option>
+          <option value="BS">Bahamas</option>
+          <option value="BH">Bahrain</option>
+          <option value="BD">Bangladesh</option>
+          <option value="BB">Barbados</option>
+          <option value="BY">Belarus</option>
+          <option value="BE">Belgium</option>
+          <option value="BZ">Belize</option>
+          <option value="BJ">Benin</option>
+          <option value="BT">Bhutan</option>
+          <option value="BO">Bolivia</option>
+          <option value="BA">Bosnia and Herzegovina</option>
+          <option value="BW">Botswana</option>
+          <option value="BR">Brazil</option>
+          <option value="BN">Brunei</option>
+          <option value="BG">Bulgaria</option>
+          <option value="BF">Burkina Faso</option>
+          <option value="BI">Burundi</option>
+          <option value="CV">Cabo Verde</option>
+          <option value="KH">Cambodia</option>
+          <option value="CM">Cameroon</option>
+          <option value="CA">Canada</option>
+          <option value="CF">Central African Republic</option>
+          <option value="TD">Chad</option>
+          <option value="CL">Chile</option>
+          <option value="CN">China</option>
+          <option value="CO">Colombia</option>
+          <option value="KM">Comoros</option>
+          <option value="CD">Congo (Dem. Rep.)</option>
+          <option value="CG">Congo (Rep.)</option>
+          <option value="CR">Costa Rica</option>
+          <option value="CI">Côte d'Ivoire</option>
+          <option value="HR">Croatia</option>
+          <option value="CU">Cuba</option>
+          <option value="CY">Cyprus</option>
+          <option value="CZ">Czech Republic</option>
+          <option value="DK">Denmark</option>
+          <option value="DJ">Djibouti</option>
+          <option value="DM">Dominica</option>
+          <option value="DO">Dominican Republic</option>
+          <option value="EC">Ecuador</option>
+          <option value="EG">Egypt</option>
+          <option value="SV">El Salvador</option>
+          <option value="GQ">Equatorial Guinea</option>
+          <option value="ER">Eritrea</option>
+          <option value="EE">Estonia</option>
+          <option value="SZ">Eswatini</option>
+          <option value="ET">Ethiopia</option>
+          <option value="FJ">Fiji</option>
+          <option value="FI">Finland</option>
+          <option value="FR">France</option>
+          <option value="GA">Gabon</option>
+          <option value="GM">Gambia</option>
+          <option value="GE">Georgia</option>
+          <option value="DE">Germany</option>
+          <option value="GH">Ghana</option>
+          <option value="GR">Greece</option>
+          <option value="GD">Grenada</option>
+          <option value="GT">Guatemala</option>
+          <option value="GN">Guinea</option>
+          <option value="GW">Guinea-Bissau</option>
+          <option value="GY">Guyana</option>
+          <option value="HT">Haiti</option>
+          <option value="HN">Honduras</option>
+          <option value="HU">Hungary</option>
+          <option value="IS">Iceland</option>
+          <option value="IN">India</option>
+          <option value="ID">Indonesia</option>
+          <option value="IR">Iran</option>
+          <option value="IQ">Iraq</option>
+          <option value="IE">Ireland</option>
+          <option value="IL">Israel</option>
+          <option value="IT">Italy</option>
+          <option value="JM">Jamaica</option>
+          <option value="JP">Japan</option>
+          <option value="JO">Jordan</option>
+          <option value="KZ">Kazakhstan</option>
+          <option value="KE">Kenya</option>
+          <option value="KI">Kiribati</option>
+          <option value="KP">Korea (North)</option>
+          <option value="KR">Korea (South)</option>
+          <option value="KW">Kuwait</option>
+          <option value="KG">Kyrgyzstan</option>
+          <option value="LA">Laos</option>
+          <option value="LV">Latvia</option>
+          <option value="LB">Lebanon</option>
+          <option value="LS">Lesotho</option>
+          <option value="LR">Liberia</option>
+          <option value="LY">Libya</option>
+          <option value="LI">Liechtenstein</option>
+          <option value="LT">Lithuania</option>
+          <option value="LU">Luxembourg</option>
+          <option value="MG">Madagascar</option>
+          <option value="MW">Malawi</option>
+          <option value="MY">Malaysia</option>
+          <option value="MV">Maldives</option>
+          <option value="ML">Mali</option>
+          <option value="MT">Malta</option>
+          <option value="MH">Marshall Islands</option>
+          <option value="MR">Mauritania</option>
+          <option value="MU">Mauritius</option>
+          <option value="MX">Mexico</option>
+          <option value="FM">Micronesia</option>
+          <option value="MD">Moldova</option>
+          <option value="MC">Monaco</option>
+          <option value="MN">Mongolia</option>
+          <option value="ME">Montenegro</option>
+          <option value="MA">Morocco</option>
+          <option value="MZ">Mozambique</option>
+          <option value="MM">Myanmar</option>
+          <option value="NA">Namibia</option>
+          <option value="NR">Nauru</option>
+          <option value="NP">Nepal</option>
+          <option value="NL">Netherlands</option>
+          <option value="NZ">New Zealand</option>
+          <option value="NI">Nicaragua</option>
+          <option value="NE">Niger</option>
+          <option value="NG">Nigeria</option>
+          <option value="MK">North Macedonia</option>
+          <option value="NO">Norway</option>
+          <option value="OM">Oman</option>
+          <option value="PK">Pakistan</option>
+          <option value="PW">Palau</option>
+          <option value="PA">Panama</option>
+          <option value="PG">Papua New Guinea</option>
+          <option value="PY">Paraguay</option>
+          <option value="PE">Peru</option>
+          <option value="PH">Philippines</option>
+          <option value="PL">Poland</option>
+          <option value="PT">Portugal</option>
+          <option value="QA">Qatar</option>
+          <option value="RO">Romania</option>
+          <option value="RU">Russia</option>
+          <option value="RW">Rwanda</option>
+          <option value="KN">Saint Kitts and Nevis</option>
+          <option value="LC">Saint Lucia</option>
+          <option value="VC">Saint Vincent and the Grenadines</option>
+          <option value="WS">Samoa</option>
+          <option value="SM">San Marino</option>
+          <option value="ST">Sao Tome and Principe</option>
+          <option value="SA">Saudi Arabia</option>
+          <option value="SN">Senegal</option>
+          <option value="RS">Serbia</option>
+          <option value="SC">Seychelles</option>
+          <option value="SL">Sierra Leone</option>
+          <option value="SG">Singapore</option>
+          <option value="SK">Slovakia</option>
+          <option value="SI">Slovenia</option>
+          <option value="SB">Solomon Islands</option>
+          <option value="SO">Somalia</option>
+          <option value="ZA">South Africa</option>
+          <option value="SS">South Sudan</option>
+          <option value="ES">Spain</option>
+          <option value="LK">Sri Lanka</option>
+          <option value="SD">Sudan</option>
+          <option value="SR">Suriname</option>
+          <option value="SE">Sweden</option>
+          <option value="CH">Switzerland</option>
+          <option value="SY">Syria</option>
+          <option value="TW">Taiwan</option>
+          <option value="TJ">Tajikistan</option>
+          <option value="TZ">Tanzania</option>
+          <option value="TH">Thailand</option>
+          <option value="TL">Timor-Leste</option>
+          <option value="TG">Togo</option>
+          <option value="TO">Tonga</option>
+          <option value="TT">Trinidad and Tobago</option>
+          <option value="TN">Tunisia</option>
+          <option value="TR">Turkey</option>
+          <option value="TM">Turkmenistan</option>
+          <option value="TV">Tuvalu</option>
+          <option value="UG">Uganda</option>
+          <option value="UA">Ukraine</option>
+          <option value="AE">United Arab Emirates</option>
+          <option value="GB">United Kingdom</option>
+          <option value="US">United States</option>
+          <option value="UY">Uruguay</option>
+          <option value="UZ">Uzbekistan</option>
+          <option value="VU">Vanuatu</option>
+          <option value="VA">Vatican City</option>
+          <option value="VE">Venezuela</option>
+          <option value="VN">Vietnam</option>
+          <option value="YE">Yemen</option>
+          <option value="ZM">Zambia</option>
+          <option value="ZW">Zimbabwe</option>
         </select>
       </div>
 
@@ -624,6 +1024,20 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+      $(document).ready(function() {
+          $('select[name="departement"]').select2({
+              theme: 'bootstrap4'
+          });
+          $('select[name="taille"]').select2({
+              theme: 'bootstrap4'
+          });
+          $('select[name="pays_naissance"]').select2({
+              theme: 'bootstrap4'
+          });
+      });
+    </script>
   
     <!-- JavaScripts Link -->  
     <script src="{{ asset('js/forms.js') }}"></script>
@@ -632,8 +1046,18 @@
     <script type="text/javascript">
         // pour tous les inputs et selects, on bascule la classe "filled"
         function markFilled(el) {
-          if (el.value && el.value.trim() !== '') el.classList.add('filled');
-          else el.classList.remove('filled');
+          if (el.value && el.value.trim() !== '') {
+            el.classList.add('filled');
+            // If it's a Select2 element, also add 'filled' to its container
+            if ($(el).hasClass('select2-hidden-accessible')) {
+              $(el).next('.select2-container').find('.select2-selection--single').addClass('filled');
+            }
+          } else {
+            el.classList.remove('filled');
+            if ($(el).hasClass('select2-hidden-accessible')) {
+              $(el).next('.select2-container').find('.select2-selection--single').removeClass('filled');
+            }
+          }
         }
 
         // au chargement initial
