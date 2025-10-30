@@ -74,7 +74,7 @@
 <section id="crestimonials">
   <div class="container">
     <div class="title-block text-center">
-      <h2 style="white-space: nowrap;">À quoi sert la Carte d'Identité Nationale (CNI) ?</h2>
+      <h2>À quoi sert la Carte d'Identité Nationale (CNI) ?</h2>
 
       <p>En France, la carte d'identité est un document officiel qui atteste de l'identité d'une personne. Elle permet également aux citoyens français de voyager sans passeport au sein de l'Union européenne et de l'espace Schengen, avec une durée de validité de 15 ans pour les adultes et de 10 ans pour les mineurs.</p>
     </div>
@@ -110,7 +110,7 @@
 <section id="testimonials">
   <div class="container">
     <div class="title-block">
-      <h2>Étapes pour la Pré-demande de Carte Nationale d'Identité</h2>
+      <h2 class="wrapped-title">Étapes pour la Pré-demande de Carte Nationale d'Identité</h2>
     </div>
     <div class="row h-100 align-items-center">
       <div class="col-md-4 text-center">

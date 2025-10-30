@@ -1246,3 +1246,8 @@ footer small {
 #banner .icon i {
   font-size: 28px; /* Taille de l'icône */
   color: #0444ec; /* Couleur de l'icône */
+}
+.wrapped-title {
+  white-space: normal;
+  word-wrap: break-word;
+}

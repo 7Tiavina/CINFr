@@ -102,7 +102,10 @@
         <select name="raison" style="width: 100%;" required class="form-control">
           <option value="">Sélectionnez une raison</option>
           <option value="premiere_demande">Première demande</option>
-          <option value="renouvellement">Renouvellement</option>
+          <option value="renouvellement_expiration">Renouvellement pour expiration</option>
+          <option value="renouvellement_deterioration">Renouvellement pour détérioration</option>
+          <option value="renouvellement_vol">Renouvellement pour vol</option>
+          <option value="renouvellement_perte">Renouvellement pour perte</option>
         </select>
       </div>
 
@@ -112,8 +115,102 @@
           <option value="">Sélectionnez un département</option>
           <option value="01_Ain">01 Ain</option>
           <option value="02_Aisne">02 Aisne</option>
+          <option value="03_Allier">03 Allier</option>
+          <option value="04_Alpes-de-Haute-Provence">04 Alpes-de-Haute-Provence</option>
+          <option value="05_Hautes-Alpes">05 Hautes-Alpes</option>
+          <option value="06_Alpes-Maritimes">06 Alpes-Maritimes</option>
+          <option value="07_Ardèche">07 Ardèche</option>
+          <option value="08_Ardennes">08 Ardennes</option>
+          <option value="09_Ariège">09 Ariège</option>
+          <option value="10_Aube">10 Aube</option>
+          <option value="11_Aude">11 Aude</option>
+          <option value="12_Aveyron">12 Aveyron</option>
+          <option value="13_Bouches-du-Rhône">13 Bouches-du-Rhône</option>
+          <option value="14_Calvados">14 Calvados</option>
+          <option value="15_Cantal">15 Cantal</option>
+          <option value="16_Charente">16 Charente</option>
+          <option value="17_Charente-Maritime">17 Charente-Maritime</option>
+          <option value="18_Cher">18 Cher</option>
+          <option value="19_Corrèze">19 Corrèze</option>
+          <option value="20_Corse">20 Corse</option>
+          <option value="21_Côte-d'Or">21 Côte-d'Or</option>
+          <option value="22_Côtes-d'Armor">22 Côtes d'Armor</option>
+          <option value="23_Creuse">23 Creuse</option>
+          <option value="24_Dordogne">24 Dordogne</option>
+          <option value="25_Doubs">25 Doubs</option>
+          <option value="26_Drôme">26 Drôme</option>
+          <option value="27_Eure">27 Eure</option>
+          <option value="28_Eure-et-Loir">28 Eure-et-Loir</option>
+          <option value="29_Finistère">29 Finistère</option>
+          <option value="30_Gard">30 Gard</option>
+          <option value="31_Haute-Garonne">31 Haute-Garonne</option>
+          <option value="32_Gers">32 Gers</option>
+          <option value="33_Gironde">33 Gironde</option>
+          <option value="34_Hérault">34 Hérault</option>
+          <option value="35_Ille-et-Vilaine">35 Ille-et-Vilaine</option>
+          <option value="36_Indre">36 Indre</option>
+          <option value="37_Indre-et-Loire">37 Indre-et-Loire</option>
+          <option value="38_Isère">38 Isère</option>
+          <option value="39_Jura">39 Jura</option>
+          <option value="40_Landes">40 Landes</option>
+          <option value="41_Loir-et-Cher">41 Loir-et-Cher</option>
+          <option value="42_Loire">42 Loire</option>
+          <option value="43_Haute-Loire">43 Haute-Loire</option>
+          <option value="44_Loire-Atlantique">44 Loire-Atlantique</option>
+          <option value="45_Loiret">45 Loiret</option>
+          <option value="46_Lot">46 Lot</option>
+          <option value="47_Lot-et-Garonne">47 Lot-et-Garonne</option>
+          <option value="48_Lozère">48 Lozère</option>
+          <option value="49_Maine-et-Loire">49 Maine-et-Loire</option>
+          <option value="50_Manche">50 Manche</option>
+          <option value="51_Marne">51 Marne</option>
+          <option value="52_Haute-Marne">52 Haute-Marne</option>
+          <option value="53_Mayenne">53 Mayenne</option>
+          <option value="54_Meurthe-et-Moselle">54 Meurthe-et-Moselle</option>
+          <option value="55_Meuse">55 Meuse</option>
+          <option value="56_Morbihan">56 Morbihan</option>
+          <option value="57_Moselle">57 Moselle</option>
+          <option value="58_Nièvre">58 Nièvre</option>
+          <option value="59_Nord">59 Nord</option>
+          <option value="60_Oise">60 Oise</option>
+          <option value="61_Orne">61 Orne</option>
+          <option value="62_Pas-de-Calais">62 Pas-de-Calais</option>
+          <option value="63_Puy-de-Dôme">63 Puy-de-Dôme</option>
+          <option value="64_Pyrénées-Atlantiques">64 Pyrénées-Atlantiques</option>
+          <option value="65_Hautes-Pyrénées">65 Hautes-Pyrénées</option>
+          <option value="66_Pyrénées-Orientales">66 Pyrénées-Orientales</option>
+          <option value="67_Bas-Rhin">67 Bas-Rhin</option>
+          <option value="68_Haut-Rhin">68 Haut-Rhin</option>
+          <option value="69_Rhône">69 Rhône</option>
+          <option value="70_Haute-Saône">70 Haute-Saône</option>
+          <option value="71_Saône-et-Loire">71 Saône-et-Loire</option>
+          <option value="72_Sarthe">72 Sarthe</option>
+          <option value="73_Savoie">73 Savoie</option>
+          <option value="74_Haute-Savoie">74 Haute-Savoie</option>
+          <option value="75_Paris">75 Paris</option>
+          <option value="76_Seine-Maritime">76 Seine-Maritime</option>
+          <option value="77_Seine-et-Marne">77 Seine-et-Marne</option>
+          <option value="78_Yvelines">78 Yvelines</option>
+          <option value="79_Deux-Sèvres">79 Deux-Sèvres</option>
+          <option value="80_Somme">80 Somme</option>
+          <option value="81_Tarn">81 Tarn</option>
+          <option value="82_Tarn-et-Garonne">82 Tarn-et-Garonne</option>
+          <option value="83_Var">83 Var</option>
+          <option value="84_Vaucluse">84 Vaucluse</option>
+          <option value="85_Vendée">85 Vendée</option>
+          <option value="86_Vienne">86 Vienne</option>
+          <option value="87_Haute-Vienne">87 Haute-Vienne</option>
+          <option value="88_Vosges">88 Vosges</option>
+          <option value="89_Yonne">89 Yonne</option>
+          <option value="90_Territoire-de-Belfort">90 Territoire de Belfort</option>
+          <option value="91_Essonne">91 Essonne</option>
+          <option value="92_Hauts-de-Seine">92 Hauts-de-Seine</option>
+          <option value="93_Seine-Saint-Denis">93 Seine-Saint-Denis</option>
+          <option value="94_Val-de-Marne">94 Val-de-Marne</option>
+          <option value="95_Val-d'Oise">95 Val-D'Oise</option>
         </select>
       </div>
+
     </div>
 
     <!------------------------------------------------- Étape 2 ------------------------------------------------------------------------------>
@@ -443,7 +540,7 @@
 <section id="crestimonials">
   <div class="container">
     <div class="title-block text-center">
-      <h2 style="white-space: nowrap;">Étapes pour la demande de Carte Nationale d'Identité </h2>
+      <h2 class="wrapped-title">Étapes pour la demande de Carte Nationale d'Identité </h2>
 
       <p>En France, la carte d'identité est un document officiel qui atteste de l'identité d'une personne. Elle permet également aux citoyens français de voyager sans passeport au sein de l'Union européenne et de l'espace Schengen, avec une durée de validité de 15 ans pour les adultes et de 10 ans pour les mineurs.</p>
     </div>
