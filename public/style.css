@@ -206,7 +206,7 @@ section {
 }
 
 .nav-logo {
-  max-height: 80px; /* Ajustez la hauteur maximale du logo */
+  max-height: 172px; 
 }
 
 .navbar-toggler {
@@ -529,6 +529,8 @@ section {
 #hero .hero-content {
     align-items: flex-end; /* pousse le contenu à droite */
     text-align: right;
+    justify-content: space-between;
+    width: 100%;
 }
 
 #cinhand-container {

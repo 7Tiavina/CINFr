@@ -17,7 +17,7 @@
     <span class="icon ion-md-menu"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link svg-underline" href="{{ route('mairies') }}">
           LISTE DES MAIRIES
@@ -52,7 +52,7 @@
         </a>
       </li>
     </ul>
-    <div class="ml-auto">
+    <div>
   <a class="nav-link btn btn-wave" href="{{ route('predemande') }}">
     <span style="--i:0">P</span><span style="--i:1">r</span><span style="--i:2">é</span><span style="--i:3">-</span>
     <span style="--i:4">D</span><span style="--i:5">e</span><span style="--i:6">m</span><span style="--i:7">a</span><span style="--i:8">n</span><span style="--i:9">d</span><span style="--i:10">e</span>
