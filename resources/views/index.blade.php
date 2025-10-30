@@ -42,7 +42,7 @@
       </div>
 
       <!-- Lottie + texte à droite -->
-      <div class="col-md-7 d-flex flex-column content-box hero-content">
+      <div class="col-md-7 d-flex flex-row flex-md-column content-box hero-content" style="flex-direction: row !important;">
         <div id="lottie-container" class="mb-3">
           <!-- Lottie ici -->
         </div>

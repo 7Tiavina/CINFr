@@ -1251,3 +1251,15 @@ footer small {
   white-space: normal;
   word-wrap: break-word;
 }
+
+#lottie-container {
+  border: 2px solid red;
+  min-height: 100px;
+  min-width: 100px;
+  margin-right: 285px;
+}
+
+.hero-text-wrapper {
+  border: 2px solid blue;
+}
+
