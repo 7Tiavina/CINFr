@@ -1027,6 +1027,7 @@
       $(document).ready(function() {
           const departementSelect = $('select[name="departement"]');
           const deptNaissanceSelect = $('select[name="dept_naissance"]');
+          const dateNaissanceInput = $('input[name="date_naissance"]');
 
           // Create a list of departments from the hardcoded options
           const departements = [];
@@ -1042,18 +1043,57 @@
               deptNaissanceSelect.append(new Option(departement.text, departement.id));
           });
 
-          departementSelect.select2({
+          const select2Elements = $('select[name="departement"], select[name="dept_naissance"], select[name="taille"], select[name="pays_naissance"]');
+
+          select2Elements.select2({
               theme: 'bootstrap4'
+          }).on('select2:select', function (e) {
+              var $el = $(this);
+              var $container = $el.next('.select2-container');
+              var $selection = $container.find('.select2-selection--single');
+              if ($el.val() && $el.val().trim() !== '') {
+                  $selection.addClass('filled');
+              } else {
+                  $selection.removeClass('filled');
+              }
+          }).on('select2:unselect', function (e) {
+                var $el = $(this);
+                var $container = $el.next('.select2-container');
+                var $selection = $container.find('.select2-selection--single');
+                if ($el.val() && $el.val().trim() !== '') {
+                    $selection.addClass('filled');
+                } else {
+                    $selection.removeClass('filled');
+                }
           });
-          deptNaissanceSelect.select2({
-              theme: 'bootstrap4'
-          });
-          $('select[name="taille"]').select2({
-              theme: 'bootstrap4'
-          });
-          $('select[name="pays_naissance"]').select2({
-              theme: 'bootstrap4'
-          });
+
+        $('input[name="type"]').on('change', function() {
+            const today = new Date();
+            const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+
+            if (this.value === 'majeur') {
+                dateNaissanceInput.attr('max', eighteenYearsAgo.toISOString().split('T')[0]);
+                dateNaissanceInput.attr('min', '');
+            } else { // mineur
+                dateNaissanceInput.attr('min', eighteenYearsAgo.toISOString().split('T')[0]);
+                dateNaissanceInput.attr('max', '');
+            }
+        });
+
+        dateNaissanceInput.on('change', function() {
+            const selectedDate = new Date($(this).val());
+            const today = new Date();
+            const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+            const type = $('input[name="type"]:checked').val();
+
+            if (type === 'majeur' && selectedDate > eighteenYearsAgo) {
+                alert('Pour un majeur, la date de naissance ne peut pas être après le ' + eighteenYearsAgo.toLocaleDateString());
+                $(this).val('');
+            } else if (type === 'mineur' && selectedDate < eighteenYearsAgo) {
+                alert('Pour un mineur, la date de naissance ne peut pas être avant le ' + eighteenYearsAgo.toLocaleDateString());
+                $(this).val('');
+            }
+        });
       });
     </script>
   
@@ -1062,20 +1102,32 @@
 
 
     <script type="text/javascript">
-        // pour tous les inputs et selects, on bascule la classe "filled"
         function markFilled(el) {
-          if (el.value && el.value.trim() !== '') {
-            el.classList.add('filled');
-            // If it's a Select2 element, also add 'filled' to its container
-            if ($(el).hasClass('select2-hidden-accessible')) {
-              $(el).next('.select2-container').find('.select2-selection--single').addClass('filled');
+            const $el = $(el);
+            if ($el.is('select')) {
+                const $container = $el.next('.select2-container');
+                if ($container.length) {
+                    const $selection = $container.find('.select2-selection--single');
+                    if ($el.val() && $el.val().trim() !== '') {
+                        $selection.addClass('filled');
+                    } else {
+                        $selection.removeClass('filled');
+                    }
+                } else {
+                    if ($el.val() && $el.val().trim() !== '') {
+                        $el.addClass('filled');
+                    } else {
+                        $el.removeClass('filled');
+                    }
+                }
+            } else {
+                if ($el.val() && $el.val().trim() !== '') {
+                    $el.addClass('filled');
+                }
+                else {
+                    $el.removeClass('filled');
+                }
             }
-          } else {
-            el.classList.remove('filled');
-            if ($(el).hasClass('select2-hidden-accessible')) {
-              $(el).next('.select2-container').find('.select2-selection--single').removeClass('filled');
-            }
-          }
         }
 
         // au chargement initial
