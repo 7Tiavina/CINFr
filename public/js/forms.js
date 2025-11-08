@@ -96,14 +96,33 @@ function nextStep() {
   const totalSteps = document.querySelectorAll('.form-part').length;
 
   if (currentStep === 3) {
-    const pereInconnu = document.getElementById('pere-inconnu-oui').checked;
-    const mereInconnue = document.getElementById('mere-inconnue-oui').checked;
-    if (!pereInconnu && !mereInconnue) {
+    const pereInconnuOui = document.getElementById('pere-inconnu-oui').checked;
+    const mereInconnueOui = document.getElementById('mere-inconnue-oui').checked;
+
+    if (pereInconnuOui && mereInconnueOui) {
+        showAlert('❌ Vous devez renseigner au moins un des deux parents (père ou mère).');
+        nextBtn.classList.remove('loading');
+        return;
+    } else {
+        // If at least one parent is known, validate the visible fields
         if (!validateCurrentStep()) {
             showAlert('❌ Veuillez remplir tous les champs obligatoires avant de continuer.');
             nextBtn.classList.remove('loading');
             return;
         }
+    }
+  } else if (currentStep === 4) {
+    const nationaliteCheckboxes = document.querySelectorAll('#step-4 input[type="checkbox"]');
+    let isNationaliteSelected = false;
+    nationaliteCheckboxes.forEach(checkbox => {
+      if (checkbox.checked) {
+        isNationaliteSelected = true;
+      }
+    });
+    if (!isNationaliteSelected) {
+      showAlert('❌ Veuillez choisir au moins un motif pour la nationalité française.');
+      nextBtn.classList.remove('loading');
+      return;
     }
   } else if (currentStep === 5) {
     const validationInfo = document.getElementById('validation_info').checked;
@@ -202,20 +221,48 @@ window.onload = function () {
 };
 
 
+function toggleRequired(containerId, isRequired) {
+  const container = document.getElementById(containerId);
+  if (container) {
+    const fieldsToToggle = [];
+    if (containerId === 'pere-details') {
+      fieldsToToggle.push(document.getElementById('pere_nom'));
+      fieldsToToggle.push(document.getElementById('pere_prenom1'));
+    } else if (containerId === 'mere-details') {
+      fieldsToToggle.push(document.getElementById('mere_nom'));
+      fieldsToToggle.push(document.getElementById('mere_prenom1'));
+    }
+
+    fieldsToToggle.forEach(field => {
+      if (field) {
+        if (isRequired) {
+          field.setAttribute('required', 'required');
+        } else {
+          field.removeAttribute('required');
+        }
+      }
+    });
+  }
+}
+
 document.getElementById('pere-inconnu-non').addEventListener('change', function () {
   document.getElementById('pere-details').style.display = this.checked ? 'block' : 'none';
+  toggleRequired('pere-details', this.checked);
 });
 
 document.getElementById('pere-inconnu-oui').addEventListener('change', function () {
   document.getElementById('pere-details').style.display = this.checked ? 'none' : 'block';
+  toggleRequired('pere-details', !this.checked); // Not required if unknown
 });
 
 document.getElementById('mere-inconnue-non').addEventListener('change', function () {
   document.getElementById('mere-details').style.display = this.checked ? 'block' : 'none';
+  toggleRequired('mere-details', this.checked);
 });
 
 document.getElementById('mere-inconnue-oui').addEventListener('change', function () {
   document.getElementById('mere-details').style.display = this.checked ? 'none' : 'block';
+  toggleRequired('mere-details', !this.checked); // Not required if unknown
 });
 
 
