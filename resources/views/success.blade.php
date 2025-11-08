@@ -31,11 +31,29 @@
 <script>
     window.addEventListener('load', async () => {
         try {
+            const fieldKeys = [
+                'type', 'situation_familiale', 'raison', 'departement', 'sexe', 
+                'nom_naissance', 'deuxieme_nom', 'prenom1', 'prenom2', 'prenom3', 
+                'taille', 'couleur_yeux', 'nationalite', 'date_naissance', 
+                'pays_naissance', 'dept_naissance', 'commune_naissance', 
+                'pere_inconnu', 'pere_nom', 'pere_prenom1', 'pere_prenom2', 
+                'pere_naissance_date', 'pere_naissance_ville', 'pere_nationalite', 
+                'mere_inconnue', 'mere_nom', 'mere_prenom1', 'mere_prenom2', 
+                'mere_naissance_date', 'mere_naissance_ville', 'mere_nationalite', 
+                'nat_naissance_parent_france', 'nat_naissance_parent_ancien', 
+                'nat_naissance_parent_francais', 'nat_etranger_parent_francais', 
+                'nat_parent_devenu_francais', 'nat_mariage', 'nat_reintegre', 
+                'nat_declaration', 'nat_autre', 'nat_autre_texte', 'adresse', 
+                'ville', 'code_postal', 'adresse_complement', 'telephone', 'email'
+            ];
+
             const data = {};
-            for (let i = 0; i < sessionStorage.length; i++) {
-                const key = sessionStorage.key(i);
-                data[key] = sessionStorage.getItem(key);
-            }
+            fieldKeys.forEach(key => {
+                const value = sessionStorage.getItem(key);
+                if (value !== null && value !== '') {
+                    data[key] = value;
+                }
+            });
 
             const email = sessionStorage.getItem('email'); // Assuming email is stored in sessionStorage
             const emailMessageElement = document.getElementById('email-confirmation-message');

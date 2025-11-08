@@ -98,13 +98,13 @@ class StripeController extends Controller
 
  public function storeSessionData(Request $request)
     {
-        \Log::info('storeSessionData reçu :', $request->all());
-
+        \Log::info('--- New Request to storeSessionData ---');
         try {
             Stripe::setApiKey(config('stripe.test.sk'));
 
             $sessionId = $request->input('stripe_session_id');
             $data      = $request->input('data', []);
+            \Log::info('Received data from AJAX:', $data);
 
             // 1) Récupération de la session Stripe
             $session = StripeSession::retrieve([
@@ -179,12 +179,14 @@ class StripeController extends Controller
                 'acte_naissance'          => $data['acte_naissance']          ?? null,
                 'autre_document'          => $data['autre_document']          ?? null,
             ];
+            \Log::info('Prepared client data:', $clientData);
 
             // 5) Création ou mise à jour du client
             $client = Client::updateOrCreate(
                 ['stripe_session_id' => $sessionId],
                 $clientData
             );
+            \Log::info('Client successfully created/updated with ID: ' . $client->id);
 
             // 6) Enregistrement du paiement
             $payment = $client->payments()->updateOrCreate(
@@ -207,6 +209,7 @@ class StripeController extends Controller
             ]);
         } catch (\Exception $e) {
             \Log::error('Erreur storeSessionData : ' . $e->getMessage());
+            \Log::error($e->getTraceAsString()); // Log the full stack trace
             return response()->json([
                 'status'  => 'error',
                 'message' => $e->getMessage(),

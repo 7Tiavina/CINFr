@@ -396,6 +396,45 @@ function displayRecap() {
         }
     });
 
+    // Add motif_nationalite to recap
+    const nationaliteMotifs = [];
+    for (let i = 0; i < sessionStorage.length; i++) {
+        const key = sessionStorage.key(i);
+        if (key.startsWith('nat_')) {
+            const value = sessionStorage.getItem(key);
+            if (value) {
+                // For 'nat_autre_texte', combine it with the 'nat_autre' label
+                if (key === 'nat_autre_texte' && value.trim() !== '') {
+                    const autreLabel = document.querySelector('label[for="nat_autre"]')?.textContent || 'Autre motif';
+                    // To avoid duplicates, we find and replace the simple "Autre motif" if it exists
+                    const index = nationaliteMotifs.indexOf(autreLabel);
+                    if (index > -1) {
+                        nationaliteMotifs[index] = `${autreLabel}: ${value}`;
+                    } else {
+                        nationaliteMotifs.push(`${autreLabel}: ${value}`);
+                    }
+                } else if (key === 'nat_autre' && value) {
+                    const autreLabel = document.querySelector('label[for="nat_autre"]')?.textContent || 'Autre motif';
+                    const autreText = sessionStorage.getItem('nat_autre_texte');
+                    if (autreText && autreText.trim() !== '') {
+                        // Already handled by the case above
+                    } else {
+                        nationaliteMotifs.push(autreLabel);
+                    }
+                } else if (key !== 'nat_autre' && key !== 'nat_autre_texte') {
+                    const label = document.querySelector(`label[for="${key}"]`)?.textContent;
+                    if (label) {
+                        nationaliteMotifs.push(label);
+                    }
+                }
+            }
+        }
+    }
+
+    if (nationaliteMotifs.length > 0) {
+        html += `<p><strong>Vous êtes Français(e) car :</strong><br>${nationaliteMotifs.join('<br>')}</p>`;
+    }
+
     const formSection = document.getElementById('form-background');
     const type = sessionStorage.getItem('type');
     const prixMajeur = formSection.dataset.prix_majeur;
