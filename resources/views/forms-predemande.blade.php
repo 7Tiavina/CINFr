@@ -20,6 +20,9 @@
     <!-- Ionic icons -->
     <link href="https://unpkg.com/ionicons@4.2.0/dist/css/ionicons.min.css" rel="stylesheet">
 
+    <!-- intl-tel-input CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
 
@@ -858,11 +861,11 @@
 
   <h4>Informations de contact : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
   
-  <label for="telephone">Téléphone portable (Format : 0601020304)</label>
-  <input type="tel" id="telephone" name="telephone" pattern="^0[1-9][0-9]{8}$" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required class="form-control">
+  <label for="telephone">Téléphone portable</label>
+  <input type="tel" id="telephone" name="telephone" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" class="form-control">
   
   <label for="email">E-mail</label>
-  <input type="email" id="email" name="email" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required class="form-control">
+  <input type="email" id="email" name="email" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" class="form-control">
 
   <h4>Validation : <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
   <div class="checkbox-options">
@@ -1023,8 +1026,59 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script>
       $(document).ready(function() {
+          // Pre-select radio button based on URL parameter
+          const urlParams = new URLSearchParams(window.location.search);
+          const type = urlParams.get('type');
+          if (type === 'majeur' || type === 'mineur') {
+            const radio = document.getElementById(type);
+            if (radio) {
+              radio.checked = true;
+              sessionStorage.setItem('type', type); // Explicitly save to sessionStorage
+              $(radio).trigger('change'); // Use jQuery to trigger change for compatibility
+              markFilled(radio);
+            }
+          }
+
+          let phoneInputInstance; // Make instance accessible
+
+          function initializeIntlTelInput() {
+            const phoneInput = document.querySelector("#telephone");
+            if (phoneInput) {
+              phoneInputInstance = window.intlTelInput(phoneInput, {
+                initialCountry: "fr",
+                separateDialCode: true,
+                placeholderNumberType: 'MOBILE',
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+              });
+
+              // Listen for changes and update sessionStorage
+              phoneInput.addEventListener('keyup', updateSessionStorage);
+              phoneInput.addEventListener('countrychange', updateSessionStorage);
+
+              function updateSessionStorage() {
+                if (phoneInputInstance) {
+                  const fullNumber = phoneInputInstance.getNumber();
+                  sessionStorage.setItem('telephone', fullNumber);
+                }
+              }
+            }
+          }
+
+          initializeIntlTelInput();
+
+          // Handle form submission to include the full number
+          $('#stripe-form').on('submit', function(e) {
+            if (phoneInputInstance) {
+              const fullNumber = phoneInputInstance.getNumber();
+              const phoneInput = document.querySelector("#telephone");
+              phoneInput.value = fullNumber; // Update the original input's value
+              sessionStorage.setItem('telephone', fullNumber); // Final update just in case
+            }
+          });
+
           const departementSelect = $('select[name="departement"]');
           const deptNaissanceSelect = $('select[name="dept_naissance"]');
           const dateNaissanceInput = $('input[name="date_naissance"]');
@@ -1087,10 +1141,10 @@
             const type = $('input[name="type"]:checked').val();
 
             if (type === 'majeur' && selectedDate > eighteenYearsAgo) {
-                alert('Pour un majeur, la date de naissance ne peut pas être après le ' + eighteenYearsAgo.toLocaleDateString());
+                showAlert('❌ Pour un majeur, la date de naissance ne peut pas être après le ' + eighteenYearsAgo.toLocaleDateString());
                 $(this).val('');
             } else if (type === 'mineur' && selectedDate < eighteenYearsAgo) {
-                alert('Pour un mineur, la date de naissance ne peut pas être avant le ' + eighteenYearsAgo.toLocaleDateString());
+                showAlert('❌ Pour un mineur, la date de naissance ne peut pas être avant le ' + eighteenYearsAgo.toLocaleDateString());
                 $(this).val('');
             }
         });

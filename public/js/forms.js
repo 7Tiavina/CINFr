@@ -125,6 +125,24 @@ function nextStep() {
       return;
     }
   } else if (currentStep === 5) {
+    const adresse = document.getElementById('adresse_demandeur').value.trim();
+    const ville = document.getElementById('adresse_ville').value.trim();
+    const codePostal = document.getElementById('adresse_zip').value.trim();
+    const telephone = document.getElementById('telephone').value.trim();
+    const email = document.getElementById('email').value.trim();
+
+    if (!adresse || !ville || !codePostal) {
+      showAlert('❌ Veuillez remplir tous les champs d\'adresse obligatoires.');
+      nextBtn.classList.remove('loading');
+      return;
+    }
+
+    if (!telephone && !email) {
+      showAlert('❌ Veuillez renseigner votre numéro de téléphone ou votre adresse e-mail.');
+      nextBtn.classList.remove('loading');
+      return;
+    }
+
     const validationInfo = document.getElementById('validation_info').checked;
     const validationPolitique = document.getElementById('validation_politique').checked;
     const validationConditions = document.getElementById('validation_conditions').checked;

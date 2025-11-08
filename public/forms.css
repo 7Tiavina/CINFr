@@ -383,3 +383,56 @@ select.filled {
 .select2-container--bootstrap4 .select2-selection--single .select2-selection__arrow {
   height: auto !important; /* Adjust arrow height */
 }
+
+/* ==== intl-tel-input Customization (for separateDialCode) ==== */
+.iti.iti--separate-dial-code {
+  width: 100%;
+}
+
+/* Style the input field itself */
+.iti.iti--separate-dial-code .form-control {
+  height: 45px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding-left: 95px; /* Make space for the dial code */
+  font-size: 1.1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+}
+
+/* Focus state for the input */
+.iti.iti--separate-dial-code .form-control:focus {
+  border-color: #0444ec;
+  box-shadow: 0 0 0 3px rgba(4, 68, 236, 0.2);
+  outline: none;
+}
+
+/* Style the selected flag and dial code container */
+.iti.iti--separate-dial-code .iti__selected-dial-code {
+  color: #333;
+  font-weight: 600;
+}
+
+.iti.iti--separate-dial-code .iti__flag-container {
+  position: absolute;
+  height: 45px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* Dropdown list styles */
+.iti__country-list {
+  border-radius: 6px;
+  border-color: #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 9999; /* Ensure dropdown is on top */
+}
+
+.iti__country.iti__highlight {
+  background-color: #e8f0fe;
+}
+
+.iti__dial-code {
+  color: #777;
+}

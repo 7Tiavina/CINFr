@@ -148,7 +148,7 @@
             <img src="images/Parents-rafiki.png" alt="Logo CINFr" style="max-width: 100%; height: auto; margin-bottom: 10px;">
           </picture>
 
-          <a href="{{ route('predemande') }}" class="btnfos btnfos-1">
+          <a href="{{ route('predemande') }}?type=majeur" class="btnfos btnfos-1">
             <svg>
               <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
             </svg>
@@ -166,7 +166,7 @@
             <img src="images/Recess-rafiki.png" alt="Logo CINFr" style="max-width: 100%; height: auto; margin-bottom: 10px;">
           </picture>
 
-          <a href="{{ route('predemande') }}" class="btnfos btnfos-1">
+          <a href="{{ route('predemande') }}?type=mineur" class="btnfos btnfos-1">
             <svg>
               <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
             </svg>
