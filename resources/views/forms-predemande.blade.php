@@ -689,8 +689,8 @@
       </div>
 
       <div class="form-group">
-        <h4>Département ou COM de naissance <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-        <select name="dept_naissance" required class="form-control">
+        <h4>Département de naissance (France uniquement)</h4>
+        <select name="dept_naissance" class="form-control">
           <option value="">Sélectionnez le département</option>
         </select>
       </div>
