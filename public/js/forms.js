@@ -236,29 +236,7 @@ window.onload = function () {
     el.addEventListener(evt, saveField);
   });
 
-          const select2Elements = $('select[name="departement"], select[name="dept_naissance"], select[name="taille"], select[name="pays_naissance"], select[name="nationalite"]');
 
-          select2Elements.select2({
-              theme: 'bootstrap4'
-          }).on('select2:select', function (e) {
-              var $el = $(this);
-              var $container = $el.next('.select2-container');
-              var $selection = $container.find('.select2-selection--single');
-              if ($el.val() && $el.val().trim() !== '') {
-                  $selection.addClass('filled');
-              } else {
-                  $selection.removeClass('filled');
-              }
-          }).on('select2:unselect', function (e) {
-                var $el = $(this);
-                var $container = $el.next('.select2-container');
-                var $selection = $container.find('.select2-selection--single');
-                if ($el.val() && $el.val().trim() !== '') {
-                    $selection.addClass('filled');
-                } else {
-                    $selection.removeClass('filled');
-                }
-          });
 
         $('input[name="type"]').on('change', function() {
             const today = new Date();

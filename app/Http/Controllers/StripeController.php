@@ -50,7 +50,7 @@ class StripeController extends Controller
             ]],
             'mode'        => 'payment',
             'success_url' => route('success') . '?session_id={CHECKOUT_SESSION_ID}',
-            'cancel_url'  => route('checkout'),
+            'cancel_url'  => route('predemande'),
         ]);
 
         return redirect()->away($session->url);

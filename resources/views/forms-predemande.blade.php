@@ -1169,7 +1169,7 @@
     <input type="hidden" name="type" id="stripe-form-type">
     <div class="buttons" style="display:flex;justify-content:flex-end;margin-top:30px;">
       <button type="button" class="btn btn-secondary" onclick="prevStep(this)">Précédent</button>
-      <button type="submit" class="btn btn-success ml-2">Procéder a ma commande</button>
+      <button type="submit" class="btn btn-success ml-2">Procéder a ma demande</button>
     </div>
   </form>
 </div>
@@ -1371,7 +1371,7 @@
               deptNaissanceSelect.append(new Option(departement.text, departement.id));
           });
 
-          const select2Elements = $('select[name="departement"], select[name="dept_naissance"], select[name="taille"], select[name="pays_naissance"]');
+          const select2Elements = $('select[name="departement"], select[name="dept_naissance"], select[name="taille"], select[name="pays_naissance"], select[name="nationalite"]');
 
           select2Elements.select2({
               theme: 'bootstrap4'
