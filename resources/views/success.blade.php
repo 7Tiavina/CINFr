@@ -44,7 +44,9 @@
                 'nat_naissance_parent_francais', 'nat_etranger_parent_francais', 
                 'nat_parent_devenu_francais', 'nat_mariage', 'nat_reintegre', 
                 'nat_declaration', 'nat_autre', 'nat_autre_texte', 'adresse', 
-                'ville', 'code_postal', 'adresse_complement', 'telephone', 'email'
+                'ville', 'code_postal', 'adresse_complement', 'telephone', 'email',
+                'deuxieme_nom_origine', 'mot_devant', 'mot_a_afficher',
+                'pere_prenom3', 'mere_prenom3', 'pere_pays_naissance', 'mere_pays_naissance'
             ];
 
             const data = {};

@@ -56,6 +56,13 @@ class Client extends Model
         'mere_nationalite',
         // …
         'motif_nationalite',
+        'deuxieme_nom_origine',
+        'mot_devant',
+        'mot_a_afficher',
+        'pere_prenom3',
+        'mere_prenom3',
+        'pere_pays_naissance',
+        'mere_pays_naissance',
     ];
 
     public function payments()

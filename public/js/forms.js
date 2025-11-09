@@ -283,6 +283,26 @@ document.getElementById('mere-inconnue-oui').addEventListener('change', function
   toggleRequired('mere-details', !this.checked); // Not required if unknown
 });
 
+document.querySelector('input[name="deuxieme_nom"]').addEventListener('input', function() {
+  const detailsDiv = document.getElementById('deuxieme_nom_details');
+  if (this.value.trim() !== '') {
+    detailsDiv.style.display = 'block';
+  } else {
+    detailsDiv.style.display = 'none';
+  }
+});
+
+document.querySelectorAll('input[name="mot_devant"]').forEach(radio => {
+  radio.addEventListener('change', function() {
+    const motDiv = document.getElementById('mot_a_afficher_div');
+    if (this.value === 'oui') {
+      motDiv.style.display = 'block';
+    } else {
+      motDiv.style.display = 'none';
+    }
+  });
+});
+
 
 	//Gestion du Navbar-----------------------------------------------------------------------------
 

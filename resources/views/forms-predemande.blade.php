@@ -244,6 +244,53 @@
         <input type="text" name="deuxieme_nom" placeholder="Deuxième nom" class="form-control">
       </div>
 
+      <div id="deuxieme_nom_details" style="display: none;">
+        <div class="form-group">
+          <h4>Précisez s'il s'agit du nom :</h4>
+          <div class="radio-options" style="display: flex; flex-direction: column; gap: 5px;">
+            <div class="form-check" style="display: flex; align-items: center;">
+              <input type="radio" id="nom_pere" name="deuxieme_nom_origine" value="pere" class="form-check-input" style="margin-right: 5px;">
+              <label for="nom_pere" class="form-check-label" style="margin-bottom: 0;">de père</label>
+            </div>
+            <div class="form-check" style="display: flex; align-items: center;">
+              <input type="radio" id="nom_mere" name="deuxieme_nom_origine" value="mere" class="form-check-input" style="margin-right: 5px;">
+              <label for="nom_mere" class="form-check-label" style="margin-bottom: 0;">de la mère</label>
+            </div>
+            <div class="form-check" style="display: flex; align-items: center;">
+              <input type="radio" id="nom_epoux" name="deuxieme_nom_origine" value="epoux" class="form-check-input" style="margin-right: 5px;">
+              <label for="nom_epoux" class="form-check-label" style="margin-bottom: 0;">époux</label>
+            </div>
+            <div class="form-check" style="display: flex; align-items: center;">
+              <input type="radio" id="nom_epouse" name="deuxieme_nom_origine" value="epouse" class="form-check-input" style="margin-right: 5px;">
+              <label for="nom_epouse" class="form-check-label" style="margin-bottom: 0;">épouse</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <h4>Souhaitez-vous faire apparaître un mot devant le deuxième nom ?</h4>
+          <div class="radio-options">
+            <div class="form-check">
+              <input type="radio" id="mot_devant_oui" name="mot_devant" value="oui" class="form-check-input">
+              <label for="mot_devant_oui" class="form-check-label">Oui</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" id="mot_devant_non" name="mot_devant" value="non" class="form-check-input">
+              <label for="mot_devant_non" class="form-check-label">Non</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" id="mot_a_afficher_div" style="display: none;">
+          <h4>Lequel ?</h4>
+          <select name="mot_a_afficher" class="form-control">
+            <option value="">Sélectionnez un mot</option>
+            <option value="epoux_se">époux/se</option>
+            <option value="veuf_ve">veuf/ve</option>
+          </select>
+        </div>
+      </div>
+
       <div class="form-group">
         <h4>Prénoms <span style="color: red;">(Au moins 1)</span></h4>
         <input type="text" name="prenom1" placeholder="1er prénom" required class="form-control">
@@ -732,6 +779,21 @@
       <h4>Prénoms du père</h4>
       <input type="text" id="pere_prenom1" name="pere_prenom1" placeholder="1er prénom du père" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required class="form-control">
       <input type="text" id="pere_prenom2" name="pere_prenom2" placeholder="2ème prénom du père" style="width:100%;margin-top:8px;padding:8px;border:1px solid #ddd;border-radius:4px;" class="form-control">
+      <input type="text" id="pere_prenom3" name="pere_prenom3" placeholder="3ème prénom du père" style="width:100%;margin-top:8px;padding:8px;border:1px solid #ddd;border-radius:4px;" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <h4>Pays de naissance du père</h4>
+        <div class="radio-options">
+            <div class="form-check">
+                <input type="radio" id="pere_pays_france" name="pere_pays_naissance" value="france" class="form-check-input">
+                <label for="pere_pays_france" class="form-check-label">France</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" id="pere_pays_etranger" name="pere_pays_naissance" value="etranger" class="form-check-input">
+                <label for="pere_pays_etranger" class="form-check-label">à l'étranger</label>
+            </div>
+        </div>
     </div>
 
     <div class="form-group">
@@ -775,6 +837,21 @@
       <h4>Prénoms de la mère</h4>
       <input type="text" id="mere_prenom1" name="mere_prenom1" placeholder="1er prénom de la mère" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" required class="form-control">
       <input type="text" id="mere_prenom2" name="mere_prenom2" placeholder="2ème prénom de la mère" style="width:100%;margin-top:8px;padding:8px;border:1px solid #ddd;border-radius:4px;" class="form-control">
+      <input type="text" id="mere_prenom3" name="mere_prenom3" placeholder="3ème prénom de la mère" style="width:100%;margin-top:8px;padding:8px;border:1px solid #ddd;border-radius:4px;" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <h4>Pays de naissance de la mère</h4>
+        <div class="radio-options">
+            <div class="form-check">
+                <input type="radio" id="mere_pays_france" name="mere_pays_naissance" value="france" class="form-check-input">
+                <label for="mere_pays_france" class="form-check-label">France</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" id="mere_pays_etranger" name="mere_pays_naissance" value="etranger" class="form-check-input">
+                <label for="mere_pays_etranger" class="form-check-label">à l'étranger</label>
+            </div>
+        </div>
     </div>
 
     <div class="form-group">

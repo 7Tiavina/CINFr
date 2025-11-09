@@ -158,12 +158,14 @@ class StripeController extends Controller
                 'motif_nationalite'       => $data['motif_nationalite']       ?? null,
                 'pere_inconnu'            => $data['pere_inconnu'],
                 'prenom_pere'             => $data['pere_prenom1']            ?? null,
+                'pere_prenom2'            => $data['pere_prenom2']            ?? null,
                 'nom_naissance_pere'      => $data['pere_nom']                ?? null,
                 'pere_naissance_date'     => $data['pere_naissance_date']     ?? null,
                 'pere_naissance_ville'    => $data['pere_naissance_ville']    ?? null,
                 'pere_nationalite'        => $data['pere_nationalite']        ?? null,
                 'mere_inconnue'           => $data['mere_inconnue'],
                 'prenom_mere'             => $data['mere_prenom1']            ?? null,
+                'mere_prenom2'            => $data['mere_prenom2']            ?? null,
                 'nom_naissance_mere'      => $data['mere_nom']                ?? null,
                 'mere_naissance_date'     => $data['mere_naissance_date']     ?? null,
                 'mere_naissance_ville'    => $data['mere_naissance_ville']    ?? null,
@@ -178,6 +180,13 @@ class StripeController extends Controller
                 'justificatif_domicile'   => $data['justificatif_domicile']   ?? null,
                 'acte_naissance'          => $data['acte_naissance']          ?? null,
                 'autre_document'          => $data['autre_document']          ?? null,
+                'deuxieme_nom_origine'    => $data['deuxieme_nom_origine']    ?? null,
+                'mot_devant'              => $data['mot_devant']              ?? null,
+                'mot_a_afficher'          => $data['mot_a_afficher']          ?? null,
+                'pere_prenom3'            => $data['pere_prenom3']            ?? null,
+                'mere_prenom3'            => $data['mere_prenom3']            ?? null,
+                'pere_pays_naissance'     => $data['pere_pays_naissance']     ?? null,
+                'mere_pays_naissance'     => $data['mere_pays_naissance']     ?? null,
             ];
             \Log::info('Prepared client data:', $clientData);
 
