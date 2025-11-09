@@ -46,7 +46,7 @@
 <section id="banner">
   <div class="container text-center">
     <div>
-      :
+      
     </div>
     <h1 class="mt-3">Pré-demande en ligne de CNI (carte nationale d'identité française)</h1>
   </div>
@@ -971,8 +971,8 @@
     @csrf
     <input type="hidden" name="type" id="stripe-form-type">
     <div class="buttons" style="display:flex;justify-content:flex-end;margin-top:30px;">
-      <button type="button" class="btn btn-secondary" onclick="prevStep()">Précédent</button>
-      <button type="submit" class="btn btn-primary ml-2">Procéder a ma commande</button>
+      <button type="button" class="btn btn-secondary" onclick="prevStep(this)">Précédent</button>
+      <button type="submit" class="btn btn-success ml-2">Procéder a ma commande</button>
     </div>
   </form>
 </div>
@@ -988,7 +988,7 @@
 
   <div class="buttons" style="display: flex; justify-content: center; gap: 20px; margin-top: 30px;">
   <button class="btn btn-secondary" id="prev-btn" onclick="prevStep()" style="display:none;">Précédent</button>
-  <button class="btn btn-primary" id="next-btn" onclick="nextStep()">Suivant</button>
+  <button class="btn btn-primary" id="next-btn" onclick="nextStep(this)">Suivant</button>
 </div>
 
 </section>

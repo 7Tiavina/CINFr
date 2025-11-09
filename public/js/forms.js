@@ -89,9 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .addEventListener('click', hideAlert);
 });
 
-function nextStep() {
-  const nextBtn = document.getElementById('next-btn');
-  nextBtn.classList.add('loading');
+function nextStep(buttonElement) {
+  buttonElement.classList.add('loading');
 
   const totalSteps = document.querySelectorAll('.form-part').length;
 
@@ -101,13 +100,13 @@ function nextStep() {
 
     if (pereInconnuOui && mereInconnueOui) {
         showAlert('❌ Vous devez renseigner au moins un des deux parents (père ou mère).');
-        nextBtn.classList.remove('loading');
+        buttonElement.classList.remove('loading');
         return;
     } else {
         // If at least one parent is known, validate the visible fields
         if (!validateCurrentStep()) {
             showAlert('❌ Veuillez remplir tous les champs obligatoires avant de continuer.');
-            nextBtn.classList.remove('loading');
+            buttonElement.classList.remove('loading');
             return;
         }
     }
@@ -121,7 +120,7 @@ function nextStep() {
     });
     if (!isNationaliteSelected) {
       showAlert('❌ Veuillez choisir au moins un motif pour la nationalité française.');
-      nextBtn.classList.remove('loading');
+      buttonElement.classList.remove('loading');
       return;
     }
   } else if (currentStep === 5) {
@@ -133,13 +132,13 @@ function nextStep() {
 
     if (!adresse || !ville || !codePostal) {
       showAlert('❌ Veuillez remplir tous les champs d\'adresse obligatoires.');
-      nextBtn.classList.remove('loading');
+      buttonElement.classList.remove('loading');
       return;
     }
 
     if (!telephone && !email) {
       showAlert('❌ Veuillez renseigner votre numéro de téléphone ou votre adresse e-mail.');
-      nextBtn.classList.remove('loading');
+      buttonElement.classList.remove('loading');
       return;
     }
 
@@ -148,13 +147,13 @@ function nextStep() {
     const validationConditions = document.getElementById('validation_conditions').checked;
     if (!validationInfo || !validationPolitique || !validationConditions) {
         showAlert('❌ Veuillez cocher toutes les cases de validation.');
-        nextBtn.classList.remove('loading');
+        buttonElement.classList.remove('loading');
         return;
     }
   } else {
     if (!validateCurrentStep()) {
         showAlert('❌ Veuillez remplir tous les champs obligatoires avant de continuer.');
-        nextBtn.classList.remove('loading');
+        buttonElement.classList.remove('loading');
         return;
     }
   }
@@ -163,7 +162,7 @@ function nextStep() {
   if (currentStep < totalSteps) {
     setTimeout(() => {
         showFormPart(currentStep + 1);
-        nextBtn.classList.remove('loading');
+        buttonElement.classList.remove('loading');
     }, 500);
   } else {
     document.getElementById('stripe-form').submit();
@@ -172,14 +171,14 @@ function nextStep() {
 
 
 
-function prevStep() {
-    const prevBtn = document.getElementById('prev-btn');
-    prevBtn.classList.add('loading');
+function prevStep(buttonElement) {
+    const btn = buttonElement || document.getElementById('prev-btn');
+    btn.classList.add('loading');
     setTimeout(() => {
         if (currentStep > 1) {
             showFormPart(currentStep - 1);
         }
-        prevBtn.classList.remove('loading');
+        btn.classList.remove('loading');
     }, 500);
 }
 
@@ -236,6 +235,17 @@ window.onload = function () {
     const evt = (el.type === 'radio' || el.type === 'checkbox') ? 'change' : 'input';
     el.addEventListener(evt, saveField);
   });
+
+  // Add loading state to the final submit button
+  const stripeForm = document.getElementById('stripe-form');
+  if (stripeForm) {
+    stripeForm.addEventListener('submit', function() {
+      const submitButton = this.querySelector('button[type="submit"]');
+      if (submitButton) {
+        submitButton.classList.add('loading');
+      }
+    });
+  }
 };
 
 
