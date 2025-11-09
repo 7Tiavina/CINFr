@@ -22,7 +22,7 @@ function showFormPart(step) {
   const prevBtn = document.getElementById('prev-btn');
   const nextBtn = document.getElementById('next-btn');
 
-  // Cacher les boutons à l'étape 6
+  // Cacher les boutons à l étape 6
   if (step === 6) {
     prevBtn.style.display = 'none';
     nextBtn.style.display = 'none';
@@ -131,7 +131,7 @@ function nextStep(buttonElement) {
     const email = document.getElementById('email').value.trim();
 
     if (!adresse || !ville || !codePostal) {
-      showAlert('❌ Veuillez remplir tous les champs d\'adresse obligatoires.');
+      showAlert('❌ Veuillez remplir tous les champs d\u0027adresse obligatoires.');
       buttonElement.classList.remove('loading');
       return;
     }
@@ -236,7 +236,58 @@ window.onload = function () {
     el.addEventListener(evt, saveField);
   });
 
-  // Add loading state to the final submit button
+          const select2Elements = $('select[name="departement"], select[name="dept_naissance"], select[name="taille"], select[name="pays_naissance"], select[name="nationalite"]');
+
+          select2Elements.select2({
+              theme: 'bootstrap4'
+          }).on('select2:select', function (e) {
+              var $el = $(this);
+              var $container = $el.next('.select2-container');
+              var $selection = $container.find('.select2-selection--single');
+              if ($el.val() && $el.val().trim() !== '') {
+                  $selection.addClass('filled');
+              } else {
+                  $selection.removeClass('filled');
+              }
+          }).on('select2:unselect', function (e) {
+                var $el = $(this);
+                var $container = $el.next('.select2-container');
+                var $selection = $container.find('.select2-selection--single');
+                if ($el.val() && $el.val().trim() !== '') {
+                    $selection.addClass('filled');
+                } else {
+                    $selection.removeClass('filled');
+                }
+          });
+
+        $('input[name="type"]').on('change', function() {
+            const today = new Date();
+            const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+
+            if (this.value === 'majeur') {
+                dateNaissanceInput.attr('max', eighteenYearsAgo.toISOString().split('T')[0]);
+                dateNaissanceInput.attr('min', '');
+            } else { // mineur
+                dateNaissanceInput.attr('min', eighteenYearsAgo.toISOString().split('T')[0]);
+                dateNaissanceInput.attr('max', '');
+            }
+        });
+
+        dateNaissanceInput.on('change', function() {
+            const selectedDate = new Date($(this).val());
+            const today = new Date();
+            const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+            const type = $('input[name="type"]:checked').val();
+
+            if (type === 'majeur' && selectedDate > eighteenYearsAgo) {
+                showAlert('❌ Pour un majeur, la date de naissance ne peut pas être après le ' + eighteenYearsAgo.toLocaleDateString());
+                $(this).val('');
+            } else if (type === 'mineur' && selectedDate < eighteenYearsAgo) {
+                showAlert('❌ Pour un mineur, la date de naissance ne peut pas être avant le ' + eighteenYearsAgo.toLocaleDateString());
+                $(this).val('');
+            }
+        });
+      // Add loading state to the final submit button
   const stripeForm = document.getElementById('stripe-form');
   if (stripeForm) {
     stripeForm.addEventListener('submit', function() {
@@ -318,17 +369,17 @@ document.querySelectorAll('input[name="mot_devant"]').forEach(radio => {
 
   let previousScrollPosition = window.pageYOffset;
   const navbar = document.querySelector('.custom-navbar');
-  const threshold = 100; // Seuil pour activer l'affichage via le pointeur
+  const threshold = 100; // Seuil pour activer l affichage via le pointeur
 
   // Gérer le défilement
   window.addEventListener('scroll', () => {
     const currentScrollPosition = window.pageYOffset;
 
     if (previousScrollPosition > currentScrollPosition) {
-      // L'utilisateur défile vers le haut, afficher la navbar
+      // L utilisateur défile vers le haut, afficher la navbar
       navbar.style.top = "0";
     } else {
-      // L'utilisateur défile vers le bas, cacher la navbar
+      // L utilisateur défile vers le bas, cacher la navbar
       navbar.style.top = "-100px"; // Ajustez selon la hauteur de la navbar
     }
     previousScrollPosition = currentScrollPosition;
@@ -473,9 +524,12 @@ function displayRecap() {
     const typeText = type === 'majeur' ? 'Majeur' : 'Mineur';
 
     html += `<hr>`;
-    html += `<div class="recap-price">`;
-    html += `  <p>Montant à régler pour une personne <strong>${typeText}</strong></p>`;
-    html += `  <span>${price} €</span>`;
+    html += `<div class="recap-price">
+`;
+    html += `  <p>Montant à régler pour une personne <strong>${typeText}</strong></p>
+`;
+    html += `  <span>${price} €</span>
+`;
     html += `</div>`;
 
     recapContainer.innerHTML = html;
