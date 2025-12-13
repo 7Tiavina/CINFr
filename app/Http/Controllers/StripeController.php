@@ -32,7 +32,7 @@ class StripeController extends Controller
      * @return RedirectResponse
      * @throws ApiErrorException
      */
-    public function test(Request $request): RedirectResponse
+    public function createCheckoutSession(Request $request): RedirectResponse
     {
         // TODO: Ajouter une validation robuste des données du formulaire ici.
         // $validatedData = $request->validate([...]);
@@ -89,36 +89,6 @@ class StripeController extends Controller
         }
     }
 
-
-    /**
-     * @return RedirectResponse
-     * @throws ApiErrorException
-     */
-    public function live(): RedirectResponse
-    {
-        Stripe::setApiKey(config('stripe.live.sk'));
-
-        $session = Session::create([
-            'line_items'  => [
-                [
-                    'price_data' => [
-                        'currency'     => 'gbp',
-                        'product_data' => [
-                            'name' => 'T-shirt',
-                        ],
-                        'unit_amount'  => 500,
-                    ],
-                    'quantity'   => 1,
-                ],
-            ],
-            'mode'        => 'payment',
-            'success_url' => route('success'),
-            'cancel_url'  => route('checkout'),
-        ]);
-
-        return redirect()->away($session->url);
-    }
-
     /**
      * @param Request $request
      * @return View|Factory|Application|\Illuminate\Http\JsonResponse
@@ -131,7 +101,7 @@ class StripeController extends Controller
 
     // Affiche la page de succès après la redirection de Stripe.
     // Ne contient plus aucune logique métier.
-    public function success(Request $request)
+    public function showSuccessPage(Request $request)
     {
         // On pourrait récupérer le paiement via $request->query('payment_id') si on voulait afficher
         // un message personnalisé, mais pour l'instant, un message générique suffit.

@@ -1164,7 +1164,7 @@
 
 <div class="form-part" id="step-6" style="display: none;">
   <div id="recap-container"></div>
-  <form id="stripe-form" action="{{ route('test') }}" method="POST">
+  <form id="stripe-form" action="{{ route('create-checkout-session') }}" method="POST">
     @csrf
     <input type="hidden" name="type" id="stripe-form-type">
     <div class="buttons" style="display:flex;justify-content:flex-end;margin-top:30px;">

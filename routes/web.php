@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\StripeWebhookController;
 
 use App\Http\Controllers\MairieController;
 
@@ -32,13 +33,11 @@ Route::get('/remboursement', function () {
 
 
 
-Route::post('/test', [StripeController::class,'test'])->name('test');
-Route::post('/live', [StripeController::class,'live'])->name('live');
+Route::post('/create-checkout-session', [StripeController::class,'createCheckoutSession'])->name('create-checkout-session');
 Route::get('/checkout', [StripeController::class, 'checkout'])->name('checkout');
 
 Route::get('/success', [StripeController::class, 'showSuccessPage'])->name('success'); 
-// Stockage des données (POST)  
-Route::post('/success', [StripeController::class,'storeSessionData'])->name('success.store');
+// Le stockage des données est maintenant géré par le webhook.
 
 // Authentication Routes
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
