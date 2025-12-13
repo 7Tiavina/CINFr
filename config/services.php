@@ -45,5 +45,12 @@ return [
         'secret' => env('NOCAPTCHA_SECRET'),
     ],
 
+    'stripe' => [
+        'secret' => env('APP_ENV') === 'production'
+                        ? env('STRIPE_LIVE_SK')
+                        : env('STRIPE_TEST_SK'),
+        'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),
+    ],
+
 
 ];
