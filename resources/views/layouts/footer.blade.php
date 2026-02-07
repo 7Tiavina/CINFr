@@ -4,7 +4,7 @@
     <!-- Logo Section -->
     <div style="flex: 1; min-width: 220px; text-align: center;">
       <picture>
-        <source srcset="images/logoreverse.webp" type="image/webp">
+        <source srcset="images/favicon.webp" type="image/webp">
         <img src="images/logoreverse.png" alt="Logo CINFr" style="max-width: 160px; margin-bottom: 20px; filter: drop-shadow(0 0 6px rgba(255,255,255,0.2));">
       </picture>
       <p style="font-size: 13px; margin-top: 10px; color: #fff;">© 2025 CINFr — Tous droits réservés</p>
@@ -30,7 +30,7 @@
           </a>
         </li>
         <li style="margin: 12px 0;">
-          <a href="{{ route('login') }}" style="color: white; text-decoration: none; font-size: 15px; position: relative; transition: all 0.3s;">
+          <a href="{{ route('login') }}" id="admin-login-button" style="color: white; text-decoration: none; font-size: 15px; position: relative; transition: all 0.3s; opacity: 0; pointer-events: none;">
             <i class="icon ion-md-lock" style="margin-right: 5px;"></i> Admin Login
           </a>
         </li>
@@ -40,7 +40,7 @@
     <!-- Information Section -->
     <div style="flex: 2; min-width: 320px; text-align: justify;">
       <h3 style="font-size: 16px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Informations</h3>
-      <p style="font-size: 10.5px; line-height: 1.8; color: rgba(255,255,255,0.85);">
+      <p style="font-size: 12px; line-height: 1.8; color: rgba(255,255,255,0.85);">
         Le site et les services sont fournis à titre privé uniquement et ne correspondent en aucune manière à une mission de service public qui lui aurait été déléguée par une quelconque administration publique ou collectivité territoriale.  
         Vous pouvez effectuer vos démarches gratuitement sur 
         <a href="https://service-public.fr" style="color: #aee0ff; text-decoration: underline; transition: 0.3s;">service-public.fr</a>.
@@ -71,3 +71,37 @@
     }
   </style>
 </footer>
+
+<script>
+document.addEventListener('keydown', (function() {
+    const sequence = ['a']; // Only 'a' is part of the sequence after Ctrl+Alt
+    let currentIndex = 0;
+
+    return function(e) {
+        // Check for Ctrl and Alt keys being pressed
+        if (!e.ctrlKey || !e.altKey) {
+            currentIndex = 0; // Reset if Ctrl or Alt is not pressed
+            return;
+        }
+
+        // Check if the pressed key matches the current key in the sequence
+        // Convert to lowercase to handle both 'A' and 'a'
+        if (e.key.toLowerCase() === sequence[currentIndex]) {
+            currentIndex++;
+            if (currentIndex === sequence.length) {
+                const adminLoginButton = document.getElementById('admin-login-button');
+                if (adminLoginButton) {
+                    adminLoginButton.style.opacity = '1';
+                    adminLoginButton.style.pointerEvents = 'auto';
+                }
+                currentIndex = 0; // Reset for next time
+            }
+        } else {
+            // Reset if the wrong key is pressed, but allow 'Control' and 'Alt' key presses to not reset the sequence
+            if (e.key !== 'Control' && e.key !== 'Alt') {
+                currentIndex = 0;
+            }
+        }
+    };
+})());
+</script>

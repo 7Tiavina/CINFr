@@ -60,6 +60,15 @@ function validateCurrentStep() {
       if (!field.value.trim()) {
         isValid = false;
         field.style.border = '1px solid red';
+      } else if (field.type === 'email') {
+        const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!emailRegex.test(field.value)) {
+          isValid = false;
+          field.style.border = '1px solid red';
+          showAlert('â veuillez donné une adresse mail valide s\'il vous plais'); // Specific alert for email
+        } else {
+          field.style.border = '1px solid #ddd';
+        }
       } else {
         field.style.border = '1px solid #ddd';
       }
@@ -94,20 +103,23 @@ function nextStep(buttonElement) {
   const totalSteps = document.querySelectorAll('.form-part').length;
 
   if (currentStep === 3) {
-    const pereInconnuOui = document.getElementById('pere-inconnu-oui').checked;
-    const mereInconnueOui = document.getElementById('mere-inconnue-oui').checked;
+    const type = sessionStorage.getItem('type');
+    if (type === 'mineur') {
+      const pereInconnuOui = document.getElementById('pere-inconnu-oui').checked;
+      const mereInconnueOui = document.getElementById('mere-inconnue-oui').checked;
 
-    if (pereInconnuOui && mereInconnueOui) {
-        showAlert('❌ Vous devez renseigner au moins un des deux parents (père ou mère).');
+      if (pereInconnuOui && mereInconnueOui) {
+          showAlert('â Vous devez renseigner au moins un des deux parents (père ou mère).');
+          buttonElement.classList.remove('loading');
+          return;
+      }
+    }
+    
+    // Always validate the visible fields
+    if (!validateCurrentStep()) {
+        showAlert('â Veuillez remplir tous les champs obligatoires avant de continuer.');
         buttonElement.classList.remove('loading');
         return;
-    } else {
-        // If at least one parent is known, validate the visible fields
-        if (!validateCurrentStep()) {
-            showAlert('❌ Veuillez remplir tous les champs obligatoires avant de continuer.');
-            buttonElement.classList.remove('loading');
-            return;
-        }
     }
   } else if (currentStep === 4) {
     const nationaliteCheckboxes = document.querySelectorAll('#step-4 input[type="checkbox"]');
@@ -118,40 +130,14 @@ function nextStep(buttonElement) {
       }
     });
     if (!isNationaliteSelected) {
-      showAlert('❌ Veuillez choisir au moins un motif pour la nationalité française.');
-      buttonElement.classList.remove('loading');
-      return;
-    }
-  } else if (currentStep === 5) {
-    const adresse = document.getElementById('adresse_demandeur').value.trim();
-    const ville = document.getElementById('adresse_ville').value.trim();
-    const codePostal = document.getElementById('adresse_zip').value.trim();
-    const telephone = document.getElementById('telephone').value.trim();
-    const email = document.getElementById('email').value.trim();
-
-    if (!adresse || !ville || !codePostal) {
-      showAlert('❌ Veuillez remplir tous les champs d\u0027adresse obligatoires.');
+      showAlert('â Veuillez choisir au moins un motif pour la nationalité française.');
       buttonElement.classList.remove('loading');
       return;
     }
 
-    if (!telephone && !email) {
-      showAlert('❌ Veuillez renseigner votre numéro de téléphone ou votre adresse e-mail.');
-      buttonElement.classList.remove('loading');
-      return;
-    }
-
-    const validationInfo = document.getElementById('validation_info').checked;
-    const validationPolitique = document.getElementById('validation_politique').checked;
-    const validationConditions = document.getElementById('validation_conditions').checked;
-    if (!validationInfo || !validationPolitique || !validationConditions) {
-        showAlert('❌ Veuillez cocher toutes les cases de validation.');
-        buttonElement.classList.remove('loading');
-        return;
-    }
   } else {
     if (!validateCurrentStep()) {
-        showAlert('❌ Veuillez remplir tous les champs obligatoires avant de continuer.');
+        showAlert('â Veuillez remplir tous les champs obligatoires avant de continuer.');
         buttonElement.classList.remove('loading');
         return;
     }
@@ -182,7 +168,7 @@ function prevStep(buttonElement) {
 }
 
 function processPayment() {
-  showAlert('🔄 Paiement en cours…');
+  showAlert('ð Paiement en cours…');
 }
 
 window.onload = function () {
@@ -192,7 +178,7 @@ window.onload = function () {
   showFormPart(currentStep);
 
   // Debug : afficher tout le sessionStorage au chargement
-  console.group('🔍 sessionStorage au chargement');
+  console.group('ð sessionStorage au chargement');
   for (let i = 0; i < sessionStorage.length; i++) {
     const key = sessionStorage.key(i);
     console.log(key, sessionStorage.getItem(key));
@@ -226,7 +212,7 @@ window.onload = function () {
       val = e.target.value;
     }
     sessionStorage.setItem(e.target.name, val);
-    console.log('🔄 sauvegarde', e.target.name, '→', val);
+    console.log('ð sauvegarde', e.target.name, '→', val);
   }
 
   // Attache l’écouteur adéquat selon le type de champ
@@ -257,10 +243,10 @@ window.onload = function () {
             const type = $('input[name="type"]:checked').val();
 
             if (type === 'majeur' && selectedDate > eighteenYearsAgo) {
-                showAlert('❌ Pour un majeur, la date de naissance ne peut pas être après le ' + eighteenYearsAgo.toLocaleDateString());
+                showAlert('â Pour un majeur, la date de naissance ne peut pas être après le ' + eighteenYearsAgo.toLocaleDateString());
                 $(this).val('');
             } else if (type === 'mineur' && selectedDate < eighteenYearsAgo) {
-                showAlert('❌ Pour un mineur, la date de naissance ne peut pas être avant le ' + eighteenYearsAgo.toLocaleDateString());
+                showAlert('â Pour un mineur, la date de naissance ne peut pas être avant le ' + eighteenYearsAgo.toLocaleDateString());
                 $(this).val('');
             }
         });
@@ -342,7 +328,7 @@ document.querySelectorAll('input[name="mot_devant"]').forEach(radio => {
 });
 
 
-	//Gestion du Navbar-----------------------------------------------------------------------------
+  //Gestion du Navbar-----------------------------------------------------------------------------
 
   let previousScrollPosition = window.pageYOffset;
   const navbar = document.querySelector('.custom-navbar');

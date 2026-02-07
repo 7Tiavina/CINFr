@@ -111,7 +111,11 @@
                 $('#modal-prenom1').text(client.prenom1);
                 $('#modal-prenom2').text(client.prenom2);
                 $('#modal-prenom3').text(client.prenom3);
-                $('#modal-date-naissance').text(client.date_naissance);
+                if (client.date_naissance) {
+                    $('#modal-date-naissance').text(new Date(client.date_naissance).toLocaleDateString('fr-FR'));
+                } else {
+                    $('#modal-date-naissance').text('');
+                }
                 $('#modal-ville-naissance').text(client.ville_naissance);
                 $('#modal-pays-naissance').text(client.pays_naissance);
                 $('#modal-email').text(client.email);

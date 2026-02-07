@@ -2,8 +2,9 @@
 <html lang="en-US">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Effectuez votre pré-demande ou le renouvellement de vos documents officiels. Simplifiez vos démarches administratives et formalités pour votre carte d'identité (CNI - Carte Nationale d'Identité). Service rapide et sécurisé.">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
      <link rel="icon" href="{{ asset('images/favicon.webp') }}" type="image/webp">
@@ -22,7 +23,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
-    <title>@yield('title', 'CINFr Carte d\'identité Nationale')</title>
+    <title>@yield('title', 'Pré-demande de Carte d\'Identité (CNI) & Renouvellement – Démarches Administratives en Ligne')</title>
 
     @yield('styles')
   </head>

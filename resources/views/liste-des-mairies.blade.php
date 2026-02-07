@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Liste des mairies - CINFr')
 
-@section('styles')
 <style>
   #banner {
     background: linear-gradient(135deg, #007bff, #0056b3);
@@ -82,7 +80,7 @@
     border-bottom: none;
   }
 </style>
-@endsection
+
 
 @section('content')
 <section id="banner" class="text-center">
@@ -90,7 +88,7 @@
     <h1>Liste des mairies délivrant des cartes d'identité par département</h1>
     <div class="row justify-content-center mt-4">
       <div class="col-md-12">
-        <input type="text" class="form-control" id="search-input" placeholder="🔍 Rechercher une mairie ou un département...">
+        <input type="text" class="form-control" id="search-input" placeholder="Rechercher une mairie ou un département...">
       </div>
     </div>
   </div>
@@ -101,7 +99,7 @@
     <div class="departments-table" id="departments-table">
       @foreach ($mairies as $departement => $mairies_list)
       <div class="department" data-department="{{ $departement }}">
-        <h3>{{ $departement }} <span class="toggle-icon">▼</span></h3>
+        <h3>{{ $departement }} <span class="toggle-icon">></span></h3>
         <ul class="mairies-list">
           @foreach ($mairies_list as $mairie)
             <li>{{ $mairie }}</li>
@@ -146,7 +144,7 @@
       const deptDiv = document.createElement('div');
       deptDiv.className = 'department';
       deptDiv.innerHTML = `
-        <h3>${dep} <span class="toggle-icon">▼</span></h3>
+        <h3>${dep} <span class="toggle-icon">></span></h3>
         <ul class="mairies-list">${list.map(m => `<li>${m}</li>`).join('')}</ul>
       `;
       table.appendChild(deptDiv);

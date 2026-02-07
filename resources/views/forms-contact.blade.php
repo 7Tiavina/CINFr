@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="style.css" type="text/css" />
   <link href="https://unpkg.com/ionicons@4.2.0/dist/css/ionicons.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
-  <title>CINFr Carte d'identité Nationale</title>
+  <title>Nous Contacter - CINFr</title>
 </head>
 <body>
 

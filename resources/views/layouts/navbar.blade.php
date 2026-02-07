@@ -2,14 +2,14 @@
 
 <!-- N A V B A R -->
 <nav class="navbar navbar-expand-lg custom-navbar fixed-top">
-  <div style="background-color: #f7f9fc; color: #8c8e91; font-size: 0.8rem; padding: 5px 15px; text-align: center; position: absolute; top: 0; left: 0; right: 0; margin: 0 auto; max-width: 600px; border-radius: 10px; ">
+  <div class="hide-on-portrait-header" style="background-color: #f7f9fc; color: #8c8e91; font-size: 0.9rem; padding: 5px 15px; text-align: center; position: absolute; top: 0; left: 0; right: 0; margin: 0 auto; max-width: 600px; border-radius: 10px; ">
     Service d'accompagnement indépendant de l'administration
   </div>
 
   <a href="{{ route('index') }}" class="navbar-brand">
     <picture>
       <source srcset="{{ asset('images/logo3.webp') }}" type="image/webp">
-      <img src="{{ asset('images/logo3.png') }}" alt="Company Logo" class="nav-logo img-fluid">
+      <img src="{{ asset('images/logo3.png') }}" alt="Company Logo" class="nav-logo img-fluid" width="240" height="145.219">
     </picture>
   </a>
 

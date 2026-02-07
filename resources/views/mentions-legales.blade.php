@@ -61,7 +61,7 @@
       }
     </style>
 
-    <title>CINFr Carte d'identité Nationale</title>
+    <title>CINFr - Mentions Légales & CGUS</title>
   </head>
 
   <body>
@@ -170,27 +170,22 @@
     </section>
 
     <section>
-      <h2>13. Service Coffre-fort (si proposé)</h2>
-      <p>Le service Coffre-fort permet le stockage de documents numériques pendant la durée de l'abonnement, dans une limite d'espace précisée sur la page produit. CINFr garantit la restitution des documents via un lien téléchargeable pendant 12 mois après la fin de l'abonnement. Le coffre-fort n'exonère pas l'Utilisateur de conserver les originaux papier si ceux-ci ont une valeur probatoire.</p>
-    </section>
-
-    <section>
-      <h2>14. Responsabilité</h2>
+      <h2>13. Responsabilité</h2>
       <p>CINFr agit en obligation de moyens. Sa responsabilité contractuelle ne pourra être engagée qu'en cas de faute prouvée et ne saurait excéder le montant total effectivement payé par le Client pour le(s) service(s) concernés au cours des six (6) mois précédant le fait générateur. CINFr n'est pas responsable des conséquences d'erreurs ou délais imputables aux administrations publiques, ni des informations erronées communiquées par le Client.</p>
     </section>
 
     <section>
-      <h2>15. Force majeure</h2>
+      <h2>14. Force majeure</h2>
       <p>Les obligations de CINFr sont suspendues en cas de force majeure (grève, catastrophe naturelle, panne du réseau, décision administrative, cyberattaque, etc.) définie conformément au droit applicable. Si l'événement rend l'exécution impossible pendant plus de 45 jours, chaque partie pourra résilier le contrat sans indemnité.</p>
     </section>
 
     <section>
-      <h2>16. Propriété intellectuelle</h2>
+      <h2>15. Propriété intellectuelle</h2>
       <p>Tous les éléments du Site (textes, logos, images, vidéos, bases de données, codes) sont protégés ; toute reproduction ou réutilisation non autorisée est interdite. L'Utilisateur bénéficie d’un droit d’usage personnel, non exclusif et non transférable sur les contenus accessibles.</p>
     </section>
 
     <section>
-      <h2>17. Données personnelles & protection (RGPD)</h2>
+      <h2>16. Politique de confidentialité — Données personnelles (RGPD)</h2>
       <p>CINFr collecte et traite les données personnelles nécessaires à la fourniture des services, dans le respect du Règlement Général sur la Protection des Données (RGPD) et des législations applicables. Finalités principales : gestion des comptes, exécution des commandes, gestion de la relation client, obligations légales et prévention de la fraude.</p>
 
       <h3>Responsable du traitement</h3>

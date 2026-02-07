@@ -1,6 +1,10 @@
+@extends('layouts.app')
+@php header('Content-Type: text/html; charset=utf-8'); @endphp
+
 <!doctype html>
 <html lang="en-US">
   <head>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,7 +25,23 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
-    <title>CINFr Carte d'identité Nationale</title>
+    <title>Pré-demande Carte d’Identité (CNI) – Démarches en Ligne</title>
+    <meta name="description" content="Pré-demande ou renouvellement de carte d’identité (CNI). Démarches en ligne simples, rapides et sécurisées. Traitement sous 48h.">
+    
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Pré-demande Carte d’Identité",
+          "provider": {
+            "@type": "Organization",
+            "name": "CINFr",
+            "url": "https://cinfr.com"
+          },
+          "description": "Service d'accompagnement pour la pré-demande de carte d'identité.",
+          "areaServed": "France"
+        }
+        </script>
   </head>
 
   <body>
@@ -35,7 +55,6 @@
       <!-- Image à gauche (desktop only) -->
       <div class="col-md-5 d-none d-md-flex" id="cinhand-container">
         <img src="images/cinhand.webp"
-             width="600" height="400"
              loading="lazy"
              class="img-fluid"
              alt="Demo image">
@@ -46,20 +65,16 @@
         <div id="lottie-container" class="mb-3">
           <!-- Lottie ici -->
         </div>
-        <div class="hero-text-wrapper text-right">
-          <h1 class="hero-text">
-            Faites vos<br>
-            <span class="strong-word">démarches</span><br>
-            administratives<br>
-            <span class="strong-word">simplement</span><br>
-            avec <span class="highlight">CINFr</span>
+        <div class="hero-text-wrapper text-left">
+          <h1 class="hero-title">
+            Simplifiez votre<br>
+            <span class="primary">pré-demande</span> de<br>
+            <span class="primary">carte d’identité</span><br>
+            en quelques clics
           </h1>
-          <a href="{{ route('predemande') }}" class="btnfos btnfos-1">
-            <svg><rect x="0" y="0" rx="25" ry="25"
-                       fill="none" width="100%" height="100%"/></svg>
-            Pré-demande CNI
-          </a>
         </div>
+
+
       </div>
     </div>
   </div>
@@ -70,42 +85,77 @@
 
   <!-- E N D  H E R O -->
 
-         <!-- C R E S T I M O N I A L S -->
-<section id="crestimonials">
+<div id="hero-text-portrait-container" class="container text-center mt-4"></div>
+
+<!-- E N D  M A R K E T I N G --> 
+<section id="marketing">
   <div class="container">
-    <div class="title-block text-center">
-      <h2>À quoi sert la Carte d'Identité Nationale (CNI) ?</h2>
+    <div class="row justify-content-center">
 
-      <p>En France, la carte d'identité est un document officiel qui atteste de l'identité d'une personne. Elle permet également aux citoyens français de voyager sans passeport au sein de l'Union européenne et de l'espace Schengen, avec une durée de validité de 15 ans pour les adultes et de 10 ans pour les mineurs.</p>
-    </div>
-    <div class="row align-items-center mt-5">
-      <div class="col-md-6">
-        <picture>
-          <source srcset="images/cinstyle.webp" type="image/webp">
-          <img src="images/cinstyle.png" alt="Simplified Process" class="img-fluid">
-        </picture>
-      </div>
+      <!-- MAJEUR -->
+      <div class="col-md-5">
+        <div class="subscription-box text-center">
 
-      <div class="col-md-6">
-        <div class="benefits-box">
-          <h3 class="text-primary">CINFr vous aides a :</h3>
-          <ul class="benefits-list">
-            <li><i class="icon ion-md-checkmark-circle-outline demo"></i> Formuler une pré-demande CNI en quelques clics</li>
-            <li><i class="icon ion-md-checkmark-circle-outline demo"></i> La vérification des informations et du traitement de votre demande</li>
-            <li><i class="icon ion-md-checkmark-circle-outline demo"></i> La prise de rendez-vous en mairie pour le dépôt de votre dossier</li>
-            <li><i class="icon ion-md-checkmark-circle-outline demo"></i>Une fois prête, votre carte d'identité pourra être retirée</li>
-          </ul>        
-          <a href="{{ route('predemande') }}" class="btnfos btnfos-1">
-      <svg>
-        <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
-      </svg>
-    Je fais ma pre-demande
-    </a>
+          <h2 style="color: #0444ec; font-weight: 700; margin-bottom: 5px;">
+            Pour un Majeur
+          </h2>
+
+          <span style="font-size: 1.6rem; font-weight: 600; color: #333;">
+            {{ config('prix.majeur') }}€
+            <span style="font-size: 0.9rem; color: #666; font-weight: normal;">TTC</span>
+          </span>
+
+          <p>Traitement Sous 48h</p>
+
+          <picture>
+            <source srcset="images/Parents-rafiki.webp" type="image/webp">
+            <img src="images/Parents-rafiki.png" alt="Logo CINFr"
+                 style="max-width: 100%; height: auto; margin-bottom: 10px;">
+          </picture>
+
+          <a href="{{ route('predemande') }}?type=majeur" class="btnfos btnfos-1">
+            <svg>
+              <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
+            </svg>
+            Pré-Demande
+          </a>
         </div>
       </div>
+
+      <!-- MINEUR -->
+      <div class="col-md-5">
+        <div class="subscription-box text-center">
+
+          <h2 style="color: #0444ec; font-weight: 700; margin-bottom: 5px;">
+            Pour un Mineur
+          </h2>
+
+          <span style="font-size: 1.6rem; font-weight: 600; color: #333;">
+            {{ config('prix.mineur') }}€
+            <span style="font-size: 0.9rem; color: #666; font-weight: normal;">TTC</span>
+          </span>
+
+          <p>Traitement Sous 48h</p>
+
+          <picture>
+            <source srcset="images/Recess-rafiki.webp" type="image/webp">
+            <img src="images/Recess-rafiki.png" alt="Logo CINFr"
+                 style="max-width: 100%; height: auto; margin-bottom: 10px;">
+          </picture>
+
+          <a href="{{ route('predemande') }}?type=mineur" class="btnfos btnfos-1">
+            <svg>
+              <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
+            </svg>
+            Pré-Demande
+          </a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
 <!-- T E S T I M O N I A L S -->
 <section id="testimonials">
   <div class="container">
@@ -134,44 +184,37 @@
   <!-- E N D  T E S T I M O N I A L S -->
 
 
-<!-- E N D  M A R K E T I N G --> 
-<section id="marketing">
+         <!-- C R E S T I M O N I A L S -->
+<section id="crestimonials">
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-5">
-        <div class="subscription-box text-center">
-          <span style="font-size: 2rem; font-weight: bold; color: #333;">{{ config('prix.majeur') }}€<span style="font-size: 1rem; color: #666; font-weight: normal;">TTC</span></span>
-          <h2 style="color: #0444ec;">Pour un Majeur</h2>
-          <p>Traitement Sous 48h</p>
-          <picture>
-            <source srcset="images/Parents-rafiki.webp" type="image/webp">
-            <img src="images/Parents-rafiki.png" alt="Logo CINFr" style="max-width: 100%; height: auto; margin-bottom: 10px;">
-          </picture>
+    <div class="title-block text-center">
+      <h2>À quoi sert la Carte d'Identité Nationale (CNI)?</h2>
 
-          <a href="{{ route('predemande') }}?type=majeur" class="btnfos btnfos-1">
-            <svg>
-              <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
-            </svg>
-          Pré-Demande
-          </a>
-        </div>
+      <p>En France, la carte d'identité est un document officiel qui atteste de l'identité d'une personne. Elle permet également aux citoyens français de voyager sans passeport au sein de l'Union européenne et de l'espace Schengen, avec une durée de validité de 15 ans pour les adultes et de 10 ans pour les mineurs.</p>
+    </div>
+    <div class="row align-items-center mt-5">
+      <div class="col-md-6">
+        <picture>
+          <source srcset="images/cinstyle.webp" type="image/webp">
+          <img src="images/cinstyle.png" alt="Simplified Process" class="img-fluid">
+        </picture>
       </div>
-      <div class="col-md-5">
-        <div class="subscription-box text-center">
-          <span style="font-size: 2rem; font-weight: bold; color: #333;">{{ config('prix.mineur') }}€<span style="font-size: 1rem; color: #666; font-weight: normal;">TTC</span></span>
-          <h2 style="color: #0444ec;">Pour un Mineur</h2>
-          <p>Traitement Sous 48h</p>
-          <picture>
-            <source srcset="images/Recess-rafiki.webp" type="image/webp">
-            <img src="images/Recess-rafiki.png" alt="Logo CINFr" style="max-width: 100%; height: auto; margin-bottom: 10px;">
-          </picture>
 
-          <a href="{{ route('predemande') }}?type=mineur" class="btnfos btnfos-1">
-            <svg>
-              <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
-            </svg>
-          Pré-Demande
-          </a>
+      <div class="col-md-6">
+        <div class="benefits-box">
+          <h3 class="text-primary">CINFr vous aides a:</h3>
+          <ul class="benefits-list">
+            <li><i class="icon ion-md-checkmark-circle-outline demo"></i> Formuler une pré-demande CNI en quelques clics</li>
+            <li><i class="icon ion-md-checkmark-circle-outline demo"></i> La vérification des informations et du traitement de votre demande</li>
+            <li><i class="icon ion-md-checkmark-circle-outline demo"></i> La prise de rendez-vous en mairie pour le dépôt de votre dossier</li>
+            <li><i class="icon ion-md-checkmark-circle-outline demo"></i>Une fois prête, votre carte d'identité pourra être retirée</li>
+          </ul>        
+          <a href="{{ route('predemande') }}" class="btnfos btnfos-1">
+      <svg>
+        <rect x="0" y="0" rx="25" ry="25" fill="none" width="100%" height="100%"/>
+      </svg>
+    Je fais ma pre-demande
+    </a>
         </div>
       </div>
     </div>
@@ -196,11 +239,11 @@
       <!-- Colonne gauche -->
       <div class="col-md-6">
         <div class="info-box equal-height">
-          <h3>Pourquoi la CNI est-elle importante ?</h3>
-          <p>La Carte Nationale d’Identité (CNI) est un document essentiel dans de nombreux aspects de la vie quotidienne :</p>
+          <h3>Pourquoi la CNI est-elle importante?</h3>
+          <p>La Carte Nationale d’Identité (CNI) est un document essentiel dans de nombreux aspects de la vie quotidienne:</p>
           <ul>
             <li><i class="icon ion-md-checkmark-circle"></i> Elle certifie officiellement votre identité et votre nationalité française.</li>
-            <li><i class="icon ion-md-checkmark-circle"></i> Indispensable pour des démarches administratives comme :
+            <li><i class="icon ion-md-checkmark-circle"></i> Indispensable pour des démarches administratives comme:
               <ul>
                 <li>Participer à des concours ou examens.</li>
                 <li>Effectuer des opérations bancaires.</li>
@@ -216,8 +259,8 @@
       <!-- Colonne droite -->
       <div class="col-md-6">
         <div class="info-box equal-height">
-          <h3>Comment réaliser une pré-demande gratuitement en ligne ?</h3>
-          <p>La procédure de pré-demande en ligne est une étape simple et rapide, disponible directement sur le site officiel de l’Agence Nationale des Titres Sécurisés (ANTS). Voici les étapes à suivre pour bénéficier de ce service :</p>
+          <h3>Comment réaliser une pré-demande gratuitement en ligne?</h3>
+          <p>La procédure de pré-demande en ligne est une étape simple et rapide, disponible directement sur le site officiel de l’Agence Nationale des Titres Sécurisés (ANTS). Voici les étapes à suivre pour bénéficier de ce serviceâ¯:</p>
           <ol>
             <li><strong>Connectez-vous au site officiel de l’ANTS :</strong> Rendez-vous sur <a href="https://ants.gouv.fr" target="_blank" class="text-primary">https://ants.gouv.fr</a>, la plateforme officielle et gratuite de l’État français pour gérer vos titres sécurisés.</li>
             <li><strong>Créez un compte utilisateur ou connectez-vous :</strong> Si vous êtes déjà inscrit, connectez-vous avec vos identifiants FranceConnect ou votre compte ANTS. Sinon, suivez les instructions pour créer un compte.</li>
@@ -314,6 +357,9 @@
 <section id="grande-image" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 95vh; overflow: hidden;">
   <img src="images/pexels-victorfreitas-1381415.webp" alt="Description de l'image" style="max-width: 140%; height: auto; object-fit: contain; display: block;">
 </section>
+<p style="font-size:11px;color:#777;margin-top:10px;text-align:center;">
+Service indépendant de l'État – Nous ne sommes pas affiliés à l’ANTS. Notre service vous accompagne dans la réalisation de votre pré-demande.
+</p>
 
 <button id="scrollTopBtn">
           ↑
@@ -321,7 +367,6 @@
 </main>
 
   <!--  F O O T E R  -->
-  @include('layouts.footer')
 
   <!--  E N D  F O O T E R  -->
     
@@ -444,7 +489,30 @@
 
   window.addEventListener('load', toggleCinhand);
   window.addEventListener('resize', toggleCinhand);
-</script
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroTextWrapper = document.querySelector('.hero-text-wrapper');
+    const originalParent = document.querySelector('.hero-content');
+    const portraitParent = document.getElementById('hero-text-portrait-container');
+
+    function moveHeroText() {
+      if (window.innerWidth < 1100) {
+        if (portraitParent && !portraitParent.contains(heroTextWrapper)) {
+          portraitParent.appendChild(heroTextWrapper);
+        }
+      } else {
+        if (originalParent && !originalParent.contains(heroTextWrapper)) {
+          originalParent.appendChild(heroTextWrapper);
+        }
+      }
+    }
+
+    moveHeroText();
+    window.addEventListener('resize', moveHeroText);
+  });
+</script>
 
 
   </body>
