@@ -1,51 +1,7 @@
 @extends('layouts.app')
 @php header('Content-Type: text/html; charset=utf-8'); @endphp
 
-<!doctype html>
-<html lang="en-US">
-  <head>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-     <link rel="icon" href="images/favicon.webp" type="image/webp">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-
-    <!-- Custom Css -->
-    <link rel="stylesheet" href="style.css" type="text/css" />
-
-    <!-- Ionic icons -->
-    <link href="https://unpkg.com/ionicons@4.2.0/dist/css/ionicons.min.css" rel="stylesheet">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-    <title>Pré-demande Carte d’Identité (CNI) – Démarches en Ligne</title>
-    <meta name="description" content="Pré-demande ou renouvellement de carte d’identité (CNI). Démarches en ligne simples, rapides et sécurisées. Traitement sous 48h.">
-    
-      <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "Pré-demande Carte d’Identité",
-          "provider": {
-            "@type": "Organization",
-            "name": "CINFr",
-            "url": "https://cinfr.com"
-          },
-          "description": "Service d'accompagnement pour la pré-demande de carte d'identité.",
-          "areaServed": "France"
-        }
-        </script>
-  </head>
-
-  <body>
-@include('layouts.navbar')
+@section('content')
 <main style="flex-grow: 1;">
   <!-- H E R O -->
   <section id="hero">
@@ -370,22 +326,10 @@ Service indépendant de l'État – Nous ne sommes pas affiliés à l’ANTS. No
           ↑
         </button>
 </main>
+@endsection
 
-  <!--  F O O T E R  -->
-
-  <!--  E N D  F O O T E R  -->
-    
-
-    <!-- External JavaScripts -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/lottie-web/build/player/lottie.min.js"></script>
-
-
-
-        <script>
+@section('scripts')
+    <script>
   // Sélectionner toutes les questions
   const faqQuestions = document.querySelectorAll('.faq-question');
 
@@ -453,24 +397,28 @@ Service indépendant de l'État – Nous ne sommes pas affiliés à l’ANTS. No
       });
     }
     
-    // Gestion du dropdown "Informations"
+    // Gestion du dropdown "Informations" (uniquement sur desktop)
     if (infoDropdown && infoDropdownMenu) {
       infoDropdown.addEventListener('click', function(e) {
-        e.preventDefault();
-        // Basculer la visibilité du dropdown
-        if (infoDropdownMenu.style.display === 'block') {
-          infoDropdownMenu.style.display = 'none';
-        } else {
-          infoDropdownMenu.style.display = 'block';
+        if (window.innerWidth >= 992) { // Uniquement sur desktop
+          e.preventDefault();
+          // Basculer la visibilité du dropdown
+          if (infoDropdownMenu.style.display === 'block') {
+            infoDropdownMenu.style.display = 'none';
+          } else {
+            infoDropdownMenu.style.display = 'block';
+          }
         }
       });
       
-      // Fermer le dropdown quand on clique en dehors
-      document.addEventListener('click', function(e) {
-        if (!infoDropdown.contains(e.target) && !infoDropdownMenu.contains(e.target)) {
-          infoDropdownMenu.style.display = 'none';
-        }
-      });
+      // Fermer le dropdown quand on clique en dehors (uniquement sur desktop)
+      if (window.innerWidth >= 992) {
+        document.addEventListener('click', function(e) {
+          if (!infoDropdown.contains(e.target) && !infoDropdownMenu.contains(e.target)) {
+            infoDropdownMenu.style.display = 'none';
+          }
+        });
+      }
     }
     
     // Fermer le menu principal quand on clique en dehors sur mobile
@@ -604,6 +552,4 @@ Service indépendant de l'État – Nous ne sommes pas affiliés à l’ANTS. No
   });
 </script>
 
-
-  </body>
-</html>
+@endsection

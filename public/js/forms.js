@@ -398,24 +398,28 @@ document.querySelectorAll('input[name="mot_devant"]').forEach(radio => {
       });
     }
     
-    // Gestion du dropdown "Informations"
+    // Gestion du dropdown "Informations" (uniquement sur desktop)
     if (infoDropdown && infoDropdownMenu) {
       infoDropdown.addEventListener('click', function(e) {
-        e.preventDefault();
-        // Basculer la visibilité du dropdown
-        if (infoDropdownMenu.style.display === 'block') {
-          infoDropdownMenu.style.display = 'none';
-        } else {
-          infoDropdownMenu.style.display = 'block';
+        if (window.innerWidth >= 992) { // Uniquement sur desktop
+          e.preventDefault();
+          // Basculer la visibilité du dropdown
+          if (infoDropdownMenu.style.display === 'block') {
+            infoDropdownMenu.style.display = 'none';
+          } else {
+            infoDropdownMenu.style.display = 'block';
+          }
         }
       });
       
-      // Fermer le dropdown quand on clique en dehors
-      document.addEventListener('click', function(e) {
-        if (!infoDropdown.contains(e.target) && !infoDropdownMenu.contains(e.target)) {
-          infoDropdownMenu.style.display = 'none';
-        }
-      });
+      // Fermer le dropdown quand on clique en dehors (uniquement sur desktop)
+      if (window.innerWidth >= 992) {
+        document.addEventListener('click', function(e) {
+          if (!infoDropdown.contains(e.target) && !infoDropdownMenu.contains(e.target)) {
+            infoDropdownMenu.style.display = 'none';
+          }
+        });
+      }
     }
     
     // Fermer le menu principal quand on clique en dehors sur mobile

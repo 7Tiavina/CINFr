@@ -28,18 +28,14 @@
           </svg>
         </a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link svg-underline d-flex align-items-center" href="#" id="navbarDropdownInfo">
+
+      <li class="nav-item desktop-only">
+        <a class="nav-link svg-underline" href="{{ route('index') }}#cni-documents">
           INFORMATIONS
           <svg class="underline" viewBox="0 0 120 4" preserveAspectRatio="none">
             <path d="M0,2 L120,2"/>
           </svg>
-          <span class="dropdown-arrow">&#9662;</span>
         </a>
-        <div class="dropdown-menu animated-dropdown" id="infoDropdownMenu" style="display: none;">
-          <a class="dropdown-item" href="{{ route('index') }}#cni-documents">Pièces nécessaires</a>
-          <a class="dropdown-item" href="{{ route('index') }}#faq">Questions fréquentes</a>
-        </div>
       </li>
 
       <li class="nav-item">

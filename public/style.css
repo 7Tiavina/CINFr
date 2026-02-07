@@ -243,6 +243,13 @@ section {
   display: none; /* Hide close icon by default */
 }
 
+/* Cacher le bouton toggle sur desktop */
+@media (min-width: 992px) {
+  .navbar-toggler {
+    display: none !important;
+  }
+}
+
 .navbar-menu {
   background-color: #ffffff;
   display: none; /* Par défaut, le menu est caché sur mobile */
@@ -273,88 +280,71 @@ section {
   .navbar-menu.show {
     display: block;
   }
-}
-
-.navbar-nav {
-  margin-left: auto;
-  margin-right: auto; /* Centrer les éléments de navigation */
-  display: flex;
-  flex-direction: column; /* Sur mobile, les éléments sont empilés verticalement */
-  justify-content: center;
-  align-items: center;
-  padding: 20px 0;
-}
-
-.nav-item {
-  margin: 10px 0;
-  width: 100%;
-  text-align: center;
-}
-
-.nav-link {
-  font-size: 18px;
-  font-weight: 600;
-  color: #53627C;
-  text-transform: uppercase;
-  padding: 15px;
-  transition: color 0.3s ease;
-  display: block;
-  text-decoration: none;
-}
-
-.nav-link:hover {
-  color: #0444ec; /* Changement de couleur au survol */
-}
-
-/* Cible le bouton spécifique dans la navbar */
-.navbar .nav-item .btn-demo-small {
-  background-color: #0444ec; /* Couleur de fond du bouton */
-  color: #ffffff; /* Couleur du texte en blanc */
-  font-size: 18px; /* Augmente la taille du texte */
-  padding: 15px 30px; /* Augmente la taille du bouton */
-  border-radius: 5px; /* Arrondir les coins */
-  font-weight: bold; /* Texte en gras */
-  text-transform: uppercase; /* Texte en majuscules */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Animation au survol */
-}
-
-/* Effet de survol pour le bouton */
-.navbar .nav-item .btn-demo-small:hover {
-  background-color: #061d94; /* Couleur plus foncée lors du survol */
-  transform: scale(1.1); /* Effet de zoom */
-}
-
-/* Dropdown menu personnalisé */
-.dropdown-menu {
-  position: absolute;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 5px;
-  z-index: 1000;
-  min-width: 200px;
-  padding: 10px 0;
-}
-
-.dropdown-item {
-  display: block;
-  padding: 10px 20px;
-  text-decoration: none;
-  color: #53627C;
-  transition: background-color 0.3s;
-}
-
-.dropdown-item:hover {
-  background-color: #f0f0f0;
+  
+  .navbar-nav {
+    margin-left: auto;
+    margin-right: auto; /* Centrer les éléments de navigation */
+    display: flex;
+    flex-direction: column; /* Sur mobile, les éléments sont empilés verticalement */
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+  }
+  
+  .nav-item {
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-link {
+    font-size: 18px;
+    font-weight: 600;
+    color: #53627C;
+    text-transform: uppercase;
+    padding: 15px;
+    transition: color 0.3s ease;
+    display: block;
+    text-decoration: none;
+  }
+  
+  .nav-link:hover {
+    color: #0444ec; /* Changement de couleur au survol */
+  }
+  
+  /* Dropdown menu personnalisé */
+  .dropdown-menu {
+    position: static;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    z-index: 1000;
+    min-width: 200px;
+    padding: 10px 0;
+    margin-top: 10px;
+  }
+  
+  .dropdown-item {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #53627C;
+    transition: background-color 0.3s;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f0f0f0;
+  }
 }
 
 /* Responsive Design */
 @media (min-width: 992px) {
-  /* Sur desktop, afficher le menu horizontalement */
-  .custom-navbar {
-    display: flex !important;
-    align-items: center;
+  /* Sur desktop, cacher le bouton toggle et afficher le menu horizontalement */
+  .navbar-toggler {
+    display: none !important;
   }
   
+  /* Sur desktop, afficher le menu horizontalement */
   .navbar-menu {
     display: flex !important;
     flex-direction: row !important;
@@ -362,9 +352,11 @@ section {
     position: static !important;
     width: auto !important;
     margin-left: auto;
+    box-shadow: none !important;
   }
   
   .navbar-nav {
+    display: flex !important;
     flex-direction: row !important;
     padding: 0 !important;
   }
@@ -375,6 +367,11 @@ section {
     text-align: center;
   }
   
+  .nav-link {
+    padding: 10px 15px !important;
+    display: block;
+  }
+  
   .dropdown {
     position: relative;
   }
@@ -383,7 +380,25 @@ section {
     position: absolute;
     top: 100%;
     left: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    z-index: 1000;
+    min-width: 200px;
+    padding: 10px 0;
     display: none;
+  }
+  
+  .dropdown-item {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #53627C;
+    transition: background-color 0.3s;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f0f0f0;
   }
   
   .dropdown:hover .dropdown-menu {
@@ -398,21 +413,17 @@ section {
   .nav-logo {
     max-height: 60px; /* Réduction du logo sur mobile */
   }
-  .navbar-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    z-index: 999;
+  
+  /* Masquer les éléments desktop-only sur mobile */
+  .desktop-only {
+    display: none !important;
   }
-  .navbar-nav {
-    width: 100%;
-    justify-content: center;
-  }
-  .nav-item {
-    margin: 5px 0;
+}
+
+/* Afficher les éléments desktop-only sur desktop */
+@media (min-width: 992px) {
+  .desktop-only {
+    display: block !important;
   }
 }
 
