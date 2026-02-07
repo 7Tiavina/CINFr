@@ -9,7 +9,7 @@
   <a href="{{ route('index') }}" class="navbar-brand">
     <picture>
       <source srcset="{{ asset('images/logo3.webp') }}" type="image/webp">
-      <img src="{{ asset('images/logo3.png') }}" alt="Company Logo" class="nav-logo img-fluid" width="240" height="145.219">
+      <img src="{{ asset('images/logo3.png') }}" alt="Company Logo" class="nav-logo img-fluid" width="230" height="125.219">
     </picture>
   </a>
 

@@ -189,9 +189,10 @@ section {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .09);
   padding: 0 20px; /* Ajout des espaces latéraux */
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  height: 100px; /* Ajustez la hauteur de la navbar en fonction du logo */
+  height: auto; /* Ajustement de la hauteur automatique */
+  min-height: 120px; /* Hauteur minimale pour assurer une bonne visibilité */
   position: fixed;
   top: 0;
   left: 0;
@@ -206,7 +207,9 @@ section {
 }
 
 .nav-logo {
-  max-height: 170px; 
+  max-height: 120px; /* Réduction de la taille maximale du logo */
+  width: auto; /* Maintien des proportions */
+  object-fit: contain; /* Assure que l'image ne dépasse pas ses dimensions spécifiées */
 }
 
 .navbar-toggler {
