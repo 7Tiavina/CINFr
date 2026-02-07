@@ -217,6 +217,9 @@ section {
   font-size: 38px;
   background-color: transparent;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar-toggler:focus {
@@ -227,20 +230,65 @@ section {
   color: #53627C;
 }
 
-.navbar-collapse {
+/* Navigation icon styling */
+.navbar-toggler .icon {
+  display: inline-block;
+}
+
+.navbar-toggler .ion-md-menu {
+  display: inline; /* Show menu icon by default */
+}
+
+.navbar-toggler .ion-md-close {
+  display: none; /* Hide close icon by default */
+}
+
+.navbar-menu {
   background-color: #ffffff;
+  display: none; /* Par défaut, le menu est caché sur mobile */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.navbar-menu.show {
+  display: block; /* Afficher le menu quand la classe show est présente */
+}
+
+/* Assurer que le menu est visible sur mobile */
+@media (max-width: 991px) {
+  .navbar-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 999;
+  }
+  
+  .navbar-menu.show {
+    display: block;
+  }
 }
 
 .navbar-nav {
   margin-left: auto;
   margin-right: auto; /* Centrer les éléments de navigation */
   display: flex;
+  flex-direction: column; /* Sur mobile, les éléments sont empilés verticalement */
   justify-content: center;
   align-items: center;
+  padding: 20px 0;
 }
 
 .nav-item {
-  margin-left: 20px;
+  margin: 10px 0;
+  width: 100%;
+  text-align: center;
 }
 
 .nav-link {
@@ -248,8 +296,10 @@ section {
   font-weight: 600;
   color: #53627C;
   text-transform: uppercase;
-  padding: 10px 15px;
+  padding: 15px;
   transition: color 0.3s ease;
+  display: block;
+  text-decoration: none;
 }
 
 .nav-link:hover {
@@ -274,24 +324,95 @@ section {
   transform: scale(1.1); /* Effet de zoom */
 }
 
+/* Dropdown menu personnalisé */
+.dropdown-menu {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  z-index: 1000;
+  min-width: 200px;
+  padding: 10px 0;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #53627C;
+  transition: background-color 0.3s;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
 
 /* Responsive Design */
-@media (max-width: 1068px) {
+@media (min-width: 992px) {
+  /* Sur desktop, afficher le menu horizontalement */
+  .custom-navbar {
+    display: flex !important;
+    align-items: center;
+  }
+  
+  .navbar-menu {
+    display: flex !important;
+    flex-direction: row !important;
+    background: none !important;
+    position: static !important;
+    width: auto !important;
+    margin-left: auto;
+  }
+  
+  .navbar-nav {
+    flex-direction: row !important;
+    padding: 0 !important;
+  }
+  
+  .nav-item {
+    margin: 0 10px !important;
+    width: auto !important;
+    text-align: center;
+  }
+  
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+@media (max-width: 991px) {
   .navbar-brand {
     margin: 0 auto;
   }
   .nav-logo {
     max-height: 60px; /* Réduction du logo sur mobile */
   }
-  .navbar-collapse {
-    text-align: center;
+  .navbar-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 999;
   }
   .navbar-nav {
     width: 100%;
     justify-content: center;
   }
   .nav-item {
-    margin: 10px 0;
+    margin: 5px 0;
   }
 }
 

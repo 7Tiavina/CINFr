@@ -410,6 +410,86 @@ Service indépendant de l'État – Nous ne sommes pas affiliés à l’ANTS. No
   });
 </script>
 
+<script>
+  // Système de navigation mobile personnalisé sans Bootstrap
+  document.addEventListener('DOMContentLoaded', function() {
+    const navbarToggler = document.getElementById('navbarToggler');
+    const navbarMenu = document.getElementById('navbarMenu');
+    const infoDropdown = document.getElementById('navbarDropdownInfo');
+    const infoDropdownMenu = document.getElementById('infoDropdownMenu');
+    
+    // Gestion du menu principal
+    if (navbarToggler && navbarMenu) {
+      navbarToggler.addEventListener('click', function() {
+        // Basculer la visibilité du menu
+        navbarMenu.classList.toggle('show');
+        
+        // Basculer les icônes
+        const menuIcon = navbarToggler.querySelector('.ion-md-menu');
+        const closeIcon = navbarToggler.querySelector('.ion-md-close');
+        
+        if (navbarMenu.classList.contains('show')) {
+          // Menu est ouvert, afficher la croix
+          if (menuIcon) menuIcon.style.display = 'none';
+          if (closeIcon) closeIcon.style.display = 'inline';
+        } else {
+          // Menu est fermé, afficher le menu
+          if (menuIcon) menuIcon.style.display = 'inline';
+          if (closeIcon) closeIcon.style.display = 'none';
+        }
+      });
+      
+      // Fermer le menu quand on clique sur un lien
+      const navLinks = navbarMenu.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          navbarMenu.classList.remove('show');
+          // Réinitialiser les icônes
+          const menuIcon = navbarToggler.querySelector('.ion-md-menu');
+          const closeIcon = navbarToggler.querySelector('.ion-md-close');
+          if (menuIcon) menuIcon.style.display = 'inline';
+          if (closeIcon) closeIcon.style.display = 'none';
+        });
+      });
+    }
+    
+    // Gestion du dropdown "Informations"
+    if (infoDropdown && infoDropdownMenu) {
+      infoDropdown.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Basculer la visibilité du dropdown
+        if (infoDropdownMenu.style.display === 'block') {
+          infoDropdownMenu.style.display = 'none';
+        } else {
+          infoDropdownMenu.style.display = 'block';
+        }
+      });
+      
+      // Fermer le dropdown quand on clique en dehors
+      document.addEventListener('click', function(e) {
+        if (!infoDropdown.contains(e.target) && !infoDropdownMenu.contains(e.target)) {
+          infoDropdownMenu.style.display = 'none';
+        }
+      });
+    }
+    
+    // Fermer le menu principal quand on clique en dehors sur mobile
+    document.addEventListener('click', function(e) {
+      if (navbarMenu.classList.contains('show') && 
+          !navbarToggler.contains(e.target) && 
+          !navbarMenu.contains(e.target) &&
+          window.innerWidth < 992) {
+        navbarMenu.classList.remove('show');
+        // Réinitialiser les icônes
+        const menuIcon = navbarToggler.querySelector('.ion-md-menu');
+        const closeIcon = navbarToggler.querySelector('.ion-md-close');
+        if (menuIcon) menuIcon.style.display = 'inline';
+        if (closeIcon) closeIcon.style.display = 'none';
+      }
+    });
+  });
+</script>
+
 
 <script>
   let previousScrollPosition = window.pageYOffset;
@@ -445,30 +525,35 @@ Service indépendant de l'État – Nous ne sommes pas affiliés à l’ANTS. No
   const scrollTopBtn = document.getElementById("scrollTopBtn");
   const footer = document.querySelector("footer");
 
-  window.addEventListener("scroll", () => {
-    const footerTop = footer.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
+  // Only run if both elements exist
+  if (scrollTopBtn && footer) {
+    window.addEventListener("scroll", () => {
+      const footerTop = footer.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
 
-    if (window.pageYOffset > 300) {
-      scrollTopBtn.style.display = "block";
-    } else {
-      scrollTopBtn.style.display = "none";
-    }
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.style.display = "block";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
 
-    if (footerTop < windowHeight) {
-      scrollTopBtn.style.bottom = (windowHeight - footerTop + 30) + "px";
-    } else {
-      scrollTopBtn.style.bottom = "30px";
-    }
-  });
-
-  scrollTopBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
+      if (footerTop < windowHeight) {
+        scrollTopBtn.style.bottom = (windowHeight - footerTop + 30) + "px";
+      } else {
+        scrollTopBtn.style.bottom = "30px";
+      }
     });
-  });
+  }
+
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  }
 </script>
 
 
