@@ -2,7 +2,7 @@
 
 <!-- N A V B A R -->
 <nav class="navbar navbar-expand-lg custom-navbar fixed-top">
-  <div class="hide-on-portrait-header" style="background-color: #f7f9fc; color: #8c8e91; font-size: 0.9rem; padding: 5px 15px; text-align: center; position: absolute; top: 0; left: 0; right: 0; margin: 0 auto; max-width: 600px; border-radius: 10px; ">
+  <div class="hide-on-portrait-header" style="background-color: #f7f9fc; color: #8c8e91; font-size: 0.7rem; padding: 3px 10px; text-align: center; position: absolute; top: 0; left: 0; right: 0; margin: 0 auto; max-width: 400px; border-radius: 10px; z-index: 1000; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
     Service d'accompagnement indépendant de l'administration
   </div>
 

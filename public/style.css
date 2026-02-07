@@ -53,6 +53,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #f8f9fa; /* Assure un fond gris clair uniforme */
 }
 
 
@@ -481,40 +482,96 @@ section {
 }
 
 
-/* === Overrides pour coller le texte à droite dans #hero === */
+/* === Section Hero === */
+#hero {
+  min-height: calc(100vh - 100px); /* Prend en compte la hauteur de la navbar */
+  position: relative;
+  background-color: #f8f9fa; /* Fond gris clair pour correspondre au reste de la page */
+  padding: 20px 0; /* Ajoute un peu de padding pour éviter le trop plein */
+}
+
+#hero .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 #hero .row {
   display: flex;
-  justify-content: flex-start; /* on gère le décalage via margin */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  min-height: calc(100vh - 100px - 40px); /* Ajustement pour centrer verticalement */
+}
+
+#hero .col-md-6, #hero .col-md-1, #hero .col-md-5 {
+  padding: 0 15px;
+}
+
+#cinhand-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  max-width: 100%;
+  height: 100%;
+}
+
+#cinhand-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 20px; /* Légère descente de l'image */
 }
 
 #hero .hero-content {
-  margin-left: auto;  /* pousse ce bloc à l’extrémité droite */
-  max-width: none;     /* supprime toute largeur forcée */
-  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end; /* Alignement à droite du texte */
+  width: 100%;
+  height: 100%;
+  padding-top: 20px; /* Légère descente du texte */
 }
 
-/* Désactive tout padding qui pourrait limiter l’espace */
-#hero .container,
-#hero .row,
-#hero .col-lg-7,
-#hero .col-md-7 {
-  padding-left: 0;
-  padding-right: 0;
-}
-/* === HERO : forcer image à gauche et contenu à droite === */
-#hero .row { justify-content: flex-start; }
-#cinhand-container { order: 1; }
-.hero-content       { order: 2; }
-
-/* Annule toute largeur fixe */
-.hero-content {
-  width: auto;
-  max-width: none;
+.hero-text-wrapper {
+  width: 100%;
+  text-align: right; /* Texte aligné à droite */
 }
 
-/* Aligne tout à droite dans hero-content */
-.hero-text-wrapper { width: 100%; text-align: right; }
+.hero-title {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin: 0;
+  position: relative;
+}
 
+.primary {
+  color: #0444ec;
+  font-weight: bold;
+}
+
+#lottie-container {
+  margin-bottom: 20px;
+  height: 120px; /* Augmente la hauteur du conteneur lottie */
+  z-index: 1;
+  position: relative;
+  display: flex;
+  align-items: center; /* Centre le contenu verticalement */
+  justify-content: flex-start; /* Alignement à gauche du lottie pour éviter le chevauchement avec le texte à droite */
+}
+
+#lottie-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Arrière-plan derrière le contenu */
+  pointer-events: none; /* Empêche les interactions avec le lottie de fond */
+  overflow: hidden;
+}
 
 .strong-word {
     color: #e41d58;
@@ -523,28 +580,9 @@ section {
     font-style: italic;
 }
 
-
 .hero-text .highlight {
     color: #0444ec;
     font-weight: 600;
-}
-
-#hero .hero-content {
-    align-items: flex-end; /* pousse le contenu à droite */
-    text-align: right;
-    justify-content: space-between;
-    width: 100%;
-}
-
-#cinhand-container {
-  overflow: hidden;
-  max-width: 600px;
-  max-height: 400px;
-}
-
-#cinhand-container img {
-  transform: scale(1.14);
-  transform-origin: center center;
 }
 
 
@@ -574,7 +612,7 @@ section {
 
 #marketing {
   padding: 50px 0; /* Espace autour de la section */
-  background-color: #f9f9f9; /* Couleur de fond douce */
+  background-color: #f8f9fa; /* Couleur de fond uniforme */
 }
 
 .subscription-box {
@@ -656,7 +694,7 @@ section {
 }
 
 #crestimonials {
-  background: linear-gradient(to bottom, #f7f9fc, #ffffff);
+  background-color: #f8f9fa; /* Fond uniforme */
   padding: 60px 20px;
 }
 
@@ -723,7 +761,7 @@ section {
 ===============================================*/
 
 #testimonials {
-  background-color: #f6f8f9; /* Couleur de fond */
+  background-color: #f8f9fa; /* Couleur de fond uniforme */
   min-height: 50vh; /* Hauteur de 50% de la fenêtre visible */
   display: flex;
   align-items: center; /* Centrer verticalement */
@@ -803,7 +841,7 @@ section {
 ===============================================*/
 
 .styled-section {
-  background: #f9f9f9;
+  background-color: #f8f9fa; /* Fond uniforme */
   padding: 50px 0;
 }
 
