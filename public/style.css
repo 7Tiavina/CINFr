@@ -1398,29 +1398,9 @@ footer small {
 #lottie-container {
   min-height: 100px;
   min-width: 100px;
-  margin-right: 100px; /* Moins de marge pour déplacer le lottie plus à droite */
+  margin-right: 285px;
 }
 
-/* Sur mobile, enlever l'espace en haut et centrer le lottie */
-@media (max-width: 767px) {
-  #lottie-container {
-    margin-top: 0 !important;
-    margin-right: 0 !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    display: block !important;
-  }
-  
-  /* Assurer une meilleure disposition mobile */
- @media (max-width: 768px) { 
-	#hero h1 {
-		font-size: 34px;
-		margin-bottom: 20px;
-	}
-	#hero p {
-		font-size: 20px;
-	}
-}
 .hero-text-wrapper {
 }
 
@@ -1438,5 +1418,4 @@ footer small {
 
 .hero-title .primary {
   color: #0444ec;
-}
 }
