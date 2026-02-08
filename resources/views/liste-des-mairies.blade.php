@@ -165,4 +165,124 @@
 
   attachDepartmentEvents();
 </script>
+
+<script>
+  // Système de navigation mobile personnalisé sans Bootstrap
+  document.addEventListener('DOMContentLoaded', function() {
+    const navbarToggler = document.getElementById('navbarToggler');
+    const navbarMenu = document.getElementById('navbarMenu');
+
+    // Gestion du menu principal
+    if (navbarToggler && navbarMenu) {
+      navbarToggler.addEventListener('click', function() {
+        // Basculer la visibilité du menu
+        navbarMenu.classList.toggle('show');
+
+        // Basculer les icônes
+        const menuIcon = navbarToggler.querySelector('.ion-md-menu');
+        const closeIcon = navbarToggler.querySelector('.ion-md-close');
+
+        if (navbarMenu.classList.contains('show')) {
+          // Menu est ouvert, afficher la croix
+          if (menuIcon) menuIcon.style.display = 'none';
+          if (closeIcon) closeIcon.style.display = 'inline';
+        } else {
+          // Menu est fermé, afficher le menu
+          if (menuIcon) menuIcon.style.display = 'inline';
+          if (closeIcon) closeIcon.style.display = 'none';
+        }
+      });
+
+      // Fermer le menu quand on clique sur un lien
+      const navLinks = navbarMenu.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          navbarMenu.classList.remove('show');
+          // Réinitialiser les icônes
+          const menuIcon = navbarToggler.querySelector('.ion-md-menu');
+          const closeIcon = navbarToggler.querySelector('.ion-md-close');
+          if (menuIcon) menuIcon.style.display = 'inline';
+          if (closeIcon) closeIcon.style.display = 'none';
+        });
+      });
+    }
+
+    // Fermer le menu principal quand on clique en dehors sur mobile
+    document.addEventListener('click', function(e) {
+      if (navbarMenu.classList.contains('show') &&
+          !navbarToggler.contains(e.target) &&
+          !navbarMenu.contains(e.target) &&
+          window.innerWidth < 992) {
+        navbarMenu.classList.remove('show');
+        // Réinitialiser les icônes
+        const menuIcon = navbarToggler.querySelector('.ion-md-menu');
+        const closeIcon = navbarToggler.querySelector('.ion-md-close');
+        if (menuIcon) menuIcon.style.display = 'inline';
+        if (closeIcon) closeIcon.style.display = 'none';
+      }
+    });
+  });
+
+  // Navbar behavior for scroll and mouse position
+  document.addEventListener('DOMContentLoaded', function() {
+    let previousScrollPosition = window.pageYOffset;
+    const navbar = document.querySelector('.custom-navbar');
+    const threshold = 100; // Seuil pour activer l'affichage via le pointeur
+
+    if (navbar) {
+      // Gérer le défilement
+      window.addEventListener('scroll', () => {
+        const currentScrollPosition = window.pageYOffset;
+
+        if (previousScrollPosition > currentScrollPosition) {
+          // L'utilisateur défile vers le haut, afficher la navbar
+          navbar.style.top = "0";
+        } else {
+          // L'utilisateur défile vers le bas, cacher la navbar
+          navbar.style.top = "-100px"; // Ajustez selon la hauteur de la navbar
+        }
+        previousScrollPosition = currentScrollPosition;
+      });
+
+      // Gérer la position du pointeur
+      window.addEventListener('mousemove', (event) => {
+        if (event.clientY <= threshold) {
+          // Si le pointeur est proche du haut de la page, afficher la navbar
+          navbar.style.top = "0";
+        }
+      });
+    }
+  });
+
+  // Navbar behavior for scroll and mouse position
+  document.addEventListener('DOMContentLoaded', function() {
+    let previousScrollPosition = window.pageYOffset;
+    const navbar = document.querySelector('.custom-navbar');
+    const threshold = 100; // Seuil pour activer l'affichage via le pointeur
+
+    if (navbar) {
+      // Gérer le défilement
+      window.addEventListener('scroll', () => {
+        const currentScrollPosition = window.pageYOffset;
+
+        if (previousScrollPosition > currentScrollPosition) {
+          // L'utilisateur défile vers le haut, afficher la navbar
+          navbar.style.top = "0";
+        } else {
+          // L'utilisateur défile vers le bas, cacher la navbar
+          navbar.style.top = "-100px"; // Ajustez selon la hauteur de la navbar
+        }
+        previousScrollPosition = currentScrollPosition;
+      });
+
+      // Gérer la position du pointeur
+      window.addEventListener('mousemove', (event) => {
+        if (event.clientY <= threshold) {
+          // Si le pointeur est proche du haut de la page, afficher la navbar
+          navbar.style.top = "0";
+        }
+      });
+    }
+  });
+</script>
 @endsection
