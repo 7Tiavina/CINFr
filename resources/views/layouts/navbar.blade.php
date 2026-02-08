@@ -47,7 +47,7 @@
         </a>
       </li>
     </ul>
-    <div>
+    <div class="d-flex justify-content-center">
       <a class="nav-link btn btn-wave" href="{{ route('predemande') }}">
         <span style="--i:0">P</span><span style="--i:1">r</span><span style="--i:2">é</span><span style="--i:3">-</span>
         <span style="--i:4">D</span><span style="--i:5">e</span><span style="--i:6">m</span><span style="--i:7">a</span><span style="--i:8">n</span><span style="--i:9">d</span><span style="--i:10">e</span>
