@@ -65,7 +65,7 @@ function validateCurrentStep() {
         if (!emailRegex.test(field.value)) {
           isValid = false;
           field.style.border = '1px solid red';
-          showAlert('â veuillez donné une adresse mail valide s\'il vous plais'); // Specific alert for email
+          showAlert('❌ veuillez donné une adresse mail valide s\'il vous plais'); // Specific alert for email
         } else {
           field.style.border = '1px solid #ddd';
         }
@@ -109,7 +109,7 @@ function nextStep(buttonElement) {
       const mereInconnueOui = document.getElementById('mere-inconnue-oui').checked;
 
       if (pereInconnuOui && mereInconnueOui) {
-          showAlert('â Vous devez renseigner au moins un des deux parents (père ou mère).');
+          showAlert('❌ Vous devez renseigner au moins un des deux parents (père ou mère).');
           buttonElement.classList.remove('loading');
           return;
       }
@@ -117,7 +117,7 @@ function nextStep(buttonElement) {
     
     // Always validate the visible fields
     if (!validateCurrentStep()) {
-        showAlert('â Veuillez remplir tous les champs obligatoires avant de continuer.');
+        showAlert('❌ Veuillez remplir tous les champs obligatoires avant de continuer.');
         buttonElement.classList.remove('loading');
         return;
     }
@@ -130,14 +130,14 @@ function nextStep(buttonElement) {
       }
     });
     if (!isNationaliteSelected) {
-      showAlert('â Veuillez choisir au moins un motif pour la nationalité française.');
+      showAlert('❌ Veuillez choisir au moins un motif pour la nationalité française.');
       buttonElement.classList.remove('loading');
       return;
     }
 
   } else {
     if (!validateCurrentStep()) {
-        showAlert('â Veuillez remplir tous les champs obligatoires avant de continuer.');
+        showAlert('❌ Veuillez remplir tous les champs obligatoires avant de continuer.');
         buttonElement.classList.remove('loading');
         return;
     }
@@ -168,7 +168,7 @@ function prevStep(buttonElement) {
 }
 
 function processPayment() {
-  showAlert('ð Paiement en cours…');
+  showAlert('🔄 Paiement en cours…');
 }
 
 window.onload = function () {
@@ -178,7 +178,7 @@ window.onload = function () {
   showFormPart(currentStep);
 
   // Debug : afficher tout le sessionStorage au chargement
-  console.group('ð sessionStorage au chargement');
+  console.group('🔍 sessionStorage au chargement');
   for (let i = 0; i < sessionStorage.length; i++) {
     const key = sessionStorage.key(i);
     console.log(key, sessionStorage.getItem(key));
@@ -212,7 +212,7 @@ window.onload = function () {
       val = e.target.value;
     }
     sessionStorage.setItem(e.target.name, val);
-    console.log('ð sauvegarde', e.target.name, '→', val);
+    console.log('🔄 sauvegarde', e.target.name, '→', val);
   }
 
   // Attache l’écouteur adéquat selon le type de champ
@@ -243,10 +243,10 @@ window.onload = function () {
             const type = $('input[name="type"]:checked').val();
 
             if (type === 'majeur' && selectedDate > eighteenYearsAgo) {
-                showAlert('â Pour un majeur, la date de naissance ne peut pas être après le ' + eighteenYearsAgo.toLocaleDateString());
+                showAlert('❌ Pour un majeur, la date de naissance ne peut pas être après le ' + eighteenYearsAgo.toLocaleDateString());
                 $(this).val('');
             } else if (type === 'mineur' && selectedDate < eighteenYearsAgo) {
-                showAlert('â Pour un mineur, la date de naissance ne peut pas être avant le ' + eighteenYearsAgo.toLocaleDateString());
+                showAlert('❌ Pour un mineur, la date de naissance ne peut pas être avant le ' + eighteenYearsAgo.toLocaleDateString());
                 $(this).val('');
             }
         });
@@ -328,7 +328,7 @@ document.querySelectorAll('input[name="mot_devant"]').forEach(radio => {
 });
 
 
-  //Gestion du Navbar-----------------------------------------------------------------------------
+	//Gestion du Navbar-----------------------------------------------------------------------------
 
   let previousScrollPosition = window.pageYOffset;
   const navbar = document.querySelector('.custom-navbar');
@@ -340,10 +340,10 @@ document.querySelectorAll('input[name="mot_devant"]').forEach(radio => {
 
     if (previousScrollPosition > currentScrollPosition) {
       // L utilisateur défile vers le haut, afficher la navbar
-      if (navbar) navbar.style.top = "0";
+      navbar.style.top = "0";
     } else {
       // L utilisateur défile vers le bas, cacher la navbar
-      if (navbar) navbar.style.top = "-100px"; // Ajustez selon la hauteur de la navbar
+      navbar.style.top = "-100px"; // Ajustez selon la hauteur de la navbar
     }
     previousScrollPosition = currentScrollPosition;
   });
@@ -352,90 +352,8 @@ document.querySelectorAll('input[name="mot_devant"]').forEach(radio => {
   window.addEventListener('mousemove', (event) => {
     if (event.clientY <= threshold) {
       // Si le pointeur est proche du haut de la page, afficher la navbar
-      if (navbar) navbar.style.top = "0";
+      navbar.style.top = "0";
     }
-  });
-
-  // Système de navigation mobile personnalisé sans Bootstrap
-  document.addEventListener('DOMContentLoaded', function() {
-    const navbarToggler = document.getElementById('navbarToggler');
-    const navbarMenu = document.getElementById('navbarMenu');
-    const infoDropdown = document.getElementById('navbarDropdownInfo');
-    const infoDropdownMenu = document.getElementById('infoDropdownMenu');
-    
-    // Gestion du menu principal
-    if (navbarToggler && navbarMenu) {
-      navbarToggler.addEventListener('click', function() {
-        // Basculer la visibilité du menu
-        navbarMenu.classList.toggle('show');
-        
-        // Basculer les icônes
-        const menuIcon = navbarToggler.querySelector('.ion-md-menu');
-        const closeIcon = navbarToggler.querySelector('.ion-md-close');
-        
-        if (navbarMenu.classList.contains('show')) {
-          // Menu est ouvert, afficher la croix
-          if (menuIcon) menuIcon.style.display = 'none';
-          if (closeIcon) closeIcon.style.display = 'inline';
-        } else {
-          // Menu est fermé, afficher le menu
-          if (menuIcon) menuIcon.style.display = 'inline';
-          if (closeIcon) closeIcon.style.display = 'none';
-        }
-      });
-      
-      // Fermer le menu quand on clique sur un lien
-      const navLinks = navbarMenu.querySelectorAll('a');
-      navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-          navbarMenu.classList.remove('show');
-          // Réinitialiser les icônes
-          const menuIcon = navbarToggler.querySelector('.ion-md-menu');
-          const closeIcon = navbarToggler.querySelector('.ion-md-close');
-          if (menuIcon) menuIcon.style.display = 'inline';
-          if (closeIcon) closeIcon.style.display = 'none';
-        });
-      });
-    }
-    
-    // Gestion du dropdown "Informations" (uniquement sur desktop)
-    if (infoDropdown && infoDropdownMenu) {
-      infoDropdown.addEventListener('click', function(e) {
-        if (window.innerWidth >= 992) { // Uniquement sur desktop
-          e.preventDefault();
-          // Basculer la visibilité du dropdown
-          if (infoDropdownMenu.style.display === 'block') {
-            infoDropdownMenu.style.display = 'none';
-          } else {
-            infoDropdownMenu.style.display = 'block';
-          }
-        }
-      });
-      
-      // Fermer le dropdown quand on clique en dehors (uniquement sur desktop)
-      if (window.innerWidth >= 992) {
-        document.addEventListener('click', function(e) {
-          if (!infoDropdown.contains(e.target) && !infoDropdownMenu.contains(e.target)) {
-            infoDropdownMenu.style.display = 'none';
-          }
-        });
-      }
-    }
-    
-    // Fermer le menu principal quand on clique en dehors sur mobile
-    document.addEventListener('click', function(e) {
-      if (navbarMenu.classList.contains('show') && 
-          !navbarToggler.contains(e.target) && 
-          !navbarMenu.contains(e.target) &&
-          window.innerWidth < 992) {
-        navbarMenu.classList.remove('show');
-        // Réinitialiser les icônes
-        const menuIcon = navbarToggler.querySelector('.ion-md-menu');
-        const closeIcon = navbarToggler.querySelector('.ion-md-close');
-        if (menuIcon) menuIcon.style.display = 'inline';
-        if (closeIcon) closeIcon.style.display = 'none';
-      }
-    });
   });
 
 
@@ -445,35 +363,30 @@ document.querySelectorAll('input[name="mot_devant"]').forEach(radio => {
   const scrollTopBtn = document.getElementById("scrollTopBtn");
   const footer = document.querySelector("footer");
 
-  // Only run if both elements exist
-  if (scrollTopBtn && footer) {
-    window.addEventListener("scroll", () => {
-      const footerTop = footer.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
+  window.addEventListener("scroll", () => {
+    const footerTop = footer.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
 
-      if (window.pageYOffset > 300) {
-        scrollTopBtn.style.display = "block";
-      } else {
-        scrollTopBtn.style.display = "none";
-      }
+    if (window.pageYOffset > 300) {
+      scrollTopBtn.style.display = "block";
+    } else {
+      scrollTopBtn.style.display = "none";
+    }
 
-      if (footerTop < windowHeight) {
-        scrollTopBtn.style.bottom = (windowHeight - footerTop + 30) + "px";
-      } else {
-        scrollTopBtn.style.bottom = "30px";
-      }
+    if (footerTop < windowHeight) {
+      scrollTopBtn.style.bottom = (windowHeight - footerTop + 30) + "px";
+    } else {
+      scrollTopBtn.style.bottom = "30px";
+    }
+  });
+
+  scrollTopBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
     });
-  }
-
-  if (scrollTopBtn) {
-    scrollTopBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    });
-  }
+  });
 
 
 function displayRecap() {
