@@ -9,6 +9,8 @@ use Stripe\Webhook;
 use Stripe\Exception\SignatureVerificationException;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Log;
+use Stripe\PaymentIntent;
+use Stripe\Charge;
 
 class StripeWebhookController extends Controller
 {
@@ -45,6 +47,7 @@ class StripeWebhookController extends Controller
             case 'checkout.session.completed':
                 $session = $event->data->object;
                 Log::info('Webhook: checkout.session.completed reçu pour la session ' . $session->id);
+                Log::debug('Stripe Webhook: checkout.session.completed session object', $session->toArray());
                 $this->handleCheckoutSessionCompleted($session);
                 break;
 
@@ -68,6 +71,7 @@ class StripeWebhookController extends Controller
      */
     protected function handleCheckoutSessionCompleted(\Stripe\Checkout\Session $session): void
     {
+        Log::debug('Stripe Webhook: handleCheckoutSessionCompleted started for session', ['session_id' => $session->id, 'payment_status' => $session->payment_status]);
         // 1. Vérification cruciale : Ne traiter que si le paiement est réellement 'paid'.
         if ($session->payment_status !== 'paid') {
             Log::warning("Webhook Ignored: checkout.session.completed reçu, mais payment_status est '{$session->payment_status}'.", ['session_id' => $session->id]);
@@ -87,6 +91,9 @@ class StripeWebhookController extends Controller
             Log::error("Webhook Error: Paiement avec l'ID {$paymentId} non trouvé pour la session " . $session->id);
             return;
         }
+        Log::debug('Stripe Webhook: Payment object before update', $payment->toArray());
+
+        Log::debug('Stripe Webhook: Payment object before update', $payment->toArray());
 
         // 2. Gestion de l'idempotence : s'assurer qu'on ne traite pas un webhook plusieurs fois.
         if ($payment->status !== 'pending') {
@@ -94,12 +101,44 @@ class StripeWebhookController extends Controller
             return;
         }
 
-        // Mettre à jour le paiement
-        $payment->status = 'completed';
-        $payment->charge_id = $session->payment_intent; // Stocke l'ID du PaymentIntent
-        $payment->save();
+        $updateData = [
+            'status' => 'completed',
+            'payment_status' => $session->payment_status, // Directement depuis la session
+            'charge_id' => $session->payment_intent, // L'ID du PaymentIntent est le charge_id pour nous
+        ];
 
-        Log::info("Paiement ID {$paymentId} mis à jour au statut 'completed'.", ['session_id' => $session->id]);
+        try {
+            // Récupérer le PaymentIntent pour plus de détails
+            if ($session->payment_intent) {
+                $paymentIntent = PaymentIntent::retrieve($session->payment_intent);
+                Log::debug('Stripe Webhook: Retrieved PaymentIntent', $paymentIntent->toArray());
+
+                // Le PaymentIntent peut avoir un ou plusieurs charges. On prend le plus récent.
+                if ($paymentIntent->latest_charge) {
+                    $charge = Charge::retrieve($paymentIntent->latest_charge);
+                    Log::debug('Stripe Webhook: Retrieved Charge', $charge->toArray());
+
+                    $updateData['receipt_url'] = $charge->receipt_url;
+
+                    if ($charge->payment_method_details && $charge->payment_method_details->card) {
+                        $updateData['card_last4'] = $charge->payment_method_details->card->last4;
+                        $updateData['payment_method'] = $charge->payment_method_details->card->brand; // e.g., visa, mastercard
+                    } else if ($charge->payment_method_details && $charge->payment_method_details->type) {
+                        // Pour d'autres types de méthodes de paiement (ex: sepa_debit)
+                        $updateData['payment_method'] = $charge->payment_method_details->type;
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            Log::error("Stripe Webhook: Erreur lors de la récupération des détails de paiement: " . $e->getMessage(), ['session_id' => $session->id]);
+            // Continuer sans les détails si une erreur survient
+        }
+
+        // Mettre à jour le paiement
+        $payment->update($updateData);
+
+        Log::info("Paiement ID {$paymentId} mis à jour au statut 'completed' avec détails supplémentaires.", ['session_id' => $session->id, 'update_data' => $updateData]);
+        Log::debug('Stripe Webhook: Payment object after update', $payment->toArray());
 
         // Ici, vous pouvez déclencher d'autres actions en toute sécurité :
         // - Envoyer un email de confirmation au client

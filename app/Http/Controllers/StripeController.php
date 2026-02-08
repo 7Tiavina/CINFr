@@ -38,21 +38,28 @@ class StripeController extends Controller
         // $validatedData = $request->validate([...]);
 
         try {
+            Log::debug('StripeController@createCheckoutSession: Incoming request data', $request->all());
+
             // 1. Créer le client avec les données du formulaire
             // Note: Assurez-vous que le modèle Client a les champs correspondants dans $fillable
             $client = Client::create($request->all());
+            Log::debug('StripeController@createCheckoutSession: Client created', $client->toArray());
 
             // 2. Déterminer le prix et créer le paiement en attente
             $type = $request->input('type');
             $price = $type === 'majeur' ? config('prix.majeur') : config('prix.mineur');
             $priceInCents = $price * 100;
 
-            $payment = $client->payments()->create([
+            $paymentData = [
                 'amount' => $priceInCents,
                 'currency' => 'eur',
                 'status' => 'pending', // Statut initial avant paiement
                 'email' => $client->email,
-            ]);
+            ];
+            Log::debug('StripeController@createCheckoutSession: Payment data before creation', $paymentData);
+
+            $payment = $client->payments()->create($paymentData);
+            Log::debug('StripeController@createCheckoutSession: Payment created', $payment->toArray());
 
             // 3. Préparer et créer la session Stripe
             Stripe::setApiKey(config('services.stripe.secret'));

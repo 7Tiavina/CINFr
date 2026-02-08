@@ -954,17 +954,16 @@
   <h1>Père</h1>
   <div class="form-group">
     <h4>Père inconnu <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-    <div class="radio-options">
-      <div class="form-check">
-        <input type="radio" id="pere-inconnu-oui" name="pere_inconnu" value="oui" required class="form-check-input">
-        <label for="pere-inconnu-oui" class="form-check-label">Oui</label>
-      </div>
-      <div class="form-check">
-        <input type="radio" id="pere-inconnu-non" name="pere_inconnu" value="non" required class="form-check-input">
-        <label for="pere-inconnu-non" class="form-check-label">Non</label>
-      </div>
-    </div>
-  </div>
+            <div class="radio-options">
+              <div class="form-check">
+                <input type="radio" id="pere-inconnu-oui" name="pere_inconnu" value="1" required class="form-check-input">
+                <label for="pere-inconnu-oui" class="form-check-label">Oui</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" id="pere-inconnu-non" name="pere_inconnu" value="0" required class="form-check-input">
+                <label for="pere-inconnu-non" class="form-check-label">Non</label>
+              </div>
+            </div>  </div>
 
   <div id="pere-details" style="display: none;">
     <div class="form-group">
@@ -1010,20 +1009,19 @@
   </div>
 
   <h1>Mère</h1>
-  <div class="form-group">
-    <h4>Mère inconnue <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
-    <div class="radio-options">
-      <div class="form-check">
-        <input type="radio" id="mere-inconnue-oui" name="mere_inconnue" value="oui" required class="form-check-input">
-        <label for="mere-inconnue-oui" class="form-check-label">Oui</label>
+      <div class="form-group">
+        <h4>Mère inconnue <span class="required-tooltip" title="Champ nécessaire">*</span></h4>
+        <div class="radio-options">
+          <div class="form-check">
+            <input type="radio" id="mere-inconnue-oui" name="mere_inconnue" value="1" required class="form-check-input">
+            <label for="mere-inconnue-oui" class="form-check-label">Oui</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" id="mere-inconnue-non" name="mere_inconnue" value="0" required class="form-check-input">
+            <label for="mere-inconnue-non" class="form-check-label">Non</label>
+          </div>
+        </div>
       </div>
-      <div class="form-check">
-        <input type="radio" id="mere-inconnue-non" name="mere_inconnue" value="non" required class="form-check-input">
-        <label for="mere-inconnue-non" class="form-check-label">Non</label>
-      </div>
-    </div>
-  </div>
-
   <div id="mere-details" style="display: none;">
     <div class="form-group">
       <h4>Nom de naissance de la mère <span class="required-tooltip" title="Champ nécessaire">*</span></h4>

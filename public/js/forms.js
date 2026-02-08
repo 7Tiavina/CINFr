@@ -497,6 +497,48 @@ function displayRecap() {
 
     recapContainer.innerHTML = html;
 
+    // --- DEBUT DE LA MODIFICATION ---
+    const stripeForm = document.getElementById('stripe-form');
+
+    // 1. Vider les anciens champs cachés pour éviter les doublons
+    const hiddenInputs = stripeForm.querySelectorAll('input[type="hidden"]');
+    hiddenInputs.forEach(input => {
+        // Ne pas supprimer le champ type et le token CSRF
+        if (input.name !== 'type' && input.name !== '_token') {
+            input.remove();
+        }
+    });
+
+    // 2. Ajouter toutes les données de sessionStorage au formulaire Stripe
+    for (let i = 0; i < sessionStorage.length; i++) {
+        const key = sessionStorage.key(i);
+        const value = sessionStorage.getItem(key);
+
+        // Ignorer les clés non pertinentes ou déjà gérées
+        if (key.startsWith('nat_') || key === 'currentStep' || key === 'type') {
+            continue;
+        }
+
+        if (value) {
+            const hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = key;
+            hiddenInput.value = value;
+            stripeForm.appendChild(hiddenInput);
+        }
+    }
+
+    // 3. Gérer spécifiquement le motif de nationalité
+    if (nationaliteMotifs.length > 0) {
+        const motifInput = document.createElement('input');
+        motifInput.type = 'hidden';
+        motifInput.name = 'motif_nationalite';
+        motifInput.value = nationaliteMotifs.join(', '); // Joindre avec des virgules pour le backend
+        stripeForm.appendChild(motifInput);
+    }
+    // --- FIN DE LA MODIFICATION ---
+
+
     // Set the value of the hidden input
     document.getElementById('stripe-form-type').value = type;
 }
