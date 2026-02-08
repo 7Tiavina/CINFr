@@ -661,7 +661,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end; /* Alignement à droite du texte */
+  align-items: flex-start; /* Alignement à gauche du texte sur desktop */
   width: 100%;
   height: 100%;
   padding-top: 20px; /* Légère descente du texte */
@@ -669,7 +669,17 @@ section {
 
 .hero-text-wrapper {
   width: 100%;
-  text-align: right; /* Texte aligné à droite */
+  text-align: left; /* Texte aligné à gauche sur desktop */
+}
+
+/* Sur mobile, le texte est centré */
+@media (max-width: 767px) {
+  .hero-text-wrapper {
+    text-align: center;
+  }
+  .hero-content {
+    align-items: center;
+  }
 }
 
 .hero-title {
@@ -691,7 +701,7 @@ section {
   position: relative;
   display: flex;
   align-items: center; /* Centre le contenu verticalement */
-  justify-content: flex-start; /* Alignement à gauche du lottie pour éviter le chevauchement avec le texte à droite */
+  justify-content: center; /* Centre le lottie horizontalement dans son conteneur */
 }
 
 #lottie-bg {
@@ -1430,7 +1440,31 @@ footer small {
 #lottie-container {
   min-height: 100px;
   min-width: 100px;
-  margin-right: 285px;
+  margin-right: 100px; /* Moins de marge pour déplacer le lottie plus à droite */
+}
+
+/* Sur mobile, enlever l'espace en haut et centrer le lottie */
+@media (max-width: 767px) {
+  #lottie-container {
+    margin-top: 0 !important;
+    margin-right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+  }
+  
+  /* Assurer une meilleure disposition mobile */
+  #hero .row {
+    flex-direction: column;
+  }
+  
+  #hero .col-md-6, #hero .col-md-2, #hero .col-md-4 {
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .hero-text-wrapper {

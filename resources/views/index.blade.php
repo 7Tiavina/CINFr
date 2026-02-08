@@ -18,15 +18,15 @@
       </div>
 
       <!-- Lottie au centre -->
-      <div class="col-md-1 d-flex justify-content-center align-items-center">
+      <div class="col-md-2 d-flex justify-content-center align-items-center">
         <div id="lottie-container" class="mb-3">
           <!-- Lottie ici -->
         </div>
       </div>
 
-      <!-- Texte à droite -->
-      <div class="col-md-5">
-        <div class="hero-content text-right">
+      <!-- Texte à gauche -->
+      <div class="col-md-4">
+        <div class="hero-content text-left">
           <div class="hero-text-wrapper">
             <h1 class="hero-title">
               Simplifiez votre<br>
