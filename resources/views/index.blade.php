@@ -4,38 +4,33 @@
 @section('content')
 <main style="flex-grow: 1;">
   <!-- H E R O -->
-  <section id="hero">
+   <section id="hero">
   <div id="lottie-bg"></div>
   <div class="container">
     <div class="row align-items-center">
       <!-- Image à gauche (desktop only) -->
-      <div class="col-md-6 d-none d-md-flex justify-content-center align-items-center" id="cinhand-container">
+      <div class="col-md-5 d-none d-md-flex" id="cinhand-container">
         <img src="images/cinhand.webp"
              loading="lazy"
              class="img-fluid"
-             style="max-height: 300px; width: auto;"
              alt="Demo image">
       </div>
 
-      <!-- Lottie au centre -->
-      <div class="col-md-2 d-flex justify-content-center align-items-center">
+      <!-- Lottie + texte à droite -->
+      <div class="col-md-7 d-flex flex-row flex-md-column content-box hero-content" style="flex-direction: row !important;">
         <div id="lottie-container" class="mb-3">
           <!-- Lottie ici -->
         </div>
-      </div>
-
-      <!-- Texte à gauche -->
-      <div class="col-md-4">
-        <div class="hero-content text-left">
-          <div class="hero-text-wrapper">
-            <h1 class="hero-title">
-              Simplifiez votre<br>
-              <span class="primary">pré-demande</span> de<br>
-              <span class="primary">carte d'identité</span><br>
-              en quelques clics
-            </h1>
-          </div>
+        <div class="hero-text-wrapper text-left">
+          <h1 class="hero-title">
+            Simplifiez votre<br>
+            <span class="primary">pré-demande</span> de<br>
+            <span class="primary">carte d’identité</span><br>
+            en quelques clics
+          </h1>
         </div>
+
+
       </div>
     </div>
   </div>
