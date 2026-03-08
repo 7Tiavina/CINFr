@@ -34,7 +34,7 @@ class Client extends Model
         'prenom_pere',
         'nationalite',
         'telephone',
-        'email',                
+        'email',
         'a_carte_identite',
         'numero_cni',
         'date_delivrance_cni',
@@ -43,18 +43,15 @@ class Client extends Model
         'justificatif_domicile',
         'acte_naissance',
         'autre_document',
-        // …
         'pere_inconnu',
         'mere_inconnue',
         'adresse_complement',
-        'nationalite',
         'pere_naissance_date',
         'pere_naissance_ville',
         'pere_nationalite',
         'mere_naissance_date',
         'mere_naissance_ville',
         'mere_nationalite',
-        // …
         'motif_nationalite',
         'deuxieme_nom_origine',
         'mot_devant',
@@ -63,6 +60,16 @@ class Client extends Model
         'mere_prenom3',
         'pere_pays_naissance',
         'mere_pays_naissance',
+    ];
+
+    protected $casts = [
+        'a_carte_identite' => 'boolean',
+        'pere_inconnu' => 'boolean',
+        'mere_inconnue' => 'boolean',
+        'date_naissance' => 'date',
+        'date_delivrance_cni' => 'date',
+        'pere_naissance_date' => 'date',
+        'mere_naissance_date' => 'date',
     ];
 
     public function payments()
