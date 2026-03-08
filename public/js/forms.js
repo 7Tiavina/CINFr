@@ -204,7 +204,7 @@ window.onload = function () {
   function saveField(e) {
     let val;
     if (e.target.type === 'radio') {
-      if (!e.target.checked) return;        // n’enregistre que lorsqu’on coche
+      if (!e.target.checked) return;        // n'enregistre que lorsqu'on coche
       val = e.target.value;
     } else if (e.target.type === 'checkbox') {
       val = e.target.checked ? e.target.value : '';
@@ -215,42 +215,30 @@ window.onload = function () {
     console.log('🔄 sauvegarde', e.target.name, '→', val);
   }
 
-  // Attache l’écouteur adéquat selon le type de champ
+  // Attache l'écouteur adéquat selon le type de champ
   document.querySelectorAll('input, select, textarea').forEach(el => {
     const evt = (el.type === 'radio' || el.type === 'checkbox') ? 'change' : 'input';
     el.addEventListener(evt, saveField);
   });
+  
+  // Sauvegarde spécifique pour les select2 (département, etc.)
+  $('select[name="departement"]').on('select2:select', function (e) {
+    const data = e.params.data;
+    sessionStorage.setItem('departement', this.value);
+    console.log('🔄 Département sauvegardé:', this.value);
+  });
+  
+  $('select[name="raison"]').on('select2:select', function (e) {
+    sessionStorage.setItem('raison', this.value);
+    console.log('🔄 Raison sauvegardée:', this.value);
+  });
+  
+  $('select[name="situation_familiale"]').on('select2:select', function (e) {
+    sessionStorage.setItem('situation_familiale', this.value);
+    console.log('🔄 Situation familiale sauvegardée:', this.value);
+  });
 
-
-
-        $('input[name="type"]').on('change', function() {
-            const today = new Date();
-            const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
-
-            if (this.value === 'majeur') {
-                dateNaissanceInput.attr('max', eighteenYearsAgo.toISOString().split('T')[0]);
-                dateNaissanceInput.attr('min', '');
-            } else { // mineur
-                dateNaissanceInput.attr('min', eighteenYearsAgo.toISOString().split('T')[0]);
-                dateNaissanceInput.attr('max', '');
-            }
-        });
-
-        dateNaissanceInput.on('change', function() {
-            const selectedDate = new Date($(this).val());
-            const today = new Date();
-            const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
-            const type = $('input[name="type"]:checked').val();
-
-            if (type === 'majeur' && selectedDate > eighteenYearsAgo) {
-                showAlert('❌ Pour un majeur, la date de naissance ne peut pas être après le ' + eighteenYearsAgo.toLocaleDateString());
-                $(this).val('');
-            } else if (type === 'mineur' && selectedDate < eighteenYearsAgo) {
-                showAlert('❌ Pour un mineur, la date de naissance ne peut pas être avant le ' + eighteenYearsAgo.toLocaleDateString());
-                $(this).val('');
-            }
-        });
-      // Add loading state to the final submit button
+  // Add loading state to the final submit button
   const stripeForm = document.getElementById('stripe-form');
   if (stripeForm) {
     stripeForm.addEventListener('submit', function() {
