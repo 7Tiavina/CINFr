@@ -36,19 +36,17 @@
   </div>
 @endif
 
+  @if($errors->has('g-recaptcha-response'))
+    <div class="alert alert-danger text-center" style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; border: 1px solid #f5c6cb; margin-bottom: 20px;">
+      {{ $errors->first('g-recaptcha-response') }}
+    </div>
+  @endif
 
   <section id="banner">
     <div class="container text-center">
-      <div>:</div>
-      <h1 class="mt-3"></h1>
+      <h1 class="mt-3">Contactez-nous</h1>
     </div>
   </section>
-
-  @if($errors->has('captcha'))
-    <div class="alert alert-danger">
-      {{ $errors->first('captcha') }}
-    </div>
-  @endif
 
   @if(session('success'))
     <div class="alert alert-success text-center" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; border: 1px solid #c3e6cb; margin-bottom: 20px;">

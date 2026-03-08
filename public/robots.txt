@@ -1,2 +1,33 @@
+# robots.txt pour - Service de pré-demande de CNI FR
+
 User-agent: *
-Disallow:
+Allow: /
+
+# Pages publiques à indexer
+Allow: /
+Allow: /liste-des-mairies
+Allow: /predemande
+Allow: /contact
+Allow: /mentions
+Allow: /remboursement
+
+# Pages à ne PAS indexer (administration, paiement, auth)
+Disallow: /login
+Disallow: /checkout
+Disallow: /success
+Disallow: /create-checkout-session
+Disallow: /stripe/
+Disallow: /backend/
+Disallow: /admin/
+
+# Fichiers sensibles
+Disallow: /.env
+Disallow: /composer.json
+Disallow: /composer.lock
+Disallow: /phpunit.xml
+Disallow: /artisan
+Disallow: /vendor/
+Disallow: /node_modules/
+
+# Sitemap
+Sitemap: https://www.cinfr.com/sitemap.xml
