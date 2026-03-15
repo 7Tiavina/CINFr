@@ -179,12 +179,15 @@
         <div class="col-md-5">
           <div class="subscription-box text-center">
             <h2 style="color:#0444ec; font-weight:700; margin-bottom:5px;">
-              Pré-Demande CNI – Majeur
+              <span style="font-size:0.9rem; color:#000; font-weight:400;">Pré-Demande CNI – </span>Majeur
             </h2>
-            <span style="font-size:1.6rem; font-weight:600; color:#333;">
-              {{ config('prix.majeur') }}€
-              <span style="font-size:0.9rem; color:#666; font-weight:normal;">TTC</span>
-            </span>
+            <div style="margin-bottom:10px;">
+              <span style="font-size:1.6rem; font-weight:600; color:#28a745;">
+                {{ config('prix.majeur') }}€
+                <span style="font-size:0.9rem; color:#666; font-weight:normal;">TTC</span>
+              </span>
+              <span style="font-size:1.2rem; color:#999; text-decoration:line-through; margin-left:10px;">39€</span>
+            </div>
             <p>Traitement sous 48&nbsp;h – Renouvellement CNI adulte</p>
             <picture>
               <source srcset="images/Parents-rafiki.webp" type="image/webp">
@@ -199,17 +202,20 @@
             </a>
           </div>
         </div>
- 
+
         {{-- MINEUR --}}
         <div class="col-md-5">
           <div class="subscription-box text-center">
             <h2 style="color:#0444ec; font-weight:700; margin-bottom:5px;">
-              Pré-Demande CNI – Mineur
+              <span style="font-size:0.9rem; color:#000; font-weight:400;">Pré-Demande CNI – </span>Mineur
             </h2>
-            <span style="font-size:1.6rem; font-weight:600; color:#333;">
-              {{ config('prix.mineur') }}€
-              <span style="font-size:0.9rem; color:#666; font-weight:normal;">TTC</span>
-            </span>
+            <div style="margin-bottom:10px;">
+              <span style="font-size:1.6rem; font-weight:600; color:#28a745;">
+                {{ config('prix.mineur') }}€
+                <span style="font-size:0.9rem; color:#666; font-weight:normal;">TTC</span>
+              </span>
+              <span style="font-size:1.2rem; color:#999; text-decoration:line-through; margin-left:10px;">39€</span>
+            </div>
             <p>Traitement sous 48&nbsp;h – CNI enfant &amp; adolescent</p>
             <picture>
               <source srcset="images/Recess-rafiki.webp" type="image/webp">
@@ -806,168 +812,33 @@ Service indépendant de l'État – Nous ne sommes pas affiliés à l’ANTS. No
   });
 </script>
 
-@endsection
-
-<!-- Section contenant une grande image centrée avec une hauteur réduite -->
-<section id="grande-image" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 95vh; overflow: hidden;">
-  <img src="images/pexels-victorfreitas-1381415.webp" alt="Description de l'image" style="max-width: 140%; height: auto; object-fit: contain; display: block;">
-</section>
-<p style="font-size:11px;color:#777;margin-top:10px;text-align:center;">
-Service indépendant de l'État – Nous ne sommes pas affiliés à l’ANTS. Notre service vous accompagne dans la réalisation de votre pré-demande.
-</p>
-
-<button id="scrollTopBtn">
-          ↑
-        </button>
-</main>
-@endsection
-
-@section('scripts')
-    <script>
-  // Sélectionner toutes les questions
-  const faqQuestions = document.querySelectorAll('.faq-question');
-
-  // Ajouter un événement de clic à chaque question
-  faqQuestions.forEach(question => {
-    question.addEventListener('click', () => {
-      // Trouver la réponse associée
-      const answer = question.nextElementSibling;
-
-      // Basculer l'affichage (visible/invisible)
-      if (answer.style.display === 'block') {
-        answer.style.display = 'none';
-      } else {
-        // Fermer toutes les autres réponses
-        document.querySelectorAll('.faq-answer').forEach(item => {
-          item.style.display = 'none';
-        });
-        // Afficher la réponse sélectionnée
-        answer.style.display = 'block';
-      }
-    });
-  });
-</script>
-
-<script>
-  // Système de navigation mobile personnalisé sans Bootstrap
-  document.addEventListener('DOMContentLoaded', function() {
-    const navbarToggler = document.getElementById('navbarToggler');
-    const navbarMenu = document.getElementById('navbarMenu');
-    const infoDropdown = document.getElementById('navbarDropdownInfo');
-    const infoDropdownMenu = document.getElementById('infoDropdownMenu');
-    
-    // Gestion du menu principal
-    if (navbarToggler && navbarMenu) {
-      navbarToggler.addEventListener('click', function() {
-        // Basculer la visibilité du menu
-        navbarMenu.classList.toggle('show');
-        
-        // Basculer les icônes
-        const menuIcon = navbarToggler.querySelector('.ion-md-menu');
-        const closeIcon = navbarToggler.querySelector('.ion-md-close');
-        
-        if (navbarMenu.classList.contains('show')) {
-          // Menu est ouvert, afficher la croix
-          if (menuIcon) menuIcon.style.display = 'none';
-          if (closeIcon) closeIcon.style.display = 'inline';
-        } else {
-          // Menu est fermé, afficher le menu
-          if (menuIcon) menuIcon.style.display = 'inline';
-          if (closeIcon) closeIcon.style.display = 'none';
-        }
-      });
-      
-      // Fermer le menu quand on clique sur un lien
-      const navLinks = navbarMenu.querySelectorAll('a');
-      navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-          navbarMenu.classList.remove('show');
-          // Réinitialiser les icônes
-          const menuIcon = navbarToggler.querySelector('.ion-md-menu');
-          const closeIcon = navbarToggler.querySelector('.ion-md-close');
-          if (menuIcon) menuIcon.style.display = 'inline';
-          if (closeIcon) closeIcon.style.display = 'none';
-        });
-      });
-    }
-    
-    // Gestion du dropdown "Informations" (uniquement sur desktop)
-    if (infoDropdown && infoDropdownMenu) {
-      infoDropdown.addEventListener('click', function(e) {
-        if (window.innerWidth >= 992) { // Uniquement sur desktop
-          e.preventDefault();
-          // Basculer la visibilité du dropdown
-          if (infoDropdownMenu.style.display === 'block') {
-            infoDropdownMenu.style.display = 'none';
-          } else {
-            infoDropdownMenu.style.display = 'block';
-          }
-        }
-      });
-      
-      // Fermer le dropdown quand on clique en dehors (uniquement sur desktop)
-      if (window.innerWidth >= 992) {
-        document.addEventListener('click', function(e) {
-          if (!infoDropdown.contains(e.target) && !infoDropdownMenu.contains(e.target)) {
-            infoDropdownMenu.style.display = 'none';
-          }
-        });
-      }
-    }
-    
-    // Fermer le menu principal quand on clique en dehors sur mobile
-    document.addEventListener('click', function(e) {
-      if (navbarMenu.classList.contains('show') && 
-          !navbarToggler.contains(e.target) && 
-          !navbarMenu.contains(e.target) &&
-          window.innerWidth < 992) {
-        navbarMenu.classList.remove('show');
-        // Réinitialiser les icônes
-        const menuIcon = navbarToggler.querySelector('.ion-md-menu');
-        const closeIcon = navbarToggler.querySelector('.ion-md-close');
-        if (menuIcon) menuIcon.style.display = 'inline';
-        if (closeIcon) closeIcon.style.display = 'none';
-      }
-    });
-  });
-</script>
-
-
 <script>
   let previousScrollPosition = window.pageYOffset;
   const navbar = document.querySelector('.custom-navbar');
-  const threshold = 100; // Seuil pour activer l'affichage via le pointeur
+  const threshold = 100;
 
-  // Gérer le défilement
   window.addEventListener('scroll', () => {
     const currentScrollPosition = window.pageYOffset;
 
     if (previousScrollPosition > currentScrollPosition) {
-      // L'utilisateur défile vers le haut, afficher la navbar
       navbar.style.top = "0";
     } else {
-      // L'utilisateur défile vers le bas, cacher la navbar
-      navbar.style.top = "-100px"; // Ajustez selon la hauteur de la navbar
+      navbar.style.top = "-100px";
     }
     previousScrollPosition = currentScrollPosition;
   });
 
-  // Gérer la position du pointeur
   window.addEventListener('mousemove', (event) => {
     if (event.clientY <= threshold) {
-      // Si le pointeur est proche du haut de la page, afficher la navbar
       navbar.style.top = "0";
     }
   });
 </script>
 
 <script>
-    //Boutons de scroll
-
   const scrollTopBtn = document.getElementById("scrollTopBtn");
   const footer = document.querySelector("footer");
 
-  // Only run if both elements exist
   if (scrollTopBtn && footer) {
     window.addEventListener("scroll", () => {
       const footerTop = footer.getBoundingClientRect().top;

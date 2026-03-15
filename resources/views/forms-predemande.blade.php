@@ -1466,6 +1466,64 @@
 
     </script>
 
+<script>
+  // Système de navigation mobile personnalisé sans Bootstrap
+  document.addEventListener('DOMContentLoaded', function() {
+    const navbarToggler = document.getElementById('navbarToggler');
+    const navbarMenu = document.getElementById('navbarMenu');
+
+    // Gestion du menu principal
+    if (navbarToggler && navbarMenu) {
+      navbarToggler.addEventListener('click', function() {
+        // Basculer la visibilité du menu
+        navbarMenu.classList.toggle('show');
+
+        // Basculer les icônes
+        const menuIcon = navbarToggler.querySelector('.ion-md-menu');
+        const closeIcon = navbarToggler.querySelector('.ion-md-close');
+
+        if (navbarMenu.classList.contains('show')) {
+          // Menu est ouvert, afficher la croix
+          if (menuIcon) menuIcon.style.display = 'none';
+          if (closeIcon) closeIcon.style.display = 'inline';
+        } else {
+          // Menu est fermé, afficher le menu
+          if (menuIcon) menuIcon.style.display = 'inline';
+          if (closeIcon) closeIcon.style.display = 'none';
+        }
+      });
+
+      // Fermer le menu quand on clique sur un lien
+      const navLinks = navbarMenu.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          navbarMenu.classList.remove('show');
+          // Réinitialiser les icônes
+          const menuIcon = navbarToggler.querySelector('.ion-md-menu');
+          const closeIcon = navbarToggler.querySelector('.ion-md-close');
+          if (menuIcon) menuIcon.style.display = 'inline';
+          if (closeIcon) closeIcon.style.display = 'none';
+        });
+      });
+    }
+
+    // Fermer le menu principal quand on clique en dehors sur mobile
+    document.addEventListener('click', function(e) {
+      if (navbarMenu.classList.contains('show') &&
+          !navbarToggler.contains(e.target) &&
+          !navbarMenu.contains(e.target) &&
+          window.innerWidth < 992) {
+        navbarMenu.classList.remove('show');
+        // Réinitialiser les icônes
+        const menuIcon = navbarToggler.querySelector('.ion-md-menu');
+        const closeIcon = navbarToggler.querySelector('.ion-md-close');
+        if (menuIcon) menuIcon.style.display = 'inline';
+        if (closeIcon) closeIcon.style.display = 'none';
+      }
+    });
+  });
+</script>
+
 
 
   </body>

@@ -602,6 +602,7 @@ section {
 /* ==============================================
    4. Hero
 ===============================================*/
+
 #lottie-bg {
     position: absolute;
     top: 0;
@@ -814,6 +815,7 @@ section {
 #crestimonials .title-block p {
   font-size: 18px;
   color: #6c757d;
+  text-align: justify; /* Justify text - aligned on both left and right */
 }
 
 .benefits-box {
@@ -885,6 +887,11 @@ section {
   font-size: 16px;
   color: #555555;
   line-height: 1.6;
+  text-align: justify; /* Justify text - aligned on both left and right */
+}
+
+#testimonials h3 {
+  text-align: center; /* Center the h3 titles */
 }
 
 /* Pour s'assurer que les colonnes sont bien centrées */
@@ -1360,6 +1367,7 @@ footer small {
   text-align: center;
   border-bottom-right-radius: 120px; /* Seul le coin inférieur droit est arrondi */
   padding: 10px; /* Pour ajouter de l'espace autour du contenu */
+  margin-top: 20px; /* Compense la différence entre navbar height (120px) et body padding-top (100px) */
 }
 
 #banner .container {
