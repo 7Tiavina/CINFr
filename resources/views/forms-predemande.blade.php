@@ -110,7 +110,6 @@
           <option value="renouvellement_expiration">Renouvellement pour expiration</option>
           <option value="renouvellement_deterioration">Renouvellement pour détérioration</option>
           <option value="renouvellement_vol">Renouvellement pour vol</option>
-          <option value="renouvellement_perte">Renouvellement pour perte</option>
         </select>
       </div>
 
