@@ -1,6 +1,19 @@
 <!doctype html>
 <html lang="en-US">
   <head>
+    <title>Pré-Demande CNI France en Ligne – Renouvellement Carte d'Identité | CINFr</title>
+      <meta name="description"
+            content="Faites votre pré-demande CNI France en ligne en quelques clics. Assistance pour le renouvellement carte d'identité, pré-demande CNI adulte ou mineur. Traitement sous 48 h.">
+      <meta name="keywords"
+            content="pré demande cni france, renouvellement cni, cni pré demande, assistance pré demande, cni france">
+      <link rel="canonical" href="{{ url()->current() }}">
+     
+      {{-- Open Graph --}}
+      <meta property="og:type"        content="website">
+      <meta property="og:title"       content="Pré-Demande CNI France en Ligne | CINFr">
+      <meta property="og:description" content="Assistance rapide pour votre pré-demande CNI France ou renouvellement carte d'identité. Résultat sous 48 h.">
+      <meta property="og:url"         content="{{ url()->current() }}">
+      <meta property="og:image"       content="{{ asset('images/og-cinfr.jpg') }}">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,8 +38,6 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
-
-    <title>CINFr Carte d'identité Nationale</title>
   </head>
 
   <body>
@@ -412,7 +423,7 @@
           <option value="157">157 cm</option>
           <option value="158">158 cm</option>
           <option value="159">159 cm</option>
-          <option value="160">160 cm</option>
+          <option value="160" selected>160 cm</option>
           <option value="161">161 cm</option>
           <option value="162">162 cm</option>
           <option value="163">163 cm</option>

@@ -458,10 +458,14 @@
           </button>
           <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
             <div itemprop="text">
-              <p>Pour réaliser votre <strong>pré-demande CNI France</strong> en ligne, trois étapes suffisent&nbsp;: 
-              (1)&nbsp;remplissez le formulaire sur CINFr ou directement sur <a href="https://ants.gouv.fr" target="_blank" rel="noopener">ants.gouv.fr</a>, 
-              (2)&nbsp;recevez votre récapitulatif sous 48&nbsp;h avec votre numéro de dossier, 
-              (3)&nbsp;présentez-vous en mairie pour finaliser la demande et déposer vos originaux.</p>
+              <p>
+                Réaliser votre <strong>pré-demande CNI France</strong> en ligne n'a jamais été aussi simple.
+                Notre service vous guide pas à pas&nbsp;: remplissez le formulaire en quelques minutes,
+                notre équipe vérifie l'ensemble de votre dossier et vous envoie votre récapitulatif complet
+                <strong>sous&nbsp;48&nbsp;h</strong>. Il ne vous reste plus qu'à vous présenter en mairie
+                avec ce document pour déposer vos originaux et finaliser votre demande.
+                Fini les erreurs de saisie et les allers-retours inutiles.
+              </p>
             </div>
           </div>
         </div>
