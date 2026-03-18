@@ -23,34 +23,68 @@ class StripeWebhookController extends Controller
      */
     public function handleWebhook(Request $request)
     {
+        // LOG IMMÉDIAT - avant tout traitement
+        Log::info('=== WEBHOOK REÇU ===', [
+            'ip' => $request->ip(),
+            'user_agent' => $request->userAgent(),
+            'headers' => $request->headers->all(),
+            'method' => $request->method(),
+            'url' => $request->fullUrl(),
+        ]);
+        
+        // Récupérer le payload brut DIRECTEMENT depuis php://input
+        // C'est la SEULE façon fiable d'obtenir le payload exact signé par Stripe
+        $payload = @file_get_contents('php://input');
+        
+        $sigHeader = $request->header('Stripe-Signature');
         $webhookSecret = config('services.stripe.webhook_secret');
+
+        // DEBUG: Log ce qu'on reçoit
+        Log::debug('Webhook debug', [
+            'secret_configured' => !empty($webhookSecret),
+            'secret_length' => strlen($webhookSecret ?? ''),
+            'secret_starts_with' => substr($webhookSecret ?? '', 0, 10),
+            'payload_length' => strlen($payload ?? ''),
+            'signature_header' => $sigHeader,
+        ]);
 
         if (empty($webhookSecret)) {
             Log::error('Webhook Error: STRIPE_WEBHOOK_SECRET is not configured');
-            return response(['status' => 'success', 'warning' => 'Webhook secret not configured']);
+            return response('', 200, ['Content-Type' => 'text/plain']);
+        }
+
+        if (empty($sigHeader)) {
+            Log::error('Webhook Error: Missing Stripe-Signature header');
+            return response('', 200, ['Content-Type' => 'text/plain']);
         }
 
         Stripe::setApiKey(config('services.stripe.secret'));
 
-        $payload = $request->getContent();
-        $sigHeader = $request->header('Stripe-Signature');
-
-        if (empty($sigHeader)) {
-            Log::error('Webhook Error: Missing Stripe-Signature header');
-            return response(['status' => 'success', 'warning' => 'Missing signature header']);
-        }
-
         try {
+            Log::debug('Webhook: Attempting to verify signature', [
+                'secret_full' => $webhookSecret,
+                'signature' => $sigHeader,
+                'payload_hash' => hash('sha256', $payload),
+            ]);
             $event = Webhook::constructEvent($payload, $sigHeader, $webhookSecret);
+            Log::info('Webhook: Signature verified successfully', ['event_type' => $event->type]);
         } catch (SignatureVerificationException $e) {
-            Log::error("Webhook Error: Invalid Stripe signature.", ['exception' => $e->getMessage()]);
-            return response(['status' => 'success', 'warning' => 'Invalid signature']);
+            Log::error("Webhook Error: Invalid Stripe signature.", [
+                'exception' => $e->getMessage(),
+                'secret_used' => substr($webhookSecret, 0, 15) . '...',
+                'secret_length' => strlen($webhookSecret),
+                'signature_parts' => explode(',', $sigHeader),
+                'payload_hash' => hash('sha256', $payload),
+            ]);
+            // IMPORTANT: Renvoyer 200 même en cas d'erreur de signature
+            // pour éviter que Stripe ne réessaie indéfiniment
+            return response('Invalid signature', 200, ['Content-Type' => 'text/plain']);
         } catch (\UnexpectedValueException $e) {
             Log::error("Webhook Error: Invalid payload.", ['exception' => $e->getMessage()]);
-            return response(['status' => 'success', 'warning' => 'Invalid payload']);
+            return response('Invalid payload', 200, ['Content-Type' => 'text/plain']);
         } catch (\Exception $e) {
             Log::error("Webhook Error: Unexpected error.", ['exception' => $e->getMessage()]);
-            return response(['status' => 'success', 'warning' => 'Unexpected error']);
+            return response('Unexpected error', 200, ['Content-Type' => 'text/plain']);
         }
 
         try {

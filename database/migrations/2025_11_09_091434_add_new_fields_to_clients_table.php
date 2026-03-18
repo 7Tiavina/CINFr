@@ -28,15 +28,33 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->dropColumn([
-                'deuxieme_nom_origine',
-                'mot_devant',
-                'mot_a_afficher',
-                'pere_prenom3',
-                'mere_prenom3',
-                'pere_pays_naissance',
-                'mere_pays_naissance'
-            ]);
+            $columnsToDrop = [];
+            
+            if (Schema::hasColumn('clients', 'deuxieme_nom_origine')) {
+                $columnsToDrop[] = 'deuxieme_nom_origine';
+            }
+            if (Schema::hasColumn('clients', 'mot_devant')) {
+                $columnsToDrop[] = 'mot_devant';
+            }
+            if (Schema::hasColumn('clients', 'mot_a_afficher')) {
+                $columnsToDrop[] = 'mot_a_afficher';
+            }
+            if (Schema::hasColumn('clients', 'pere_prenom3')) {
+                $columnsToDrop[] = 'pere_prenom3';
+            }
+            if (Schema::hasColumn('clients', 'mere_prenom3')) {
+                $columnsToDrop[] = 'mere_prenom3';
+            }
+            if (Schema::hasColumn('clients', 'pere_pays_naissance')) {
+                $columnsToDrop[] = 'pere_pays_naissance';
+            }
+            if (Schema::hasColumn('clients', 'mere_pays_naissance')) {
+                $columnsToDrop[] = 'mere_pays_naissance';
+            }
+            
+            if (!empty($columnsToDrop)) {
+                $table->dropColumn($columnsToDrop);
+            }
         });
     }
 };
