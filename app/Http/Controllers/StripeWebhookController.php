@@ -12,6 +12,9 @@ use App\Models\Client;
 use Illuminate\Support\Facades\Log;
 use Stripe\PaymentIntent;
 use Stripe\Charge;
+use App\Mail\OrderConfirmationMail;
+use App\Services\InvoiceService;
+use Illuminate\Support\Facades\Mail;
 
 class StripeWebhookController extends Controller
 {
@@ -145,11 +148,55 @@ class StripeWebhookController extends Controller
                 'status' => 'completed'
             ]);
 
+            // Envoyer l'email de confirmation avec facture
+            $this->sendOrderConfirmationEmail($payment);
+
         } catch (\Exception $e) {
             Log::error("Critical error in handleCheckoutSessionCompleted", [
                 'exception' => $e->getMessage(),
                 'session_id' => $session->id ?? 'unknown'
             ]);
+        }
+    }
+
+    /**
+     * Send order confirmation email with invoice attachment
+     */
+    protected function sendOrderConfirmationEmail(Payment $payment): void
+    {
+        try {
+            $client = $payment->client;
+
+            if (!$client) {
+                Log::error("Email not sent: Client not found for payment", ['payment_id' => $payment->id]);
+                return;
+            }
+
+            if (empty($client->email)) {
+                Log::error("Email not sent: Client email is empty", ['payment_id' => $payment->id, 'client_id' => $client->id]);
+                return;
+            }
+
+            // Generate invoice PDF
+            $invoiceService = new InvoiceService();
+            $pdfPath = $invoiceService->generateInvoice($client, $payment);
+
+            Log::info("Invoice PDF generated", ['path' => $pdfPath, 'payment_id' => $payment->id]);
+
+            // Send email
+            Mail::to($client->email)->send(new OrderConfirmationMail($client, $payment, $pdfPath));
+
+            Log::info("Order confirmation email sent successfully", [
+                'payment_id' => $payment->id,
+                'client_email' => $client->email
+            ]);
+
+        } catch (\Exception $e) {
+            Log::error("Error sending order confirmation email", [
+                'payment_id' => $payment->id,
+                'exception' => $e->getMessage()
+            ]);
+            // Don't rethrow - email failure shouldn't affect payment processing
         }
     }
 }
