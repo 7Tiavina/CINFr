@@ -52,7 +52,8 @@ return [
         'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),
     ],
 
-
-
+    'mail' => [
+        'agent' => env('MAIL_AGENT'),
+    ],
 
 ];

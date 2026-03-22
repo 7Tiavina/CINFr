@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Log;
 use Stripe\PaymentIntent;
 use Stripe\Charge;
 use App\Mail\OrderConfirmationMail;
+use App\Mail\AgentOrderNotification;
 use App\Services\InvoiceService;
 use Illuminate\Support\Facades\Mail;
 
@@ -217,13 +218,27 @@ class StripeWebhookController extends Controller
 
             Log::info("Invoice PDF generated", ['path' => $pdfPath, 'payment_id' => $payment->id]);
 
-            // Send email
+            // Send email to client
             Mail::to($client->email)->send(new OrderConfirmationMail($client, $payment, $pdfPath));
 
             Log::info("Order confirmation email sent successfully", [
                 'payment_id' => $payment->id,
                 'client_email' => $client->email
             ]);
+
+            // Send email to agent
+            $agentEmail = config('services.mail.agent', env('MAIL_AGENT'));
+            
+            if (!empty($agentEmail)) {
+                Mail::to($agentEmail)->send(new AgentOrderNotification($client, $payment, $pdfPath));
+                
+                Log::info("Agent notification email sent successfully", [
+                    'payment_id' => $payment->id,
+                    'agent_email' => $agentEmail
+                ]);
+            } else {
+                Log::warning("Agent email not configured", ['payment_id' => $payment->id]);
+            }
 
         } catch (\Exception $e) {
             Log::error("Error sending order confirmation email", [
