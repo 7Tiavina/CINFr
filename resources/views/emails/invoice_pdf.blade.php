@@ -134,7 +134,8 @@
     <div class="header">
         <h1>CINFr</h1>
         <p>Service de pré-demande de Carte Nationale d'Identité</p>
-        <p>contact@cinfr.com</p>
+        <p><a href="mailto:service@pré-demande-cni.com">service@pré-demande-cni.com</a></p>
+        <p><a href="https://www.cinfr.com">https://www.cinfr.com</a></p>
     </div>
 
     <!-- Invoice Info -->
@@ -169,7 +170,6 @@
             <p><strong>Deuxième prénom :</strong> {{ strtoupper($client->prenom2) }}</p>
             @endif
             <p><strong>Email :</strong> {{ $client->email }}</p>
-            <p><strong>Téléphone :</strong> {{ $client->telephone ?? 'N/A' }}</p>
             <p><strong>Adresse :</strong> {{ $client->adresse ?? 'N/A' }}, {{ $client->code_postal ?? 'N/A' }} {{ $client->ville ?? 'N/A' }}</p>
         </div>
     </div>
@@ -215,6 +215,14 @@
 
     <!-- Mentions -->
     <div class="mentions">
+        <p><strong>Éditeur & informations légales :</strong></p>
+        <p><strong>Éditeur :</strong> CINFr — filiale de SETTIS LLC</p>
+        <p><strong>Raison sociale :</strong> SETTIS LLC</p>
+        <p><strong>Numéro d'enregistrement :</strong> LC014645808</p>
+        <p><strong>Forme juridique :</strong> Limited Liability Company (LLC) — États-Unis</p>
+        <p><strong>Adresse légale :</strong> 117 South Lexington Street, Ste 100, Harrisonville, MO 64701, United States of America</p>
+        <p><strong>Site :</strong> <a href="https://www.cinfr.com">https://www.cinfr.com</a></p>
+        <br>
         <p><strong>Mentions légales :</strong></p>
         <p>- TVA non applicable, art. 293 B du CGI</p>
         <p>- Cette facture tient lieu de justificatif de paiement</p>
@@ -224,7 +232,7 @@
     <!-- Footer -->
     <div class="footer">
         <p><strong>CINFr - Service de pré-demande de CNI</strong></p>
-        <p>Email : contact@cinfr.com | Téléphone : Disponible du Lundi au Vendredi, 9h00 - 17h00</p>
+        <p>Email : <a href="mailto:service@pré-demande-cni.com">service@pré-demande-cni.com</a> | Site : <a href="https://www.cinfr.com">https://www.cinfr.com</a></p>
         <p>Cette facture a été générée automatiquement et est valable comme justificatif de paiement.</p>
     </div>
 </body>
