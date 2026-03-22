@@ -12,7 +12,7 @@
             padding: 0;
         }
         .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 30px auto;
             background-color: #ffffff;
             border-radius: 8px;
@@ -35,85 +35,50 @@
             margin: 10px 0 0 0;
             font-size: 14px;
         }
-        .alert-banner {
-            background-color: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 15px 20px;
-            margin: 20px;
-            border-radius: 4px;
-        }
-        .alert-banner p {
-            margin: 0;
-            color: #856404;
-            font-size: 14px;
-            font-weight: 600;
-        }
         .content {
             padding: 30px 25px;
             color: #333333;
             line-height: 1.6;
         }
-        .section {
-            margin-bottom: 25px;
-        }
-        .section-title {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 10px 15px;
-            font-size: 15px;
+        .recap-title {
+            font-size: 18px;
             font-weight: 600;
-            border-radius: 4px;
-            margin-bottom: 15px;
+            color: #667eea;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
         }
-        .info-grid {
-            display: table;
-            width: 100%;
-            border-collapse: collapse;
+        .recap-item {
+            margin-bottom: 12px;
+            font-size: 14px;
         }
-        .info-row {
-            display: table-row;
-        }
-        .info-row:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-        .info-cell {
-            display: table-cell;
-            padding: 10px 12px;
-            border-bottom: 1px solid #e0e0e0;
-            font-size: 13px;
-            vertical-align: top;
-        }
-        .info-cell:first-child {
-            width: 40%;
-            font-weight: 600;
+        .recap-item strong {
             color: #555;
+            display: inline-block;
+            min-width: 220px;
         }
-        .info-cell:last-child {
+        .recap-item span {
             color: #333;
         }
-        .empty-value {
-            color: #999;
-            font-style: italic;
+        .section-divider {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ddd;
+            font-size: 16px;
+            font-weight: 600;
+            color: #667eea;
         }
         .order-summary {
             background-color: #f8f9fa;
             border: 1px solid #e0e0e0;
-            padding: 20px;
+            padding: 15px;
             border-radius: 5px;
             margin-bottom: 25px;
         }
-        .order-summary table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .order-summary td {
-            padding: 8px 0;
+        .order-summary p {
+            margin: 8px 0;
             font-size: 14px;
-        }
-        .order-summary td:first-child {
-            font-weight: 600;
-            color: #555;
-            width: 150px;
         }
         .status-badge {
             display: inline-block;
@@ -135,18 +100,6 @@
             font-size: 13px;
             color: #777777;
         }
-        .action-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: 600;
-            margin: 15px 0;
-        }
-        .yes { color: #28a745; font-weight: 600; }
-        .no { color: #dc3545; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -157,323 +110,118 @@
             <p>Traitement requis par l'agent</p>
         </div>
 
-        <!-- Alert Banner -->
-        <div class="alert-banner">
-            <p>⚠️ Nouvelle commande à traiter - Veuillez vérifier les informations et procéder au traitement du dossier</p>
-        </div>
-
         <!-- Content -->
         <div class="content">
             <!-- Order Summary -->
             <div class="order-summary">
-                <table>
-                    <tr>
-                        <td>Numéro de commande :</td>
-                        <td><strong>#{{ str_pad($payment->id, 6, '0', STR_PAD_LEFT) }}</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Date de paiement :</td>
-                        <td>{{ $payment->updated_at->format('d/m/Y à H:i') }}</td>
-                    </tr>
-                    <tr>
-                        <td>Statut :</td>
-                        <td><span class="status-badge">{{ strtoupper($payment->payment_status ?? $payment->status) }}</span></td>
-                    </tr>
-                    <tr>
-                        <td>Montant payé :</td>
-                        <td><strong>{{ number_format($payment->amount / 100, 2, ',', ' ') }} €</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Email client :</td>
-                        <td>{{ $client->email }}</td>
-                    </tr>
-                </table>
+                <p><strong>Numéro de commande :</strong> #{{ str_pad($payment->id, 6, '0', STR_PAD_LEFT) }}</p>
+                <p><strong>Date de paiement :</strong> {{ $payment->updated_at->format('d/m/Y à H:i') }}</p>
+                <p><strong>Statut :</strong> <span class="status-badge">{{ strtoupper($payment->payment_status ?? $payment->status) }}</span></p>
+                <p><strong>Montant payé :</strong> {{ number_format($payment->amount / 100, 2, ',', ' ') }} €</p>
+                <p><strong>Email client :</strong> {{ $client->email }}</p>
             </div>
+
+            <!-- Recap Title -->
+            <div class="recap-title">Récapitulatif de vos informations</div>
 
             <!-- Informations Principales -->
-            <div class="section">
-                <div class="section-title">📝 Informations Principales</div>
-                <div class="info-grid">
-                    <div class="info-row">
-                        <div class="info-cell">Type de demande</div>
-                        <div class="info-cell">{{ ucfirst($client->type ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Raison</div>
-                        <div class="info-cell">{{ ucfirst($client->raison ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Département</div>
-                        <div class="info-cell">{{ $client->departement ?? 'N/A' }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Sexe</div>
-                        <div class="info-cell">{{ strtoupper($client->sexe ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Situation familiale</div>
-                        <div class="info-cell">{{ ucfirst($client->situation_familiale ?? 'N/A') }}</div>
-                    </div>
-                </div>
-            </div>
+            <div class="section-divider">📝 Informations Principales</div>
+            <div class="recap-item"><strong>Type de demande :</strong> <span>{{ ucfirst($client->type ?? 'N/A') }}</span></div>
+            <div class="recap-item"><strong>Situation Familiale :</strong> <span>{{ ucfirst($client->situation_familiale ?? 'N/A') }}</span></div>
+            <div class="recap-item"><strong>Raison de la demande :</strong> <span>{{ ucfirst(str_replace('_', ' ', $client->raison ?? 'N/A')) }}</span></div>
+            <div class="recap-item"><strong>Département :</strong> <span>{{ $client->departement ?? 'N/A' }}</span></div>
+            <div class="recap-item"><strong>Sexe :</strong> <span>{{ ucfirst($client->sexe ?? 'N/A') }}</span></div>
 
             <!-- Identité du Demandeur -->
-            <div class="section">
-                <div class="section-title">👤 Identité du Demandeur</div>
-                <div class="info-grid">
-                    <div class="info-row">
-                        <div class="info-cell">Nom de naissance</div>
-                        <div class="info-cell">{{ strtoupper($client->nom_naissance ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Deuxième nom</div>
-                        <div class="info-cell">{{ strtoupper($client->deuxieme_nom ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Origine du deuxième nom</div>
-                        <div class="info-cell">{{ $client->deuxieme_nom_origine ?? 'N/A' }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Mot devant le nom</div>
-                        <div class="info-cell">{{ $client->mot_devant ?? 'N/A' }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Mot à afficher</div>
-                        <div class="info-cell">{{ $client->mot_a_afficher ?? 'N/A' }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Prénom 1</div>
-                        <div class="info-cell">{{ ucfirst($client->prenom1 ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Prénom 2</div>
-                        <div class="info-cell">{{ ucfirst($client->prenom2 ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Prénom 3</div>
-                        <div class="info-cell">{{ ucfirst($client->prenom3 ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Taille</div>
-                        <div class="info-cell">{{ $client->taille ?? 'N/A' }} cm</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Couleur des yeux</div>
-                        <div class="info-cell">{{ ucfirst($client->couleur_yeux ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Date de naissance</div>
-                        <div class="info-cell">{{ $client->date_naissance ? $client->date_naissance->format('d/m/Y') : 'N/A' }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Pays de naissance</div>
-                        <div class="info-cell">{{ ucfirst($client->pays_naissance ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Département de naissance</div>
-                        <div class="info-cell">{{ $client->departement_naissance ?? 'N/A' }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Commune de naissance</div>
-                        <div class="info-cell">{{ ucfirst($client->commune_naissance ?? 'N/A') }}</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Adresse -->
-            <div class="section">
-                <div class="section-title">📍 Adresse</div>
-                <div class="info-grid">
-                    <div class="info-row">
-                        <div class="info-cell">Adresse</div>
-                        <div class="info-cell">{{ $client->adresse ?? 'N/A' }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Complément d'adresse</div>
-                        <div class="info-cell">{{ $client->adresse_complement ?? 'N/A' }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Code postal</div>
-                        <div class="info-cell">{{ $client->code_postal ?? 'N/A' }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Ville</div>
-                        <div class="info-cell">{{ ucfirst($client->ville ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Pays</div>
-                        <div class="info-cell">{{ ucfirst($client->pays ?? 'N/A') }}</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Coordonnées -->
-            <div class="section">
-                <div class="section-title">📞 Coordonnées</div>
-                <div class="info-grid">
-                    <div class="info-row">
-                        <div class="info-cell">Email</div>
-                        <div class="info-cell">{{ $client->email }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Téléphone</div>
-                        <div class="info-cell">{{ $client->telephone ?? 'N/A' }}</div>
-                    </div>
-                </div>
-            </div>
+            <div class="section-divider">👤 Identité du Demandeur</div>
+            <div class="recap-item"><strong>Nom de naissance :</strong> <span>{{ strtoupper($client->nom_naissance ?? 'N/A') }}</span></div>
+            <div class="recap-item"><strong>Deuxième nom :</strong> <span>{{ strtoupper($client->deuxieme_nom ?? 'N/A') }}</span></div>
+            @if($client->deuxieme_nom_origine)
+            <div class="recap-item"><strong>Origine du deuxième nom :</strong> <span>{{ ucfirst($client->deuxieme_nom_origine) }}</span></div>
+            @endif
+            @if($client->mot_devant === 'oui')
+            <div class="recap-item"><strong>Mot devant le nom :</strong> <span>oui</span></div>
+            <div class="recap-item"><strong>Mot à afficher :</strong> <span>{{ ucfirst($client->mot_a_afficher ?? 'N/A') }}</span></div>
+            @endif
+            <div class="recap-item"><strong>Prénoms :</strong> <span>{{ ucfirst($client->prenom1 ?? 'N/A') }} @if($client->prenom2) {{ ucfirst($client->prenom2) }} @endif @if($client->prenom3) {{ ucfirst($client->prenom3) }} @endif</span></div>
+            @if($client->taille)
+            <div class="recap-item"><strong>Taille :</strong> <span>{{ $client->taille }} cm</span></div>
+            @endif
+            <div class="recap-item"><strong>Couleur des yeux :</strong> <span>{{ ucfirst($client->couleur_yeux ?? 'N/A') }}</span></div>
+            <div class="recap-item"><strong>Date de naissance :</strong> <span>{{ $client->date_naissance ? $client->date_naissance->format('Y-m-d') : 'N/A' }}</span></div>
+            <div class="recap-item"><strong>Pays de naissance :</strong> <span>{{ ucfirst($client->pays_naissance ?? 'N/A') }}</span></div>
+            @if($client->departement_naissance)
+            <div class="recap-item"><strong>Département de naissance :</strong> <span>{{ $client->departement_naissance }}</span></div>
+            @endif
+            <div class="recap-item"><strong>Commune de naissance :</strong> <span>{{ ucfirst($client->commune_naissance ?? 'N/A') }}</span></div>
 
             <!-- Nationalité -->
-            <div class="section">
-                <div class="section-title">🌍 Nationalité</div>
-                <div class="info-grid">
-                    <div class="info-row">
-                        <div class="info-cell">Nationalité</div>
-                        <div class="info-cell">{{ ucfirst($client->nationalite ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Motif</div>
-                        <div class="info-cell">{{ ucfirst($client->motif_nationalite ?? 'N/A') }}</div>
-                    </div>
-                </div>
-            </div>
+            <div class="section-divider">🌍 Nationalité</div>
+            <div class="recap-item"><strong>Nationalité :</strong> <span>{{ ucfirst($client->nationalite ?? 'N/A') }}</span></div>
+            @if($client->motif_nationalite)
+            <div class="recap-item"><strong>Vous êtes Français(e) car :</strong> <span>{{ ucfirst($client->motif_nationalite) }}</span></div>
+            @endif
 
             <!-- Carte d'identité -->
-            <div class="section">
-                <div class="section-title">🪪 Carte d'identité</div>
-                <div class="info-grid">
-                    <div class="info-row">
-                        <div class="info-cell">Possède une CNI</div>
-                        <div class="info-cell">{{ $client->a_carte_identite ? '<span class="yes">Oui</span>' : '<span class="no">Non</span>' }}</div>
-                    </div>
-                    @if($client->a_carte_identite)
-                    <div class="info-row">
-                        <div class="info-cell">Numéro CNI</div>
-                        <div class="info-cell">{{ $client->numero_cni ?? 'N/A' }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Date de délivrance</div>
-                        <div class="info-cell">{{ $client->date_delivrance_cni ? $client->date_delivrance_cni->format('d/m/Y') : 'N/A' }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Lieu de délivrance</div>
-                        <div class="info-cell">{{ ucfirst($client->lieu_delivrance_cni ?? 'N/A') }}</div>
-                    </div>
-                    @endif
-                </div>
-            </div>
+            <div class="section-divider">🪪 Carte d'identité</div>
+            <div class="recap-item"><strong>Possède une CNI :</strong> <span>{{ $client->a_carte_identite ? 'Oui' : 'Non' }}</span></div>
+            @if($client->a_carte_identite)
+            <div class="recap-item"><strong>Numéro CNI :</strong> <span>{{ $client->numero_cni ?? 'N/A' }}</span></div>
+            <div class="recap-item"><strong>Date de délivrance :</strong> <span>{{ $client->date_delivrance_cni ? $client->date_delivrance_cni->format('d/m/Y') : 'N/A' }}</span></div>
+            <div class="recap-item"><strong>Lieu de délivrance :</strong> <span>{{ ucfirst($client->lieu_delivrance_cni ?? 'N/A') }}</span></div>
+            @endif
 
             <!-- Père -->
-            <div class="section">
-                <div class="section-title">👨 Informations Père</div>
-                <div class="info-grid">
-                    <div class="info-row">
-                        <div class="info-cell">Père inconnu</div>
-                        <div class="info-cell">{{ $client->pere_inconnu ? '<span class="yes">Oui</span>' : '<span class="no">Non</span>' }}</div>
-                    </div>
-                    @if(!$client->pere_inconnu)
-                    <div class="info-row">
-                        <div class="info-cell">Nom</div>
-                        <div class="info-cell">{{ strtoupper($client->nom_naissance_pere ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Prénom 1</div>
-                        <div class="info-cell">{{ ucfirst($client->prenom_pere ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Prénom 2</div>
-                        <div class="info-cell">{{ ucfirst($client->pere_prenom2 ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Prénom 3</div>
-                        <div class="info-cell">{{ ucfirst($client->pere_prenom3 ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Date de naissance</div>
-                        <div class="info-cell">{{ $client->pere_naissance_date ? \Carbon\Carbon::parse($client->pere_naissance_date)->format('d/m/Y') : 'N/A' }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Ville de naissance</div>
-                        <div class="info-cell">{{ ucfirst($client->pere_naissance_ville ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Nationalité</div>
-                        <div class="info-cell">{{ ucfirst($client->pere_nationalite ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Pays de naissance</div>
-                        <div class="info-cell">{{ ucfirst($client->pere_pays_naissance ?? 'N/A') }}</div>
-                    </div>
-                    @endif
-                </div>
-            </div>
+            <div class="section-divider">👨 Informations Père</div>
+            <div class="recap-item"><strong>Père inconnu :</strong> <span>{{ $client->pere_inconnu ? 'Oui' : 'Non' }}</span></div>
+            @if(!$client->pere_inconnu)
+            <div class="recap-item"><strong>Nom du père :</strong> <span>{{ strtoupper($client->nom_naissance_pere ?? 'N/A') }}</span></div>
+            <div class="recap-item"><strong>Prénoms du père :</strong> <span>{{ ucfirst($client->prenom_pere ?? 'N/A') }} @if($client->pere_prenom2) {{ ucfirst($client->pere_prenom2) }} @endif @if($client->pere_prenom3) {{ ucfirst($client->pere_prenom3) }} @endif</span></div>
+            <div class="recap-item"><strong>Date de naissance du père :</strong> <span>{{ $client->pere_naissance_date ? \Carbon\Carbon::parse($client->pere_naissance_date)->format('Y-m-d') : 'N/A' }}</span></div>
+            <div class="recap-item"><strong>Ville de naissance du père :</strong> <span>{{ ucfirst($client->pere_naissance_ville ?? 'N/A') }}</span></div>
+            <div class="recap-item"><strong>Nationalité du père :</strong> <span>{{ ucfirst($client->pere_nationalite ?? 'N/A') }}</span></div>
+            @if($client->pere_pays_naissance)
+            <div class="recap-item"><strong>Pays de naissance du père :</strong> <span>{{ ucfirst($client->pere_pays_naissance) }}</span></div>
+            @endif
+            @endif
 
             <!-- Mère -->
-            <div class="section">
-                <div class="section-title">👩 Informations Mère</div>
-                <div class="info-grid">
-                    <div class="info-row">
-                        <div class="info-cell">Mère inconnue</div>
-                        <div class="info-cell">{{ $client->mere_inconnue ? '<span class="yes">Oui</span>' : '<span class="no">Non</span>' }}</div>
-                    </div>
-                    @if(!$client->mere_inconnue)
-                    <div class="info-row">
-                        <div class="info-cell">Nom</div>
-                        <div class="info-cell">{{ strtoupper($client->nom_naissance_mere ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Prénom 1</div>
-                        <div class="info-cell">{{ ucfirst($client->prenom_mere ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Prénom 2</div>
-                        <div class="info-cell">{{ ucfirst($client->mere_prenom2 ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Prénom 3</div>
-                        <div class="info-cell">{{ ucfirst($client->mere_prenom3 ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Date de naissance</div>
-                        <div class="info-cell">{{ $client->mere_naissance_date ? \Carbon\Carbon::parse($client->mere_naissance_date)->format('d/m/Y') : 'N/A' }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Ville de naissance</div>
-                        <div class="info-cell">{{ ucfirst($client->mere_naissance_ville ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Nationalité</div>
-                        <div class="info-cell">{{ ucfirst($client->mere_nationalite ?? 'N/A') }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Pays de naissance</div>
-                        <div class="info-cell">{{ ucfirst($client->mere_pays_naissance ?? 'N/A') }}</div>
-                    </div>
-                    @endif
-                </div>
-            </div>
+            <div class="section-divider">👩 Informations Mère</div>
+            <div class="recap-item"><strong>Mère inconnue :</strong> <span>{{ $client->mere_inconnue ? 'Oui' : 'Non' }}</span></div>
+            @if(!$client->mere_inconnue)
+            <div class="recap-item"><strong>Nom de la mère :</strong> <span>{{ strtoupper($client->nom_naissance_mere ?? 'N/A') }}</span></div>
+            <div class="recap-item"><strong>Prénoms de la mère :</strong> <span>{{ ucfirst($client->prenom_mere ?? 'N/A') }} @if($client->mere_prenom2) {{ ucfirst($client->mere_prenom2) }} @endif @if($client->mere_prenom3) {{ ucfirst($client->mere_prenom3) }} @endif</span></div>
+            <div class="recap-item"><strong>Date de naissance de la mère :</strong> <span>{{ $client->mere_naissance_date ? \Carbon\Carbon::parse($client->mere_naissance_date)->format('Y-m-d') : 'N/A' }}</span></div>
+            <div class="recap-item"><strong>Ville de naissance de la mère :</strong> <span>{{ ucfirst($client->mere_naissance_ville ?? 'N/A') }}</span></div>
+            <div class="recap-item"><strong>Nationalité de la mère :</strong> <span>{{ ucfirst($client->mere_nationalite ?? 'N/A') }}</span></div>
+            @if($client->mere_pays_naissance)
+            <div class="recap-item"><strong>Pays de naissance de la mère :</strong> <span>{{ ucfirst($client->mere_pays_naissance) }}</span></div>
+            @endif
+            @endif
+
+            <!-- Adresse -->
+            <div class="section-divider">📍 Adresse</div>
+            <div class="recap-item"><strong>Adresse :</strong> <span>{{ $client->adresse ?? 'N/A' }}</span></div>
+            @if($client->adresse_complement)
+            <div class="recap-item"><strong>Complément d'adresse :</strong> <span>{{ $client->adresse_complement }}</span></div>
+            @endif
+            <div class="recap-item"><strong>Ville :</strong> <span>{{ ucfirst($client->ville ?? 'N/A') }}</span></div>
+            <div class="recap-item"><strong>Code postal :</strong> <span>{{ $client->code_postal ?? 'N/A' }}</span></div>
+            @if($client->pays)
+            <div class="recap-item"><strong>Pays :</strong> <span>{{ ucfirst($client->pays) }}</span></div>
+            @endif
+
+            <!-- Coordonnées -->
+            <div class="section-divider">📞 Coordonnées</div>
+            <div class="recap-item"><strong>Téléphone :</strong> <span>{{ $client->telephone ?? 'N/A' }}</span></div>
+            <div class="recap-item"><strong>Email :</strong> <span>{{ $client->email }}</span></div>
 
             <!-- Documents -->
-            <div class="section">
-                <div class="section-title">📎 Documents joints (à vérifier dans l'espace admin)</div>
-                <div class="info-grid">
-                    <div class="info-row">
-                        <div class="info-cell">Photo d'identité</div>
-                        <div class="info-cell">{{ $client->photo_identite ? '✅ Fournie' : '<span class="empty-value">Non fournie</span>' }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Justificatif de domicile</div>
-                        <div class="info-cell">{{ $client->justificatif_domicile ? '✅ Fourni' : '<span class="empty-value">Non fourni</span>' }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Acte de naissance</div>
-                        <div class="info-cell">{{ $client->acte_naissance ? '✅ Fourni' : '<span class="empty-value">Non fourni</span>' }}</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-cell">Autre document</div>
-                        <div class="info-cell">{{ $client->autre_document ? '✅ Fourni' : '<span class="empty-value">Non fourni</span>' }}</div>
-                    </div>
-                </div>
-            </div>
+            <div class="section-divider">📎 Documents joints</div>
+            <div class="recap-item"><strong>Photo d'identité :</strong> <span>{{ $client->photo_identite ? '✅ Fournie' : 'Non fournie' }}</span></div>
+            <div class="recap-item"><strong>Justificatif de domicile :</strong> <span>{{ $client->justificatif_domicile ? '✅ Fourni' : 'Non fourni' }}</span></div>
+            <div class="recap-item"><strong>Acte de naissance :</strong> <span>{{ $client->acte_naissance ? '✅ Fourni' : 'Non fourni' }}</span></div>
+            <div class="recap-item"><strong>Autre document :</strong> <span>{{ $client->autre_document ? '✅ Fourni' : 'Non fourni' }}</span></div>
         </div>
 
         <!-- Footer -->
