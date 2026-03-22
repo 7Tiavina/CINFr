@@ -170,7 +170,7 @@
         <div class="footer">
             <p><strong>CINFr - Service de pré-demande de CNI</strong></p>
             <p class="contact">
-                📧 {{ config('mail.from.address') }}<br>
+                📧 service@pré-demande-cni.com<br>
                 📞 Disponible du Lundi au Vendredi, 9h00 - 17h00
             </p>
             <p style="margin-top: 20px; font-size: 11px; color: #999;">
